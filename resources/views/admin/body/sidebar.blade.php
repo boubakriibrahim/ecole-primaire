@@ -53,7 +53,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('user.view') }}" class="nav-link">
                     <i class="fas fa-user-secret nav-icon"></i>
                   <p>Admins</p>
                 </a>

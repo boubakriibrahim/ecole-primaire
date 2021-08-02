@@ -26,7 +26,7 @@
             <div class="card-header">
                 <div class="row">
               <h2 class="col-sm-12 col-md-10">Admins</h2>
-              <button class="btn btn-block bg-gradient-primary col-sm-12 col-md-2 mt-sm-2">Ajouter Admin</button>
+              <a href="{{ route('users.add') }}" class="btn btn-block bg-gradient-primary col-sm-12 col-md-2 mt-sm-2">Ajouter Admin</a>
             </div>
         </div>
             <!-- /.card-header -->
@@ -45,7 +45,7 @@
                 @foreach ($allData as $key => $user)
                 <tr>
                   <td>{{ $key+1 }}</td>
-                  <td></td>
+                  <td>{{ $user->role }}</td>
                   <td>{{ $user->name }}</td>
                   <td>{{ $user->email }}</td>
                   <td>

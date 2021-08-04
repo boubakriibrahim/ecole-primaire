@@ -53,19 +53,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('user.view') }}" class="nav-link">
+                <a href="{{ route('admin.view') }}" class="nav-link">
                     <i class="fas fa-user-secret nav-icon"></i>
                   <p>Admins</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('maitre.view') }}" class="nav-link">
                     <i class="fas fa-user-tie nav-icon"></i>
                   <p>Maitres</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('eleve.view') }}" class="nav-link">
                     <i class="fas fa-user-graduate nav-icon"></i>
                   <p>Eleves</p>
                 </a>

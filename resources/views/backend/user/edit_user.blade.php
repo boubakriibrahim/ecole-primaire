@@ -22,9 +22,9 @@
   <section class="content">
     <div class="container-fluid">
   <div class="
-  @if (url()->current() == 'http://localhost:8000/admin/add')
+  @if (strpos(url()->current(), 'http://localhost:8000/admin/edit/') !== false)
   card card-primary
-  @elseif (url()->current() == 'http://localhost:8000/maitre/add')
+  @elseif (strpos(url()->current(), 'http://localhost:8000/maitre/edit/') !== false)
   card card-success
   @else
   card card-warning
@@ -32,23 +32,23 @@
   ">
     <div class="card-header">
       <h2 class="card-title">
-        @if (url()->current() == 'http://localhost:8000/admin/add')
-        Ajouter un Admin
-        @elseif (url()->current() == 'http://localhost:8000/maitre/add')
-        Ajouter un Maitre
+        @if (strpos(url()->current(), 'http://localhost:8000/admin/edit/') !== false)
+        Modifier un Admin
+        @elseif (strpos(url()->current(), 'http://localhost:8000/maitre/edit/') !== false)
+        Modifier un Maitre
         @else
-        Ajouter un Elève
+        Modifier un Elève
         @endif
       </h2>
     </div>
     <!-- /.card-header -->
 <form method="post"
-@if (url()->current() == 'http://localhost:8000/admin/add')
-action='{{ route('admins.store') }}'
-@elseif (url()->current() == 'http://localhost:8000/maitre/add')
-action='{{ route('maitres.store') }}'
+@if (strpos(url()->current(), 'http://localhost:8000/admin/edit/') !== false)
+action='{{ route('admin.miseajour', $editData->id) }}'
+@elseif (strpos(url()->current(), 'http://localhost:8000/maitre/edit/') !== false)
+action='{{ route('maitre.miseajour', $editData->id) }}'
 @else
-action='{{ route('eleves.store') }}'
+action='{{ route('eleve.miseajour', $editData->id) }}'
 @endif
 >
     @csrf
@@ -56,18 +56,14 @@ action='{{ route('eleves.store') }}'
         <div class="row">
         <div class="form-group col-md-6">
             <label for="exampleInputNom1">Nom <span class="text-danger">*</span></label>
-            <input type="text" class="form-control" id="nom" name="nom" placeholder="Entrer le nom">
+            <input type="text" class="form-control" id="nom" name="nom" placeholder="Entrer le nom" value="{{ $editData->name }}">
           </div>
         <div class="form-group col-md-6">
           <label for="exampleInputEmail1">Email adresse <span class="text-danger">*</span></label>
-          <input type="email" class="form-control" id="email" name="email" placeholder="Entrer l'email">
+          <input type="email" class="form-control" id="email" name="email" placeholder="Entrer l'email" value="{{ $editData->email }}">
         </div>
         </div>
         <div class="row">
-        <div class="form-group col-md-6">
-          <label for="exampleInputPassword1">Mot de Passe <span class="text-danger">*</span></label>
-          <input type="password" class="form-control" id="password" name="password" placeholder="Password">
-        </div>
         <div class="form-group col-md-6">
           <label for="exampleInputFile">Image</label>
           <div class="input-group">
@@ -89,13 +85,13 @@ action='{{ route('eleves.store') }}'
         <button type="reset" class="btn btn-block btn-outline-primary offset-md-2 col-md-6">Reinitialiser</button>
         </div>
         <div class="col-6">
-        <button type="submit" class="btn btn-block btn-outline-success offset-md-2 col-md-6">
-            @if (url()->current() == 'http://localhost:8000/admin/add')
-                Ajouter Admin
-                @elseif (url()->current() == 'http://localhost:8000/maitre/add')
-                Ajouter Maitre
+        <button type="update" class="btn btn-block btn-outline-success offset-md-2 col-md-6">
+            @if (strpos(url()->current(), 'http://localhost:8000/admin/edit/') !== false)
+                Modifier Admin
+                @elseif (strpos(url()->current(), 'http://localhost:8000/maitre/edit/') !== false)
+                Modifier Maitre
                 @else
-                Ajouter Elève
+                Modifier Elève
                 @endif
         </button>
       </div>

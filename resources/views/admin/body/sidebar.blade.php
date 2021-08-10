@@ -2,7 +2,7 @@
     <!-- Brand Logo -->
     <a href="{{ url('/') }}" class="brand-link">
       <img src="{{asset('backend/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Ecole Primaire</span>
+      <span class="brand-text font-weight-light">مدرستي </span>
     </a>
 
     <!-- Sidebar -->
@@ -13,7 +13,7 @@
           <img src="{{asset('backend/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Ibrahim Boubakri</a>
+          <a href="#" class="d-block">Ati </a>
         </div>
       </div>
 
@@ -38,7 +38,7 @@
             <a href="{{ route('home') }}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Tableau de Bord
+              جدول الوظائف
               </p>
             </a>
           </li>
@@ -47,29 +47,24 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
-                Espace Utilisateurs
+              التصرف في الأطر
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('user.view') }}" class="nav-link">
+                <a href="{{ route('Ens.view') }}" class="nav-link">
                     <i class="fas fa-user-secret nav-icon"></i>
-                  <p>Admins</p>
+                  <p>التصرف في المعلمين</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
                     <i class="fas fa-user-tie nav-icon"></i>
-                  <p>Maitres</p>
+                  <p>تعيين المدرّسين</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="fas fa-user-graduate nav-icon"></i>
-                  <p>Eleves</p>
-                </a>
-              </li>
+              
             </ul>
           </li>
           {{-- espace documents --}}
@@ -77,7 +72,7 @@
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-archive"></i>
               <p>
-                Espace Documents
+              فضاء الأدوات
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
@@ -85,13 +80,13 @@
               <li class="nav-item">
                 <a href="#" class="nav-link">
                     <i class="fas fa-file-alt nav-icon"></i>
-                  <p>Docs Administratives</p>
+                  <p>صندوق الأدوات</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
                     <i class="fas fa-user-check nav-icon"></i>
-                  <p>Absence</p>
+                  <p>الغيابات</p>
                 </a>
               </li>
             </ul>
@@ -101,7 +96,7 @@
             <a href="#" class="nav-link">
                 <i class="fas fa-school nav-icon"></i>
               <p>
-                Espace Classes
+              التصرّف في الأقسام 
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
@@ -109,27 +104,22 @@
               <li class="nav-item">
                 <a href="#" class="nav-link">
                     <i class="fas fa-user-friends nav-icon"></i>
-                  <p>Les Groupes</p>
+                  <p>الأقسام</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
                     <i class="fas fa-book-open nav-icon"></i>
-                  <p>Les Matières</p>
+                  <p>التّصرّف في المواد </p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
                     <i class="far fa-calendar-alt nav-icon"></i>
-                  <p>Les Emplois</p>
+                  <p>التّصرّف في جدول الأوقات</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="fab fa-discourse nav-icon"></i>
-                  <p>Les Discussions</p>
-                </a>
-              </li>
+              
             </ul>
           </li>
           {{-- espaces notes --}}
@@ -137,7 +127,7 @@
             <a href="#" class="nav-link">
                 <i class="fas fa-pen nav-icon"></i>
               <p>
-                Espace Notes
+              فضاء الأعداد
               </p>
             </a>
           </li>

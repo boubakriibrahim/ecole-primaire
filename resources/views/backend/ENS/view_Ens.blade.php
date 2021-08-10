@@ -6,12 +6,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Espace Utilisateurs</h1>
+          <h1>التصرف في المدرسين</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-            <li class="breadcrumb-item active">Espace Utilisateurs</li>
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">الرئيسية</a></li>
+            <li class="breadcrumb-item" active>التصرف في المدرسين</li>
           </ol>
         </div>
       </div>
@@ -25,32 +25,32 @@
           <div class="card">
             <div class="card-header">
                 <div class="row">
-              <h2 class="col-sm-12 col-md-10">Admins</h2>
-              <a href="{{ route('users.add') }}" class="btn btn-block bg-gradient-primary col-sm-12 col-md-2 mt-sm-2">Ajouter Admin</a>
+              <h2 class="col-sm-12 col-md-10">المدرسين</h2>
+              <a href="{{ route('Ens.add') }}" class="btn btn-block bg-gradient-primary col-sm-12 col-md-2 mt-sm-2">إضافة مدرس</a>
             </div>
         </div>
             <!-- /.card-header -->
-            <div class="card-body">
+            <div >
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th width="5%">NB</th>
-                  <th>Role</th>
-                  <th>Nom</th>
-                  <th>Email</th>
-                  <th width="25%">Action</th>
+                  <th width="5%">العدد</th>
+                  <th>الاسم</th>
+                  <th>اللقب</th>
+                  <th>الجنس</th>
+                  <th width="25%">العملية</th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach ($allData as $key => $user)
                 <tr>
                   <td>{{ $key+1 }}</td>
-                  <td>{{ $user->role }}</td>
-                  <td>{{ $user->name }}</td>
-                  <td>{{ $user->email }}</td>
+                  <td>{{ $user->nom }}</td>
+                  <td>{{ $user->prenom }}</td>
+                  <td>{{ $user->sexe }}</td>
                   <td>
-                        <a href="" class="btn btn-info">Modifier</a>
-                        <a href="" class="btn btn-danger">Effacer</a>
+                        <a href="" class="btn btn-info">تعديل</a>
+                        <a href="" class="btn btn-danger">حذف</a>
                   </td>
                 </tr>
                 @endforeach

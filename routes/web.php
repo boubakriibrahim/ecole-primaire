@@ -16,7 +16,7 @@ use App\Http\Controllers\Backend\UserController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('admin/index');
 });
 
 Auth::routes();
@@ -27,10 +27,13 @@ Route::get('/admin/logout', [AdminController::class, 'Logout'])->name('admin.log
 
 // user managment
 
-Route::prefix('users')->group(function(){
+Route::prefix('Enseignant')->group(function(){
 
-    Route::get('/view', [UserController::class, 'UserView'])->name('user.view');
-    Route::get('/add', [UserController::class, 'UserAdd'])->name('users.add');
-    Route::post('/store', [UserController::class, 'UserStore'])->name('users.store');
+    Route::get('/view', [App\Http\controllers\ensgController::class, 'EnsView'])->name('Ens.view');
+    Route::get('/add', [App\Http\controllers\ensgController::class, 'EnsAdd'])->name('Ens.add');
+    Route::post('/store', [App\Http\controllers\ensgController::class, 'EnsStore'])->name('Ens.store');
 
 });
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('admin/index');
+})->name('dashboard');

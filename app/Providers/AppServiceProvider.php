@@ -22,8 +22,9 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
+    protected $namespace='App\Http\controllers';
     public function boot()
     {
         Schema::defaultStringLength(191);
-    }
-}
+       
+}}

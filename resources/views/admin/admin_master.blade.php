@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>المدرسة الإبتدائية | صندوق الأدوات</title>
+  <title>Ecole primaire | Tableau de bord</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -32,15 +32,13 @@
   <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
-
-
 </head>
-<body {{-- class="hold-transition sidebar-mini layout-fixed" --}} class="hold-transition layout-top-nav ">
-{{-- <div class="wrapper"> --}}
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake img-circle" src="{{asset('images/logo.jpg')}}" alt="Logo" height="60" width="60">
+    <img class="animation__shake" src="{{asset('backend/dist/img/AdminLTELogo.png')}}" alt="AdminLTELogo" height="60" width="60">
   </div>
 
   <!-- Navbar -->
@@ -48,14 +46,14 @@
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  {{-- @include('admin.body.sidebar') --}}
+  @include('admin.body.sidebar')
 
   <!-- Content Wrapper. Contains page content -->
   @yield('admin')
   <!-- /.content-wrapper -->
   @include('admin.body.footer')
 
-{{-- </div> --}}
+</div>
 <!-- ./wrapper -->
 
 <!-- jQuery -->

@@ -24,7 +24,7 @@
                   التصرّف في المدرسين
                   <i class="nav-icon fas fa-users pl-2"></i>
                 </a></li>
-              <li><a href="#" class="dropdown-item text-right">
+              <li><a href="{{ route('classe.view') }}" class="dropdown-item text-right">
                   التصرّف في الأقسام
                   <i class="fas fa-school pl-2"></i>
                 </a></li>

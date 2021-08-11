@@ -75,7 +75,22 @@ Route::prefix('Enseignant')->group(function(){
     Route::post('/store', [App\Http\controllers\ensgController::class, 'EnsStore'])->name('Ens.store');
     Route::post('/miseajour/{id}', [App\Http\controllers\ensgController::class, 'EnsUpdate'])->name('Ens.miseajour');
 
+    Route::get('/effacer/{id}', [App\Http\controllers\ensgController::class, 'EnsDelete'])->name('Ens.delete');
+
 });
+
+
+Route::prefix('Classe')->group(function(){
+
+    Route::get('/view', [App\Http\controllers\ClasseController::class, 'ClasseView'])->name('classe.view');
+
+    Route::post('/store', [App\Http\controllers\ClasseController::class, 'ClasseStore'])->name('classe.store');
+    Route::post('/miseajour/{id}', [App\Http\controllers\ClasseController::class, 'ClasseUpdate'])->name('classe.miseajour');
+
+    Route::get('/effacer/{id}', [App\Http\controllers\ClasseController::class, 'ClasseDelete'])->name('classe.delete');
+
+});
+
 /* Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('admin/index');
 })->name('dashboard'); */

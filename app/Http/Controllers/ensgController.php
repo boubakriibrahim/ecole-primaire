@@ -69,4 +69,19 @@ class ensgController extends Controller
 
         return redirect()->route('Ens.view')->with($notification);
     }
+
+
+
+    public function EnsDelete($id) {
+
+        $user = enseignant::find($id);
+        $user->delete();
+
+        $notification = array(
+            'message' => 'تم حذف المدرس بنجاح',
+            'alert-type' => 'info'
+        );
+
+        return redirect()->route('Ens.view')->with($notification);
+    }
 }

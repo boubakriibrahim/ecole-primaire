@@ -138,7 +138,7 @@
 
 
 
-                        <a href="" class="btn btn-danger">حذف</a>
+                        <a href="{{ route("Ens.delete", $user->id) }}" class="btn btn-danger" id="delete">حذف</a>
                   </td>
                 </tr>
                 @endforeach

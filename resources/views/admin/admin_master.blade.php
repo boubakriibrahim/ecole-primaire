@@ -35,7 +35,7 @@
 
 
 </head>
-<body {{-- class="hold-transition sidebar-mini layout-fixed" --}} class="hold-transition layout-top-nav ">
+<body {{-- class="hold-transition sidebar-mini layout-fixed" --}} class="hold-transition layout-top-nav">
 {{-- <div class="wrapper"> --}}
 
   <!-- Preloader -->
@@ -118,21 +118,21 @@
             var link = $(this).attr("href");
 
             Swal.fire({
-            title: 'Etes-vous sûr?',
-            text: "Vous ne pourrez pas revenir en arrière !",
+            title: 'هل انت متأكد؟',
+            text: "لن تتمكن من العودة",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            cancelButtonText: 'Annuler',
-            confirmButtonText: 'Oui, supprimez-le !'
+            cancelButtonText: 'إلغاء',
+            confirmButtonText: 'نعم ، احذفها'
             }).then((result) => {
             if (result.isConfirmed) {
                 window.location.href = link
                 Swal.fire(
-                'Supprimé !',
-                'Cet Utilisteur a été supprimé.',
-                'success'
+                'تم الحذف',
+                'تم حذف هذا المدرس.',
+                'نجاح'
                 )
             }
             })

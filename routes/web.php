@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\ensController;
+use App\Http\Controllers\Backend\MatiereController;
 
 /*
 |--------------------------------------------------------------------------
@@ -88,6 +89,17 @@ Route::prefix('Classe')->group(function(){
     Route::post('/miseajour/{id}', [App\Http\controllers\ClasseController::class, 'ClasseUpdate'])->name('classe.miseajour');
 
     Route::get('/effacer/{id}', [App\Http\controllers\ClasseController::class, 'ClasseDelete'])->name('classe.delete');
+
+});
+
+Route::prefix('Matiere')->group(function(){
+
+    Route::get('/view', [App\Http\controllers\MatiereController::class, 'MatiereView'])->name('matiere.view');
+
+    Route::post('/store', [App\Http\controllers\MatiereController::class, 'MatiereStore'])->name('matiere.store');
+    Route::post('/miseajour/{id}', [App\Http\controllers\MatiereController::class, 'MatiereUpdate'])->name('matiere.miseajour');
+
+    Route::get('/effacer/{id}', [App\Http\controllers\MatiereController::class, 'MatiereDelete'])->name('matiere.delete');
 
 });
 

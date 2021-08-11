@@ -28,7 +28,7 @@
                   التصرّف في الأقسام
                   <i class="fas fa-school pl-2"></i>
                 </a></li>
-                <li><a href="#" class="dropdown-item text-right">
+                <li><a href="{{ route('matiere.view') }}" class="dropdown-item text-right">
                     التّصرّف في المواد
                     <i class="fas fa-book-open pl-2"></i>
                   </a></li>

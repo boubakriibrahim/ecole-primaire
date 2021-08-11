@@ -20,7 +20,7 @@
           <li class="nav-item dropdown text-right">
             <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">التصرّف</a>
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow" style="left: 0px; right: inherit;">
-              <li><a href="#" class="dropdown-item text-right">
+              <li><a href="{{ route('Ens.view') }}" class="dropdown-item text-right">
                   التصرّف في المدرسين
                   <i class="nav-icon fas fa-users pl-2"></i>
                 </a></li>

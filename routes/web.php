@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\Backend\ensController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,3 +65,17 @@ Route::prefix('eleve')->group(function(){
     Route::get('/effacer/{id}', [UserController::class, 'EleveDelete'])->name('eleve.delete');
 
 });
+
+
+
+Route::prefix('Enseignant')->group(function(){
+
+    Route::get('/view', [App\Http\controllers\ensgController::class, 'EnsView'])->name('Ens.view');
+    Route::get('/add', [App\Http\controllers\ensgController::class, 'EnsAdd'])->name('Ens.add');
+    Route::post('/store', [App\Http\controllers\ensgController::class, 'EnsStore'])->name('Ens.store');
+    Route::post('/miseajour/{id}', [App\Http\controllers\ensgController::class, 'EnsUpdate'])->name('Ens.miseajour');
+
+});
+/* Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('admin/index');
+})->name('dashboard'); */

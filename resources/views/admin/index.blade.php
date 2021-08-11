@@ -1,20 +1,25 @@
 @extends('admin.admin_master')
 
 @section('admin')
-<div class="content-wrapper">
+<div {{-- class="content-wrapper" --}} class="container">
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0">Tableau de Bord</h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Tableau de Bord</li>
+            <div class="col-sm-6 order-sm-2">
+                <h1 class="m-0 float-right">صندوق الأدوات</h1>
+              </div><!-- /.col -->
+
+
+          <div class="col-sm-6 order-sm-1">
+            <ol class="breadcrumb float-right float-sm-left">
+              <li class="breadcrumb-item active order-sm">صندوق الأدوات</li>
+              <li class="breadcrumb-item"><a href="#">الصفحة الرئيسية</a></li>
             </ol>
           </div><!-- /.col -->
+
+
+
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
@@ -31,12 +36,12 @@
               <div class="inner">
                 <h3>7</h3>
 
-                <p style="font-size: 24px;">Admins</p>
+                <p style="font-size: 24px;">إدارة</p>
               </div>
               <div class="icon">
                 <i class="fas fa-user-secret"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="#" class="small-box-footer">مزيد من المعلومات <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -51,7 +56,7 @@
               <div class="icon">
                 <i class="fas fa-user-tie"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="#" class="small-box-footer">مزيد من المعلومات <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -66,7 +71,7 @@
               <div class="icon">
                 <i class="fas fa-user-graduate"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="#" class="small-box-footer">مزيد من المعلومات <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -81,7 +86,7 @@
               <div class="icon">
                 <i class="far fa-calendar-alt"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="#" class="small-box-footer">مزيد من المعلومات <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->

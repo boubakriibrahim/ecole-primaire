@@ -2,10 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\Backend\UserController;
-use App\Http\Controllers\Backend\ensController;
-use App\Http\Controllers\Backend\MatiereController;
-use App\Http\controllers\AffEnsController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ensController;
+use App\Http\Controllers\MatiereController;
+use App\Http\Controllers\AffEnsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -106,6 +106,16 @@ Route::prefix('Matiere')->group(function(){
     Route::post('/miseajour/{id}', [App\Http\controllers\MatiereController::class, 'MatiereUpdate'])->name('matiere.miseajour');
 
     Route::get('/effacer/{id}', [App\Http\controllers\MatiereController::class, 'MatiereDelete'])->name('matiere.delete');
+
+});
+Route::prefix('affectationEnseignant')->group(function(){
+
+    Route::get('/view', [App\Http\controllers\AffEnsController::class, 'AffEnsView'])->name('affEns.view');
+    Route::get('/add', [App\Http\controllers\AffEnsController::class, 'AffEnsAdd'])->name('AffEns.add');
+    Route::post('/store', [App\Http\controllers\AffEnsController::class, 'AffEnsStore'])->name('AffEns.store');
+    Route::get('/edit/{id}', [App\Http\controllers\AffEnsController::class, 'AffEnsEdit'])->name('AffEns.edit');
+    Route::post('/miseajour/{id}', [App\Http\controllers\AffEnsController::class, 'AffEnsUpdate'])->name('AffEns.miseajour');
+    Route::get('/effacer/{id}', [App\Http\controllers\AffEnsController::class, 'AffEnsDelete'])->name('AffEns.delete');
 
 });
 

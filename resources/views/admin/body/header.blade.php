@@ -37,7 +37,7 @@
                   <i class="fas fa-user-check pl-2"></i>
                 </a></li>
               <li class="dropdown-divider"></li>
-              <li><a href="#" class="dropdown-item text-right">
+              <li><a href="{{route('affEns.view')}}" class="dropdown-item text-right">
                   تعيين المدرّسين
                   <i class="fas fa-pen pl-2"></i>
                 </a></li>

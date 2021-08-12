@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\ensController;
 use App\Http\Controllers\Backend\MatiereController;
+use App\Http\controllers\AffEnsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,11 @@ Route::get('/', function () {
 
 Route::get('/test', function () {
     return view('test');
+});
+
+
+Route::get('/emploi', function () {
+    return view('backend.view_emploi');
 });
 
 
@@ -103,6 +109,18 @@ Route::prefix('Matiere')->group(function(){
 
 });
 
+
+/* Route::prefix('AffectationEns')->group(function(){
+
+    Route::get('/view', [App\Http\controllers\AffEnsController::class, 'AffEnsView'])->name('affens.view');
+
+    Route::post('/store', [App\Http\controllers\AffEnsController::class, 'AffEnsStore'])->name('affens.store');
+    Route::post('/miseajour/{id}', [App\Http\controllers\AffEnsController::class, 'AffEnsUpdate'])->name('affens.miseajour');
+
+    Route::get('/effacer/{id}', [App\Http\controllers\AffEnsController::class, 'AffEnsDelete'])->name('affens.delete');
+
+});
+ */
 /* Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('admin/index');
 })->name('dashboard'); */

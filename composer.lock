@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "445b2b56036f4fb3c253035674db75e4",
+    "content-hash": "7383f2dfee516fff2d2f032c749bf227",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -935,6 +935,165 @@
                 "source": "https://github.com/guzzle/psr7/tree/2.0.0"
             },
             "time": "2021-06-30T20:03:07+00:00"
+        },
+        {
+            "name": "kevupton/ethereal",
+            "version": "v2.4.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kevupton/ethereal.git",
+                "reference": "5a6ec17ceb46fe7fe2bcec96f4042b1b26b47b52"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kevupton/ethereal/zipball/5a6ec17ceb46fe7fe2bcec96f4042b1b26b47b52",
+                "reference": "5a6ec17ceb46fe7fe2bcec96f4042b1b26b47b52",
+                "shasum": ""
+            },
+            "require": {
+                "kevupton/laravel-json-response": "^0.0.10",
+                "php": ">=5.3"
+            },
+            "require-dev": {
+                "barryvdh/laravel-ide-helper": "^2.4",
+                "laravel/laravel": "5.5.*",
+                "laravel/lumen-framework": "5.5.*"
+            },
+            "type": "extension",
+            "autoload": {
+                "psr-4": {
+                    "Kevupton\\Ethereal\\": "src/Kevupton/Ethereal/"
+                },
+                "files": [
+                    "src/Kevupton/Ethereal/Helpers/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kevin Upton",
+                    "email": "uptonkg@gmail.com"
+                }
+            ],
+            "description": "Extension functionality for laravel",
+            "keywords": [
+                "eloquent",
+                "ethereal",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/kevupton/ethereal/issues",
+                "source": "https://github.com/kevupton/ethereal/tree/master"
+            },
+            "time": "2018-05-06T03:32:27+00:00"
+        },
+        {
+            "name": "kevupton/laravel-json-response",
+            "version": "v0.0.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kevupton/laravel-json-response.git",
+                "reference": "a9fe5b3158c6b69af70e1b120b6749c8f871d2f5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kevupton/laravel-json-response/zipball/a9fe5b3158c6b69af70e1b120b6749c8f871d2f5",
+                "reference": "a9fe5b3158c6b69af70e1b120b6749c8f871d2f5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "barryvdh/laravel-ide-helper": "^2.4",
+                "laravel/laravel": "5.5.*",
+                "laravel/lumen-framework": "5.5.*"
+            },
+            "type": "extension",
+            "autoload": {
+                "psr-4": {
+                    "Kevupton\\LaravelJsonResponse\\": "src/Kevupton/LaravelJsonResponse/"
+                },
+                "files": [
+                    "src/Kevupton/LaravelJsonResponse/Helpers/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kevin Upton",
+                    "email": "uptonkg@gmail.com"
+                }
+            ],
+            "description": "Easy Json responses for laravel",
+            "keywords": [
+                "eloquent",
+                "json",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/kevupton/laravel-json-response/issues",
+                "source": "https://github.com/kevupton/laravel-json-response/tree/master"
+            },
+            "time": "2018-05-01T11:30:31+00:00"
+        },
+        {
+            "name": "kevupton/timetables",
+            "version": "v1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kevupton/timetables.git",
+                "reference": "463e3bca9a7d6aa0afc240c8c2fda9de1415d452"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kevupton/timetables/zipball/463e3bca9a7d6aa0afc240c8c2fda9de1415d452",
+                "reference": "463e3bca9a7d6aa0afc240c8c2fda9de1415d452",
+                "shasum": ""
+            },
+            "require": {
+                "kevupton/ethereal": "^2.0",
+                "php": ">=5.3"
+            },
+            "type": "extension",
+            "autoload": {
+                "psr-4": {
+                    "Kevupton\\Timetables\\": "src/Kevupton/Timetables/"
+                },
+                "files": [
+                    "src/Kevupton/Timetables/Helpers/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kevin Upton",
+                    "email": "uptonkg@gmail.com"
+                }
+            ],
+            "description": "Timetables for laravel",
+            "keywords": [
+                "laravel",
+                "table",
+                "tables",
+                "time",
+                "timetable",
+                "timetables"
+            ],
+            "support": {
+                "issues": "https://github.com/kevupton/timetables/issues",
+                "source": "https://github.com/kevupton/timetables/tree/master"
+            },
+            "time": "2016-03-31T05:27:30+00:00"
         },
         {
             "name": "laravel/framework",

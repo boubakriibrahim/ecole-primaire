@@ -28,9 +28,9 @@ Route::get('/test', function () {
 });
 
 
-Route::get('/emploi', function () {
+/* Route::get('/emploi', function () {
     return view('backend.view_emploi');
-});
+}); */
 
 
 Auth::routes();
@@ -135,12 +135,19 @@ Route::prefix('affectationEnseignant')->group(function(){
 
 Route::prefix('Emplois')->group(function(){
 
-    Route::get('/view', [App\Http\controllers\EmploiController::class, 'EmploiView'])->name('emploi.view');
+    Route::get('/view/classes', [App\Http\controllers\EmploiController::class, 'EmploiClassesView'])->name('emploi.view.classes');
 
-    Route::post('/store', [App\Http\controllers\EmploiController::class, 'EmploiStore'])->name('emploi.store');
+    Route::get('/view/enseignants', [App\Http\controllers\EmploiController::class, 'EmploiEnseignantsView'])->name('emploi.view.enseignants');
+
+    Route::post('/select', [App\Http\controllers\EmploiController::class, 'EmploiSelect'])->name('emploi.select');
+
+    Route::get('/add', [App\Http\controllers\EmploiController::class, 'EmploiAdd'])->name('emploi.add');
+
+    /* Route::post('/store', [App\Http\controllers\EmploiController::class, 'EmploiStore'])->name('emploi.store');
+
     Route::post('/miseajour/{id}', [App\Http\controllers\EmploiController::class, 'EmploiUpdate'])->name('emploi.miseajour');
 
-    Route::get('/effacer/{id}', [App\Http\controllers\EmploiController::class, 'EmploiDelete'])->name('emploi.delete');
+    Route::get('/effacer/{id}', [App\Http\controllers\EmploiController::class, 'EmploiDelete'])->name('emploi.delete'); */
 
 });
 

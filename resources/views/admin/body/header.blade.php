@@ -36,7 +36,7 @@
                     التّصرّف في القاعات
                     <i class="fas fa-school pl-2"></i>
                   </a></li>
-              <li><a href="#" class="dropdown-item text-right">
+              <li><a href="{{ route('emploi.view.enseignants') }}" class="dropdown-item text-right">
                   التّصرّف في جدول الأوقات
                   <i class="fas fa-user-check pl-2"></i>
                 </a></li>
@@ -100,6 +100,10 @@
                   <a class="dropdown-item text-right" href="#">
                       المعلومات الشّخصيّة
                       <i class="fas fa-user pl-2"></i>
+                    </a>
+                    <a class="dropdown-item text-right" href="#">
+                        معلومات المدرسة
+                        <i class="fas fa-school pl-2"></i>
                     </a>
                   <a class="dropdown-item text-right" href="{{ route('admin.logout') }}">
                     تسجيل الخروج

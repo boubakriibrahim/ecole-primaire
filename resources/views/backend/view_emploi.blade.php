@@ -30,40 +30,24 @@
           <div class="card">
             <div class="card-header">
                 <div class="row">
-                    <h2 class="col-md-6 offset-md-2  order-md-2 text-right">جداول الأوقات</h2>
-                    <button type="button" class="btn btn-block bg-gradient-primary offset-md-1 col-md-2 order-md-1 mt-sm-2" data-toggle="modal" data-target="#exampleModal">
-                        إضافة جدول أوقات
-                      </button>
+                    <h2 class="col-md-4 order-md-3 text-center">جداول الأوقات</h2>
 
-                      <!-- Modal -->
-                      <div class="modal fade" id="exampleModal" tabindex="1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header text-center">
-                              <h5 class="modal-title w-100" id="exampleModalLabel">إضافة جدول أوقات</h5>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                            </div>
-                            <div class="modal-body">
-                                <form method="post" action='{{ route('emploi.store') }}' width=60%>
-                                    @csrf
-
-
-                                          <div class="form-group text-right">
-                                            <label for="libelle text-right"><span class="text-danger">*</span> الإسم</label>
-                                            <input type="text" class="form-control text-right" id="libelle" name="libelle" placeholder="أدخل الإسم" required>
-                                          </div>
-
-                            </div>
-                            <div class="modal-footer">
-                              <button type="reset" class="btn btn-secondary" data-dismiss="modal">إلغاء</button>
-                              <button type="submit" class="btn btn-primary">تأكيد</button>
-                            </div>
-                            </form>
-                          </div>
+                    <div class="form-group offset-md-1 col-md-4 order-md-2 justify-content-center">
+                        <form method="post" action="{{ route("emploi.select") }}">
+                        @csrf
+                        <div class="row">
+                        <select class="custom-select offset-md-1 col-md-7 order-md-2 mt-2" id="selectemploi" name="selectemploi">
+                            <option value="classes" class="text-center" selected>جداول الأقسام</option>
+                            <option value="enseignats" class="text-center" >جداول المدرسين</option>
+                          </select>
+                          <input type="submit" class="btn btn-success col-md-4 order-md-1 mt-2 " value="تغيير">
                         </div>
-                      </div>
+                        </form>
+                    </div>
+
+                    <a href="{{ route('emploi.add') }}" class="btn btn-block bg-gradient-primary offset-md-1 col-md-2 order-md-1 mt-sm-2">
+                        إضافة جدول أوقات
+                      </a>
 
                 </div>
         </div>
@@ -73,12 +57,17 @@
                 <thead>
                 <tr>
                   <th width="25%">العملية</th>
-                  <th>الاسم</th>
+                  <th>السنة الدراسية</th>
+                  @if ($type == "classes")
+                  <th>القسم</th>
+                  @else
+                  <th>المدرس</th>
+                  @endif
                   <th width="5%">العدد</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach ($allData as $key => $emploi)
+                @foreach ($emplois as $key => $emploi)
                 <tr>
                   <td>
                       <div class="row">
@@ -89,7 +78,12 @@
                           </button>
                         </div>
                   </td>
-                  <td>{{ $emploi->libelle }}</td>
+                  <td>{{ $emploi->anneescolaire }}</td>
+                  @if ($type == "classes")
+                  <td>{{ $emploi->classe->nom }}</td>
+                  @else
+                  <td>{{ $emploi->enseignant->nom }}</td>
+                  @endif
                   <td>{{ $key+1 }}</td>
                 </tr>
                 @endforeach
@@ -98,7 +92,7 @@
 
 
 
-              @foreach ($allData as $key => $emploi)
+              @foreach ($emplois as $key => $emploi)
 
               <!-- Modal -->
               <div class="modal fade" id="model{{$emploi->id}}" tabindex="1" aria-labelledby="exampleModal{{$emploi->id}}" aria-hidden="true">

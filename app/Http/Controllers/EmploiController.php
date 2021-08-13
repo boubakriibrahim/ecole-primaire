@@ -4,25 +4,51 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Emploi;
+use App\Models\Seance;
 use App\Models\Classe;
 use App\Models\enseignant;
 
 class EmploiController extends Controller
 {
-    public function EmploiView () {
+    public function EmploiClassesView () {
+        $type = "classes";
         $emplois = Emploi::all();
-        $enseignants = enseignant::orderBy('nom')->get();
-        $classes = Classe::orderBy('nom')->get();
-        return view('backend.view_emploi',compact('emplois','enseignants','classes'));
+        $seances = Seance::all();
+        $data = Classe::orderBy('nom')->get();
+        return view('backend.view_emploi',compact('emplois','seances','data','type'));
     }
 
 
-    public function AffEnsStore(Request $request) {
+    public function EmploiEnseignantsView () {
+        $type = "enseignants";
+        $emplois = Emploi::all();
+        $seances = Seance::all();
+        $data = enseignant::orderBy('nom')->get();
+        return view('backend.view_emploi',compact('emplois','seances','data','type'));
+    }
+
+    public function EmploiSelect(Request $request) {
+        $type = $request->selectemploi;
+
+        if ($type == "classes") {
+            return Redirect("/Emplois/view/classes");
+        } else {
+            return Redirect("/Emplois/view/enseignants");
+        }
+    }
+
+    public function EmploiAdd() {
+
+        return view('backend.add_emploi');
+    }
+
+
+    /* public function EmploiStore(Request $request) {
 
          $request->validate([
-            "classe_id"=>"required",
-            'enseignant_id'=>'required',
-            'matiere_id'=>'required',
+            "id_classe"=>"required",
+            'id_enseignant'=>'required',
+            'anneescolaire'=>'required',
         ]);
         $data = new aff_enseignant();
         $data->classe_id = $request->classe_id;
@@ -30,8 +56,6 @@ class EmploiController extends Controller
         $data->enseignant_id = $request->enseignant_id;
         $data->save();
 
-
-        /* enseignant::create($request->all()); */
 
         $notification = array(
             'message' => 'تم إضافة التعيين بنجاح',
@@ -75,5 +99,5 @@ class EmploiController extends Controller
         );
 
         return back()->with($notification);
-    }
+    } */
 }

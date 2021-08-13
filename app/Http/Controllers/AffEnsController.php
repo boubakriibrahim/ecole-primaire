@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\aff_enseignant;
 use App\Models\classe;
 use App\Models\enseignant;
@@ -34,19 +35,28 @@ class AffEnsController extends Controller
         $data->classe_id = $request->classe_id;
         $data->matiere_id = $request->matiere_id;
         $data->enseignant_id = $request->enseignant_id;
-        $data->save();
+        if((DB::table('aff_enseignants')->where('classe_id',$request->classe_id)->where('matiere_id',$request->matiere_id)->doesntExist())){
+            $data->save();
 
-
-        /* enseignant::create($request->all()); */
-
+            $notification = array(
+                'message' => 'تم إضافة التعيين بنجاح',
+                'alert-type' => 'success'
+            );
+            return back()->with($notification);
+    
+    
+            
+           
+        }
         $notification = array(
-            'message' => 'تم إضافة التعيين بنجاح',
-            'alert-type' => 'success'
+            'message' => 'تعيين موجود مسبقا',
+            'alert-type' => 'warning'
         );
 
-
         return back()->with($notification);
-    }
+       
+
+}
 
 
 

@@ -125,8 +125,7 @@
       <div class="col-lg-4">
         <img src="{{ asset('images/ati.png') }}" alt="ati" class="bd-placeholder-img rounded-circle mb-4" width="140" height="140">
 
-        <h2>عماد الدين عاتي
-        </h2>
+        <h2>عماد الدين عاطي</h2>
         <p>مهندس علوم الإعلامية</p>
         <p><a class="btn btn-secondary" href="#">عرض المزيد</a></p>
       </div><!-- /.col-lg-4 -->

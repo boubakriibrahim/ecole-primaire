@@ -93,7 +93,7 @@
                       <img src="https://i.postimg.cc/vZHKNSFx/pdp.jpg" alt="" class="rounded-circle ml-2" width="40" height="40">
                     </span>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item text-right" href="{{route('profil')}}">
+                  <a class="dropdown-item text-right" href="#">
                       المعلومات الشّخصيّة
                       <i class="fas fa-user pl-2"></i>
                     </a>

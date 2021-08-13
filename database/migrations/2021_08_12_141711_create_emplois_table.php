@@ -15,14 +15,12 @@ class CreateEmploisTable extends Migration
     {
         Schema::create('emplois', function (Blueprint $table) {
             $table->id();
-            $table->string('jour');
-            $table->time('heure_debut');
-            $table->time('heure_fin');
-            $table->integer('id_enseignant');
-            $table->integer('id_classe');
-            $table->integer('id_matiere');
-            $table->integer('id_salle');
+            $table->unsignedBigInteger('id_classe');
+            $table->unsignedBigInteger('id_enseignant');
             $table->string('anneescolaire');
+            $table->foreign("id_classe")->references('id')->on('classes')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign("id_enseignant")->references('id')->on('enseignants')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign("anneescolaire")->references('anneescolaire')->on('classes')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

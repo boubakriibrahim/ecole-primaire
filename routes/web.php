@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ensController;
 use App\Http\Controllers\MatiereController;
+use App\Http\Controllers\SalleController;
 use App\Http\Controllers\AffEnsController;
 
 /*
@@ -108,6 +109,18 @@ Route::prefix('Matiere')->group(function(){
     Route::get('/effacer/{id}', [App\Http\controllers\MatiereController::class, 'MatiereDelete'])->name('matiere.delete');
 
 });
+
+Route::prefix('Salle')->group(function(){
+
+    Route::get('/view', [App\Http\controllers\SalleController::class, 'SalleView'])->name('salle.view');
+
+    Route::post('/store', [App\Http\controllers\SalleController::class, 'SalleStore'])->name('salle.store');
+    Route::post('/miseajour/{id}', [App\Http\controllers\SalleController::class, 'SalleUpdate'])->name('salle.miseajour');
+
+    Route::get('/effacer/{id}', [App\Http\controllers\SalleController::class, 'SalleDelete'])->name('salle.delete');
+
+});
+
 Route::prefix('affectationEnseignant')->group(function(){
 
     Route::get('/view', [App\Http\controllers\AffEnsController::class, 'AffEnsView'])->name('affEns.view');
@@ -120,17 +133,17 @@ Route::prefix('affectationEnseignant')->group(function(){
 });
 
 
-/* Route::prefix('AffectationEns')->group(function(){
+Route::prefix('Emplois')->group(function(){
 
-    Route::get('/view', [App\Http\controllers\AffEnsController::class, 'AffEnsView'])->name('affens.view');
+    Route::get('/view', [App\Http\controllers\EmploiController::class, 'EmploiView'])->name('emploi.view');
 
-    Route::post('/store', [App\Http\controllers\AffEnsController::class, 'AffEnsStore'])->name('affens.store');
-    Route::post('/miseajour/{id}', [App\Http\controllers\AffEnsController::class, 'AffEnsUpdate'])->name('affens.miseajour');
+    Route::post('/store', [App\Http\controllers\EmploiController::class, 'EmploiStore'])->name('emploi.store');
+    Route::post('/miseajour/{id}', [App\Http\controllers\EmploiController::class, 'EmploiUpdate'])->name('emploi.miseajour');
 
-    Route::get('/effacer/{id}', [App\Http\controllers\AffEnsController::class, 'AffEnsDelete'])->name('affens.delete');
+    Route::get('/effacer/{id}', [App\Http\controllers\EmploiController::class, 'EmploiDelete'])->name('emploi.delete');
 
 });
- */
+
 /* Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('admin/index');
 })->name('dashboard'); */

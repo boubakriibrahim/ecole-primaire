@@ -55,8 +55,8 @@ class MatiereController extends Controller
 
     public function MatiereDelete($id) {
 
-        $user = Matiere::find($id);
-        $user->delete();
+        $matiere = Matiere::find($id);
+        $matiere->delete();
 
         $notification = array(
             'message' => 'تم حذف المادة بنجاح',

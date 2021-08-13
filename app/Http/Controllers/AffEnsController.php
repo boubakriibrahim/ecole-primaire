@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\aff_enseignant;
 use App\Models\classe;
 use App\Models\enseignant;
+use Illuminate\Support\Facades\DB;
 use App\Models\matiere;
 
 class AffEnsController extends Controller
@@ -22,26 +23,33 @@ class AffEnsController extends Controller
 
         return view('backend.ENS.add_Ens');
     } */
-
     public function AffEnsStore(Request $request) {
-
-         $request->validate([
-            "classe_id"=>"required",
-            'enseignant_id'=>'required',
-            'matiere_id'=>'required',
-        ]);
-        $data = new aff_enseignant();
+        $data= new aff_enseignant(); 
         $data->classe_id = $request->classe_id;
         $data->matiere_id = $request->matiere_id;
         $data->enseignant_id = $request->enseignant_id;
-        $data->save();
 
 
         /* enseignant::create($request->all()); */
 
+        if((DB::table('aff_enseignants')->where('classe_id',$request->classe_id)->where('matiere_id',$request->matiere_id)->doesntExist())){
+            $data->save();
+
+            $notification = array(
+                'message' => 'تم إضافة التعيين بنجاح',
+                'alert-type' => 'success'
+            );
+            return back()->with($notification);
+
+
+
+
+        }
         $notification = array(
             'message' => 'تم إضافة التعيين بنجاح',
-            'alert-type' => 'success'
+            'alert-type' => 'success',
+            'message' => 'تعيين موجود مسبقا',
+            'alert-type' => 'warning'
         );
 
 
@@ -50,25 +58,8 @@ class AffEnsController extends Controller
 
 
 
-    public function AffEnsUpdate(Request $request, $id) {
 
-        $data = aff_enseignant::find($id);
-        $data->classe_id = $request->classe_id;
-        $data->matiere_id = $request->matiere_id;
-        $data->enseignant_id = $request->enseignant_id;
-
-
-        $data->save();
-
-        $notification = array(
-            'message' => 'تم تحديث التعيين بنجاح',
-            'alert-type' => 'info'
-        );
-
-        return back()->with($notification);
-    }
-
-
+    
 
     public function AffEnsDelete($id) {
 
@@ -83,3 +74,4 @@ class AffEnsController extends Controller
         return back()->with($notification);
     }
 }
+

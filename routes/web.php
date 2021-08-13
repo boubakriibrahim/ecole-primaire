@@ -22,9 +22,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/profil', function () {
-    return view('backend/profil_card');
-})->name('profil');
+Route::get('/test', function () {
+    return view('test');
+});
 
 
 Route::get('/emploi', function () {
@@ -131,6 +131,6 @@ Route::prefix('affectationEnseignant')->group(function(){
 
 });
  */
- Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+/* Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('admin/index');
-})->name('dashboard'); 
+})->name('dashboard'); */

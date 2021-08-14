@@ -45,7 +45,7 @@
                         </form>
                     </div>
 
-                    <a href="{{ route('emploi.add') }}" class="btn btn-block bg-gradient-primary offset-md-1 col-md-2 order-md-1 mt-sm-2">
+                    <a href="@if ($type == "classes") {{ route('emploi.add.classes') }} @else {{ route('emploi.add.enseignants') }} @endif" class="btn btn-block bg-gradient-primary offset-md-1 col-md-2 order-md-1 mt-sm-2">
                         إضافة جدول أوقات
                       </a>
 

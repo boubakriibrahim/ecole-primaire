@@ -7,6 +7,8 @@ use App\Models\Emploi;
 use App\Models\Seance;
 use App\Models\Classe;
 use App\Models\enseignant;
+use App\Models\Matiere;
+use App\Models\Salle;
 
 class EmploiController extends Controller
 {
@@ -37,9 +39,26 @@ class EmploiController extends Controller
         }
     }
 
-    public function EmploiAdd() {
+    public function EmploiClassesAdd() {
 
-        return view('backend.add_emploi');
+        $type = "classes";
+        $allData = Classe::orderBy('nom')->get();
+        $allData2 = enseignant::orderBy('nom')->get();
+        $matieres = Matiere::all();
+        $salles = Salle::all();
+
+        return view('backend.add_emploi',compact('allData', 'allData2', 'type', 'matieres', 'salles'));
+    }
+
+    public function EmploiEnseignantsAdd() {
+
+        $type = "enseignants";
+        $allData = enseignant::orderBy('nom')->get();
+        $allData2 = Classe::orderBy('nom')->get();
+        $matieres = Matiere::all();
+        $salles = Salle::all();
+
+        return view('backend.add_emploi',compact('allData', 'allData2', 'type', 'matieres', 'salles'));
     }
 
 

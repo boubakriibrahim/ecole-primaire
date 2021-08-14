@@ -141,11 +141,14 @@ Route::prefix('Emplois')->group(function(){
 
     Route::post('/select', [App\Http\controllers\EmploiController::class, 'EmploiSelect'])->name('emploi.select');
 
-    Route::get('/add', [App\Http\controllers\EmploiController::class, 'EmploiAdd'])->name('emploi.add');
+    Route::get('/add/classes', [App\Http\controllers\EmploiController::class, 'EmploiClassesAdd'])->name('emploi.add.classes');
 
-    /* Route::post('/store', [App\Http\controllers\EmploiController::class, 'EmploiStore'])->name('emploi.store');
+    Route::get('/add/enseignants', [App\Http\controllers\EmploiController::class, 'EmploiEnseignantsAdd'])->name('emploi.add.enseignants');
 
-    Route::post('/miseajour/{id}', [App\Http\controllers\EmploiController::class, 'EmploiUpdate'])->name('emploi.miseajour');
+
+    Route::post('/store', [App\Http\controllers\EmploiController::class, 'EmploiStore'])->name('emploi.store');
+
+    /*Route::post('/miseajour/{id}', [App\Http\controllers\EmploiController::class, 'EmploiUpdate'])->name('emploi.miseajour');
 
     Route::get('/effacer/{id}', [App\Http\controllers\EmploiController::class, 'EmploiDelete'])->name('emploi.delete'); */
 

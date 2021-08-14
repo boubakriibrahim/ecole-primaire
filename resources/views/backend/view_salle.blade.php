@@ -51,7 +51,7 @@
 
 
                                           <div class="form-group text-right">
-                                            <label for="libelle text-right"><span class="text-danger">*</span> الإسم</label>
+                                            <label for="libelle"><span class="text-danger">*</span> الإسم</label>
                                             <input type="text" class="form-control text-right" id="libelle" name="libelle" placeholder="أدخل الإسم" required>
                                           </div>
 

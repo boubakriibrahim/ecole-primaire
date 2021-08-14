@@ -149,7 +149,7 @@ Route::prefix('Emplois')->group(function(){
     Route::get('/add/enseignants', [App\Http\controllers\EmploiController::class, 'EmploiEnseignantsAdd'])->name('emploi.add.enseignants');
 
 
-    Route::post('/store', [App\Http\controllers\EmploiController::class, 'EmploiStore'])->name('emploi.store');
+    Route::post('/store', [App\Http\controllers\EmploiController::class, 'EmploiEnseignantStore'])->name('emploi.store.enseignant');
 
     /*Route::post('/miseajour/{id}', [App\Http\controllers\EmploiController::class, 'EmploiUpdate'])->name('emploi.miseajour');
 

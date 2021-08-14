@@ -71,7 +71,7 @@
                 <tr>
                   <td>
                       <div class="row">
-                        <a href="{{ route("emploi.delete", $emploi->id) }}" class="btn btn-danger offset-sm-3 mr-sm-1 col-sm-4 order-3 order-sm-1" id="delete">حذف</a>
+                        <a href="{{-- {{ route("emploi.delete", $emploi->id) }} --}}#" class="btn btn-danger offset-sm-3 mr-sm-1 col-sm-4 order-3 order-sm-1" id="delete">حذف</a>
 
                         <button type="button" class="btn btn-info  col-sm-4 order-2" data-toggle="modal" data-target="#model{{$emploi->id}}">
                             تحديث
@@ -80,9 +80,9 @@
                   </td>
                   <td>{{ $emploi->anneescolaire }}</td>
                   @if ($type == "classes")
-                  <td>{{ $emploi->classe->nom }}</td>
+                  <td>{{ $emploi->id_classe }}</td>
                   @else
-                  <td>{{ $emploi->enseignant->nom }}</td>
+                  <td>{{ $emploi->id_enseignant }}</td>
                   @endif
                   <td>{{ $key+1 }}</td>
                 </tr>
@@ -105,7 +105,7 @@
                       </button>
                     </div>
                     <div class="modal-body">
-                        <form method="post" action='{{ route('emploi.miseajour',$emploi->id) }}' width=60%>
+                        <form method="post" action='{{-- {{ route('emploi.miseajour',$emploi->id) }} --}}#' width=60%>
                             @csrf
 
 

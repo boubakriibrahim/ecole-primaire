@@ -56,12 +56,13 @@
          <h3> {{session()->get("success")}}</h3>
     </div>
     @endif
-<form method="post" action='{{ route('emploi.store') }}' width=60%>
+<form method="post" action='{{ route('emploi.store.enseignant') }}' width=60%>
     @csrf
     <div class="card-body container">
-
         <div class="row mb-2">
+            <div class="form-group col-md-6">
             @if ($type == "classes")
+            <label for="selectemploiClasse">إختر قسم  <span class="text-danger">*</span></label>
             <select class="custom-select" id="selectemploiClasse" name="selectemploiClasse" required>
                 <option selected>إختر قسم</option>
                 @foreach ($allData as $key => $data)
@@ -69,6 +70,7 @@
                 @endforeach
             </select>
             @else
+            <label for="selectemploiEns">إختر مدرس  <span class="text-danger">*</span></label>
             <select class="custom-select text-center" dir="rtl" id="selectemploiEns" name="selectemploiEns" required>
                 <option selected>إختر مدرس</option>
                 @foreach ($allData as $key => $data)
@@ -76,6 +78,12 @@
                 @endforeach
             </select>
             @endif
+            </div>
+            <div class="form-group col-md-6">
+                <label for="anneescolaire">السنة الدراسية  <span class="text-danger">*</span></label>
+                <input type="text" placeholder="السنة الدراسية" id="anneescolaire" name="anneescolaire" class="form-control" required>
+            </div>
+
         </div>
 
         <div class="dropdown-divider"></div>
@@ -142,11 +150,11 @@
       <div class="row" dir="rtl">
         <div class="form-group col-md-6">
           <label for="heure_debut">ساعة البداية  <span class="text-danger">*</span></label>
-          <input placeholder="Selected time" type="text" id="heure_debut" nom="heure_debut" class="form-control timepicker" required>
+          <input placeholder="Selected time" type="text" id="heure_debut" name="heure_debut" class="form-control timepicker" required>
         </div>
         <div class="form-group col-md-6">
           <label for="heure_fin">ساعة النهاية <span class="text-danger">*</span></label>
-          <input placeholder="Selected time" type="text" id="heure_fin" nom="heure_fin" class="form-control timepicker" required>
+          <input placeholder="Selected time" type="text" id="heure_fin" name="heure_fin" class="form-control timepicker" required>
         </div>
       </div>
       <div class="row" dir="rtl">
@@ -162,10 +170,10 @@
             </select>
         </div>
         <div class="form-group col-md-6">
-            <label for="selectmatiere">
+            <label for="selectsalle">
                 القاعة
                 <span class="text-danger">*</span></label>
-           <select class="custom-select" id="selectmatiere" name="selectmatiere" required>
+           <select class="custom-select" id="selectsalle" name="selectsalle" required>
                <option selected>إختر قاعة</option>
                @foreach ($salles as $key => $salle)
                <option value="{{$salle->id}}">{{$salle->libelle}}</option>

@@ -62,6 +62,49 @@ class EmploiController extends Controller
     }
 
 
+    public function EmploiEnseignantStore(Request $request) {
+
+        $request->validate([
+            'selectemploiEns'=>'required',
+            'anneescolaire'=>'required',
+            'selectemploijour'=>'required',
+            'selectemploi'=>'required',
+            'heure_debut'=>'required',
+            'heure_fin'=>'required',
+            'selectmatiere'=>'required',
+            'selectsalle'=>'required',
+        ]);
+
+        $emploi = new Emploi();
+        $emploi->id_classe = -1;
+        $emploi->id_enseignant = $request->selectemploiEns;
+        $emploi->anneescolaire = $request->anneescolaire;
+
+        $emploi->save();
+
+        $seance = new Seance();
+        $seance->jour = $request->selectemploijour;
+        $seance->heure_debut = $request->heure_debut;
+        $seance->heure_fin = $request->heure_fin;
+        $seance->id_enseignant = $request->selectemploiEns;
+        $seance->id_classe = $request->selectemploi;
+        $seance->id_matiere = $request->selectmatiere;
+        $seance->id_salle = $request->selectsalle;
+        $seance->anneescolaire = $request->anneescolaire;
+
+        $seance->save();
+
+
+        $notification = array(
+            'message' => 'تم إضافة جدول أوقات المدرس بنجاح',
+            'alert-type' => 'success'
+        );
+
+
+        return Redirect('/Emplois/view/enseignants')->with($notification);
+    }
+
+
     /* public function EmploiStore(Request $request) {
 
          $request->validate([

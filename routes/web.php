@@ -150,6 +150,8 @@ Route::prefix('Emplois')->group(function(){
 
     Route::post('/store', [App\Http\controllers\EmploiController::class, 'EmploiEnseignantStore'])->name('emploi.store.enseignant');
 
+    Route::post('/store', [App\Http\controllers\EmploiController::class, 'EmploiClasseStore'])->name('emploi.store.classe');
+
     /*Route::post('/miseajour/{id}', [App\Http\controllers\EmploiController::class, 'EmploiUpdate'])->name('emploi.miseajour');
 
     Route::get('/effacer/{id}', [App\Http\controllers\EmploiController::class, 'EmploiDelete'])->name('emploi.delete'); */

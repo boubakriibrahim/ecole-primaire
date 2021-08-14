@@ -21,10 +21,10 @@ class Emploi extends Model
 
 
     public function classe(){
-        return $this->belongsTo(Classe::class);
+        return $this->belongsTo(Classe::class, 'id_classe' , 'id');
     }
 
     public function enseignant(){
-        return $this->belongsTo(enseignant::class);
+        return $this->belongsTo(enseignant::class, 'id_enseignant', 'id');
     }
 }

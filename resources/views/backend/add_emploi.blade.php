@@ -56,7 +56,11 @@
          <h3> {{session()->get("success")}}</h3>
     </div>
     @endif
-<form method="post" action='{{ route('emploi.store.enseignant') }}' width=60%>
+<form method="post" action='@if ($type == 'enseignants')
+{{ route('emploi.store.enseignant') }}
+@else
+{{ route('emploi.store.classe') }}
+@endif' width=60%>
     @csrf
     <div class="card-body container">
         <div class="row mb-2">
@@ -99,7 +103,7 @@
         <div class="row">
         <div class="form-group col-md-6">
             <label for="selectemploijour"> اليوم<span class="text-danger">*</span></label>
-            <select class="custom-select text-center" dir="rtl" id="selectemploijour" name="selectemploijour" required>>
+            <select class="custom-select text-center" dir="rtl" id="selectemploijour" name="selectemploijour" required>
                 <option selected>إختر يوم</option>
                 <option value="0">
                     الإثنين

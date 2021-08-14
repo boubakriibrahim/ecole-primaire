@@ -68,6 +68,8 @@
                 </thead>
                 <tbody>
                 @foreach ($emplois as $key => $emploi)
+                @if (($emploi->id_classe != -1 && $type == 'classes') ||
+                     ($emploi->id_enseignant != -1 && $type == 'enseignants'))
                 <tr>
                   <td>
                       <div class="row">
@@ -80,12 +82,13 @@
                   </td>
                   <td>{{ $emploi->anneescolaire }}</td>
                   @if ($type == "classes")
-                  <td>{{ $emploi->id_classe }}</td>
+                  <td>{{ $emploi->classe->nom }}</td>
                   @else
-                  <td>{{ $emploi->id_enseignant }}</td>
+                  <td>{{ $emploi->enseignant->nom }} {{ $emploi->enseignant->prenom }}</td>
                   @endif
                   <td>{{ $key+1 }}</td>
                 </tr>
+                @endif
                 @endforeach
                 </tfoot>
               </table>

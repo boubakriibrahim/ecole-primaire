@@ -64,6 +64,16 @@
 
       <!-- Right navbar links -->
       <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
+
+        <li class="nav-item">
+            <button onclick="$('body').toggleClass('dark-mode');" style="border: none;
+            background: none;
+            cursor: pointer;
+            margin: 0;
+            padding: 0;">
+            <i class="far fa-moon pt-2" style="color: white;"></i>
+            </button>
+        </li>
         <!-- Notifications Dropdown Menu -->
         <li class="nav-item dropdown">
           <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">

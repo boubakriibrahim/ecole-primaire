@@ -236,7 +236,7 @@
 </style>
 
 </head>
-<body  class="hold-transition layout-top-nav dark-mode">
+<body  class="hold-transition layout-top-nav">
 {{-- <div class="wrapper"> --}}
 
   <!-- Preloader -->

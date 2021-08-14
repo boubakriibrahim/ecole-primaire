@@ -82,19 +82,22 @@ class EmploiController extends Controller
 
         $emploi->save();
 
-        $seance = new Seance();
-        $seance->jour = $request->selectemploijour;
-        $seance->heure_debut = $request->heure_debut;
-        $seance->heure_fin = $request->heure_fin;
-        $seance->id_enseignant = $request->selectemploiEns;
-        $seance->id_classe = $request->selectemploi;
-        $seance->id_matiere = $request->selectmatiere;
-        $seance->id_salle = $request->selectsalle;
-        $seance->anneescolaire = $request->anneescolaire;
+        $countClass = count($request->heure_debut);
+    		for ($i=0; $i <$countClass ; $i++) {
 
-        $seance->save();
+                $seance = new Seance();
+                $seance->jour = $request->selectemploijour[$i];
+                $seance->heure_debut = $request->heure_debut[$i];
+                $seance->heure_fin = $request->heure_fin[$i];
+                $seance->id_enseignant = $request->selectemploiEns;
+                $seance->id_classe = $request->selectemploi[$i];
+                $seance->id_matiere = $request->selectmatiere[$i];
+                $seance->id_salle = $request->selectsalle[$i];
+                $seance->anneescolaire = $request->anneescolaire;
 
+                $seance->save();
 
+            }
         $notification = array(
             'message' => 'تم إضافة جدول أوقات المدرس بنجاح',
             'alert-type' => 'success'
@@ -125,18 +128,20 @@ class EmploiController extends Controller
 
         $emploi->save();
 
-        $seance = new Seance();
-        $seance->jour = $request->selectemploijour;
-        $seance->heure_debut = $request->heure_debut;
-        $seance->heure_fin = $request->heure_fin;
-        $seance->id_enseignant = $request->selectemploi;
-        $seance->id_classe = $request->selectemploiClasse;
-        $seance->id_matiere = $request->selectmatiere;
-        $seance->id_salle = $request->selectsalle;
-        $seance->anneescolaire = $request->anneescolaire;
+        $countClass = count($request->heure_debut);
+    		for ($i=0; $i <$countClass ; $i++) {
+                $seance = new Seance();
+                $seance->jour = $request->selectemploijour[$i];
+                $seance->heure_debut = $request->heure_debut[$i];
+                $seance->heure_fin = $request->heure_fin[$i];
+                $seance->id_enseignant = $request->selectemploi[$i];
+                $seance->id_classe = $request->selectemploiClasse;
+                $seance->id_matiere = $request->selectmatiere[$i];
+                $seance->id_salle = $request->selectsalle[$i];
+                $seance->anneescolaire = $request->anneescolaire;
 
-        $seance->save();
-
+                $seance->save();
+            }
 
         $notification = array(
             'message' => 'تم إضافة جدول أوقات القسم بنجاح',

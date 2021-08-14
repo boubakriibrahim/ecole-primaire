@@ -15,8 +15,7 @@ class MatiereController extends Controller
     public function MatiereStore(Request $request) {
 
          $request->validate([
-            "niveau"=>"required",
-            'libelle'=>'required',
+            "niveau"=>"required", 'libelle'=>'required'
         ]);
         $data = new Matiere();
         $data->niveau = $request->niveau;

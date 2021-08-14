@@ -2,11 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\backend\UserController;
 use App\Http\Controllers\ensController;
 use App\Http\Controllers\MatiereController;
 use App\Http\Controllers\SalleController;
 use App\Http\Controllers\AffEnsController;
+use App\Http\controllers\ProfilController;
 
 /*
 |--------------------------------------------------------------------------
@@ -131,9 +132,7 @@ Route::prefix('affectationEnseignant')->group(function(){
     Route::get('/effacer/{id}', [App\Http\controllers\AffEnsController::class, 'AffEnsDelete'])->name('AffEns.delete');
 
 });
-Route::get('/profil', function () {
-    return view('profil_card');
-})->name('profil');
+Route::get('/profil',[App\Http\controllers\ProfilController::class, 'AdminData'])->name('profil');
 
 
 Route::prefix('Emplois')->group(function(){
@@ -156,7 +155,6 @@ Route::prefix('Emplois')->group(function(){
     Route::get('/effacer/{id}', [App\Http\controllers\EmploiController::class, 'EmploiDelete'])->name('emploi.delete'); */
 
 });
-
-/* Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('admin/index');
-})->name('dashboard'); */
+})->name('dashboard');

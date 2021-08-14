@@ -90,19 +90,27 @@ class UserController extends Controller
 
         $data = User::find($id);
         /* $data->role = 'admin'; */
-        $data->email = $request->email;
+       if($request->password==$request->password_confirm) {
+           $data->email = $request->email;
         $data->name = $request->nom;
+        $data->password=bcrypt($request->password);
 
         $data->save();
 
         $notification = array(
-            'message' => 'Mise à jour de l\'admin réussie',
+            'message' => 'تم تحديث بنجاح',
             'alert-type' => 'info'
         );
 
-        return redirect()->route('admin.view')->with($notification);
+        return back()->with($notification);
     }
+    $notification = array(
+        'message' => 'الرمز الأول غير متتابق مع الرمز الثاني',
+        'alert-type' => 'error'
+    );
 
+    return back()->with($notification);
+}
     public function MaitreUpdate(Request $request, $id) {
 
         $data = User::find($id);

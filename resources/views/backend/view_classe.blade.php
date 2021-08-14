@@ -1,7 +1,7 @@
 @extends('admin.admin_master')
 
 @section('admin')
-<div class="content-wrapper">
+<div class="content-wrapper dark-mode">
 <section class="content-header">
         <div class="container-fluid">
           <div class="row mb-2">

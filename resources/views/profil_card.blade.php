@@ -3,6 +3,10 @@
 @section('admin')
 
 
+ 
+
+
+
 
 
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -10,30 +14,35 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
-<div class="container emp-profile">
+<div class="container emp-profile info-mode">
+                <div class="col-md-2 float-right">
+                    <button type="button" class=" profile-edit-btn   " data-toggle="modal" data-target="#Modal">
+                    تحديث المعطيات 
+                    </button>
+                </div>  
             <form method="post">
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
                             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
                             <div class="file btn btn-lg btn-primary">
-                                Change Photo
                                 <input type="file" name="file"/>
+                                تغيير الصورة
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="profile-head">
                                     <h5>
-                                        Kshiti Ghelani
+                                    {{$AdminInfo['name']}}
                                     </h5>
                                     <h6>
-                                        Web Developer and Designer
+                                    مدير المدرسة     
                                     </h6>
-                                    <p class="proile-rating">RANKINGS : <span>8/10</span></p>
+                                    
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">المعلومات الشخصية</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
@@ -41,9 +50,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-md-2">
-                        <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
-                    </div>
+                   
                 </div>
                 <div class="row">
                     <div class="col-md-4">
@@ -65,86 +72,47 @@
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>User Id</label>
+                                                <p>{{$AdminInfo['id']}}</p>
+                                            </div> 
+                                            <div class="col-md-6" color=black>
+                                                <label>المعرف</label>
+                                                
                                             </div>
-                                            <div class="col-md-6">
-                                                <p>Kshiti123</p>
-                                            </div>
+                                            
                                         </div>
                                         <div class="row">
+                                             <div class="col-md-6">
+                                                <p>{{$AdminInfo['name']}}</p>
+                                            </div>                                        
                                             <div class="col-md-6">
-                                                <label>Name</label>
+                                                <label>الإسم</label>
                                             </div>
-                                            <div class="col-md-6">
-                                                <p>Kshiti Ghelani</p>
-                                            </div>
+
+                                                                                   
+                                            
+                                            
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Email</label>
+                                        <div class="col-md-6">
+                                                <p>{{$AdminInfo['email']}}</p>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>kshitighelani@gmail.com</p>
+                                                <label>البريد الإلكتروني</label>
                                             </div>
+                                            
                                         </div>
+                                        
                                         <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Phone</label>
+                                        <div class="col-md-6">
+                                                <p>مدير</p>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>123 456 7890</p>
+                                                <label>المهنة</label>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Profession</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>Web Developer and Designer</p>
-                                            </div>
+                                            
                                         </div>
                             </div>
-                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Experience</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>Expert</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Hourly Rate</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>10$/hr</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Total Projects</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>230</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>English Level</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>Expert</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Availability</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>6 months</p>
-                                            </div>
-                                        </div>
+                            
                                 <div class="row">
                                     <div class="col-md-12">
                                         <label>Your Bio</label><br/>
@@ -156,5 +124,88 @@
                     </div>
                 </div>
             </form>
-</div>           
+ 
+<div class="modal fade" id="Modal" tabindex="1" aria-labelledby="exampleModalLabel" aria-hidden="false">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">إضافة قسم</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                            <form method="POST" action='{{ route('admin.miseajour',$AdminInfo["id"]) }}'>
+                        @csrf
+
+                        <div class="form-group row">
+
+                            <div class="col-md-9">
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="nom" value="{{ old('name') }}" required autocomplete="name" autofocus>
+
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <label for="name" class="col-md-3 col-form-label text-md-right float-right"><span class="text-danger">*</span>{{ __('الإسم الكامل') }}</label>
+
+                        </div>
+
+                        <div class="form-group row">
+
+                            <div class="col-md-9">
+                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('name') }}" required  autofocus>
+
+
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <label for="email" class="col-md-3 col-form-label text-md-right float-right"><span class="text-danger">*</span>{{ __('البريد الإلكتروني') }}</label>
+
+                        </div>
+
+                        <div class="form-group row">
+
+                            <div class="col-md-9">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <label for="password" class="col-md-2 col-form-label text-md-right float-right"><span class="text-danger">*</span>{{ __('الرمز السري') }}</label>
+
+                        </div>
+
+                        <div class="form-group row">
+
+                            <div class="col-md-9">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirm" required autocomplete="new-password">
+                            </div>
+                            <label for="password_confirm" class="col-md-3 col-form-label text-md-right float-right"><span class="text-danger">*</span>{{ __(' تأكيد الرمز السري ') }}</label>
+
+                        </div>
+
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('تحديث') }}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                          </div>
+                        </div>
+                      </div>
+
+                </div> 
+</div>         
 @endsection 

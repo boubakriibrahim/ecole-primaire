@@ -6,7 +6,7 @@
   <title>المدرسة الإبتدائية | صندوق الأدوات</title>
   <style>
 		body{
-    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+    background:;
 }
 .emp-profile{
     padding: 3%;
@@ -95,6 +95,7 @@
 }
 .profile-tab label{
     font-weight: 600;
+    color:black;
 }
 .profile-tab p{
     font-weight: 600;
@@ -231,7 +232,7 @@
 </style>
 
 </head>
-<body {{-- class="hold-transition sidebar-mini layout-fixed" --}} class="hold-transition layout-top-nav">
+<body  class="hold-transition layout-top-nav dark-mode">
 {{-- <div class="wrapper"> --}}
 
   <!-- Preloader -->

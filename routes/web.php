@@ -131,6 +131,9 @@ Route::prefix('affectationEnseignant')->group(function(){
     Route::get('/effacer/{id}', [App\Http\controllers\AffEnsController::class, 'AffEnsDelete'])->name('AffEns.delete');
 
 });
+Route::get('/profil', function () {
+    return view('profil_card');
+})->name('profil');
 
 
 Route::prefix('Emplois')->group(function(){

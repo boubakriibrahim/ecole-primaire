@@ -9,6 +9,7 @@ use App\Models\Classe;
 use App\Models\enseignant;
 use App\Models\Matiere;
 use App\Models\Salle;
+use Illuminate\Support\Facades\DB;
 
 class EmploiController extends Controller
 {
@@ -152,32 +153,42 @@ class EmploiController extends Controller
         return Redirect('/Emplois/view/classes')->with($notification);
     }
 
-    /* public function EmploiStore(Request $request) {
 
-         $request->validate([
-            "id_classe"=>"required",
-            'id_enseignant'=>'required',
-            'anneescolaire'=>'required',
-        ]);
-        $data = new aff_enseignant();
-        $data->classe_id = $request->classe_id;
-        $data->matiere_id = $request->matiere_id;
-        $data->enseignant_id = $request->enseignant_id;
-        $data->save();
+    public function EmploiDelete($id) {
 
+        $emploi = Emploi::find($id);
+        $emploi->delete();
 
         $notification = array(
-            'message' => 'تم إضافة التعيين بنجاح',
-            'alert-type' => 'success'
+            'message' => 'تم حذف جدول الأوقات بنجاح',
+            'alert-type' => 'info'
         );
-
 
         return back()->with($notification);
     }
 
 
+    public function EmploiViewOne ($id) {
 
-    public function AffEnsUpdate(Request $request, $id) {
+        $emploi = Emploi::find($id);
+        $anneescolaire = $emploi->anneescolaire;
+
+        if ($emploi->id_classe == -1) {
+            $type = "المدرس";
+            $data = DB::table('seances')->where('id_enseignant', $emploi->id_enseignant)->get();
+            $nom = enseignant::find($emploi->id_enseignant)->nom;
+            $prenom = enseignant::find($emploi->id_enseignant)->prenom;
+        } else {
+            $type = "القسم";
+            $data = DB::table('seances')->where('id_classe', $emploi->id_classe)->get();
+            $nom = Classe::find($emploi->id_classe)->nom;
+            $prenom = '';
+        }
+
+        return view('backend.view_one_emploi',compact('data', 'nom', 'prenom' , 'type', 'anneescolaire'));
+    }
+
+    /* public function AffEnsUpdate(Request $request, $id) {
 
         $data = aff_enseignant::find($id);
         $data->classe_id = $request->classe_id;
@@ -195,18 +206,5 @@ class EmploiController extends Controller
         return back()->with($notification);
     }
 
-
-
-    public function AffEnsDelete($id) {
-
-        $user = aff_enseignant::find($id);
-        $user->delete();
-
-        $notification = array(
-            'message' => 'تم حذف التعيين بنجاح',
-            'alert-type' => 'info'
-        );
-
-        return back()->with($notification);
     } */
 }

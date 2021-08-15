@@ -57,49 +57,51 @@
                     <h3> {{session()->get("success")}}</h3>
                 </div>
                 @endif
-                <form method="post" action='@if ($type == 'enseignants'){{ route('emploi.store.enseignant') }}@else{{ route('emploi.store.classe') }}@endif' width=60%>
-                        @csrf
-                        <div class="card-body container">
-                            <div class="row mb-2">
-                                <div class="form-group col-md-6">
-                                    @if ($type == "classes")
-                                    <label for="selectemploiClasse">إختر قسم <span class="text-danger">*</span></label>
-                                    <select class="custom-select" id="selectemploiClasse" name="selectemploiClasse"
-                                        required>
-                                        <option selected>إختر قسم</option>
-                                        @foreach ($allData as $key => $data)
-                                        <option value="{{$data->id}}">{{$data->nom}}</option>
-                                        @endforeach
-                                    </select>
-                                    @else
-                                    <label for="selectemploiEns">إختر مدرس <span class="text-danger">*</span></label>
-                                    <select class="custom-select text-center" dir="rtl" id="selectemploiEns"
-                                        name="selectemploiEns" required>
-                                        <option selected>إختر مدرس</option>
-                                        @foreach ($allData as $key => $data)
-                                        <option value="{{$data->id}}">{{$data->nom}} {{$data->prenom}}</option>
-                                        @endforeach
-                                    </select>
-                                    @endif
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="anneescolaire">السنة الدراسية <span class="text-danger">*</span></label>
-                                    <input type="text" placeholder="السنة الدراسية" id="anneescolaire"
-                                        name="anneescolaire" class="form-control" required>
-                                </div>
-
+                <form method="post" action='@if ($type == '
+                    enseignants'){{ route('emploi.store.enseignant') }}@else{{ route('emploi.store.classe') }}@endif'
+                    width=60%>
+                    @csrf
+                    <div class="card-body container">
+                        <div class="row mb-2">
+                            <div class="form-group col-md-6">
+                                @if ($type == "classes")
+                                <label for="selectemploiClasse">إختر قسم <span class="text-danger">*</span></label>
+                                <select class="custom-select" id="selectemploiClasse" name="selectemploiClasse"
+                                    required>
+                                    <option selected>إختر قسم</option>
+                                    @foreach ($allData as $key => $data)
+                                    <option value="{{$data->id}}">{{$data->nom}}</option>
+                                    @endforeach
+                                </select>
+                                @else
+                                <label for="selectemploiEns">إختر مدرس <span class="text-danger">*</span></label>
+                                <select class="custom-select text-center" dir="rtl" id="selectemploiEns"
+                                    name="selectemploiEns" required>
+                                    <option selected>إختر مدرس</option>
+                                    @foreach ($allData as $key => $data)
+                                    <option value="{{$data->id}}">{{$data->nom}} {{$data->prenom}}</option>
+                                    @endforeach
+                                </select>
+                                @endif
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="anneescolaire">السنة الدراسية <span class="text-danger">*</span></label>
+                                <input type="text" placeholder="السنة الدراسية" id="anneescolaire" name="anneescolaire"
+                                    class="form-control" required>
                             </div>
 
-                            <div class="dropdown-divider"></div>
-                            <div class="row w-100 text-center mb-2">
-                                <div class="col-12">
-                                    <h4>
-                                        إضافة حصة
-                                    </h4>
-                                </div>
-                            </div>
+                        </div>
 
-                            <div class="add_item">
+                        <div class="dropdown-divider"></div>
+                        <div class="row w-100 text-center mb-2">
+                            <div class="col-12">
+                                <h4>
+                                    إضافة حصة
+                                </h4>
+                            </div>
+                        </div>
+
+                        <div class="add_item">
                             <div class="row">
                                 <div class="form-group col-md-6">
                                     <label for="selectemploijour"> اليوم<span class="text-danger">*</span></label>
@@ -201,7 +203,7 @@
 
 
 
-                        </div>
+                    </div>
             </div>
             <!-- /.card-body -->
             <div class="card-footer">
@@ -217,7 +219,7 @@
                 </div>
             </div>
         </div>
-    </form>
+        </form>
 
 </div>
 </div>
@@ -241,10 +243,8 @@
 
             <div class="row">
                 <div class="form-group col-md-6">
-                    <label for="selectemploijour"> اليوم<span
-                            class="text-danger">*</span></label>
-                    <select class="custom-select text-center" dir="rtl"
-                        name="selectemploijour[]" required>
+                    <label for="selectemploijour"> اليوم<span class="text-danger">*</span></label>
+                    <select class="custom-select text-center" dir="rtl" name="selectemploijour[]" required>
                         <option selected>إختر يوم</option>
                         <option value="0">
                             الإثنين
@@ -283,8 +283,7 @@
                         @endforeach
                     </select>
                     @else
-                    <select class="custom-select text-center" dir="rtl"
-                        name="selectemploi[]" required>
+                    <select class="custom-select text-center" dir="rtl" name="selectemploi[]" required>
                         <option selected>إختر مدرس</option>
                         @foreach ($allData2 as $key => $data)
                         <option value="{{$data->id}}">{{$data->nom}} {{$data->prenom}}
@@ -296,16 +295,14 @@
             </div>
             <div class="row" dir="rtl">
                 <div class="form-group col-md-6">
-                    <label for="heure_debut">ساعة البداية <span
-                            class="text-danger">*</span></label>
-                    <input placeholder="Selected time" type="text" name="heure_debut[]"
-                        class="form-control timepicker" required>
+                    <label for="heure_debut">ساعة البداية <span class="text-danger">*</span></label>
+                    <input placeholder="Selected time" type="text" name="heure_debut[]" class="form-control timepicker"
+                        required>
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="heure_fin">ساعة النهاية <span
-                            class="text-danger">*</span></label>
-                    <input placeholder="Selected time" type="text" name="heure_fin[]"
-                        class="form-control timepicker" required>
+                    <label for="heure_fin">ساعة النهاية <span class="text-danger">*</span></label>
+                    <input placeholder="Selected time" type="text" name="heure_fin[]" class="form-control timepicker"
+                        required>
                 </div>
             </div>
             <div class="row" dir="rtl">
@@ -336,13 +333,13 @@
 
             <div class="row pt-2">
                 <div class="offset-md-2"></div>
-                <div class=" col-md-4">
-                    <span class="btn btn-success btn-block addeventmore"><i
-                            class="fa fa-plus-circle mx-1"></i> إضافة حصة أخرى </span>
+                <div class="col-md-4">
+                    <span class="btn btn-success btn-block addeventmore"><i class="fa fa-plus-circle mx-1"></i> إضافة
+                        حصة أخرى </span>
                 </div>
                 <div class="col-md-4 mt-2 mt-md-0">
-                    <span class="btn btn-danger btn-block removeeventmore"><i
-                            class="fa fa-minus-circle mx-1"></i> حذف هذه الحصة </span>
+                    <span class="btn btn-danger btn-block removeeventmore"><i class="fa fa-minus-circle mx-1"></i> حذف
+                        هذه الحصة </span>
                 </div>
             </div>
             {{-- end new seance --}}
@@ -360,16 +357,17 @@
             $(this).closest(".add_item").append(whole_extra_item_add);
             counter++;
             $('.timepicker').timepicker({
-    timeFormat: 'HH:mm',
-    interval: 30,
-    minTime: '08:00',
-    maxTime: '18:00',
-    defaultTime: '8',
-    startTime: '08:00',
-    dynamic: true,
-    dropdown: true,
-    scrollbar: false
-});
+                timeFormat: 'HH:mm',
+                interval: 30,
+                minTime: '08:00',
+                maxTime: '18:00',
+                defaultTime: '8',
+                startTime: '08:00',
+                dynamic: true,
+                dropdown: true,
+                scrollbar: false,
+                modal: true
+            });
         });
         $(document).on("click", '.removeeventmore', function (event) {
             $(this).closest(".delete_whole_extra_item_add").remove();
@@ -379,5 +377,11 @@
     });
 
 </script>
+
+<style>
+    .bootstrap-timepicker-widget.dropdown-menu {
+    z-index: 1050!important;
+}
+</style>
 
 @endsection

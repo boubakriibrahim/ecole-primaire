@@ -48,9 +48,12 @@
                                     </form>
                                 </div>
 
-                                <a href="@if (url()->current() == "http://localhost:8000/Emplois/view/classes" || url()->current() == "http://localhost:8000/Emplois/view/classes#") {{ route('emploi.add.classes') }} @else
+                                <a href="@if (url()->current() == " http://localhost:8000/Emplois/view/classes" ||
+                                    url()->current() == "http://localhost:8000/Emplois/view/classes#")
+                                    {{ route('emploi.add.classes') }} @else
                                     {{ route('emploi.add.enseignants') }} @endif"
-                                    class="btn btn-block bg-gradient-primary offset-md-1 col-md-2 order-md-1 mt-sm-2 h-50">
+                                    class="btn btn-block bg-gradient-primary offset-md-1 col-md-2 order-md-1 mt-sm-2
+                                    h-50">
                                     إضافة جدول أوقات
                                 </a>
 
@@ -78,15 +81,19 @@
                                     ($emploi->id_enseignant != -1 && $type == 'enseignants'))
                                     <tr>
                                         <td>
-                                            <div class="row">
-                                                <a href="{{-- {{ route("emploi.delete", $emploi->id) }} --}}#"
-                                                    class="btn btn-danger offset-sm-3 mr-sm-1 col-sm-4 order-3 order-sm-1"
-                                                    id="delete">حذف</a>
+                                            <div class="row" dir="rtl">
 
-                                                <button type="button" class="btn btn-info  col-sm-4 order-2"
+                                                <a href="{{ route('emploi.view.one',$emploi->id) }}"
+                                                    class="btn btn-success col-md-3 m-1">عرض</a>
+
+                                                <button type="button" class="btn btn-info col-md-3 m-1"
                                                     data-toggle="modal" data-target="#model{{$emploi->id}}">
                                                     تحديث
                                                 </button>
+
+                                                <a href="{{ route('emploi.delete', $emploi->id) }}"
+                                                    class="btn btn-danger col-md-3 m-1"
+                                                    id="delete">حذف</a>
                                             </div>
                                         </td>
                                         <td>{{ $emploi->anneescolaire }}</td>

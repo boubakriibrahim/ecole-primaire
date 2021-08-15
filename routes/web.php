@@ -23,11 +23,12 @@ use App\Http\controllers\listClassController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('test');
 
 Route::get('/enseignant', function () {
     return view('enseignant/index');
+Route::get('/test', function () {
+    return view('welcome');
 });
 
 
@@ -39,6 +40,9 @@ Route::get('/enseignant', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/profil',[App\Http\controllers\ProfilController::class, 'AdminData'])->name('profil');
+
 
 Route::get('/admin/logout', [AdminController::class, 'Logout'])->name('admin.logout');
 
@@ -124,6 +128,18 @@ Route::prefix('Salle')->group(function(){
 
 });
 
+
+Route::prefix('Seance')->group(function(){
+
+    Route::get('/view', [App\Http\controllers\SeanceController::class, 'SeanceView'])->name('seance.view');
+
+    Route::post('/store', [App\Http\controllers\SeanceController::class, 'SeanceStore'])->name('seance.store');
+    Route::post('/miseajour/{id}', [App\Http\controllers\SeanceController::class, 'SeanceUpdate'])->name('seance.miseajour');
+
+    Route::get('/effacer/{id}', [App\Http\controllers\SeanceController::class, 'SeanceDelete'])->name('seance.delete');
+
+});
+
 Route::prefix('affectationEnseignant')->group(function(){
 
     Route::get('/view', [App\Http\controllers\AffEnsController::class, 'AffEnsView'])->name('affEns.view');
@@ -134,7 +150,7 @@ Route::prefix('affectationEnseignant')->group(function(){
     Route::get('/effacer/{id}', [App\Http\controllers\AffEnsController::class, 'AffEnsDelete'])->name('AffEns.delete');
 
 });
-Route::get('/profil',[App\Http\controllers\ProfilController::class, 'AdminData'])->name('profil');
+
 
 
 Route::prefix('Emplois')->group(function(){
@@ -154,9 +170,13 @@ Route::prefix('Emplois')->group(function(){
 
     Route::post('/store/classe', [App\Http\controllers\EmploiController::class, 'EmploiClasseStore'])->name('emploi.store.classe');
 
+    Route::get('/effacer/{id}', [App\Http\controllers\EmploiController::class, 'EmploiDelete'])->name('emploi.delete');
+
+    Route::get('/view/one/{id}', [App\Http\controllers\EmploiController::class, 'EmploiViewOne'])->name('emploi.view.one');
+
     /*Route::post('/miseajour/{id}', [App\Http\controllers\EmploiController::class, 'EmploiUpdate'])->name('emploi.miseajour');
 
-    Route::get('/effacer/{id}', [App\Http\controllers\EmploiController::class, 'EmploiDelete'])->name('emploi.delete'); */
+     */
 
 });
  Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

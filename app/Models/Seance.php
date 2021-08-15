@@ -4,6 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Classe;
+use App\Models\enseignant;
+use App\Models\Matiere;
+use App\Models\Salle;
 
 class Seance extends Model
 {
@@ -25,19 +29,19 @@ class Seance extends Model
 
 
     public function enseignant(){
-        return $this->belongsTo(enseignant::class);
+        return $this->belongsTo(enseignant::class, 'id_enseignant' , 'id');
     }
 
     public function classe(){
-        return $this->belongsTo(Classe::class);
+        return $this->belongsTo(Classe::class, 'id_classe' , 'id');
     }
 
     public function matiere(){
-        return $this->belongsTo(Matiere::class);
+        return $this->belongsTo(Matiere::class, 'id_matiere' , 'id');
     }
 
     public function salle(){
-        return $this->belongsTo(Salle::class);
+        return $this->belongsTo(Salle::class, 'id_salle' , 'id');
     }
 
 }

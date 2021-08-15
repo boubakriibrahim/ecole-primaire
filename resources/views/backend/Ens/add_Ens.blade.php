@@ -3,32 +3,9 @@
 @section('admin')
 <div class="content-wrapper">
 
-    <section class="content-header">
-        <div class="container-fluid">
-          <div class="row mb-2">
-              <div class="col-sm-6 order-sm-2">
-                  <h1 class="m-0 float-right">إضافة مدرس</h1>
-                </div><!-- /.col -->
-
-
-            <div class="col-sm-6 order-sm-1">
-              <ol class="breadcrumb float-right float-sm-left">
-                <li class="breadcrumb-item"><a href="{{ route('home') }}">الصفحة الرئيسية</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('Ens.view') }}">التصرف في المدرسين</a></li>
-                <li class="breadcrumb-item active order-sm">إضافة مدرس</li>
-              </ol>
-            </div><!-- /.col -->
-
-
-
-          </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-  </section>
-
-
   <section class="content">
     <div class="container-fluid">
-
+      
 
   <div class="card card-primary">
     <div class="card-header">
@@ -40,8 +17,8 @@
          <h3> {{session()->get("success")}}</h3>
 </div>
       @endif
-<form method="post" action='{{ route('Ens.store') }}' width=60%>
-    @csrf
+<form method="post" action='{{ route('Ens.store') }}' width=60%> 
+    @csrf   
     <div class="card-body">
         <div class="row">
         <div class="form-group col-md-6">
@@ -67,7 +44,7 @@
       <div class="form-group col-md-6">
       <label for="sexe">الجنس <span class="text-danger">*</span></label>
       <div class="form-check form-check-inline" >
-
+      
   <input class="form-check-input" type="radio" id="inlineCheckbox1" name="sexe" value="masculin" required>
   <label class="form-check-label" for="inlineCheckbox1">مذكر</label>
 </div>
@@ -95,9 +72,9 @@
     <div class="card-footer">
          <div class="row">
         <div class="col-6">
-        <button type="reset" class="btn btn-block btn-outline-primary offset-md-2 col-md-6">إلغاء</button>
+        <button type="reset" class="btn btn-block btn-outline-primary offset-md-2 col-md-6">إلغاء</button> 
         </div>
-        <div class="col-6">
+        <div class="col-6">         
         <button type="submit" class="btn btn-block btn-outline-success offset-md-2 col-md-6">تأكيد </button>
       </div>
         </div>

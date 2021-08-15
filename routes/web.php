@@ -8,6 +8,8 @@ use App\Http\Controllers\MatiereController;
 use App\Http\Controllers\SalleController;
 use App\Http\Controllers\AffEnsController;
 use App\Http\controllers\ProfilController;
+use App\Http\controllers\eleveController;
+use App\Http\controllers\listClassController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,11 +23,14 @@ use App\Http\controllers\ProfilController;
 */
 
 Route::get('/', function () {
-    return view('test');
+    return view('welcome');
 });
 
+Route::get('/enseignant', function () {
+    return view('enseignant/index');
+});
 Route::get('/test', function () {
-    return view('welcome');
+    return view('test');
 });
 
 
@@ -179,3 +184,26 @@ Route::prefix('Emplois')->group(function(){
  Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('admin/index');
 })->name('dashboard');
+/*___________routes partie */
+Route::prefix('eleve')->group(function(){
+
+    Route::get('/view', [App\Http\controllers\eleveController::class, 'eleveView'])->name('eleve.view');
+
+    Route::post('/store', [App\Http\controllers\eleveController::class, 'eleveStore'])->name('eleve.store');
+    Route::post('/miseajour/{id}', [App\Http\controllers\eleveController::class, 'eleveUpdate'])->name('eleve.miseajour');
+
+    Route::get('/effacer/{id}', [App\Http\controllers\eleveController::class, 'eleveDelete'])->name('eleve.delete');
+
+});
+
+Route::prefix('list')->group(function(){
+    Route::get('/listClasses', [App\Http\controllers\listClassController::class, 'listClasses'])->name('classes.view');
+
+    Route::get('/creeClasse/{id}', [App\Http\controllers\listClassController::class, 'listView'])->name('list.view');
+
+    Route::post('/store', [App\Http\controllers\listClassController::class, 'listStore'])->name('list.store');
+    Route::post('/miseajour/{id}', [App\Http\controllers\eleveController::class, 'eleveUpdate'])->name('eleve.miseajour');
+
+    Route::get('/effacer/{id}', [App\Http\controllers\eleveController::class, 'eleveDelete'])->name('eleve.delete');
+
+});

@@ -23,14 +23,12 @@
         "postcss-import": "^14.0.1",
         "resolve-url-loader": "^4.0.0",
         "sass": "^1.32.11",
-<<<<<<< HEAD
         "sass-loader": "^11.0.1",
         "tailwindcss": "^2.2.2"
-=======
-        "sass-loader": "^11.0.1"
     },
     "dependencies": {
-        "timetables": "^1.1.0"
->>>>>>> origine1
+        "timetables": "^1.1.0",
+        "sass-loader": "^11.0.1",
+        "tailwindcss": "^2.2.2"
     }
 }

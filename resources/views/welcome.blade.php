@@ -130,6 +130,29 @@
         <p><a class="btn btn-secondary" href="#">عرض المزيد</a></p>
       </div><!-- /.col-lg-4 -->
     </div><!-- /.row -->
+    <div class="d-flex justify-content-center  ">
+        <div class="list-group shadow-lg p-3 mb-5 bg-info rounded-pill col-md-8 d-flex justify-content-center ">
+           <div class="d-flex justify-content-center  ">
+              <div class="col-md-6 bg-light ">
+                  <div class="d-flex justify-content-center  ">
+                       <div  class="list-group-item list-group-item-action active col-md-5 bg-light rounded-pill" aria-current="true">
+                        The current l
+                      </div>
+                  </div>
+             <div  class="list-group-item list-group-item-action  rounded-pill">
+
+  
+  
+  
+            <div class="list-group-item list-group-item-action rounded-pill " tabindex="-1" aria-disabled="true">
+            <input class="form-control rounded-pill shadow   bg-body rounded" type="text" placeholder="Default input" aria-label="default input example">
+
+            </div>
+</div>
+    </div>
+    </div>
+    </div>
+    </div>
 
 
     <!-- Button trigger modal -->

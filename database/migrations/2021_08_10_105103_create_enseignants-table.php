@@ -36,6 +36,10 @@ class CreateEnseignantsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('enseignants');
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> d74c4fc1c1434124984d88fa9fef692a1f49094a
     }
 }

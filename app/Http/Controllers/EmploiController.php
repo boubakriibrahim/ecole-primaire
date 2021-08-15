@@ -172,10 +172,14 @@ class EmploiController extends Controller
 
         $emploi = Emploi::find($id);
         $anneescolaire = $emploi->anneescolaire;
+        $matieres = Matiere::all();
+        $salles = Salle::all();
+        $enseignants = enseignant::all();
+        $classes = Classe::all();
 
         if ($emploi->id_classe == -1) {
             $type = "المدرس";
-            $data = DB::table('seances')->where('id_enseignant', $emploi->id_enseignant)->get();
+            $data = DB::table('seances')->where('id_enseignant', $emploi->id_enseignant)->orderBy('jour')->orderBy('heure_debut')->get();
             $nom = enseignant::find($emploi->id_enseignant)->nom;
             $prenom = enseignant::find($emploi->id_enseignant)->prenom;
         } else {
@@ -185,7 +189,7 @@ class EmploiController extends Controller
             $prenom = '';
         }
 
-        return view('backend.view_one_emploi',compact('data', 'nom', 'prenom' , 'type', 'anneescolaire'));
+        return view('backend.view_one_emploi',compact('data', 'nom', 'prenom' , 'type', 'anneescolaire', 'matieres', 'salles', 'enseignants', 'classes'));
     }
 
     /* public function AffEnsUpdate(Request $request, $id) {

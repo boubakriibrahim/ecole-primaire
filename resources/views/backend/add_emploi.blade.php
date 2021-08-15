@@ -365,8 +365,7 @@
                 startTime: '08:00',
                 dynamic: true,
                 dropdown: true,
-                scrollbar: false,
-                modal: true
+                scrollbar: false
             });
         });
         $(document).on("click", '.removeeventmore', function (event) {

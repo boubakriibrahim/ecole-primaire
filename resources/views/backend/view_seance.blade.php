@@ -1,6 +1,7 @@
 @extends('admin.admin_master')
 
 @section('admin')
+
 <div class="content-wrapper">
     <section class="content-header">
         <div class="container-fluid">
@@ -33,175 +34,11 @@
                                 <h2 class="col-md-6 offset-md-2  order-md-2 text-right">الحصص</h2>
                                 <button type="button"
                                     class="btn btn-block bg-gradient-primary offset-md-1 col-md-2 order-md-1 mt-sm-2"
-                                    data-toggle="modal" data-target="#exampleModal" onclick="$('.timepicker').timepicker({
-                                        timeFormat: 'HH:mm',
-                                        interval: 30,
-                                        minTime: '08:00',
-                                        maxTime: '18:00',
-                                        defaultTime: '8',
-                                        startTime: '08:00',
-                                        dynamic: true,
-                                        dropdown: true,
-                                        scrollbar: false
-                                    });">
+                                    data-toggle="modal" data-target="#exampleModal">
                                     إضافة حصة
                                 </button>
 
-                                <!-- Modal -->
-                                <div class="modal fade" id="exampleModal" tabindex="1"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header text-center">
-                                                <h5 class="modal-title w-100" id="exampleModalLabel">إضافة حصة</h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form method="post" action='{{ route('seance.store') }}' width=60%>
-                                                    @csrf
 
-                                                    <div class="add_item">
-                                                        <div class="row">
-                                                            <div class="form-group col-md-6 text-right">
-                                                                <label for="selectemploijour" dir="rtl"> اليوم<span
-                                                                        class="text-danger">*</span></label>
-                                                                <select class="custom-select text-center" dir="rtl"
-                                                                    name="selectemploijour[]" required>
-                                                                    <option selected>إختر يوم</option>
-                                                                    <option value="0">
-                                                                        الإثنين
-                                                                    </option>
-                                                                    <option value="1">
-                                                                        الثلاثاء
-                                                                    </option>
-                                                                    <option value="2">
-                                                                        الأربعاء
-                                                                    </option>
-                                                                    <option value="3">
-                                                                        الخميس
-                                                                    </option>
-                                                                    <option value="4">
-                                                                        الجمعة
-                                                                    </option>
-                                                                    <option value="5">
-                                                                        السبت
-                                                                    </option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="form-group col-md-6 text-right">
-                                                                <label for="anneescolaire" dir="rtl">السنة الدراسية
-                                                                    <span class="text-danger">*</span></label>
-                                                                <input type="text" placeholder="السنة الدراسية"
-                                                                    id="anneescolaire" name="anneescolaire"
-                                                                    class="form-control" dir="rtl" required>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row" dir="rtl">
-                                                            <div class="form-group col-md-6 text-right">
-                                                                <label for="selectSeanceClasse" dir="rtl">
-                                                                    القسم
-                                                                    <span class="text-danger">*</span></label>
-
-                                                                <select class="custom-select"
-                                                                    name="selectSeanceClasse[]" required>
-                                                                    <option selected>إختر قسم</option>
-                                                                    @foreach ($classes as $key => $classe)
-                                                                    <option value="{{$classe->id}}">{{$classe->nom}}
-                                                                    </option>
-                                                                    @endforeach
-                                                                </select>
-                                                            </div>
-                                                            <div class="form-group col-md-6 text-right">
-                                                                <label for="selectSeanceEnseignant" dir="rtl">
-                                                                    المدرس
-                                                                    <span class="text-danger">*</span></label>
-                                                                <select class="custom-select text-center" dir="rtl"
-                                                                    name="selectSeanceEnseignant[]" required>
-                                                                    <option selected>إختر مدرس</option>
-                                                                    @foreach ($enseignants as $key => $enseignant)
-                                                                    <option value="{{$enseignant->id}}">
-                                                                        {{$enseignant->nom}}
-                                                                        {{$enseignant->prenom}}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                            </div>
-
-                                                        </div>
-                                                        <div class="row" dir="rtl">
-                                                            <div class="form-group col-md-6 text-right">
-                                                                <label for="heure_debut" dir="rtl">ساعة البداية <span
-                                                                        class="text-danger">*</span></label>
-                                                                <input placeholder="Selected time" type="text"
-                                                                    name="heure_debut[]" class="form-control timepicker"
-                                                                    required>
-                                                            </div>
-                                                            <div class="form-group col-md-6 text-right">
-                                                                <label for="heure_fin" dir="rtl">ساعة النهاية <span
-                                                                        class="text-danger">*</span></label>
-                                                                <input placeholder="Selected time" type="text"
-                                                                    name="heure_fin[]" class="form-control timepicker"
-                                                                    required>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row" dir="rtl">
-                                                            <div class="form-group col-md-6 text-right">
-                                                                <label for="selectmatiere" dir="rtl">
-                                                                    المادة
-                                                                    <span class="text-danger">*</span></label>
-                                                                <select class="custom-select" name="selectmatiere[]"
-                                                                    required>
-                                                                    <option selected>إختر مادة</option>
-                                                                    @foreach ($matieres as $key => $matiere)
-                                                                    <option value="{{$matiere->id}}">
-                                                                        {{$matiere->libelle}} |
-                                                                        مستوى
-                                                                        ({{$matiere->niveau}})</option>
-                                                                    @endforeach
-                                                                </select>
-                                                            </div>
-                                                            <div class="form-group col-md-6 text-right">
-                                                                <label for="selectsalle" dir="rtl">
-                                                                    القاعة
-                                                                    <span class="text-danger">*</span></label>
-                                                                <select class="custom-select" name="selectsalle[]"
-                                                                    required>
-                                                                    <option selected>إختر قاعة</option>
-                                                                    @foreach ($salles as $key => $salle)
-                                                                    <option value="{{$salle->id}}">{{$salle->libelle}}
-                                                                    </option>
-                                                                    @endforeach
-                                                                </select>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="row pt-2">
-                                                            <div class="offset-md-3"></div>
-                                                            <div class=" col-md-6">
-                                                                <span class="btn btn-success btn-block addeventmore"><i
-                                                                        class="fa fa-plus-circle mx-1"></i> إضافة حصة
-                                                                    أخرى
-                                                                </span>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="reset" class="btn btn-secondary"
-                                                    data-dismiss="modal">إلغاء</button>
-                                                <button type="submit" class="btn btn-primary">تأكيد</button>
-                                            </div>
-                                            </form>
-                                        </div>
-                                    </div>
-
-
-
-                                </div>
 
                             </div>
                         </div>
@@ -233,7 +70,7 @@
                                                     id="delete">حذف</a>
 
                                                 <button type="button" class="btn btn-info  col-sm-4 order-2"
-                                                data-toggle="modal" data-target="#modelChange">
+                                                    data-toggle="modal" data-target="#modelChange{{ $seance->id }}">
                                                     تحديث
                                                 </button>
                                             </div>
@@ -257,12 +94,13 @@
                             @foreach ($allData as $key => $seance)
 
                             <!-- Modal -->
-                            <div class="modal fade" id="modelChange" tabindex="1"
+                            <div class="modal fade" id="modelChange{{ $seance->id }}" tabindex="1"
                                 aria-labelledby="exampleModalChange" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header text-center">
-                                            <h5 class="modal-title w-100" id="exampleModalLabel">تحديث الحصة</h5>
+                                            <h5 class="modal-title w-100" id="exampleModalLabel{{ $seance->id }}">تحديث
+                                                الحصة</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
@@ -278,23 +116,22 @@
                                                                 class="text-danger">*</span></label>
                                                         <select class="custom-select text-center" dir="rtl"
                                                             name="selectemploijour" required>
-                                                            <option selected>إختر يوم</option>
-                                                            <option value="0">
+                                                            <option value="0" @if($seance->jour == 0) selected @endif>
                                                                 الإثنين
                                                             </option>
-                                                            <option value="1">
+                                                            <option value="1" @if($seance->jour == 1) selected @endif>
                                                                 الثلاثاء
                                                             </option>
-                                                            <option value="2">
+                                                            <option value="2" @if($seance->jour == 2) selected @endif>
                                                                 الأربعاء
                                                             </option>
-                                                            <option value="3">
+                                                            <option value="3" @if($seance->jour == 3) selected @endif>
                                                                 الخميس
                                                             </option>
-                                                            <option value="4">
+                                                            <option value="4" @if($seance->jour == 4) selected @endif>
                                                                 الجمعة
                                                             </option>
-                                                            <option value="5">
+                                                            <option value="5" @if($seance->jour == 5) selected @endif>
                                                                 السبت
                                                             </option>
                                                         </select>
@@ -303,8 +140,8 @@
                                                         <label for="anneescolaire" dir="rtl">السنة الدراسية <span
                                                                 class="text-danger">*</span></label>
                                                         <input type="text" placeholder="السنة الدراسية"
-                                                            id="anneescolaire" name="anneescolaire" class="form-control"
-                                                            dir="rtl" value="{{ $seance->anneescolaire }}" required>
+                                                            name="anneescolaire" class="form-control" dir="rtl"
+                                                            value="{{ $seance->anneescolaire }}" required>
                                                     </div>
                                                 </div>
                                                 <div class="row" dir="rtl">
@@ -316,7 +153,9 @@
                                                         <select class="custom-select" name="selectSeanceClasse"
                                                             required>
                                                             @foreach ($classes as $key => $classe)
-                                                            <option value="{{$classe->id}}" @if($classe->id == $seance->id_classe) selected @endif>{{$classe->nom}}</option>
+                                                            <option value="{{$classe->id}}" @if($classe->id ==
+                                                                $seance->id_classe) selected @endif>{{$classe->nom}}
+                                                            </option>
                                                             @endforeach
                                                         </select>
                                                     </div>
@@ -327,7 +166,9 @@
                                                         <select class="custom-select text-center" dir="rtl"
                                                             name="selectSeanceEnseignant" required>
                                                             @foreach ($enseignants as $key => $enseignant)
-                                                            <option value="{{$enseignant->id}}" @if($enseignant->id == $seance->id_enseignant) selected @endif>{{$enseignant->nom}}
+                                                            <option value="{{$enseignant->id}}" @if($enseignant->id ==
+                                                                $seance->id_enseignant) selected
+                                                                @endif>{{$enseignant->nom}}
                                                                 {{$enseignant->prenom}}</option>
                                                             @endforeach
                                                         </select>
@@ -338,20 +179,20 @@
                                                     <div class="form-group col-md-6 text-right">
                                                         <label for="heure_debut" dir="rtl">ساعة البداية <span
                                                                 class="text-danger">*</span></label>
-                                                        <input placeholder="Selected time" type="text"
-                                                            name="heure_debut" class="form-control timepicker"
-                                                            value="{{ $seance->heure_debut }}"
-                                                            required>
+                                                        <input placeholder="ساعة البداية" type="text" name="heure_debut"
+                                                            class="form-control" id="heure_debut{{ $seance->id }}"
+                                                            value="{{ $seance->heure_debut }}" required>
                                                     </div>
                                                     <div class="form-group col-md-6 text-right">
                                                         <label for="heure_fin" dir="rtl">ساعة النهاية <span
                                                                 class="text-danger">*</span></label>
-                                                        <input placeholder="Selected time" type="text"
-                                                            name="heure_fin"
+                                                        <input placeholder="ساعة النهاية" type="text" name="heure_fin"
+                                                            id="heure_fin{{ $seance->id }}"
                                                             value="{{ $seance->heure_fin }}"
-                                                            class="form-control timepicker" required>
+                                                            class="form-control" required>
                                                     </div>
                                                 </div>
+
                                                 <div class="row" dir="rtl">
                                                     <div class="form-group col-md-6 text-right">
                                                         <label for="selectmatiere" dir="rtl">
@@ -359,7 +200,9 @@
                                                             <span class="text-danger">*</span></label>
                                                         <select class="custom-select" name="selectmatiere" required>
                                                             @foreach ($matieres as $key => $matiere)
-                                                            <option value="{{$matiere->id}}" @if($matiere->id == $seance->id_matiere) selected @endif>{{$matiere->libelle}} |
+                                                            <option value="{{$matiere->id}}" @if($matiere->id ==
+                                                                $seance->id_matiere) selected
+                                                                @endif>{{$matiere->libelle}} |
                                                                 مستوى
                                                                 ({{$matiere->niveau}})</option>
                                                             @endforeach
@@ -371,7 +214,8 @@
                                                             <span class="text-danger">*</span></label>
                                                         <select class="custom-select" name="selectsalle" required>
                                                             @foreach ($salles as $key => $salle)
-                                                            <option value="{{$salle->id}}" @if($salle->id == $seance->id_salle) selected @endif>{{$salle->libelle}}
+                                                            <option value="{{$salle->id}}" @if($salle->id ==
+                                                                $seance->id_salle) selected @endif>{{$salle->libelle}}
                                                             </option>
                                                             @endforeach
                                                         </select>
@@ -408,6 +252,153 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h5 class="modal-title w-100" id="exampleModalLabel">إضافة حصة</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action='{{ route('seance.store') }}' width=60%>
+                    @csrf
+
+                    <div class="add_item">
+                        <div class="row">
+                            <div class="form-group col-md-6 text-right">
+                                <label for="selectemploijour" dir="rtl"> اليوم<span class="text-danger">*</span></label>
+                                <select class="custom-select text-center" dir="rtl" name="selectemploijour[]" required>
+                                    <option selected>إختر يوم</option>
+                                    <option value="0">
+                                        الإثنين
+                                    </option>
+                                    <option value="1">
+                                        الثلاثاء
+                                    </option>
+                                    <option value="2">
+                                        الأربعاء
+                                    </option>
+                                    <option value="3">
+                                        الخميس
+                                    </option>
+                                    <option value="4">
+                                        الجمعة
+                                    </option>
+                                    <option value="5">
+                                        السبت
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6 text-right">
+                                <label for="anneescolaire" dir="rtl">السنة الدراسية
+                                    <span class="text-danger">*</span></label>
+                                <input type="text" placeholder="السنة الدراسية" name="anneescolaire[]"
+                                    class="form-control" dir="rtl" required>
+                            </div>
+                        </div>
+                        <div class="row" dir="rtl">
+                            <div class="form-group col-md-6 text-right">
+                                <label for="selectSeanceClasse" dir="rtl">
+                                    القسم
+                                    <span class="text-danger">*</span></label>
+
+                                <select class="custom-select" name="selectSeanceClasse[]" required>
+                                    <option selected>إختر قسم</option>
+                                    @foreach ($classes as $key => $classe)
+                                    <option value="{{$classe->id}}">{{$classe->nom}}
+                                    </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6 text-right">
+                                <label for="selectSeanceEnseignant" dir="rtl">
+                                    المدرس
+                                    <span class="text-danger">*</span></label>
+                                <select class="custom-select text-center" dir="rtl" name="selectSeanceEnseignant[]"
+                                    required>
+                                    <option selected>إختر مدرس</option>
+                                    @foreach ($enseignants as $key => $enseignant)
+                                    <option value="{{$enseignant->id}}">
+                                        {{$enseignant->nom}}
+                                        {{$enseignant->prenom}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                        </div>
+                        <div class="row" dir="rtl">
+                            <div class="form-group col-md-6 text-right">
+                                <label for="heure_debut" dir="rtl">ساعة البداية <span
+                                        class="text-danger">*</span></label>
+                                <input placeholder="ساعة البداية" type="text" name="heure_debut[]"
+                                    class="form-control timepicker" required>
+                            </div>
+                            <div class="form-group col-md-6 text-right">
+                                <label for="heure_fin" dir="rtl">ساعة النهاية <span class="text-danger">*</span></label>
+                                <input placeholder="ساعة النهاية" type="text" name="heure_fin[]"
+                                    class="form-control timepicker" required>
+                            </div>
+                        </div>
+                        <div class="row" dir="rtl">
+                            <div class="form-group col-md-6 text-right">
+                                <label for="selectmatiere" dir="rtl">
+                                    المادة
+                                    <span class="text-danger">*</span></label>
+                                <select class="custom-select" name="selectmatiere[]" required>
+                                    <option selected>إختر مادة</option>
+                                    @foreach ($matieres as $key => $matiere)
+                                    <option value="{{$matiere->id}}">
+                                        {{$matiere->libelle}} |
+                                        مستوى
+                                        ({{$matiere->niveau}})</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6 text-right">
+                                <label for="selectsalle" dir="rtl">
+                                    القاعة
+                                    <span class="text-danger">*</span></label>
+                                <select class="custom-select" name="selectsalle[]" required>
+                                    <option selected>إختر قاعة</option>
+                                    @foreach ($salles as $key => $salle)
+                                    <option value="{{$salle->id}}">{{$salle->libelle}}
+                                    </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row pt-2">
+                            <div class="offset-md-3"></div>
+                            <div class=" col-md-6">
+                                <span class="btn btn-success btn-block addeventmore"><i
+                                        class="fa fa-plus-circle mx-1"></i> إضافة حصة
+                                    أخرى
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="reset" class="btn btn-secondary" data-dismiss="modal">إلغاء</button>
+                <button type="submit" class="btn btn-primary">تأكيد</button>
+            </div>
+            </form>
+        </div>
+    </div>
+
+
+</div>
+
+
 
 
 <div class="d-none" style="visibility: hidden;">
@@ -452,8 +443,8 @@
                 </div>
                 <div class="form-group col-md-6 text-right">
                     <label for="anneescolaire" dir="rtl">السنة الدراسية <span class="text-danger">*</span></label>
-                    <input type="text" placeholder="السنة الدراسية" id="anneescolaire" name="anneescolaire"
-                        class="form-control" dir="rtl" required>
+                    <input type="text" placeholder="السنة الدراسية" name="anneescolaire[]" class="form-control"
+                        dir="rtl" required>
                 </div>
             </div>
             <div class="row" dir="rtl">
@@ -487,12 +478,12 @@
             <div class="row" dir="rtl">
                 <div class="form-group col-md-6 text-right">
                     <label for="heure_debut" dir="rtl">ساعة البداية <span class="text-danger">*</span></label>
-                    <input placeholder="Selected time" type="text" name="heure_debut[]" class="form-control timepicker"
+                    <input placeholder="ساعة البداية" type="text" name="heure_debut[]" class="form-control timepicker"
                         required>
                 </div>
                 <div class="form-group col-md-6 text-right">
                     <label for="heure_fin" dir="rtl">ساعة النهاية <span class="text-danger">*</span></label>
-                    <input placeholder="Selected time" type="text" name="heure_fin[]" class="form-control timepicker"
+                    <input placeholder="ساعة النهاية" type="text" name="heure_fin[]" class="form-control timepicker"
                         required>
                 </div>
             </div>
@@ -540,9 +531,60 @@
     </div>
 </div>
 
+<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $('.timepicker').timepicker({
+        timeFormat: 'HH:mm',
+        interval: 30,
+        minTime: '08:00',
+        maxTime: '18:00',
+        defaultTime: '8',
+        startTime: '08:00',
+        dynamic: true,
+        dropdown: true,
+        scrollbar: false,
+        zindex: 1500
+    });
 
+</script>
+
+
+@foreach ($allData as $key => $seance)
+<script type="text/javascript">
+    var seances = {!! json_encode($seance) !!};
+    var heure_debut = (seances['heure_debut']).substring(0, 2);
+    var heure_fin = (seances['heure_fin']).substring(3, 5);
+
+    $('#heure_debut' + seances['id']).timepicker({
+        timeFormat: 'HH:mm',
+        interval: 30,
+        minTime: '08:00',
+        maxTime: '18:00',
+        defaultTime: parseInt(heure_debut),
+        startTime: '08:00',
+        dynamic: true,
+        dropdown: true,
+        scrollbar: false,
+        zindex: 1500
+    });
+    $('#heure_fin' + seances['id']).timepicker({
+        timeFormat: 'HH:mm',
+        interval: 30,
+        minTime: '08:00',
+        maxTime: '18:00',
+        defaultTime: parseInt(heure_fin),
+        startTime: '08:00',
+        dynamic: true,
+        dropdown: true,
+        scrollbar: false,
+        zindex: 1500
+    });
+
+</script>
+@endforeach
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         var counter = 0;
@@ -559,7 +601,8 @@
                 startTime: '08:00',
                 dynamic: true,
                 dropdown: true,
-                scrollbar: false
+                scrollbar: false,
+                zindex: 1600
             });
         });
         $(document).on("click", '.removeeventmore', function (event) {

@@ -48,8 +48,7 @@
                                     </form>
                                 </div>
 
-                                <a href="@if (url()->current() == " http://localhost:8000/Emplois/view/classes" ||
-                                    url()->current() == "http://localhost:8000/Emplois/view/classes#")
+                                <a href="@if ($type == "classes")
                                     {{ route('emploi.add.classes') }} @else
                                     {{ route('emploi.add.enseignants') }} @endif"
                                     class="btn btn-block bg-gradient-primary offset-md-1 col-md-2 order-md-1 mt-sm-2
@@ -86,10 +85,6 @@
                                                 <a href="{{ route('emploi.view.one',$emploi->id) }}"
                                                     class="btn btn-success col-md-3 m-1">عرض</a>
 
-                                                <button type="button" class="btn btn-info col-md-3 m-1"
-                                                    data-toggle="modal" data-target="#model{{$emploi->id}}">
-                                                    تحديث
-                                                </button>
 
                                                 <a href="{{ route('emploi.delete', $emploi->id) }}"
                                                     class="btn btn-danger col-md-3 m-1"
@@ -108,49 +103,6 @@
                                     @endforeach
                                     </tfoot>
                             </table>
-
-
-
-                            @foreach ($emplois as $key => $emploi)
-
-                            <!-- Modal -->
-                            <div class="modal fade" id="model{{$emploi->id}}" tabindex="1"
-                                aria-labelledby="exampleModal{{$emploi->id}}" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header text-center">
-                                            <h5 class="modal-title w-100" id="exampleModalLabel">تحديث الجدول أوقات</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form method="post"
-                                                action='{{-- {{ route('emploi.miseajour',$emploi->id) }} --}}#'
-                                                width=60%>
-                                                @csrf
-
-
-                                                <div class="form-group text-right">
-                                                    <label for="libelle text-right"><span class="text-danger">*</span>
-                                                        الإسم</label>
-                                                    <input type="text" class="form-control text-right" id="libelle"
-                                                        name="libelle" placeholder="أدخل الإسم"
-                                                        value="{{ $emploi->libelle }}" required>
-                                                </div>
-
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="reset" class="btn btn-secondary"
-                                                data-dismiss="modal">إلغاء</button>
-                                            <button type="submit" class="btn btn-primary">تأكيد</button>
-                                        </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-
-                            @endforeach
 
 
 

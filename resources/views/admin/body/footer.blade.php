@@ -1,39 +1,9 @@
-<footer class="bg-dark">
-    <div class="container p-4 text-center align-items-center">
-    {{-- <div class="row">
-    <div class="col-md-6 order-md-2 text-md-right">
-        <h2><a href="http://www.ensi.rnu.tn/">المدرسة الوطنية لعلوم الإعلامية</a></h2>
+<footer class="p-5 bg-dark text-white text-center position-relative">
+    <div class="container">
+      <p class="lead">حقوق النشر &copy; 2021 | المدرسة الوطنية لعلوم الإعلامية</p>
+
+      {{-- <a href="#" class="position-absolute bottom-0 end-0 p-5">
+        <i class="bi bi-arrow-up-circle h1"></i>
+      </a> --}}
     </div>
-    <div class="col-md-6 order-md-1 h2">
-        2021 <b>السنة الدراسية</b>
-    </div>
-    </div> --}}
-
-    {{-- <div class="mini-footer">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="copyright-text">
-                <p>© 2018
-                  <a href="#">DigiPro</a>. All rights reserved. Created by
-                  <a href="#">AazzTech</a>
-                </p>
-              </div>
-
-              <div class="go_top">
-                <span class="icon-arrow-up"></span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> --}}
-
-        <div class="text-light h2">
-                <a href="http://www.ensi-uma.tn">المدرسة الوطنية لعلوم الإعلامية</a>
-        </div>
-
-        <img src="{{ asset('images/logo-ensi.jpg') }}" alt="" width="50">
-
-    </div>
-
-</footer>
+  </footer>

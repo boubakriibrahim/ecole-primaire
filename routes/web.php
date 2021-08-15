@@ -24,9 +24,11 @@ use App\Http\controllers\listClassController;
 
 Route::get('/', function () {
     return view('test');
+});
 
 Route::get('/enseignant', function () {
     return view('enseignant/index');
+});
 Route::get('/test', function () {
     return view('welcome');
 });

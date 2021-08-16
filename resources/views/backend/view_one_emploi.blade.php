@@ -246,6 +246,17 @@
             alert(e.name + '  ' + e.week + ', NS' + e.index + 'درس, رئيس القسم' + e.length + 'مهرجان');
             console.log(e);
         }, */
+        gridOnClick: function (e) {
+            /* alert(e.name + '  ' + e.week + ', NS' + e.index + 'درس, رئيس القسم' + e.length + 'مهرجان');
+            console.log(e); */
+
+            /* e.popover({
+              trigger: 'focus'
+            }); */
+
+            alert(e.name + '  ' + e.week + ', NS' + e.index + 'درس, رئيس القسم' + e.length + 'مهرجان');
+            console.log(e); 
+        },
         styles: {
             Gheight: 50
         }

@@ -188,8 +188,8 @@
                                                                 class="text-danger">*</span></label>
                                                         <input placeholder="ساعة النهاية" type="text" name="heure_fin"
                                                             id="heure_fin{{ $seance->id }}"
-                                                            value="{{ $seance->heure_fin }}"
-                                                            class="form-control" required>
+                                                            value="{{ $seance->heure_fin }}" class="form-control"
+                                                            required>
                                                     </div>
                                                 </div>
 
@@ -374,16 +374,6 @@
                             </div>
                         </div>
 
-                        <div class="row pt-2">
-                            <div class="offset-md-3"></div>
-                            <div class=" col-md-6">
-                                <span class="btn btn-success btn-block addeventmore"><i
-                                        class="fa fa-plus-circle mx-1"></i> إضافة حصة
-                                    أخرى
-                                </span>
-                            </div>
-                        </div>
-
                     </div>
 
             </div>
@@ -399,137 +389,6 @@
 </div>
 
 
-
-
-<div class="d-none" style="visibility: hidden;">
-    <div class="whole_extra_item_add" id="whole_extra_item_add">
-        <div class="delete_whole_extra_item_add" id="delete_whole_extra_item_add">
-
-            {{-- begin new seance --}}
-            <div class="dropdown-divider"></div>
-            <div class="row w-100 text-center mb-2">
-                <div class="col-12">
-                    <h4>
-                        إضافة حصة
-                    </h4>
-                </div>
-            </div>
-
-
-            <div class="row">
-                <div class="form-group col-md-6 text-right">
-                    <label for="selectemploijour" dir="rtl"> اليوم<span class="text-danger">*</span></label>
-                    <select class="custom-select text-center" dir="rtl" name="selectemploijour[]" required>
-                        <option selected>إختر يوم</option>
-                        <option value="0">
-                            الإثنين
-                        </option>
-                        <option value="1">
-                            الثلاثاء
-                        </option>
-                        <option value="2">
-                            الأربعاء
-                        </option>
-                        <option value="3">
-                            الخميس
-                        </option>
-                        <option value="4">
-                            الجمعة
-                        </option>
-                        <option value="5">
-                            السبت
-                        </option>
-                    </select>
-                </div>
-                <div class="form-group col-md-6 text-right">
-                    <label for="anneescolaire" dir="rtl">السنة الدراسية <span class="text-danger">*</span></label>
-                    <input type="text" placeholder="السنة الدراسية" name="anneescolaire[]" class="form-control"
-                        dir="rtl" required>
-                </div>
-            </div>
-            <div class="row" dir="rtl">
-                <div class="form-group col-md-6 text-right">
-                    <label for="selectSeanceClasse" dir="rtl">
-                        القسم
-                        <span class="text-danger">*</span></label>
-
-                    <select class="custom-select" name="selectSeanceClasse[]" required>
-                        <option selected>إختر قسم</option>
-                        @foreach ($classes as $key => $classe)
-                        <option value="{{$classe->id}}">{{$classe->nom}}
-                        </option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="form-group col-md-6 text-right">
-                    <label for="selectSeanceEnseignant" dir="rtl">
-                        المدرس
-                        <span class="text-danger">*</span></label>
-                    <select class="custom-select text-center" dir="rtl" name="selectSeanceEnseignant[]" required>
-                        <option selected>إختر مدرس</option>
-                        @foreach ($enseignants as $key => $enseignant)
-                        <option value="{{$enseignant->id}}">{{$enseignant->nom}}
-                            {{$enseignant->prenom}}</option>
-                        @endforeach
-                    </select>
-                </div>
-
-            </div>
-            <div class="row" dir="rtl">
-                <div class="form-group col-md-6 text-right">
-                    <label for="heure_debut" dir="rtl">ساعة البداية <span class="text-danger">*</span></label>
-                    <input placeholder="ساعة البداية" type="text" name="heure_debut[]" class="form-control timepicker"
-                        required>
-                </div>
-                <div class="form-group col-md-6 text-right">
-                    <label for="heure_fin" dir="rtl">ساعة النهاية <span class="text-danger">*</span></label>
-                    <input placeholder="ساعة النهاية" type="text" name="heure_fin[]" class="form-control timepicker"
-                        required>
-                </div>
-            </div>
-            <div class="row" dir="rtl">
-                <div class="form-group col-md-6 text-right">
-                    <label for="selectmatiere" dir="rtl">
-                        المادة
-                        <span class="text-danger">*</span></label>
-                    <select class="custom-select" name="selectmatiere[]" required>
-                        <option selected>إختر مادة</option>
-                        @foreach ($matieres as $key => $matiere)
-                        <option value="{{$matiere->id}}">{{$matiere->libelle}} |
-                            مستوى
-                            ({{$matiere->niveau}})</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="form-group col-md-6 text-right">
-                    <label for="selectsalle" dir="rtl">
-                        القاعة
-                        <span class="text-danger">*</span></label>
-                    <select class="custom-select" name="selectsalle[]" required>
-                        <option selected>إختر قاعة</option>
-                        @foreach ($salles as $key => $salle)
-                        <option value="{{$salle->id}}">{{$salle->libelle}}
-                        </option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
-
-
-            <div class="row pt-2" dir="rtl">
-                <div class="col-md-6">
-                    <span class="btn btn-success btn-block addeventmore"><i class="fa fa-plus-circle mx-1"></i> إضافة
-                        حصة أخرى </span>
-                </div>
-                <div class="col-md-6 mt-2 mt-md-0">
-                    <span class="btn btn-danger btn-block removeeventmore"><i class="fa fa-minus-circle mx-1"></i> حذف
-                        هذه الحصة </span>
-                </div>
-            </div>
-            {{-- end new seance --}}
-        </div>
-    </div>
-</div>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 
@@ -552,7 +411,7 @@
 
 @foreach ($allData as $key => $seance)
 <script type="text/javascript">
-    var seances = {!! json_encode($seance) !!};
+    var seances = {!!json_encode($seance) !!};
     var heure_debut = (seances['heure_debut']).substring(0, 2);
     var heure_fin = (seances['heure_fin']).substring(3, 5);
 
@@ -583,36 +442,6 @@
 
 </script>
 @endforeach
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        var counter = 0;
-        $(document).on("click", ".addeventmore", function () {
-            var whole_extra_item_add = $('#whole_extra_item_add').html();
-            $(this).closest(".add_item").append(whole_extra_item_add);
-            counter++;
-            $('.timepicker').timepicker({
-                timeFormat: 'HH:mm',
-                interval: 30,
-                minTime: '08:00',
-                maxTime: '18:00',
-                defaultTime: '8',
-                startTime: '08:00',
-                dynamic: true,
-                dropdown: true,
-                scrollbar: false,
-                zindex: 1600
-            });
-        });
-        $(document).on("click", '.removeeventmore', function (event) {
-            $(this).closest(".delete_whole_extra_item_add").remove();
-            counter -= 1
-        });
-
-    });
-
-</script>
 
 
 @endsection

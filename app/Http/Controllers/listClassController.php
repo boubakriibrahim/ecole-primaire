@@ -24,7 +24,7 @@ class listClassController extends Controller
         // $data=aff_enseignant::where('enseignant_id',$user_id)->get();
         $data=DB::table('aff_enseignants')
         ->join('enseignants', function ($join) {
-            $user_id=18;
+            $user_id=1;
             $join->on('aff_enseignants.enseignant_id', '=', 'enseignants.id')
                  ->where('enseignants.id', $user_id);
         })
@@ -32,7 +32,6 @@ class listClassController extends Controller
         ->select("classes.*")
         ->get();
 
-     
          return view('backend.partie_Ens.classeslist',compact('data'));
      }
 
@@ -41,11 +40,19 @@ class listClassController extends Controller
         $eleves_ids=DB::table("affc_eleves")->pluck('eleve_id');
         //dd($eleves_ids[0]);
         $data1 = $eleves->diff(eleve::whereIn('id', $eleves_ids)->get());
+        //$nb=affc_eleve::where('classe_id',$id)->count();
         $data=['classeInfo'=>classe::where('id',$id)->first()];
-        //dd($data1);
         
         
-        return view('backend.partie_Ens.view_list',$data,compact('data1'));
+        return view('backend.partie_Ens.view_list',compact('data','data1'));
+    }
+    public function listCheck($id){
+        $id_c=$id;
+        $nb=affc_eleve::where('classe_id',$id)->count();
+        return view('backend.partie_Ens.view_check',compact('nb','id_c'));
+
+
+
     }
     
 }

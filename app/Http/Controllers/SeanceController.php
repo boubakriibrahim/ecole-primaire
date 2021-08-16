@@ -33,12 +33,35 @@ class SeanceController extends Controller
             'selectmatiere'=>'required',
             'selectsalle'=>'required',
         ]);
-        $data = new Seance();
-        $data->libelle = $request->libelle;
-        $data->save();
+
+
+        $countClass = count($request->heure_debut);
+    	for ($i=0; $i <$countClass ; $i++) {
+
+            $data = new Seance();
+            $data->jour = $request->selectemploijour[$i];
+            $data->heure_debut = $request->heure_debut[$i];
+            $data->heure_fin = $request->heure_fin[$i];
+            $data->id_enseignant = $request->selectSeanceEnseignant[$i];
+            $data->id_classe = $request->selectSeanceClasse[$i];
+            $data->id_matiere = $request->selectmatiere[$i];
+            $data->id_salle = $request->selectsalle[$i];
+            $data->anneescolaire = $request->anneescolaire[$i];
+
+            $data->save();
+
+        }
+
+        if ( $countClass == 1){
+            $notification = array(
+                'message' => 'تم إضافة الحصة بنجاح',
+                'alert-type' => 'success'
+            );
+        }
 
         $notification = array(
-            'message' => 'تم إضافة الحصة بنجاح',
+
+            'message' => 'تم إضافة الحصص بنجاح',
             'alert-type' => 'success'
         );
 
@@ -52,13 +75,13 @@ class SeanceController extends Controller
 
         $data = Seance::find($id);
         $data->jour = $request->selectemploijour;
-        $data->heure_debut = $request->selectemploijour;
-        $data->heure_fin = $request->selectemploijour;
-        $data->id_enseignant = $request->selectemploijour;
-        $data->id_classe = $request->selectemploijour;
-        $data->id_matiere = $request->selectemploijour;
-        $data->id_salle = $request->selectemploijour;
-        $data->anneescolaire = $request->anneescolaire;
+            $data->heure_debut = $request->heure_debut;
+            $data->heure_fin = $request->heure_fin;
+            $data->id_enseignant = $request->selectSeanceEnseignant;
+            $data->id_classe = $request->selectSeanceClasse;
+            $data->id_matiere = $request->selectmatiere;
+            $data->id_salle = $request->selectsalle;
+            $data->anneescolaire = $request->anneescolaire;
 
         $data->save();
 

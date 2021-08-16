@@ -17,11 +17,10 @@
               </ol>
             </div><!-- /.col -->
 
-
-
           </div><!-- /.row -->
         </div><!-- /.container-fluid -->
   </section>
+  
 
   <section class="content">
     <div class="container-fluid">
@@ -57,7 +56,13 @@
                        <div class="row">
                           
                         
-                             <a href="{{ route("list.view", $classe->id) }}"  class="btn btn-success rounded-pill shadow-lg col-md-8" id="list">إنشاء قائمة</a>
+                             <button    id="List">إنشاء قائمة</button>
+                             <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript">
+            let btn=document.getElemenyById('List');
+            btn.onclick= function () {
+              swal("mon alert!");}}
+              </script>
                           
                         </div>
                   </td>

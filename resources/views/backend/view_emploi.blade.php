@@ -48,8 +48,7 @@
                                     </form>
                                 </div>
 
-                                <a href="@if (url()->current() == " http://localhost:8000/Emplois/view/classes" ||
-                                    url()->current() == "http://localhost:8000/Emplois/view/classes#")
+                                <a href="@if ($type == "classes")
                                     {{ route('emploi.add.classes') }} @else
                                     {{ route('emploi.add.enseignants') }} @endif"
                                     class="btn btn-block bg-gradient-primary offset-md-1 col-md-2 order-md-1 mt-sm-2

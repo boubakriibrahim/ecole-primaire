@@ -200,6 +200,7 @@ Route::prefix('list')->group(function(){
     Route::get('/listClasses', [App\Http\controllers\listClassController::class, 'listClasses'])->name('classes.view');
 
     Route::get('/creeClasse/{id}', [App\Http\controllers\listClassController::class, 'listView'])->name('list.view');
+    Route::get('/checkList/{id}', [App\Http\controllers\listClassController::class, 'listCheck'])->name('list.check');
 
     Route::post('/store', [App\Http\controllers\listClassController::class, 'listStore'])->name('list.store');
     Route::post('/miseajour/{id}', [App\Http\controllers\eleveController::class, 'eleveUpdate'])->name('eleve.miseajour');

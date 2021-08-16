@@ -22,7 +22,7 @@ class CreateSeancesTable extends Migration
             $table->unsignedBigInteger('id_classe');
             $table->unsignedBigInteger('id_matiere');
             $table->unsignedBigInteger('id_salle');
-            $table->unsignedBigInteger('anneescolaire');
+            $table->string('anneescolaire');
 
             $table->foreign("id_enseignant")->references('id')->on('enseignants')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign("id_classe")->references('id')->on('classes')->onUpdate('cascade')->onDelete('cascade');

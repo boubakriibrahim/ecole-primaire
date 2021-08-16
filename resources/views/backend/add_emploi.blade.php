@@ -57,8 +57,7 @@
                     <h3> {{session()->get("success")}}</h3>
                 </div>
                 @endif
-                <form method="post" action='@if ($type == '
-                    enseignants'){{ route('emploi.store.enseignant') }}@else{{ route('emploi.store.classe') }}@endif'
+                <form method="post" action='@if (str_contains(url()->current(), 'enseignants') ){{ route('emploi.store.enseignant') }}@else{{ route('emploi.store.classe') }}@endif'
                     width=60%>
                     @csrf
                     <div class="card-body container">

@@ -24,7 +24,7 @@ class listClassController extends Controller
         // $data=aff_enseignant::where('enseignant_id',$user_id)->get();
         $data=DB::table('aff_enseignants')
         ->join('enseignants', function ($join) {
-            $user_id=18;
+            $user_id=1;
             $join->on('aff_enseignants.enseignant_id', '=', 'enseignants.id')
                  ->where('enseignants.id', $user_id);
         })

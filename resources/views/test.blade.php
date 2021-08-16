@@ -97,13 +97,12 @@
             <p class="lead my-4">
                 نحن نركز على تعليم طلابنا أساسيات أحدث وأكبر التقنيات لإعدادهم لدورهم التنموي الأول
             </p>
-            <button
+            <a
               class="btn btn-primary btn-lg"
-              data-bs-toggle="modal"
-              data-bs-target="#enroll"
+              href="{{ route('home') }}"
             >
               تسجيل الدخول
-            </button>
+            </a>
           </div>
         </div>
       </div>

@@ -13,7 +13,7 @@
                 <div class="col-sm-6 order-sm-1">
                     <ol class="breadcrumb float-right float-sm-left">
                         <li class="breadcrumb-item active order-sm">التصرف في جداول الأوقات</li>
-                        <li class="breadcrumb-item"><a href="#">الصفحة الرئيسية</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">الصفحة الرئيسية</a></li>
                     </ol>
                 </div><!-- /.col -->
 
@@ -30,7 +30,13 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="row">
-                                <h2 class="col-md-4 order-md-3 text-center">جداول الأوقات</h2>
+                                <h2 class="col-md-4 order-md-3 text-center">
+                                    @if (str_contains(url()->current(), 'enseignants') )
+                                    جداول أوقات المدرسين
+                                    @else
+                                    جداول أوقات الأقسام
+                                    @endif
+                                </h2>
 
                                 <div class="form-group offset-md-1 col-md-4 order-md-2 justify-content-center">
                                     <form method="post" action="{{ route("emploi.select") }}">
@@ -53,7 +59,11 @@
                                     {{ route('emploi.add.enseignants') }} @endif"
                                     class="btn btn-block bg-gradient-primary offset-md-1 col-md-2 order-md-1 mt-sm-2
                                     h-50">
-                                    إضافة جدول أوقات
+                                    @if (str_contains(url()->current(), 'enseignants') )
+                                    إضافة جدول أوقات مدرس
+                                    @else
+                                    إضافة جدول أوقات قسم
+                                    @endif
                                 </a>
 
                             </div>

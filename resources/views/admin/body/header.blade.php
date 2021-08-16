@@ -8,13 +8,15 @@
             </span>
         </a>
 
-        <button class="navbar-toggler order-1 mx-auto" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler order-1 mx-auto" type="button" data-toggle="collapse"
+            data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+            aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse order-3 mx-auto" id="navbarCollapse">
             <!-- Left navbar links -->
+            @if (Auth::user()->role == "superadmin")
             <ul class="navbar-nav">
                 <li class="nav-item text-right">
                     <a href="{{ route('home') }}" class="nav-link"><i class="fas fa-toolbox ml-1"></i> صندوق
@@ -77,6 +79,33 @@
                     </ul>
                 </li>
             </ul>
+            @endif
+            @if (Auth::user()->role == "enseignant")
+            <ul class="navbar-nav">
+                <li class="nav-item text-right">
+                    <a href="{{ route('home') }}" class="nav-link"><i class="fas fa-toolbox ml-1"></i> إحصائيّات</a>
+                </li>
+
+                <li class="nav-item text-right">
+                    <a href="#" class="nav-link"><i class="fas fa-hourglass-end ml-1"></i> جدول أوقاتي</a>
+                </li>
+
+                <li class="nav-item text-right">
+                    <a href="{{ route('eleve.view') }}" class="nav-link"><i class="fas fa-book-open ml-1"></i> التصرف في التلاميذ</a>
+                </li>
+
+
+                <li class="nav-item text-right">
+                    <a href="{{ route('classes.view') }}" class="nav-link"><i class="fas fa-chalkboard-teacher ml-1"></i> التصرّف في الأقسام</a>
+                </li>
+
+
+                <li class="nav-item text-right">
+                    <a href="#" class="nav-link"><i class="fas fa-user-check ml-1"></i> الحضور</a>
+                </li>
+
+            </ul>
+            @endif
         </div>
 
         <!-- Right navbar links -->
@@ -116,25 +145,48 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src="https://i.postimg.cc/vZHKNSFx/pdp.jpg" width="35" height="35" class="rounded-circle">
+                    <img src="
+                    @if(Auth::user()->profile_photo_lien == NULL)
+                    https://i.postimg.cc/6qbpp0LV/profile-photo.jpg
+                    @else
+                    {{ Auth::user()->profile_photo_lien }}
+                    @endif
+                    " width="35" height="35" class="rounded-circle">
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg" style="left: inherit; right: 0px;"
                     aria-labelledby="navbarDropdownMenuLink">
                     <span class="dropdown-header">
-
-                        إبراهيم بوبكري
-                        <img src="https://i.postimg.cc/vZHKNSFx/pdp.jpg" alt="" class="rounded-circle ml-2" width="40"
-                            height="40">
+                        <div class="row">
+                            <div class="col-8">
+                                <h5>{{ Auth::user()->name }}</h5>
+                                @if (Auth::user()->role == "superadmin")
+                                مدير المدرسة
+                                @elseif(Auth::user()->role == "enseignant")
+                                مدرس
+                                @endif
+                            </div>
+                            <div class="col-4">
+                                <img src="
+                        @if(Auth::user()->profile_photo_lien == NULL)
+                        https://i.postimg.cc/6qbpp0LV/profile-photo.jpg
+                        @else
+                        {{ Auth::user()->profile_photo_lien }}
+                        @endif
+                        " alt="" class="rounded-circle" width="50" height="50">
+                            </div>
+                        </div>
                     </span>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item text-right" href="{{route('profil')}}">
                         المعلومات الشّخصيّة
                         <i class="fas fa-user pl-2"></i>
                     </a>
+                    @if (Auth::user()->role == "superadmin")
                     <a class="dropdown-item text-right" href="#">
                         معلومات المدرسة
                         <i class="fas fa-school pl-2"></i>
                     </a>
+                    @endif
                     <a class="dropdown-item text-right" href="{{ route('admin.logout') }}">
                         تسجيل الخروج
                         <i class="fas fa-sign-out-alt pl-2"></i>

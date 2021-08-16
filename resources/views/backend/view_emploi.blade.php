@@ -54,7 +54,7 @@
                                     </form>
                                 </div>
 
-                                <a href="@if ($type == "classes")
+                                <a href="@if (str_contains(url()->current(), 'classes'))
                                     {{ route('emploi.add.classes') }} @else
                                     {{ route('emploi.add.enseignants') }} @endif"
                                     class="btn btn-block bg-gradient-primary offset-md-1 col-md-2 order-md-1 mt-sm-2
@@ -102,7 +102,7 @@
                                             </div>
                                         </td>
                                         <td>{{ $emploi->anneescolaire }}</td>
-                                        @if ($type == "classes")
+                                        @if (str_contains(url()->current(), 'classes'))
                                         <td>{{ $emploi->classe->nom }}</td>
                                         @else
                                         <td>{{ $emploi->enseignant->nom }} {{ $emploi->enseignant->prenom }}</td>

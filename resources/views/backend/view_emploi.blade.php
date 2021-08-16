@@ -13,7 +13,7 @@
                 <div class="col-sm-6 order-sm-1">
                     <ol class="breadcrumb float-right float-sm-left">
                         <li class="breadcrumb-item active order-sm">التصرف في جداول الأوقات</li>
-                        <li class="breadcrumb-item"><a href="#">الصفحة الرئيسية</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">الصفحة الرئيسية</a></li>
                     </ol>
                 </div><!-- /.col -->
 
@@ -30,7 +30,13 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="row">
-                                <h2 class="col-md-4 order-md-3 text-center">جداول الأوقات</h2>
+                                <h2 class="col-md-4 order-md-3 text-center">
+                                    @if (str_contains(url()->current(), 'enseignants') )
+                                    جداول أوقات المدرسين
+                                    @else
+                                    جداول أوقات الأقسام
+                                    @endif
+                                </h2>
 
                                 <div class="form-group offset-md-1 col-md-4 order-md-2 justify-content-center">
                                     <form method="post" action="{{ route("emploi.select") }}">
@@ -53,7 +59,11 @@
                                     {{ route('emploi.add.enseignants') }} @endif"
                                     class="btn btn-block bg-gradient-primary offset-md-1 col-md-2 order-md-1 mt-sm-2
                                     h-50">
-                                    إضافة جدول أوقات
+                                    @if (str_contains(url()->current(), 'enseignants') )
+                                    إضافة جدول أوقات مدرس
+                                    @else
+                                    إضافة جدول أوقات قسم
+                                    @endif
                                 </a>
 
                             </div>
@@ -85,10 +95,6 @@
                                                 <a href="{{ route('emploi.view.one',$emploi->id) }}"
                                                     class="btn btn-success col-md-3 m-1">عرض</a>
 
-                                                <button type="button" class="btn btn-info col-md-3 m-1"
-                                                    data-toggle="modal" data-target="#model{{$emploi->id}}">
-                                                    تحديث
-                                                </button>
 
                                                 <a href="{{ route('emploi.delete', $emploi->id) }}"
                                                     class="btn btn-danger col-md-3 m-1"
@@ -107,49 +113,6 @@
                                     @endforeach
                                     </tfoot>
                             </table>
-
-
-
-                            @foreach ($emplois as $key => $emploi)
-
-                            <!-- Modal -->
-                            <div class="modal fade" id="model{{$emploi->id}}" tabindex="1"
-                                aria-labelledby="exampleModal{{$emploi->id}}" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header text-center">
-                                            <h5 class="modal-title w-100" id="exampleModalLabel">تحديث الجدول أوقات</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form method="post"
-                                                action='{{-- {{ route('emploi.miseajour',$emploi->id) }} --}}#'
-                                                width=60%>
-                                                @csrf
-
-
-                                                <div class="form-group text-right">
-                                                    <label for="libelle text-right"><span class="text-danger">*</span>
-                                                        الإسم</label>
-                                                    <input type="text" class="form-control text-right" id="libelle"
-                                                        name="libelle" placeholder="أدخل الإسم"
-                                                        value="{{ $emploi->libelle }}" required>
-                                                </div>
-
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="reset" class="btn btn-secondary"
-                                                data-dismiss="modal">إلغاء</button>
-                                            <button type="submit" class="btn btn-primary">تأكيد</button>
-                                        </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-
-                            @endforeach
 
 
 

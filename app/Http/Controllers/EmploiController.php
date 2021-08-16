@@ -180,7 +180,7 @@ class EmploiController extends Controller
 
         if ($emploi->id_classe == -1) {
             $type = "المدرس";
-            $data = DB::table('seances')->where('id_enseignant', $emploi->id_enseignant)->get();
+            $data = DB::table('seances')->where('id_enseignant', $emploi->id_enseignant)->orderBy('jour')->orderBy('heure_debut')->get();
             $nom = enseignant::find($emploi->id_enseignant)->nom;
             $prenom = enseignant::find($emploi->id_enseignant)->prenom;
         } else {

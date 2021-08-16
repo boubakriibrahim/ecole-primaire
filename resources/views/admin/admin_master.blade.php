@@ -523,8 +523,9 @@
             box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
         }
 
-
     </style>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+
 
 </head>
 
@@ -598,7 +599,7 @@
     <!-- AdminLTE App -->
     <script src="{{ asset('backend/dist/js/adminlte.js') }}"></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="{{ asset('backend/dist/js/demo.js') }}"></script>
+    {{-- <script src="{{ asset('backend/dist/js/demo.js') }}"></script> --}}
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     @if (url()->current() == 'http://localhost:8000/home')
     <script src="{{ asset('backend/dist/js/pages/dashboard.js') }}"></script>
@@ -654,7 +655,8 @@
             startTime: '08:00',
             dynamic: true,
             dropdown: true,
-            scrollbar: false
+            scrollbar: false,
+            zindex: 1500
         });
 
     </script>
@@ -921,7 +923,6 @@
         });
 
     </script>
-
 
 
 </body>

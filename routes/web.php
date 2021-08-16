@@ -50,7 +50,7 @@ Route::get('/admin/logout', [AdminController::class, 'Logout'])->name('admin.log
 
 // user managment
 
-Route::prefix('admin')->group(function(){
+/* Route::prefix('admin')->group(function(){
 
     Route::get('/view', [UserController::class, 'UserView'])->name('admin.view');
     Route::get('/add', [UserController::class, 'UserAdd'])->name('admins.add');
@@ -81,14 +81,13 @@ Route::prefix('eleve')->group(function(){
     Route::post('/miseajour/{id}', [UserController::class, 'EleveUpdate'])->name('eleve.miseajour');
     Route::get('/effacer/{id}', [UserController::class, 'EleveDelete'])->name('eleve.delete');
 
-});
+}); */
 
 
 
 Route::prefix('Enseignant')->group(function(){
 
     Route::get('/view', [App\Http\controllers\ensgController::class, 'EnsView'])->name('Ens.view');
-    Route::get('/add', [App\Http\controllers\ensgController::class, 'EnsAdd'])->name('Ens.add');
     Route::post('/store', [App\Http\controllers\ensgController::class, 'EnsStore'])->name('Ens.store');
     Route::post('/miseajour/{id}', [App\Http\controllers\ensgController::class, 'EnsUpdate'])->name('Ens.miseajour');
 
@@ -167,7 +166,6 @@ Route::prefix('Emplois')->group(function(){
 
     Route::get('/add/enseignants', [App\Http\controllers\EmploiController::class, 'EmploiEnseignantsAdd'])->name('emploi.add.enseignants');
 
-
     Route::post('/store/enseignant', [App\Http\controllers\EmploiController::class, 'EmploiEnseignantStore'])->name('emploi.store.enseignant');
 
     Route::post('/store/classe', [App\Http\controllers\EmploiController::class, 'EmploiClasseStore'])->name('emploi.store.classe');
@@ -176,20 +174,23 @@ Route::prefix('Emplois')->group(function(){
 
     Route::get('/view/one/{id}', [App\Http\controllers\EmploiController::class, 'EmploiViewOne'])->name('emploi.view.one');
 
-    /*Route::post('/miseajour/{id}', [App\Http\controllers\EmploiController::class, 'EmploiUpdate'])->name('emploi.miseajour');
-
-     */
 
 });
- Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('admin/index');
 })->name('dashboard');
+
+
 /*___________routes partie */
+
+
 Route::prefix('eleve')->group(function(){
 
     Route::get('/view', [App\Http\controllers\eleveController::class, 'eleveView'])->name('eleve.view');
 
     Route::post('/store', [App\Http\controllers\eleveController::class, 'eleveStore'])->name('eleve.store');
+
     Route::post('/miseajour/{id}', [App\Http\controllers\eleveController::class, 'eleveUpdate'])->name('eleve.miseajour');
 
     Route::get('/effacer/{id}', [App\Http\controllers\eleveController::class, 'eleveDelete'])->name('eleve.delete');
@@ -203,6 +204,7 @@ Route::prefix('list')->group(function(){
     Route::get('/checkList/{id}', [App\Http\controllers\listClassController::class, 'listCheck'])->name('list.check');
 
     Route::post('/store', [App\Http\controllers\listClassController::class, 'listStore'])->name('list.store');
+
     Route::post('/miseajour/{id}', [App\Http\controllers\eleveController::class, 'eleveUpdate'])->name('eleve.miseajour');
 
     Route::get('/effacer/{id}', [App\Http\controllers\eleveController::class, 'eleveDelete'])->name('eleve.delete');

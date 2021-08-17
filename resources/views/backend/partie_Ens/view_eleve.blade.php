@@ -1,6 +1,6 @@
-@extends('enseignant.enseignant_master')
+@extends('admin.admin_master')
 
-@section('enseignant')
+@section('admin')
 <div class="content-wrapper">
 <section class="content-header">
         <div class="container-fluid">
@@ -50,7 +50,7 @@
                                     @csrf
 
 
-                                          
+
                                     <div class="form-group text-right float-right">
                                             <input type="text" class="form-control text-right" id="nom" name="nom" placeholder="أدخل الإسم" required>
                                             <label for="nom"><span class="text-danger">*</span> الإسم</label>
@@ -76,7 +76,7 @@
                                     </div>
 
 
-                                
+
                                     <div class="form-group col-md-6 float-right">
                                         <div class="form-check form-check-inline" >
 
@@ -109,7 +109,7 @@
                 <thead>
                 <tr>
                   <th width="25%">العملية</th>
-                  
+
                   <th>رمز التسجيل </th>
                   <th> الجنس </th>
                   <th>تاريخ الولادة</th>
@@ -133,7 +133,7 @@
                   <td>{{ $eleve->num_inscri }}</td>
                   <td>@if($eleve->sexe==1)
                   مؤنث
-                      @else 
+                      @else
                       مذكر
                       @endif
                     </td>
@@ -189,7 +189,7 @@
                                     </div>
 
 
-                                
+
                                     <div class="form-group col-md-6 float-right">
                                         <div class="form-check form-check-inline" >
 
@@ -205,7 +205,7 @@
                                     </div>
 
 
-                                  
+
 
                     </div>
                     <div class="modal-footer">

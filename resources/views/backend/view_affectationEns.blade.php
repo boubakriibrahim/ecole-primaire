@@ -2,237 +2,258 @@
 
 @section('admin')
 <div class="content-wrapper">
-<section class="content-header">
+    <section class="content-header">
         <div class="container-fluid">
-          <div class="row mb-2">
-              <div class="col-sm-6 order-sm-2">
-                  <h1 class="m-0 float-right">تعيين مدرسين </h1>
+            <div class="row mb-2">
+                <div class="col-sm-6 order-sm-2">
+                    <h1 class="m-0 float-right">تعيين المدرسين </h1>
                 </div><!-- /.col -->
 
 
-            <div class="col-sm-6 order-sm-1">
-              <ol class="breadcrumb float-right float-sm-left">
-                <li class="breadcrumb-item active order-sm">تعين مدرسين  </li>
-                <li class="breadcrumb-item"><a href="#">الصفحة الرئيسية</a></li>
-              </ol>
-            </div><!-- /.col -->
+                <div class="col-sm-6 order-sm-1">
+                    <ol class="breadcrumb float-right float-sm-left">
+                        <li class="breadcrumb-item active order-sm">تعيين المدرسين </li>
+                        <li class="breadcrumb-item"><a href="#">الصفحة الرئيسية</a></li>
+                    </ol>
+                </div><!-- /.col -->
 
 
 
-          </div><!-- /.row -->
+            </div><!-- /.row -->
         </div><!-- /.container-fluid -->
-  </section>
+    </section>
 
-  <section class="content">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-12">
-          <div class="card">
-            <div class="card-header">
-                <div class="row">
-                    <h2 class="col-md-6 offset-md-2  order-md-2 text-right">تعيينات</h2>
-                    {{-- <a href="{{ route('affEns.add') }}" class="btn btn-block bg-gradient-primary offset-md-1 col-md-2 order-md-1 mt-sm-2">إضافة تعين</a> --}}
-                    <button type="button" class="btn btn-block bg-gradient-primary offset-md-1 col-md-2 order-md-1 mt-sm-2" data-toggle="modal" data-target="#exampleModal">
-                        إضافة تعيين
-                      </button>
-
-                      <!-- Modal -->
-                      <div class="modal fade " id="exampleModal" tabindex="1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLabel">إضافة تعيين</h5>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                            </div>
-                            <div class="modal-body">
-                                <form method="post" action='{{ route('AffEns.store') }}' width=60%>
-                                    @csrf
-
-                                        <div class="row">
-                                        <div class="col-xl-12 ms-auto">
-                                            <div class="input-group p-3 col-md-12 " size=500px>
-                                                <select class="form-select col-md-9 " id="inputGroupSelect01" name="enseignant_id" width=300 required>
-                                                    <option selected>إختر</option>
-                                                    @foreach ($enseignants as $key => $enseignant)
-                                                    <option value="{{$enseignant->id}}">{{$enseignant->nom}} {{$enseignant->prenom}}</option>
-                                                    @endforeach
-                                                    
-                                                </select>
-                                                <label class="input-group-text col-md-3" for="inputGroupSelect01"><span class="text-danger">*</span> إختر مدرس</label>
-
-                                            </div>
-                                        </div>
-                                        </div>  
-                                      <div class="row">
-                                            <div class="input-group p-3 col-md-12  " >
-                                                <select class="form-select col-md-9" id="inputGroupSelect02" name="classe_id">
-                                                    <option selected>إختر</option>
-                                                    @foreach ($classes as $key => $classe)
-                                                    <option value="{{$classe->id}}">{{$classe->nom}}</option>
-                                                    @endforeach
-                                                    
-                                                </select>
-                                                <label class="input-group-text col-md-3" for="inputGroupSelect02"><span class="text-danger">*</span> إختر قسم</label>
-
-                                            </div>
-                                       
-                                      </div>
-                                      <div class="row">
-                                            <div class="input-group p-3 col-md-12 " size=100%>
-                                                <select class="form-select col-md-9" id="inputGroupSelect03" name="matiere_id">
-                                                    <option selected>إختر</option>
-                                                    @foreach ($matieres as $key => $matiere)
-                                                    <option value="{{$matiere->id}}">{{$matiere->libelle}}</option>
-                                                    @endforeach
-                                                    
-                                                </select>
-                                                <label class="input-group-text col-md-3" for="inputGroupSelect03"><span class="text-danger">*</span> إختر مادة</label>
-
-                                            </div>
-                                       
-                                      </div>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="reset" class="btn btn-secondary" data-dismiss="modal">إلغاء</button>
-                              <button type="submit" class="btn btn-primary">تأكيد</button>
-                            </div>
-                            </form>
-                          </div>
-                        </div>
-                      </div>
-
-                </div>
-        </div>
-            <!-- /.card-header -->
-            <div class="p-3">
-              <table id="example1" class="table table-bordered table-striped p-3">
-                <thead>
-                <tr>
-                  <th width="5%">العدد</th>
-                  <th>المعلم</th>
-                  <th>القسم</th>
-                  <th> المادة</th>
-                  <th>السنة الدراسية</th>
-                  <th width="25%">العملية</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach ($affEns as $key => $aff)
-                <tr>
-                <td>{{ $key+1 }}</td>
-                  <td>{{ $aff->enseignant->nom }} {{ $aff->enseignant->prenom }}</td>
-                  
-                  <td>{{ $aff->classe->nom }}</td>
-                  <td>{{ $aff->matiere->libelle }}</td>
-                  <td>{{ $aff->classe->anneescolaire }}</td>
-                  
-                  <td>
-                        {{-- <a href="" class="btn btn-info">تعديل</a> --}}
-
-                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#model{{$aff->id}}">
-                            تحديث
-                          </button>
-
-
-
-                        <a href="{{ route("AffEns.delete", $aff->id) }}" class="btn btn-danger" id="delete">حذف</a>
-                  </td>
-                </tr>
-                @endforeach
-                </tfoot>
-              </table>
-
-
-
-              @foreach ($affEns as $key => $aff)
-
-              <!-- Modal -->
-              <div class="modal fade" id="model{{$aff->id}}" tabindex="-1"  aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="examplemodel{{$aff->id}}">تحديث تعيين </h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                        <form method="post" action='{{ route('AffEns.miseajour',$aff->id) }}' width=60%>
-                            @csrf
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
                             <div class="row">
-                                        
-                                            <div class="input-group cl_md_12 p-3" size=100%>
-                                                <select class="form-select p-3 col-md-9 " id="inputGroupSelect01" name="enseignant_id" width=300 required>
-                                                    <option value="{{$aff->enseignant->id}}" selected required>{{$aff->enseignant->nom}} {{$aff->enseignant->prenom}}</option>
-                                                    @foreach ($enseignants as $key => $enseignant)
-                                                    <option value="{{$enseignant->id}}">{{$enseignant->nom}} {{$enseignant->prenom}}</option>
-                                                    @endforeach
-                                                    
-                                                </select>
-                                                <label class="input-group-text col-md-3" for="inputGroupSelect01"> <span class="text-danger">*</span>إختر مدرس</label>
+                                <h2 class="col-md-6 offset-md-2  order-md-2 text-right">تعيين المدرسين</h2>
+                                {{-- <a href="{{ route('affEns.add') }}" class="btn btn-block bg-gradient-primary
+                                offset-md-1 col-md-2 order-md-1 mt-sm-2">إضافة تعين</a> --}}
+                                <button type="button"
+                                    class="btn btn-block bg-gradient-primary offset-md-1 col-md-2 order-md-1 mt-sm-2"
+                                    data-toggle="modal" data-target="#exampleModal">
+                                    إضافة تعيين
+                                </button>
 
+                                <!-- Modal -->
+                                <div class="modal fade " id="exampleModal" tabindex="1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                        <div class="modal-content">
+                                            <div class="modal-header text-center">
+                                                <h5 class="modal-title w-100" id="exampleModalLabel">إضافة تعيين
+                                                </h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
                                             </div>
+                                            <div class="modal-body">
+                                                <form method="post" action='{{ route('AffEns.store') }}' width=60%>
+                                                    @csrf
+
+                                                    <div class="row">
+                                                        <div class="input-group p-3 col-md-12">
+                                                            <label class="input-group-text col-md-3 order-md-2"
+                                                                for="inputGroupSelect01"><span
+                                                                    class="text-danger">*</span> إختر مدرس</label>
+                                                            <select class="form-select col-md-9 order-md-1"
+                                                                id="inputGroupSelect01" name="enseignant_id" dir="rtl"
+                                                                required>
+                                                                <option selected>إختر مدرس</option>
+                                                                @foreach ($enseignants as $key => $enseignant)
+                                                                <option value="{{$enseignant->id}}">
+                                                                    {{$enseignant->nom}} {{$enseignant->prenom}}
+                                                                </option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="input-group p-3 col-md-12">
+                                                            <label class="input-group-text col-md-3 order-md-2"
+                                                                for="inputGroupSelect02"><span
+                                                                    class="text-danger">*</span> إختر قسم</label>
+                                                            <select class="form-select col-md-9 order-md-1"
+                                                                id="inputGroupSelect02" dir="rtl" name="classe_id"
+                                                                required>
+                                                                <option selected>إختر قسم</option>
+                                                                @foreach ($classes as $key => $classe)
+                                                                <option value="{{$classe->id}}">{{$classe->nom}}
+                                                                </option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="input-group p-3 col-md-12">
+                                                            <label class="input-group-text col-md-3 order-md-2"
+                                                                for="inputGroupSelect03"><span
+                                                                    class="text-danger">*</span> إختر مادة</label>
+                                                            <select class="form-select col-md-9 order-md-1"
+                                                                id="inputGroupSelect03" name="matiere_id" dir="rtl"
+                                                                required>
+                                                                <option selected>إختر مادة</option>
+                                                                @foreach ($matieres as $key => $matiere)
+                                                                <option value="{{$matiere->id}}">{{$matiere->libelle}}
+                                                                </option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="reset" class="btn btn-secondary"
+                                                    data-dismiss="modal">إلغاء</button>
+                                                <button type="submit" class="btn btn-primary">تأكيد</button>
+                                            </div>
+                                            </form>
                                         </div>
-                                      <div class="row">
-                                            <div class="input-group p-3 col-md-12 " size=100%>
-                                                <select class="form-select col-md-9" id="inputGroupSelect02" name="classe_id">
-                                                    <option value="{{$aff->classe->id}}" selected>{{$aff->classe->nom}}</option>
-                                                    @foreach ($classes as $key => $classe)
-                                                    <option value="{{$classe->id}}">{{$classe->nom}}</option>
-                                                    @endforeach
-                                                    
-                                                </select>
-                                                <label class="input-group-text col-md-3" for="inputGroupSelect02"> <span class="text-danger">*</span>إختر قسم</label>
+                                    </div>
+                                </div>
 
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="p-3">
+                            <table id="example1" class="table table-bordered table-striped text-right p-3">
+                                <thead>
+                                    <tr>
+                                        <th width="25%">العملية</th>
+                                        <th>السنة الدراسية</th>
+                                        <th> المادة</th>
+                                        <th>القسم</th>
+                                        <th>المعلم</th>
+                                        <th width="5%">العدد</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($affEns as $key => $aff)
+                                    <tr>
+                                        <td>
+                                            <div class="row">
+                                                <a href="{{ route("AffEns.delete", $aff->id) }}"
+                                                    class="btn btn-danger offset-sm-3 mr-sm-1 col-sm-4 order-3 order-sm-1"
+                                                    id="delete">حذف</a>
+                                                <button type="button" class="btn btn-info  col-sm-4 order-2"
+                                                    data-toggle="modal" data-target="#model{{$aff->id}}">
+                                                    تحديث
+                                                </button>
                                             </div>
-                                       
-                                      </div>
-                                      <div class="row">
-                                            <div class="input-group p-3 col-md-12 " size=100%>
-                                                <select class="form-select col-md-9" id="inputGroupSelect03" name="matiere_id">
-                                                    <option value="{{$aff->matiere->id}}" selected>{{$aff->matiere->libelle}}</option>
-                                                    @foreach ($matieres as $key => $matiere)
-                                                    <option value="{{$matiere->id}}">{{$matiere->libelle}}</option>
-                                                    @endforeach
-                                                    
-                                                </select>
-                                                <label class="input-group-text col-md-3" for="inputGroupSelect03"> <span class="text-danger">*</span>إختر مادة</label>
+                                        </td>
+                                        <td>{{ $aff->classe->anneescolaire }}</td>
+                                        <td>{{ $aff->matiere->libelle }}</td>
+                                        <td>{{ $aff->classe->nom }}</td>
+                                        <td>{{ $aff->enseignant->nom }} {{ $aff->enseignant->prenom }}</td>
+                                        <td>{{ $key+1 }}</td>
 
-                                            </div>
-                                       
-                                      </div>
-
-                            
+                                    </tr>
+                                    @endforeach
+                                    </tfoot>
+                            </table>
 
 
+
+                            @foreach ($affEns as $key => $aff)
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="model{{$aff->id}}" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header text-center">
+                                            <h5 class="modal-title w-100" id="examplemodel{{$aff->id}}">تحديث تعيين
+                                                المدرس</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form method="post" action='{{ route('AffEns.miseajour',$aff->id) }}'
+                                                width=60%>
+                                                @csrf
+                                                <div class="row">
+                                                    <div class="input-group p-3 col-md-12">
+                                                        <label class="input-group-text col-md-3 order-md-2"
+                                                            for="inputGroupSelect01"> <span
+                                                                class="text-danger">*</span>إختر
+                                                            مدرس</label>
+                                                        <select class="form-select col-md-9 order-md-1"
+                                                            id="inputGroupSelect01" name="enseignant_id" dir="rtl"
+                                                            required>
+                                                            <option value="{{$aff->enseignant->id}}" selected required>
+                                                                {{$aff->enseignant->nom}} {{$aff->enseignant->prenom}}
+                                                            </option>
+                                                            @foreach ($enseignants as $key => $enseignant)
+                                                            <option value="{{$enseignant->id}}">{{$enseignant->nom}}
+                                                                {{$enseignant->prenom}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="input-group p-3 col-md-12">
+                                                        <label class="input-group-text col-md-3 order-md-2"
+                                                            for="inputGroupSelect02"> <span
+                                                                class="text-danger">*</span>إختر قسم</label>
+                                                        <select class="form-select col-md-9 order-md-1"
+                                                            id="inputGroupSelect02" name="classe_id" dir="rtl" required>
+                                                            <option value="{{$aff->classe->id}}" selected>
+                                                                {{$aff->classe->nom}}</option>
+                                                            @foreach ($classes as $key => $classe)
+                                                            <option value="{{$classe->id}}">{{$classe->nom}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="input-group p-3 col-md-12 ">
+                                                        <label class="input-group-text col-md-3 order-md-2"
+                                                            for="inputGroupSelect03"> <span
+                                                                class="text-danger">*</span>إختر مادة</label>
+                                                        <select class="form-select col-md-9 order-md-1"
+                                                            id="inputGroupSelect03" name="matiere_id" dir="rtl"
+                                                            required>
+                                                            <option value="{{$aff->matiere->id}}" selected>
+                                                                {{$aff->matiere->libelle}}</option>
+                                                            @foreach ($matieres as $key => $matiere)
+                                                            <option value="{{$matiere->id}}">{{$matiere->libelle}}
+                                                            </option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="reset" class="btn btn-secondary"
+                                                data-dismiss="modal">إلغاء</button>
+                                            <button type="submit" class="btn btn-primary">تأكيد</button>
+                                        </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            @endforeach
+
+
+
+                        </div>
+                        <!-- /.card-body -->
                     </div>
-                    <div class="modal-footer">
-                      <button type="reset" class="btn btn-secondary" data-dismiss="modal">إلغاء</button>
-                      <button type="submit" class="btn btn-primary">تأكيد</button>
-                    </div>
-                    </form>
-                  </div>
+                    <!-- /.card -->
                 </div>
-              </div>
-
-              @endforeach
-
-
-
+                <!-- /.col -->
             </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
+            <!-- /.row -->
         </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-    </div>
-    <!-- /.container-fluid -->
-  </section>
-  <!-- /.content -->
+        <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
 

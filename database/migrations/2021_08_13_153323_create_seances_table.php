@@ -14,6 +14,7 @@ class CreateSeancesTable extends Migration
     public function up()
     {
         Schema::create('seances', function (Blueprint $table) {
+
             $table->id();
             $table->string('jour');
             $table->time('heure_debut');
@@ -29,7 +30,6 @@ class CreateSeancesTable extends Migration
             $table->foreign("id_matiere")->references('id')->on('matieres')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign("id_salle")->references('id')->on('salles')->onUpdate('cascade')->onDelete('cascade');
 
-            //$table->foreign("anneescolaire")->references('anneescolaire')->on('classes')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

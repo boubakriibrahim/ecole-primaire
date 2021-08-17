@@ -1,6 +1,6 @@
-@extends('enseignant.enseignant_master')
+@extends('admin.admin_master')
 
-@section('enseignant')
+@section('admin')
 <div class="content-wrapper">
 <section class="content-header">
         <div class="container-fluid">
@@ -29,7 +29,7 @@
               <div class="col-md-6 bg-light ">
                   <div class="d-flex justify-content-center  ">
                        <div  class="list-group-item list-group-item-action active col-md-5 bg-light rounded-pill float-right" aria-current="true">
-                        قائمة القسم 
+                        قائمة القسم
                         {{$classe["classe"]['nom']}}
                       </div>
                   </div>
@@ -37,7 +37,7 @@
                @php $nb=$classe["classe"]['nb'];
                $id=$classe["classe"]["id"];
                @endphp
-            
+
 <form method="post" action='{{ route('list.miseajour',$id) }}' width=60%>
                                     @csrf
 
@@ -68,3 +68,4 @@
 </div>
 
 @endsection
+

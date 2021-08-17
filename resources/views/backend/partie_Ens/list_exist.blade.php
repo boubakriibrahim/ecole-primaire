@@ -1,6 +1,6 @@
-@extends('enseignant.enseignant_master')
+@extends('admin.admin_master')
 
-@section('enseignant')
+@section('admin')
 <div class="content-wrapper">
 <section class="content-header">
         <div class="container-fluid">
@@ -39,7 +39,7 @@
                     <a href="{{ route("list.edit", $id) }}" class="btn btn-success rounded-pill" >نعم</a>
 
                         <a href="{{route("classes.view")}}" class="btn btn-danger rounded-pill " >لا </a>
-                    </center>   
+                    </center>
 
 
                     </div>

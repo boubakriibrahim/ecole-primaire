@@ -22,14 +22,12 @@ use App\Http\controllers\listClassController;
 */
 
 Route::get('/', function () {
-    return view('test');
+    return view('welcome');
 });
 
-Route::get('/enseignant', function () {
-    return view('enseignant/index');
-});
+
 Route::get('/test', function () {
-    return view('welcome');
+    return view('test');
 });
 
 
@@ -38,10 +36,16 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/profil',[App\Http\controllers\ProfilController::class, 'AdminData'])->name('profil');
-
-
 Route::get('/admin/logout', [AdminController::class, 'Logout'])->name('admin.logout');
+
+Route::prefix('profil')->group(function(){
+
+    Route::get('/',[App\Http\controllers\ProfilController::class, 'AdminData'])->name('profil');
+    Route::post('/miseajour/{id}', [App\Http\controllers\ProfilController::class, 'ProfileUpdate'])->name('profil.miseajour');
+    Route::post('/password/{id}', [App\Http\controllers\ProfilController::class, 'ProfileUpdatePassword'])->name('profil.password');
+});
+
+
 
 
 Route::prefix('Enseignant')->group(function(){
@@ -136,12 +140,6 @@ Route::prefix('Emplois')->group(function(){
 
 });
 
-/* Route::middleware(['auth:sanctum', 'verified'])->get('/home', function () {
-    return view('admin/index');
-})->name('test2'); */
-
-
-/*___________routes partie */
 
 
 Route::prefix('eleve')->group(function(){

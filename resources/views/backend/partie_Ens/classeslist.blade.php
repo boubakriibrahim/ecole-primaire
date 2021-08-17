@@ -1,6 +1,6 @@
-@extends('enseignant.enseignant_master')
+@extends('admin.admin_master')
 
-@section('enseignant')
+@section('admin')
 <div class="content-wrapper">
 <section class="content-header">
         <div class="container-fluid">
@@ -20,7 +20,7 @@
           </div><!-- /.row -->
         </div><!-- /.container-fluid -->
   </section>
-  
+
 
   <section class="content">
     <div class="container-fluid">
@@ -30,10 +30,10 @@
             <div class="card-header">
                 <div class="row">
                     <h2 class="col-md-6 offset-md-2  order-md-2 text-right">اقسامي</h2>
-                   
+
 </div>
                       <!-- Modal -->
-                     
+
             <!-- /.card-header -->
             <div class="p-3">
               <table id="example1" class="table table-bordered table-striped text-right p-3">
@@ -42,8 +42,8 @@
                   <th width="25%">العملية</th>
                   <th>السنة الدراسية </th>
                   <th>عدد التلاميذ </th>
-                  
-                  
+
+
                   <th>المستوى </th>
                   <th>الاسم</th>
                   <th width="5%">العدد</th>
@@ -54,15 +54,15 @@
                 <tr>
                   <td>
                        <div class="row">
-                          
-                        
+
+
                        <a href="{{ route("list.check", $classe->id) }}" class="btn btn-success rounded-pill" >اضافة قائمة</a>
-                            
-                          
+
+
                         </div>
                   </td>
                   <td>{{ $classe->anneescolaire }}</td>
-                  
+
                   <td>{{ $classe->nb }}</td>
                   <td>{{ $classe->niveau }}</td>
                   <td>{{ $classe->nom }}</td>
@@ -74,7 +74,7 @@
 
 
 
-             
+
 
             </div>
             <!-- /.card-body -->

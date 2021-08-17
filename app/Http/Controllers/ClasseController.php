@@ -12,11 +12,6 @@ class ClasseController extends Controller
         return view('backend.view_classe', $data);
     }
 
-    /* public function ClasseAdd() {
-
-        return view('backend.ENS.add_Ens');
-    } */
-
     public function ClasseStore(Request $request) {
 
          $request->validate([
@@ -31,9 +26,6 @@ class ClasseController extends Controller
         $data->nb = $request->nb;
         $data->anneescolaire = $request->anneescolaire;
         $data->save();
-
-
-        /* enseignant::create($request->all()); */
 
         $notification = array(
             'message' => 'تم إضافة القسم بنجاح',

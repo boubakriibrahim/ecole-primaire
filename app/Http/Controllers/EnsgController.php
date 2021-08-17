@@ -13,19 +13,26 @@ class EnsgController extends Controller
 {
     
     public function EnsView () {
-        $data['allData'] = enseignant::all();
+        $data['allData'] = DB::table('users')
+        ->join('enseignants', 'users.email', '=', 'enseignants.login')
+        ->select('enseignants.*', 'users.date_naissance', 'users.adresse', 'users.phone', 'users.profile_photo_path')
+        ->get();
+
         return view('backend.ENS.view_Ens', $data);
     }
 
 
     public function EnsStore(Request $request) {
 
-         $request->validate([
-            "nom"=>"required",
+        $request->validate([
+            'nom'=>'required',
             'prenom'=>'required',
             'sexe'=>'required',
+            'login'=>'required',
             'password'=>'required',
-            'login' => 'required',
+            'date_naissance'=>'required',
+            'adresse'=>'required',
+            'phone'=>'required',
         ]);
         
         $ens = new enseignant();
@@ -33,15 +40,21 @@ class EnsgController extends Controller
         $ens->prenom = $request->prenom;
         $ens->sexe = $request->sexe;
         $ens->login = $request->login;
-        $ens->password = bcrypt($request->password);
 
         $ens->save();
 
         $user = new User();
-        $user->name = $request->nom . ' ' . $request->prenom;
+        $user->nom = $request->nom;
+        $user->prenom = $request->prenom;
         $user->role = 'enseignant';
         $user->email = $request->login;
         $user->password = bcrypt($request->password);
+        $user->date_naissance = $request->date_naissance;
+        $user->adresse = $request->adresse;
+        $user->phone = $request->phone;
+
+        $ens_id = DB::table('enseignants')->where('login', $request->login)->value('id');
+        $user->id_enseignant = $ens_id;
 
         $user->save();
 
@@ -67,8 +80,12 @@ class EnsgController extends Controller
 
         $userid = DB::table('users')->where('email', $request->login)->value('id');
         $user = User::find($userid);
-        $user->name = $request->nom . ' ' . $request->prenom;
+        $user->nom = $request->nom;
+        $user->prenom = $request->prenom;
         $user->email = $request->login;
+        $user->date_naissance = $request->date_naissance;
+        $user->adresse = $request->adresse;
+        $user->phone = $request->phone;
 
         $user->save();
 
@@ -83,10 +100,13 @@ class EnsgController extends Controller
     public function EnsDelete($id) {
 
         $ens = enseignant::find($id);
-        $ens->delete();
+        
 
-        $user = User::find($id);
+        $userid = DB::table('users')->where('email', $ens->login)->value('id');
+        $user = User::find($userid);
         $user->delete();
+
+        $ens->delete();
 
         $notification = array(
             'message' => 'تم حذف المدرس بنجاح',

@@ -12,6 +12,9 @@ class affc_eleve extends Model
         'classe_id',
         'eleve_id'
     ];
+
+    public $timestamps = false;
+
     public function classe(){
         return $this->belongsTo(classe::class);
     }

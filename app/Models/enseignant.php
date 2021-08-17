@@ -8,5 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class enseignant extends Model
 {
     use HasFactory;
-    protected $fillable=["nom","prenom","login","password","sexe"];
+    protected $fillable = [
+        'nom',
+        'prenom',
+        'login',
+        'sexe',
+    ];
+
+    public $timestamps = false;
 }

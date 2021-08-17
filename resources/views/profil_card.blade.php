@@ -32,16 +32,16 @@
                         <div class="card-body box-profile">
                             <div class="text-center">
                                 <img class="profile-user-img rounded-circle" src="
-                                    @if(Auth::user()->profile_photo_lien == NULL)
+                                    @if(Auth::user()->profile_photo_path == NULL)
                                     https://i.postimg.cc/6qbpp0LV/profile-photo.jpg
                                     @else
-                                    {{ Auth::user()->profile_photo_lien }}
+                                    {{ Auth::user()->profile_photo_path }}
                                     @endif
-                                    " alt="User profile picture"
-                                    width="50" height="100">
+                                    " alt="User profile picture" width="50" height="100">
                             </div>
 
-                            <h3 class="profile-username text-center">{{ $user->name }}</h3>
+                            <h3 class="profile-username text-center">{{ Auth::user()->nom }} {{ Auth::user()->prenom }}
+                            </h3>
 
                             <p class="text-muted text-center">
                                 @if (Auth::user()->role == "superadmin")
@@ -51,19 +51,52 @@
                                 @endif
                             </p>
 
-                            <ul class="list-group list-group-unbordered mb-3">
-                                <li class="list-group-item">
-                                    <b>Followers</b> <a class="float-right">1,322</a>
-                                </li>
-                                <li class="list-group-item">
-                                    <b>Following</b> <a class="float-right">543</a>
-                                </li>
-                                <li class="list-group-item">
-                                    <b>Friends</b> <a class="float-right">13,287</a>
-                                </li>
-                            </ul>
+                            <div dir="rlt" class="text-right">
+                                <hr>
+                                <strong>تاريخ الولادة<i class="fas fa-calendar ml-2"></i></strong>
 
-                            <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+                                <p class="text-muted">
+                                    {{ Auth::user()->date_naissance }}
+                                </p>
+
+                                <hr>
+
+                                <strong> مكان الإقامة<i class="fas fa-map-marker-alt ml-2"></i></strong>
+
+                                <p class="text-muted">{{ Auth::user()->adresse }}</p>
+
+                                <hr>
+
+                                <strong> الأقسام<i class="fas fa-pencil-alt ml-2"></i></strong>
+
+                                <p class="text-muted">
+                                    <span class="tag tag-danger">UI Design</span>
+                                    <span class="tag tag-success">Coding</span>
+                                    <span class="tag tag-info">Javascript</span>
+                                    <span class="tag tag-warning">PHP</span>
+                                    <span class="tag tag-primary">Node.js</span>
+                                </p>
+
+                                <hr>
+
+                                <strong></i> المواد<i class="far fa-file-alt ml-2"></strong>
+
+                                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
+                                    fermentum enim neque.</p>
+
+                                <hr>
+                            </div>
+
+
+                            @if (Auth::user()->role == "superadmin")
+
+                            @elseif(Auth::user()->role == "enseignant")
+
+                            @endif
+
+
+                            <a href="#" class="btn btn-primary offset-md-4 col-md-4"><b>تغيير المعلومات الشّخصيّة
+                                </b></a>
                         </div>
                         <!-- /.card-body -->
                     </div>

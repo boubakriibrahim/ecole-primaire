@@ -146,10 +146,10 @@
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img src="
-                    @if(Auth::user()->profile_photo_lien == NULL)
+                    @if(Auth::user()->profile_photo_path == NULL)
                     https://i.postimg.cc/6qbpp0LV/profile-photo.jpg
                     @else
-                    {{ Auth::user()->profile_photo_lien }}
+                    {{ Auth::user()->profile_photo_path }}
                     @endif
                     " width="35" height="35" class="rounded-circle">
                 </a>
@@ -158,7 +158,7 @@
                     <span class="dropdown-header">
                         <div class="row">
                             <div class="col-8">
-                                <h5>{{ Auth::user()->name }}</h5>
+                                <h5>{{ Auth::user()->nom }} {{ Auth::user()->prenom }}</h5>
                                 @if (Auth::user()->role == "superadmin")
                                 مدير المدرسة
                                 @elseif(Auth::user()->role == "enseignant")
@@ -167,10 +167,10 @@
                             </div>
                             <div class="col-4">
                                 <img src="
-                        @if(Auth::user()->profile_photo_lien == NULL)
+                        @if(Auth::user()->profile_photo_path == NULL)
                         https://i.postimg.cc/6qbpp0LV/profile-photo.jpg
                         @else
-                        {{ Auth::user()->profile_photo_lien }}
+                        {{ Auth::user()->profile_photo_path }}
                         @endif
                         " alt="" class="rounded-circle" width="50" height="50">
                             </div>

@@ -47,9 +47,14 @@
                                 <thead>
                                     <tr>
                                         <th width="25%">العملية</th>
+                                        <th>البريد الإلكتروني</th>
+                                        <th>رقم الهاتف</th>
+                                        <th>مكان الإقامة</th>
+                                        <th>تاريخ الولادة</th>
                                         <th>الجنس</th>
                                         <th>اللقب</th>
                                         <th>الاسم</th>
+                                        <th>الصورة</th>
                                         <th width="5%">العدد</th>
                                     </tr>
                                 </thead>
@@ -68,9 +73,20 @@
                                                 </button>
                                             </div>
                                         </td>
+                                        <td>{{ $ens->login }}</td>
+                                        <td>{{ $ens->phone }}</td>
+                                        <td>{{ $ens->adresse }}</td>
+                                        <td>{{ $ens->date_naissance }}</td>
                                         <td>{{ $ens->sexe }}</td>
                                         <td>{{ $ens->prenom }}</td>
                                         <td>{{ $ens->nom }}</td>
+                                        <td><img src="
+                                            @if($ens->profile_photo_path == NULL)
+                                            https://i.postimg.cc/6qbpp0LV/profile-photo.jpg
+                                            @else
+                                            {{ $ens->profile_photo_path }}
+                                            @endif
+                                            " alt="صورة المدرس" width="50" height="50"></td>
                                         <td>{{ $key+1 }}</td>
                                     </tr>
                                     @endforeach
@@ -115,40 +131,60 @@
                                                 </div>
                                                 <div class="row" dir="rtl">
                                                     <div class="form-group col-md-6 text-right">
+                                                        <label for="date_naissance"> تاريخ الولادة<span
+                                                                class="text-danger">*</span></label>
+                                                        <input type="date" class="form-control" id="date_naissance"
+                                                            name="date_naissance" placeholder="أدخل تاريخ الولادة"
+                                                            value="{{ $ens->date_naissance }}" required>
+                                                    </div>
+                                                    <div class="form-group col-md-6 text-right">
+                                                        <label for="adresse"> مكان الإقامة <span
+                                                                class="text-danger">*</span></label>
+                                                        <input type="text" class="form-control" id="adresse"
+                                                            name="adresse" placeholder="أدخل مكان الإقامة"
+                                                            value="{{ $ens->adresse }}" required>
+                                                    </div>
+                                                </div>
+                                                <div class="row" dir="rtl">
+                                                    <div class="form-group col-md-6 text-right">
                                                         <label for="login">المعرف <span
                                                                 class="text-danger">*</span></label>
                                                         <input type="text" class="form-control text-left" id="login"
                                                             name="login" placeholder=" أدخل المعرف"
                                                             value="{{ $ens->login }}" required>
                                                     </div>
-                                                    <div class="col-md-6 ">
-                                                        <div class="form-group text-right mt-4">
-
-                                                            <div class="row">
-                                                                <div class="col-md-4">
-                                                                    <label for="sexe">الجنس <span
-                                                                            class="text-danger">*</span></label>
-                                                                </div>
-                                                                <div class="col-4">
-                                                                    <div class="custom-control custom-radio">
-                                                                        <input class="custom-control-input order-2"
-                                                                            type="radio" id="inlineCheckbox1"
-                                                                            name="sexe" value="مذكر" @if( $ens->sexe ==
-                                                                        'مذكر') checked @endif>
-                                                                        <label class="custom-control-label order-1"
-                                                                            for="inlineCheckbox1">مذكر</label>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-4">
-                                                                    <div class="custom-control custom-radio">
-                                                                        <input class="custom-control-input" type="radio"
-                                                                            id="inlineCheckbox2" name="sexe"
-                                                                            value="مؤنث" @if( $ens->sexe ==
-                                                                        'مؤنث') checked @endif>
-                                                                        <label class="custom-control-label"
-                                                                            for="inlineCheckbox2">مؤنث</label>
-                                                                    </div>
-                                                                </div>
+                                                    <div class="form-group col-md-6 text-right">
+                                                        <label for="phone"> رقم الهاتف<span
+                                                                class="text-danger">*</span></label>
+                                                        <input type="text" class="form-control" id="phone" name="phone"
+                                                            placeholder="أدخل رقم الهاتف" value="{{ $ens->phone }}"
+                                                            required>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group text-right" dir="rtl">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <label for="sexe">الجنس <span
+                                                                    class="text-danger">*</span></label>
+                                                        </div>
+                                                        <div class="col-2">
+                                                            <div class="custom-control custom-radio">
+                                                                <input class="custom-control-input order-2" type="radio"
+                                                                    id="inlineCheckbox1" name="sexe" value="مذكر" @if(
+                                                                    $ens->sexe ==
+                                                                'مذكر') checked @endif>
+                                                                <label class="custom-control-label order-1"
+                                                                    for="inlineCheckbox1">مذكر</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-2">
+                                                            <div class="custom-control custom-radio">
+                                                                <input class="custom-control-input" type="radio"
+                                                                    id="inlineCheckbox2" name="sexe" value="مؤنث" @if(
+                                                                    $ens->sexe ==
+                                                                'مؤنث') checked @endif>
+                                                                <label class="custom-control-label"
+                                                                    for="inlineCheckbox2">مؤنث</label>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -213,6 +249,18 @@
                     </div>
                     <div class="row" dir="rtl">
                         <div class="form-group col-md-6 text-right">
+                            <label for="date_naissance"> تاريخ الولادة<span class="text-danger">*</span></label>
+                            <input type="date" class="form-control" id="date_naissance" name="date_naissance"
+                                placeholder="أدخل تاريخ الولادة" required>
+                        </div>
+                        <div class="form-group col-md-6 text-right">
+                            <label for="adresse"> مكان الإقامة <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="adresse" name="adresse"
+                                placeholder="أدخل مكان الإقامة" required>
+                        </div>
+                    </div>
+                    <div class="row" dir="rtl">
+                        <div class="form-group col-md-6 text-right">
                             <label for="login">المعرف <span class="text-danger">*</span></label>
                             <input type="text" class="form-control text-left" id="login" name="login"
                                 placeholder=" أدخل المعرف" required>
@@ -224,9 +272,14 @@
                         </div>
                     </div>
                     <div class="row" dir="rtl">
-                        <div class="form-group text-right">
+                        <div class="form-group col-md-6 text-right">
+                            <label for="phone"> رقم الهاتف<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="phone" name="phone"
+                                placeholder="أدخل رقم الهاتف" required>
+                        </div>
+                        <div class="form-group col-md-6 text-right mt-4">
 
-                            <div class="row">
+                            <div class="row mt-2">
                                 <div class="col-md-4">
                                     <label for="sexe">الجنس <span class="text-danger">*</span></label>
                                 </div>

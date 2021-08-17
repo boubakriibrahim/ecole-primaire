@@ -12,10 +12,6 @@ class eleveController extends Controller
         return view('backend.partie_Ens.view_eleve', $data);
     }
 
-    /* public function ClasseAdd() {
-
-        return view('backend.ENS.add_Ens');
-    } */
 
     public function eleveStore(Request $request) {
 
@@ -26,7 +22,7 @@ class eleveController extends Controller
             'num_inscri'=>'required',
             'date_naissance'=>'required',
         ]);
-       // eleve::create($request->all());
+
         $data = new eleve();
         $data->nom = $request->nom;
         $data->prenom = $request->prenom;
@@ -35,8 +31,6 @@ class eleveController extends Controller
         $data->sexe = $request->sexe;
         $data->save();
 
-
-        /* enseignant::create($request->all()); */
 
         $notification = array(
             'message' => 'تم إضافةالتلميذ  بنجاح',

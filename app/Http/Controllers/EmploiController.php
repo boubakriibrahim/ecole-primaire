@@ -192,23 +192,4 @@ class EmploiController extends Controller
         return view('backend.view_one_emploi',compact('data', 'nom', 'prenom' , 'type', 'anneescolaire', 'matieres', 'salles', 'enseignants', 'classes'));
     }
 
-    /* public function AffEnsUpdate(Request $request, $id) {
-
-        $data = aff_enseignant::find($id);
-        $data->classe_id = $request->classe_id;
-        $data->matiere_id = $request->matiere_id;
-        $data->enseignant_id = $request->enseignant_id;
-
-
-        $data->save();
-
-        $notification = array(
-            'message' => 'تم تحديث التعيين بنجاح',
-            'alert-type' => 'info'
-        );
-
-        return back()->with($notification);
-    }
-
-    } */
 }

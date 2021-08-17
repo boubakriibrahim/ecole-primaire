@@ -143,7 +143,8 @@
                                                                     <div class="custom-control custom-radio">
                                                                         <input class="custom-control-input" type="radio"
                                                                             id="inlineCheckbox2" name="sexe"
-                                                                            value="مؤنث" checked>
+                                                                            value="مؤنث" @if( $ens->sexe ==
+                                                                        'مؤنث') checked @endif>
                                                                         <label class="custom-control-label"
                                                                             for="inlineCheckbox2">مؤنث</label>
                                                                     </div>

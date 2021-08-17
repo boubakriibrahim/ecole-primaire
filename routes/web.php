@@ -203,10 +203,10 @@ Route::prefix('list')->group(function(){
     Route::get('/creeClasse/{id}', [App\Http\controllers\listClassController::class, 'listView'])->name('list.view');
     Route::get('/checkList/{id}', [App\Http\controllers\listClassController::class, 'listCheck'])->name('list.check');
 
-    Route::post('/store', [App\Http\controllers\listClassController::class, 'listStore'])->name('list.store');
+    Route::post('/store/{id}', [App\Http\controllers\listClassController::class, 'listStore'])->name('list.store');
 
-    Route::post('/miseajour/{id}', [App\Http\controllers\eleveController::class, 'eleveUpdate'])->name('eleve.miseajour');
+    Route::get('/edit/{id}', [App\Http\controllers\listClassController::class, 'editList'])->name('list.edit');
 
-    Route::get('/effacer/{id}', [App\Http\controllers\eleveController::class, 'eleveDelete'])->name('eleve.delete');
+    Route::post('/modifier/{id}', [App\Http\controllers\listClassController::class, 'updateList'])->name('list.miseajour');
 
 });

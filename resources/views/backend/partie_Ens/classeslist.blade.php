@@ -56,13 +56,8 @@
                        <div class="row">
                           
                         
-                             <button    id="List">إنشاء قائمة</button>
-                             <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script type="text/javascript">
-            let btn=document.getElemenyById('List');
-            btn.onclick= function () {
-              swal("mon alert!");}}
-              </script>
+                       <a href="{{ route("list.check", $classe->id) }}" class="btn btn-success rounded-pill" >اضافة قائمة</a>
+                            
                           
                         </div>
                   </td>

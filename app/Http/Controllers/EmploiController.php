@@ -170,6 +170,7 @@ class EmploiController extends Controller
 
     public function EmploiViewOne ($id) {
 
+        
         $emploi = Emploi::find($id);
         $anneescolaire = $emploi->anneescolaire;
         $matieres = Matiere::all();

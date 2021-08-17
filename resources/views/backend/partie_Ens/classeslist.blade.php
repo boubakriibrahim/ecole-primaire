@@ -17,11 +17,10 @@
               </ol>
             </div><!-- /.col -->
 
-
-
           </div><!-- /.row -->
         </div><!-- /.container-fluid -->
   </section>
+  
 
   <section class="content">
     <div class="container-fluid">
@@ -57,7 +56,8 @@
                        <div class="row">
                           
                         
-                             <a href="{{ route("list.view", $classe->id) }}"  class="btn btn-success rounded-pill shadow-lg col-md-8" id="list">إنشاء قائمة</a>
+                       <a href="{{ route("list.check", $classe->id) }}" class="btn btn-success rounded-pill" >اضافة قائمة</a>
+                            
                           
                         </div>
                   </td>

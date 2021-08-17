@@ -156,7 +156,7 @@
                                                     <div class="form-group col-md-6 text-right">
                                                         <label for="phone"> رقم الهاتف<span
                                                                 class="text-danger">*</span></label>
-                                                        <input type="text" class="form-control" id="phone" name="phone"
+                                                        <input type="number" class="form-control" id="phone" name="phone"
                                                             placeholder="أدخل رقم الهاتف" value="{{ $ens->phone }}"
                                                             required>
                                                     </div>
@@ -274,7 +274,7 @@
                     <div class="row" dir="rtl">
                         <div class="form-group col-md-6 text-right">
                             <label for="phone"> رقم الهاتف<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="phone" name="phone"
+                            <input type="number" class="form-control" id="phone" name="phone"
                                 placeholder="أدخل رقم الهاتف" required>
                         </div>
                         <div class="form-group col-md-6 text-right mt-4">

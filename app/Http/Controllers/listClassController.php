@@ -71,7 +71,7 @@ class listClassController extends Controller
             if($noms[$i]==0){
 
                 $notification = array(
-                    'message' => '  يجب تعمير جميع اللأسماء   ',
+                    'message' => 'يجب تعمير جميع اللأسماء',
                     'alert-type' => 'error'
                 );
 
@@ -82,7 +82,7 @@ class listClassController extends Controller
             for($j=$i+1;$j<$nb;$j++){
                 if($noms[$i]==$noms[$j]){
                     $notification = array(
-                        'message' => 'هناك إسم متكرر   ',
+                        'message' => 'هناك إسم متكرر',
                         'alert-type' => 'error'
                     );
 
@@ -108,7 +108,7 @@ class listClassController extends Controller
     }
 
         $notification = array(
-            'message' => 'تم إضافة قائمة  القسم بنجاح',
+            'message' => 'تم إضافة قائمة القسم بنجاح',
             'alert-type' => 'success'
         );
 
@@ -143,7 +143,7 @@ class listClassController extends Controller
 
 
                 $notification = array(
-                    'message' => '  يجب تعمير جميع اللأسماء   ',
+                    'message' => 'يجب تعمير جميع اللأسماء',
                     'alert-type' => 'error'
                 );
 
@@ -157,7 +157,7 @@ class listClassController extends Controller
                 if($noms[$i]==$noms[$j]){
 
                     $notification = array(
-                        'message' => 'هناك إسم متكرر   ',
+                        'message' => 'هناك إسم متكرر',
                         'alert-type' => 'error'
                     );
 
@@ -183,7 +183,7 @@ class listClassController extends Controller
         }
 
         $notification = array(
-            'message' => 'تم إضافة قائمة  القسم بنجاح',
+            'message' => 'تم إضافة قائمة القسم بنجاح',
             'alert-type' => 'success'
         );
 

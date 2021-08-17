@@ -53,7 +53,7 @@
                 @foreach ($data as $key => $classe)
                 <tr>
                   <td>
-                       <div class="row">
+                       <div class="row">  
                           
                         
                        <a href="{{ route("list.check", $classe->id) }}" class="btn btn-success rounded-pill" >اضافة قائمة</a>

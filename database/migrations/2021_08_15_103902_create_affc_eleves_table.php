@@ -17,10 +17,9 @@ class CreateAffcElevesTable extends Migration
             $table->id();
             $table->unsignedBigInteger("classe_id");
             $table->unsignedBigInteger("eleve_id");
-            
+
             $table->foreign("classe_id")->references('id')->on('classes')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign("eleve_id")->references('id')->on('eleves')->onUpdate('cascade')->onDelete('cascade')->constained();
-            $table->timestamps();
         });
     }
 

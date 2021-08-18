@@ -36,34 +36,40 @@
 
                             <!-- /.card-header -->
                             <div class="p-3">
-                                <table id="example1" class="table table-bordered table-striped text-right p-3">
+                                <table id="example1" class="table table-bordered table-striped text-right p-3" dir="rtl">
                                     <thead>
-                                        <tr>
-                                            <th width="25%">العملية</th>
-                                            <th>السنة الدراسية </th>
-                                            <th>عدد التلاميذ </th>
-                                            <th>المستوى </th>
-                                            <th>الاسم</th>
+                                        <tr dir="rtl">
                                             <th width="5%">العدد</th>
+                                            <th>الاسم</th>
+                                            <th>المستوى </th>
+                                            <th>عدد التلاميذ </th>
+                                            <th>السنة الدراسية </th>
+                                            <th width="25%">العملية</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($data as $key => $classe)
                                         <tr>
-                                            <td class="col-md-3">
+                                            <td>{{ $key+1 }}</td>
+                                            <td>{{ $classe->nom }}</td>
+                                            <td>{{ $classe->niveau }}</td>
+                                            <td>{{ $classe->nb }}</td>
+                                            <td>{{ $classe->anneescolaire }}</td>
+                                            <td>
                                                 <div class="row" dir="rtl">
-                                                    
-                                                <a href="{{ route("list.check", $classe->id) }}"
-                                                        class="btn btn-success rounded-pill offset-sm-3 mr-sm-1 col-sm-4">اضافة قائمة</a>
-                                                <a href="{{ route("abscence.view", $classe->id) }}"
-                                                        class="btn btn-primary rounded-pill col-md-4 ">تسجيل حضور  </a>
+                                                    <div class="col-md-6 order-3 order-md-1 mt-1 mt-md-0 px-1">
+                                                        <a href="{{ route("list.check", $classe->id) }}"
+                                                            class="btn btn-success btn-block"><i
+                                                                class="fa fa-plus-circle ml-1"></i>اضافة
+                                                            قائمة</a>
+                                                    </div>
+                                                    <div class="col-md-6 order-md-2 px-1">
+                                                        <a href="{{ route("abscence.view", $classe->id) }}"
+                                                            class="btn btn-primary btn-block"><i
+                                                                class="fas fa-user-check ml-1"></i> تسجيل الحضور </a>
+                                                    </div>
                                                 </div>
                                             </td>
-                                            <td>{{ $classe->anneescolaire }}</td>
-                                            <td>{{ $classe->nb }}</td>
-                                            <td>{{ $classe->niveau }}</td>
-                                            <td>{{ $classe->nom }}</td>
-                                            <td>{{ $key+1 }}</td>
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -100,11 +106,11 @@
                     text: 'نسخ',
                     exportOptions: {
                         columns: [
-                            '1:visIdx',
-                            '2:visIdx',
-                            '3:visIdx',
                             '4:visIdx',
-                            '5:visIdx'
+                            '3:visIdx',
+                            '2:visIdx',
+                            '1:visIdx',
+                            '0:visIdx'
                         ]
                     }
                 },
@@ -113,11 +119,11 @@
                     text: 'Excel',
                     exportOptions: {
                         columns: [
-                            '1:visIdx',
-                            '2:visIdx',
-                            '3:visIdx',
                             '4:visIdx',
-                            '5:visIdx'
+                            '3:visIdx',
+                            '2:visIdx',
+                            '1:visIdx',
+                            '0:visIdx'
                         ]
                     }
                 }, "pdf",
@@ -126,11 +132,11 @@
                     text: 'طباعة',
                     exportOptions: {
                         columns: [
-                            '1:visIdx',
-                            '2:visIdx',
-                            '3:visIdx',
                             '4:visIdx',
-                            '5:visIdx'
+                            '3:visIdx',
+                            '2:visIdx',
+                            '1:visIdx',
+                            '0:visIdx'
                         ]
                     }
                 }, {

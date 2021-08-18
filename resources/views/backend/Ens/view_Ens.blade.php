@@ -153,7 +153,6 @@
                                                             name="login" placeholder=" أدخل المعرف"
                                                             value="{{ $ens->login }}" required>
                                                     </div>
-
                                                     <div class="form-group col-md-6 text-right">
                                                         <label for="phone"> رقم الهاتف<span
                                                                 class="text-danger">*</span></label>

@@ -39,6 +39,7 @@
               <table id="example1" class="table table-bordered table-striped text-right p-3">
                 <thead>
                 <tr>
+                  {{bcrypt('12356')}}
                   <th width="25%">العملية</th>
                   <th>السنة الدراسية </th>
                   <th>عدد التلاميذ </th>

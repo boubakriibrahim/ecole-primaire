@@ -19,6 +19,13 @@ class CreateEnseignantsTable extends Migration
             $table->string('prenom');
             $table->string('login')->unique();
             $table->string('sexe');
+            $table->string('role');
+            $table->timestamp('login_verified_at')->nullable();
+            $table->string('password');
+            $table->rememberToken();
+            $table->foreignId('current_team_id')->nullable();
+            $table->string('profile_photo_path', 2048)->nullable();
+            $table->timestamps();
         });
     }
 

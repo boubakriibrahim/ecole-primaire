@@ -9,6 +9,7 @@ use App\Http\Controllers\AffEnsController;
 use App\Http\controllers\ProfilController;
 use App\Http\controllers\eleveController;
 use App\Http\controllers\listClassController;
+use App\Http\controllers\abscenceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +28,7 @@ Route::get('/', function () {
 
 
 Route::get('/test', function () {
-    return view('test');
+    return view('backend.partie_Ens.abscenceView');
 });
 
 
@@ -170,3 +171,17 @@ Route::prefix('list')->group(function(){
 
 });
 
+
+Route::prefix('abscence')->group(function(){
+    Route::get('/abscence/{id}', [App\Http\controllers\abscenceController::class, 'abscenceView'])->name('abscence.view');
+
+    Route::get('/creeClasse/{id}', [App\Http\controllers\listClassController::class, 'listView'])->name('list.view');
+    Route::get('/checkList/{id}', [App\Http\controllers\listClassController::class, 'listCheck'])->name('list.check');
+
+    Route::post('/store/{id}', [App\Http\controllers\abscenceController::class, 'abscenceStore'])->name('abscence.store');
+
+    Route::get('/edit/{id}', [App\Http\controllers\listClassController::class, 'editList'])->name('list.edit');
+
+    Route::post('/modifier/{id}', [App\Http\controllers\listClassController::class, 'updateList'])->name('list.miseajour');
+
+});

@@ -242,7 +242,7 @@
                             </div>
                             <div class="col-2">
                                 <div class="custom-control custom-radio">
-                                    <input class="custom-control-input order-2" type="radio" id="inlineCheckbox1"
+                                    <input class="custom-control-input order-2" type="radio" checked id="inlineCheckbox1"
                                         name="sexe" value="0">
                                     <label class="custom-control-label order-1" for="inlineCheckbox1">مذكر</label>
                                 </div>

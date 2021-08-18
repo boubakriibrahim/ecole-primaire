@@ -1,6 +1,6 @@
 @extends('admin.admin_master')
-
 @section('admin')
+
 <div class="content-wrapper">
     <section class="content-header">
         <div class="container-fluid">
@@ -50,10 +50,13 @@
                                     <tbody>
                                         @foreach ($data as $key => $classe)
                                         <tr>
-                                            <td>
+                                            <td class="col-md-3">
                                                 <div class="row" dir="rtl">
-                                                    <a href="{{ route("list.check", $classe->id) }}"
+                                                    
+                                                <a href="{{ route("list.check", $classe->id) }}"
                                                         class="btn btn-success rounded-pill offset-sm-3 mr-sm-1 col-sm-4">اضافة قائمة</a>
+                                                <a href="{{ route("abscence.view", $classe->id) }}"
+                                                        class="btn btn-primary rounded-pill col-md-4 ">تسجيل حضور  </a>
                                                 </div>
                                             </td>
                                             <td>{{ $classe->anneescolaire }}</td>

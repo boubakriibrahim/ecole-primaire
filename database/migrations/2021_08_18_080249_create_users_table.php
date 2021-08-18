@@ -14,6 +14,7 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
+
             $table->id();
             $table->string('nom');
             $table->string('prenom');
@@ -29,8 +30,6 @@ class CreateUsersTable extends Migration
             $table->string('profile_photo_path', 2048)->nullable();
             $table->timestamps();
 
-
-            $table->foreign("id_enseignant")->references('id')->on('enseignants')->onUpdate('cascade')->onDelete('cascade')->constained();
         });
     }
 

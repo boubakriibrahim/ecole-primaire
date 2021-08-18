@@ -9,11 +9,13 @@ class abscence extends Model
 {
     use HasFactory;
     protected $fillable = [
+        
         'jour',
         'heure_debut',
         'heure_fin',
         'eleve_id',
-        'anneescolaire'
+        'anneescolaire',
+        'date',
     ];
     public function eleve(){
         return $this->belongsTo(eleve::class);

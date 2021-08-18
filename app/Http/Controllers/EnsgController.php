@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 
 class EnsgController extends Controller
 {
-    
+
     public function EnsView () {
         $data['allData'] = DB::table('users')
         ->join('enseignants', 'users.email', '=', 'enseignants.login')
@@ -34,7 +34,7 @@ class EnsgController extends Controller
             'adresse'=>'required',
             'phone'=>'required',
         ]);
-        
+
         $ens = new enseignant();
         $ens->nom = $request->nom;
         $ens->prenom = $request->prenom;
@@ -62,13 +62,24 @@ class EnsgController extends Controller
             'message' => 'تم إضافة المدرس بنجاح',
             'alert-type' => 'success'
         );
-       
+
 
         return back()->with($notification);
     }
 
 
     public function EnsUpdate(Request $request, $id) {
+
+
+        $request->validate([
+            'nom'=>'required',
+            'prenom'=>'required',
+            'sexe'=>'required',
+            'login'=>'required',
+            'date_naissance'=>'required',
+            'adresse'=>'required',
+            'phone'=>'required',
+        ]);
 
         $ens = enseignant::find($id);
         $ens->nom = $request->nom;
@@ -100,7 +111,7 @@ class EnsgController extends Controller
     public function EnsDelete($id) {
 
         $ens = enseignant::find($id);
-        
+
 
         $userid = DB::table('users')->where('email', $ens->login)->value('id');
         $user = User::find($userid);
@@ -116,5 +127,5 @@ class EnsgController extends Controller
         return back()->with($notification);
     }
 
-    
+
 }

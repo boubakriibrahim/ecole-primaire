@@ -155,7 +155,10 @@
 
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     {{-- time picker --}}
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
@@ -651,7 +654,7 @@
             interval: 30,
             minTime: '08:00',
             maxTime: '18:00',
-            defaultTime: '8',
+            defaultTime: false,
             startTime: '08:00',
             dynamic: true,
             dropdown: true,
@@ -688,7 +691,7 @@
             $("#example1").DataTable({
                 "responsive": true,
                 "lengthChange": false,
-                "pageLength": 5,
+                "pageLength": 40,
                 "autoWidth": false,
                 "buttons": [{
                         extend: 'copy',

@@ -31,8 +31,7 @@
                         <div class="card-header">
                             <div class="row">
                                 <h2 class="col-md-6 offset-md-2  order-md-2 text-right">المواد</h2>
-                                {{-- <a href="{{ route('matiere.add') }}" class="btn btn-block bg-gradient-primary
-                                offset-md-1 col-md-2 order-md-1 mt-sm-2">إضافة مادة</a> --}}
+
                                 <button type="button"
                                     class="btn btn-block bg-gradient-primary offset-md-1 col-md-2 order-md-1 mt-sm-2"
                                     data-toggle="modal" data-target="#exampleModal">
@@ -44,8 +43,8 @@
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">إضافة مادة</h5>
+                                            <div class="modal-header text-center">
+                                                <h5 class="modal-title w-100" id="exampleModalLabel">إضافة مادة</h5>
                                                 <button type="button" class="close" data-dismiss="modal"
                                                     aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
@@ -55,16 +54,16 @@
                                                 <form method="post" action='{{ route('matiere.store') }}' width=60%>
                                                     @csrf
 
-                                                    <div class="row">
-                                                        <div class="form-group col-md-6">
-                                                            <label for="niveau"> المستوى<span
+                                                    <div class="row" dir="rtl">
+                                                        <div class="form-group col-md-6 text-right">
+                                                            <label for="niveau"> المستوى <span
                                                                     class="text-danger">*</span></label>
                                                             <input type="number" class="form-control" id="niveau"
                                                                 name="niveau" placeholder="أدخل المستوى" min="1" max="6"
                                                                 required>
                                                         </div>
-                                                        <div class="form-group col-md-6">
-                                                            <label for="libelle"> الإسم<span
+                                                        <div class="form-group col-md-6 text-right">
+                                                            <label for="libelle"> الإسم <span
                                                                     class="text-danger">*</span></label>
                                                             <input type="text" class="form-control" id="libelle"
                                                                 name="libelle" placeholder="أدخل الإسم" required>
@@ -85,34 +84,32 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="p-3">
-                            <table id="example1" class="table table-bordered table-striped p-3">
+                            <table id="example1" class="table table-bordered table-striped text-right p-3">
                                 <thead>
                                     <tr>
-                                        <th width="5%">العدد</th>
+                                        <th width="25%">العملية</th>
                                         <th>المستوى</th>
                                         <th>الاسم</th>
-                                        <th width="25%">العملية</th>
+                                        <th width="5%">العدد</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($allData as $key => $matiere)
                                     <tr>
-                                        <td>{{ $key+1 }}</td>
+                                        <td>
+                                            <div class="row">
+                                                <a href="{{ route("matiere.delete", $matiere->id) }}"
+                                                    class="btn btn-danger offset-sm-3 mr-sm-1 col-sm-4 order-3 order-sm-1"
+                                                    id="delete">حذف</a>
+                                                <button type="button" class="btn btn-info col-sm-4 order-2"
+                                                    data-toggle="modal" data-target="#model{{$matiere->id}}">
+                                                    تحديث
+                                                </button>
+                                            </div>
+                                        </td>
                                         <td>{{ $matiere->niveau }}</td>
                                         <td>{{ $matiere->libelle }}</td>
-                                        <td>
-                                            {{-- <a href="" class="btn btn-info">تعديل</a> --}}
-
-                                            <button type="button" class="btn btn-info" data-toggle="modal"
-                                                data-target="#model{{$matiere->id}}">
-                                                تحديث
-                                            </button>
-
-
-
-                                            <a href="{{ route("matiere.delete", $matiere->id) }}" class="btn btn-danger"
-                                                id="delete">حذف</a>
-                                        </td>
+                                        <td>{{ $key+1 }}</td>
                                     </tr>
                                     @endforeach
                                     </tfoot>
@@ -137,22 +134,23 @@
                                                 width=60%>
                                                 @csrf
 
-                                                <div class="row">
-                                                    <div class="form-group col-md-6">
-                                                        <label for="niveau"> المستوى<span
+                                                <div class="row" dir="rtl">
+                                                    <div class="form-group col-md-6 text-right">
+                                                        <label for="niveau"> المستوى <span
                                                                 class="text-danger">*</span></label>
                                                         <input type="number" class="form-control" id="niveau"
                                                             name="niveau" placeholder="أدخل المستوى" min="1" max="6"
-                                                            required value="{{ $matiere->niveau }}">
+                                                            value="{{ $matiere->niveau }}" required>
                                                     </div>
-                                                    <div class="form-group col-md-6">
-                                                        <label for="libelle"> الإسم<span
+                                                    <div class="form-group col-md-6 text-right">
+                                                        <label for="libelle"> الإسم <span
                                                                 class="text-danger">*</span></label>
                                                         <input type="text" class="form-control" id="libelle"
                                                             name="libelle" placeholder="أدخل الإسم"
                                                             value="{{ $matiere->libelle }}" required>
                                                     </div>
                                                 </div>
+
                                         </div>
                                         <div class="modal-footer">
                                             <button type="reset" class="btn btn-secondary"

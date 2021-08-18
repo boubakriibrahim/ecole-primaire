@@ -9,28 +9,34 @@ use App\Models\classe;
 use App\Models\eleve;
 use App\Models\aff_enseignant;
 use App\Models\affc_eleve;
+use Illuminate\Support\Facades\Auth;
 
 class listClassController extends Controller
 {
     public function listClasses(){
-        // $data=['AdminInfo'=>user::where('id',1)->first()];
-         //dd(session()->all());
-        // $session_id = session()->getId();
-         //$data=['session'=>session::where('id',$session_id)->first()];
-        // $d=$data->fetch();
-        //foreach($data as $key => $sess){
-        // dd($user_id);
-         //dd($session_id);
-        // $data=aff_enseignant::where('enseignant_id',$user_id)->get();
-        $data=DB::table('aff_enseignants')
+
+        $allData=DB::table('aff_enseignants')
         ->join('enseignants', function ($join) {
-            $user_id=3;
+            $user_id= Auth::user()->id_enseignant;
             $join->on('aff_enseignants.enseignant_id', '=', 'enseignants.id')
                  ->where('enseignants.id', $user_id);
         })
         ->join("classes",'classes.id','aff_enseignants.classe_id')
         ->select("classes.*")
         ->get();
+
+
+
+        // pas de repetition de classes
+        $noms = array();
+        $data = array();
+
+        foreach($allData as $key => $classe){
+            if(!in_array($classe->nom, $noms, true)){
+                array_push($noms, $classe->nom);
+                array_push($data, $classe);
+            }
+        }
 
          return view('backend.partie_Ens.classeslist',compact('data'));
      }
@@ -39,8 +45,8 @@ class listClassController extends Controller
         $eleves=eleve::all();
         $eleves_ids=DB::table("affc_eleves")->pluck('eleve_id');
         $data1 = $eleves->diff(eleve::whereIn('id', $eleves_ids)->get());
-        $classe=["classe"=>classe::where("id",$id)->first()];        
-        
+        $classe=["classe"=>classe::where("id",$id)->first()];
+
         return view('backend.partie_Ens.view_list',$classe,compact('data1'));
     }
     public function listCheck($id){
@@ -65,33 +71,33 @@ class listClassController extends Controller
             if($noms[$i]==0){
 
                 $notification = array(
-                    'message' => '  يجب تعمير جميع اللأسماء   ',
+                    'message' => 'يجب تعمير جميع اللأسماء',
                     'alert-type' => 'error'
                 );
-        
-        
+
+
                 return back()->with($notification);
 
             }
             for($j=$i+1;$j<$nb;$j++){
                 if($noms[$i]==$noms[$j]){
                     $notification = array(
-                        'message' => 'هناك إسم متكرر   ',
+                        'message' => 'هناك إسم متكرر',
                         'alert-type' => 'error'
                     );
-            
-            
+
+
                     return back()->with($notification);
 
                 }
             }
-        }        
+        }
         for ($i=0; $i <$nb ; $i++){
-            
+
             $request->validate([
                 'noms'=>'required',
             ]);
-            
+
 
         $affec = new affc_eleve();
         $affec->classe_id = $id;
@@ -102,7 +108,7 @@ class listClassController extends Controller
     }
 
         $notification = array(
-            'message' => 'تم إضافة قائمة  القسم بنجاح',
+            'message' => 'تم إضافة قائمة القسم بنجاح',
             'alert-type' => 'success'
         );
 
@@ -115,7 +121,7 @@ class listClassController extends Controller
         $eleves=eleve::all();
         $eleves_ids=DB::table("affc_eleves")->pluck('eleve_id');
         $data1 = $eleves->diff(eleve::whereIn('id', $eleves_ids)->get());
-        
+
         $eleves_aff=affc_eleve::where('classe_id',$id)->get();
         //dd($eleves_aff);
 
@@ -137,11 +143,11 @@ class listClassController extends Controller
 
 
                 $notification = array(
-                    'message' => '  يجب تعمير جميع اللأسماء   ',
+                    'message' => 'يجب تعمير جميع اللأسماء',
                     'alert-type' => 'error'
                 );
-        
-        
+
+
                 return back()->with($notification);
 
             }
@@ -151,22 +157,22 @@ class listClassController extends Controller
                 if($noms[$i]==$noms[$j]){
 
                     $notification = array(
-                        'message' => 'هناك إسم متكرر   ',
+                        'message' => 'هناك إسم متكرر',
                         'alert-type' => 'error'
                     );
-            
-            
+
+
                     return back()->with($notification);
 
                 }
             }
-        }        
+        }
         for ($i=0; $i <$nb ; $i++){
             $request->validate([
                 'noms'=>'required',
             ]);
 
-            
+
 
         $affec = affc_eleve::find($id_aff[$i]);
         $affec->classe_id = $id;
@@ -174,10 +180,10 @@ class listClassController extends Controller
 
         $affec->save();
 
-    }
+        }
 
         $notification = array(
-            'message' => 'تم إضافة قائمة  القسم بنجاح',
+            'message' => 'تم إضافة قائمة القسم بنجاح',
             'alert-type' => 'success'
         );
 
@@ -187,11 +193,4 @@ class listClassController extends Controller
 
 
 
-    }
-
-
-
-
-
-    
-
+}

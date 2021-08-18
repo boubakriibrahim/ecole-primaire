@@ -15,11 +15,12 @@ class CreateAbscencesTable extends Migration
     {
         Schema::create('abscences', function (Blueprint $table) {
             $table->id();
-            $table->date('jour');
+            $table->string('jour');
             $table->time('heure_debut');
             $table->time('heure_fin');
             $table->unsignedBigInteger("eleve_id");
             $table->string('anneescolaire');
+            $table->date('date');
            // $table->timestamps();
 
             $table->foreign("eleve_id")->references('id')->on('eleves')->onUpdate('cascade')->onDelete('cascade')->constained();

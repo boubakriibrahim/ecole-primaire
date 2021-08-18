@@ -140,6 +140,8 @@ Route::prefix('Emplois')->group(function(){
 
 });
 
+Route::get('/monEmploi', [App\Http\controllers\EmploiController::class, 'monEmploi'])->name('mon.emploi');
+
 
 
 Route::prefix('eleve')->group(function(){
@@ -167,3 +169,4 @@ Route::prefix('list')->group(function(){
     Route::post('/modifier/{id}', [App\Http\controllers\listClassController::class, 'updateList'])->name('list.miseajour');
 
 });
+

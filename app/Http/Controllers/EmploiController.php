@@ -10,6 +10,7 @@ use App\Models\enseignant;
 use App\Models\Matiere;
 use App\Models\Salle;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class EmploiController extends Controller
 {
@@ -170,7 +171,7 @@ class EmploiController extends Controller
 
     public function EmploiViewOne ($id) {
 
-        
+
         $emploi = Emploi::find($id);
         $anneescolaire = $emploi->anneescolaire;
         $matieres = Matiere::all();
@@ -191,6 +192,19 @@ class EmploiController extends Controller
         }
 
         return view('backend.view_one_emploi',compact('data', 'nom', 'prenom' , 'type', 'anneescolaire', 'matieres', 'salles', 'enseignants', 'classes'));
+    }
+
+
+    public function monEmploi() {
+
+        $matieres = Matiere::all();
+        $salles = Salle::all();
+        $enseignants = enseignant::all();
+        $classes = Classe::all();
+
+        $data = DB::table('seances')->where('id_enseignant', Auth::user()->id_enseignant)->orderBy('jour')->orderBy('heure_debut')->get();
+
+        return view('backend.view_monEmploi',compact('data', 'matieres', 'salles', 'enseignants', 'classes'));
     }
 
 }

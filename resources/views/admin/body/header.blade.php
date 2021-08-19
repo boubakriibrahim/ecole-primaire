@@ -1,8 +1,8 @@
 <nav class="main-header navbar navbar-expand-lg navbar-dark" dir="rtl">
     <div class="container">
         <a href="{{ url('/') }}" class="navbar-brand mr-2">
-            <img src="{{asset('images/uploads/'.$ecoleCreds->ecole_photo_path)}}" alt="Logo" class="brand-image img-circle elevation-3 ml-2"
-                style="opacity: .8" width="35">
+            <img src="{{asset('images/uploads/'.$ecoleCreds->ecole_photo_path)}}" alt="Logo"
+                class="brand-image img-circle elevation-3 ml-2" style="opacity: .8" width="35">
             <span class="brand-text font-weight-light">
                 <b>{{ $ecoleCreds->nom }}</b>
             </span>
@@ -39,13 +39,17 @@
                 </li>
                 <li class="nav-item dropdown text-right">
                     <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                        class="nav-link dropdown-toggle"><i class="fas fa-user-check ml-2"></i>التّصرّف في المدرّسين
+                        class="nav-link dropdown-toggle"><i class="fas fa-user-check ml-2"></i>التّصرّف في الأشخاص
                     </a>
                     <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow"
                         style="left: 0px; right: inherit;">
                         <li><a href="{{ route('Ens.view') }}" class="dropdown-item text-right">
-                                <i class="nav-icon fas fa-users pl-2"></i>
+                                <i class="nav-icon fas fa-user-tie pl-2"></i>
                                 عرض قائمة المدرّسين
+                            </a></li>
+                        <li><a href="{{ route('eleve.view') }}" class="dropdown-item text-right">
+                                <i class="nav-icon fas fa-user-graduate pl-2"></i>
+                                عرض قائمة التلاميذ
                             </a></li>
                         <li><a href="{{route('affEns.view')}}" class="dropdown-item text-right">
                                 <i class="fas fa-pen pl-2"></i>
@@ -87,16 +91,19 @@
                 </li>
 
                 <li class="nav-item text-right">
-                    <a href="{{ route('mon.emploi') }}" class="nav-link"><i class="fas fa-hourglass-end ml-1"></i> جدول أوقاتي</a>
+                    <a href="{{ route('mon.emploi') }}" class="nav-link"><i class="fas fa-hourglass-end ml-1"></i> جدول
+                        أوقاتي</a>
                 </li>
 
                 <li class="nav-item text-right">
-                    <a href="{{ route('eleve.view') }}" class="nav-link"><i class="fas fa-book-open ml-1"></i> التصرف في التلاميذ</a>
+                    <a href="{{ route('eleve.view') }}" class="nav-link"><i class="fas fa-book-open ml-1"></i> التصرف في
+                        التلاميذ</a>
                 </li>
 
 
                 <li class="nav-item text-right">
-                    <a href="{{ route('classes.view') }}" class="nav-link"><i class="fas fa-chalkboard-teacher ml-1"></i> التصرّف في الأقسام</a>
+                    <a href="{{ route('classes.view') }}" class="nav-link"><i
+                            class="fas fa-chalkboard-teacher ml-1"></i> التصرّف في الأقسام</a>
                 </li>
 
 

@@ -49,13 +49,6 @@
 
                             <div dir="rlt" class="text-center">
                                 <hr>
-                                <strong>تاريخ الولادة<i class="fas fa-calendar ml-2"></i></strong>
-
-                                <p class="text-muted">
-
-                                </p>
-
-                                <hr>
 
                                 <strong>الموقع<i class="fas fa-map-marker-alt ml-2"></i></strong>
 
@@ -71,10 +64,25 @@
 
                                 <strong> البريد الإلكتروني<i class="fas fa-envelope ml-2"></i></strong>
 
-                                <p class="text-muted">{{-- {{ $ecole->email }} --}}</p>
+                                <p class="text-muted">{{ $ecole->email }}</p>
 
                                 <hr>
 
+                                <strong>الوصف الأول<i class="fas fa-calendar ml-2"></i></strong>
+
+                                <p class="text-muted">
+                                    {{ $ecole->description1 }}
+                                </p>
+
+                                <hr>
+
+                                <strong>الوصف الثاني<i class="fas fa-calendar ml-2"></i></strong>
+
+                                <p class="text-muted">
+                                    {{ $ecole->description2 }}
+                                </p>
+
+                                <hr>
 
                             </div>
 
@@ -117,53 +125,53 @@
             </div>
             <div class="modal-body">
                 <form method="post" action='{{ route('profil.miseajour', Auth::user()->id) }}' width=60%>
-                    @csrf
+@csrf
 
-                    <div class="row" dir="rtl">
-                        <div class="form-group col-md-6 text-right">
-                            <label for="nom"> الإسم<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="nom" name="nom" placeholder="أدخل الإسم"
-                                value="{{ Auth::user()->nom }}" required>
-                        </div>
-                        <div class="form-group col-md-6 text-right">
-                            <label for="prenom"> اللقب <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="prenom" name="prenom" placeholder="أدخل اللقب"
-                                value="{{ Auth::user()->prenom }}" required>
-                        </div>
-                    </div>
-                    <div class="row" dir="rtl">
-                        <div class="form-group col-md-6 text-right">
-                            <label for="date_naissance"> تاريخ الولادة <span class="text-danger">*</span></label>
-                            <input type="date" class="form-control" id="date_naissance" name="date_naissance"
-                                placeholder="أدخل تاريخ الولادة" value="{{ Auth::user()->date_naissance }}" required>
-                        </div>
-                        <div class="form-group col-md-6 text-right">
-                            <label for="adresse"> مكان الإقامة <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="adresse" name="adresse"
-                                placeholder="أدخل مكان الإقامة" value="{{ Auth::user()->adresse }}" required>
-                        </div>
-                    </div>
-                    <div class="row" dir="rtl">
-                        <div class="form-group col-md-6 text-right">
-                            <label for="login">البريد الإلكتروني <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control text-left" id="login" name="login"
-                                placeholder=" أدخل البريد الإلكتروني" value="{{ Auth::user()->email }}" required>
-                        </div>
-                        <div class="form-group col-md-6 text-right">
-                            <label for="phone"> رقم الهاتف<span class="text-danger">*</span></label>
-                            <input type="number" class="form-control" id="phone" name="phone"
-                                placeholder="أدخل رقم الهاتف" value="{{ Auth::user()->phone }}" required>
-                        </div>
-                    </div>
-
-            </div>
-            <div class="modal-footer">
-                <button type="reset" class="btn btn-secondary" data-dismiss="modal">إلغاء</button>
-                <button type="submit" class="btn btn-primary">تأكيد</button>
-            </div>
-            </form>
-        </div>
+<div class="row" dir="rtl">
+    <div class="form-group col-md-6 text-right">
+        <label for="nom"> الإسم<span class="text-danger">*</span></label>
+        <input type="text" class="form-control" id="nom" name="nom" placeholder="أدخل الإسم"
+            value="{{ Auth::user()->nom }}" required>
     </div>
+    <div class="form-group col-md-6 text-right">
+        <label for="prenom"> اللقب <span class="text-danger">*</span></label>
+        <input type="text" class="form-control" id="prenom" name="prenom" placeholder="أدخل اللقب"
+            value="{{ Auth::user()->prenom }}" required>
+    </div>
+</div>
+<div class="row" dir="rtl">
+    <div class="form-group col-md-6 text-right">
+        <label for="date_naissance"> تاريخ الولادة <span class="text-danger">*</span></label>
+        <input type="date" class="form-control" id="date_naissance" name="date_naissance"
+            placeholder="أدخل تاريخ الولادة" value="{{ Auth::user()->date_naissance }}" required>
+    </div>
+    <div class="form-group col-md-6 text-right">
+        <label for="adresse"> مكان الإقامة <span class="text-danger">*</span></label>
+        <input type="text" class="form-control" id="adresse" name="adresse" placeholder="أدخل مكان الإقامة"
+            value="{{ Auth::user()->adresse }}" required>
+    </div>
+</div>
+<div class="row" dir="rtl">
+    <div class="form-group col-md-6 text-right">
+        <label for="login">البريد الإلكتروني <span class="text-danger">*</span></label>
+        <input type="text" class="form-control text-left" id="login" name="login" placeholder=" أدخل البريد الإلكتروني"
+            value="{{ Auth::user()->email }}" required>
+    </div>
+    <div class="form-group col-md-6 text-right">
+        <label for="phone"> رقم الهاتف<span class="text-danger">*</span></label>
+        <input type="number" class="form-control" id="phone" name="phone" placeholder="أدخل رقم الهاتف"
+            value="{{ Auth::user()->phone }}" required>
+    </div>
+</div>
+
+</div>
+<div class="modal-footer">
+    <button type="reset" class="btn btn-secondary" data-dismiss="modal">إلغاء</button>
+    <button type="submit" class="btn btn-primary">تأكيد</button>
+</div>
+</form>
+</div>
+</div>
 
 
 </div> --}}

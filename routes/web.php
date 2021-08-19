@@ -46,7 +46,12 @@ Route::prefix('profil')->group(function(){
     Route::post('/password/{id}', [App\Http\controllers\ProfilController::class, 'ProfileUpdatePassword'])->name('profil.password');
 });
 
+Route::prefix('ecole')->group(function(){
 
+    Route::get('/',[App\Http\controllers\ecoleController::class, 'EcoleData'])->name('ecole');
+    Route::post('/miseajour/{id}', [App\Http\controllers\ecoleController::class, 'EcoleUpdate'])->name('ecole.miseajour');
+
+});
 
 
 Route::prefix('Enseignant')->group(function(){

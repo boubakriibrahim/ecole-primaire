@@ -1,10 +1,10 @@
 <nav class="main-header navbar navbar-expand-lg navbar-dark" dir="rtl">
     <div class="container">
         <a href="{{ url('/') }}" class="navbar-brand mr-2">
-            <img src="{{asset('images/logo.jpg')}}" alt="Logo" class="brand-image img-circle elevation-3 ml-2"
+            <img src="{{asset('images/uploads/'.$ecoleCreds->ecole_photo_path)}}" alt="Logo" class="brand-image img-circle elevation-3 ml-2"
                 style="opacity: .8" width="35">
             <span class="brand-text font-weight-light">
-                <b>المدرسة</b>&nbsp;الإبتدائية
+                <b>{{ $ecoleCreds->nom }}</b>
             </span>
         </a>
 
@@ -182,7 +182,7 @@
                         <i class="fas fa-user pl-2"></i>
                     </a>
                     @if (Auth::user()->role == "superadmin")
-                    <a class="dropdown-item text-right" href="#">
+                    <a class="dropdown-item text-right" href="{{ route('ecole') }}">
                         معلومات المدرسة
                         <i class="fas fa-school pl-2"></i>
                     </a>

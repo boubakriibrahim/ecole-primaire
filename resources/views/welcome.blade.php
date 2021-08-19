@@ -39,9 +39,9 @@
             <a href="{{ url('/') }}" class="navbar-brand navbar-no-expand float-right order-2">
 
                 <span class="brand-text font-weight-light m-2">
-                    <b>المدرسة</b>&nbsp;الإبتدائية
+                    <b>{{ $ecoleCreds->nom }}</b>
                 </span>
-                <img src="{{asset('images/logo.jpg')}}" alt="Logo" class="brand-image rounded-circle elevation-3"
+                <img src="{{asset('images/uploads/'.$ecoleCreds->ecole_photo_path)}}" alt="Logo" class="brand-image rounded-circle elevation-3"
                     style="opacity: .8" width="35">
             </a>
 
@@ -75,9 +75,9 @@
                 <img class="img-fluid d-none d-sm-block" src="{{ asset('images/ecole.svg') }}" alt="" />
 
                 <div class="text-end">
-                    <h1>المدرسة الإبتدائية <span class="text-warning">الرشاد الجديدة</span></h1>
+                    <h1>المدرسة الإبتدائية <span class="text-warning">{{ $ecoleCreds->nom }}</span></h1>
                     <p class="lead my-4">
-                        نحن نركز على تعليم طلابنا أساسيات أحدث وأكبر التقنيات لإعدادهم لدورهم التنموي الأول
+                        {{ $ecoleCreds->description1 }}
                     </p>
                     <a href="{{ route('login') }}" class="btn btn-lg btn-success">تسجيل الدخول</a>
                 </div>
@@ -91,31 +91,12 @@
             <div class="row align-items-center justify-content-between">
                 <div class="col-md">
                     <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
-                        src="{{ asset('images/logo.jpg') }}" width="500" height="500">
+                        src="{{ asset('images/uploads/'.$ecoleCreds->ecole_photo_path) }}" width="300" height="300">
                 </div>
                 <div class="col-md p-5">
                     <h2>قراءة المزيد من العلومات</h2>
                     <p class="text-end">
-                        هذا الموقع خاص بالمدرسة و ذلك لتسهيل عمل كافة الإطارات بالمدرسة
-                        و كما أنه يسهل التواصل بين المعلم و التلميذ
-                    </p>
-                    <p class="text-end">
-                        :كما أن هذا الموقع يتولى عديد الوضائف منها
-                        <p class="text-end"> ا1) التصرف في المدرسين
-
-                        </p>
-                        <p class="text-end">
-                            ا2) التصرف في الأقسام
-                        </p>
-                        <p class="text-end">
-                            ا3) التصرف في المواد
-                        </p>
-                        <p class="text-end">
-                            ا4) التصرف في جدول الأوقات
-                        </p>
-                        <p class="text-end">
-                            ا5) تعيين المدرسين
-                        </p>
+                        {{ $ecoleCreds->description2 }}
                     </p>
                 </div>
             </div>
@@ -193,15 +174,17 @@
                     <h2 class="text-center mb-4">الإتصال</h2>
                     <ul class="list-group list-group-flush lead">
                         <li class="list-group-item">
-                            <span class="fw-bold">الموقع:</span> طريق تونس كلم6 ساقية الزيت صفاقس
+                            <span class="fw-bold">الموقع:</span>
+                            {{ $ecoleCreds->adresse }}
                         </li>
                         <li class="list-group-item">
-                            <span class="fw-bold">الهاتف:</span> 555-5555 (+216)
+                            <span class="fw-bold">الهاتف:</span>
+                            {{ $ecoleCreds->phone }} 216+
                         </li>
 
                         <li class="list-group-item">
                             <span class="fw-bold">البريد الإلكتروني:</span>
-                            enroll@gmail.test
+                            {{ $ecoleCreds->email }}
                         </li>
 
                     </ul>

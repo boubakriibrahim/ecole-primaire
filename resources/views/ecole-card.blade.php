@@ -35,9 +35,9 @@
                                     @if($ecole->ecole_photo_path == NULL)
                                     {{ asset('images/logo.jpg') }}
                                     @else
-                                    {{ $ecole->profile_photo_path }}
+                                    {{ asset('images/uploads/'.$ecole->ecole_photo_path) }}
                                     @endif
-                                    " alt="User profile picture" width="50" height="100">
+                                    " alt="ecole picture" width="50" height="100">
                             </div>
 
                             <h3 class="profile-username text-center">{{ $ecole->nom }}
@@ -114,7 +114,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <!-- Modal -->
-{{-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header text-center">
@@ -124,57 +124,88 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" action='{{ route('profil.miseajour', Auth::user()->id) }}' width=60%>
-@csrf
+                <form method="post" action='{{ route('ecole.miseajour') }}' enctype="multipart/form-data" width=60%>
+                    @csrf
+                    @method('PUT')
 
-<div class="row" dir="rtl">
-    <div class="form-group col-md-6 text-right">
-        <label for="nom"> الإسم<span class="text-danger">*</span></label>
-        <input type="text" class="form-control" id="nom" name="nom" placeholder="أدخل الإسم"
-            value="{{ Auth::user()->nom }}" required>
+                    <div class="row" dir="rtl">
+                        <div class="form-group col-md-6 text-right">
+                            <label for="nom"> الإسم<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="nom" name="nom" placeholder="أدخل الإسم"
+                                value="{{ $ecole->nom }}" required>
+                        </div>
+                        <div class="form-group col-md-6 text-right">
+                            <label for="genre"> النوع <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="genre" name="genre" placeholder="أدخل النوع"
+                                value="{{ $ecole->genre }}" required>
+                        </div>
+                    </div>
+                    <div class="row" dir="rtl">
+                        <div class="form-group col-md-6 text-right">
+                            <label for="email">البريد الإلكتروني <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control text-left" id="email" name="email"
+                                placeholder=" أدخل البريد الإلكتروني" value="{{ $ecole->email }}" required>
+                        </div>
+                        <div class="form-group col-md-6 text-right">
+                            <label for="phone"> رقم الهاتف<span class="text-danger">*</span></label>
+                            <input type="number" class="form-control" id="phone" name="phone"
+                                placeholder="أدخل رقم الهاتف" value="{{ $ecole->phone }}" required>
+                        </div>
+                    </div>
+
+                    <div class="row" dir="rtl">
+                        <div class="form-group col-md-6 text-right">
+                            <label for="description1"> الوصف الأول</label>
+                            <textarea class="form-control" rows="3" id="description1" name="description1"
+                                placeholder="أدخل الوصف الأول"
+                                style="margin-top: 0px; margin-bottom: 0px; height: 87px;">{{ $ecole->description1 }}</textarea>
+                        </div>
+                        <div class="form-group col-md-6 text-right">
+                            <label for="description2"> الوصف الثاني</label>
+                            <textarea class="form-control" rows="3" id="description2" name="description2"
+                                placeholder="أدخل الوصف الثاني"
+                                style="margin-top: 0px; margin-bottom: 0px; height: 87px;">{{ $ecole->description2 }}</textarea>
+                        </div>
+                    </div>
+
+                    <div class="row" dir="rtl">
+                        <div class="form-group col-md-6 text-right">
+                            <label for="adresse"> الموقع <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="adresse" name="adresse"
+                                placeholder="أدخل الموقع" value="{{ $ecole->adresse }}" required>
+                        </div>
+                        <div class="form-group col-md-6 text-right">
+                            <label for="image"> الصورة <span class="text-danger">*</span></label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="image" name="image" accept=".jpg, .jpeg, .png">
+                                <label class="custom-file-label text-left" for="image">إختر صورة</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row d-flex align-items-center" dir="rtl">
+                        <div class="form-group col-md-12">
+                            <img class="profile-user-img rounded-circle d-flex align-items-center" src="
+                                    @if($ecole->ecole_photo_path == NULL)
+                                    {{ asset('images/logo.jpg') }}
+                                    @else
+                                    {{ asset('images/uploads/'.$ecole->ecole_photo_path) }}
+                                    @endif
+                                    " alt="User profile picture" width="50" height="100">
+                        </div>
+                    </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="reset" class="btn btn-secondary" data-dismiss="modal">إلغاء</button>
+                <button type="submit" class="btn btn-primary">تأكيد</button>
+            </div>
+            </form>
+        </div>
     </div>
-    <div class="form-group col-md-6 text-right">
-        <label for="prenom"> اللقب <span class="text-danger">*</span></label>
-        <input type="text" class="form-control" id="prenom" name="prenom" placeholder="أدخل اللقب"
-            value="{{ Auth::user()->prenom }}" required>
-    </div>
-</div>
-<div class="row" dir="rtl">
-    <div class="form-group col-md-6 text-right">
-        <label for="date_naissance"> تاريخ الولادة <span class="text-danger">*</span></label>
-        <input type="date" class="form-control" id="date_naissance" name="date_naissance"
-            placeholder="أدخل تاريخ الولادة" value="{{ Auth::user()->date_naissance }}" required>
-    </div>
-    <div class="form-group col-md-6 text-right">
-        <label for="adresse"> مكان الإقامة <span class="text-danger">*</span></label>
-        <input type="text" class="form-control" id="adresse" name="adresse" placeholder="أدخل مكان الإقامة"
-            value="{{ Auth::user()->adresse }}" required>
-    </div>
-</div>
-<div class="row" dir="rtl">
-    <div class="form-group col-md-6 text-right">
-        <label for="login">البريد الإلكتروني <span class="text-danger">*</span></label>
-        <input type="text" class="form-control text-left" id="login" name="login" placeholder=" أدخل البريد الإلكتروني"
-            value="{{ Auth::user()->email }}" required>
-    </div>
-    <div class="form-group col-md-6 text-right">
-        <label for="phone"> رقم الهاتف<span class="text-danger">*</span></label>
-        <input type="number" class="form-control" id="phone" name="phone" placeholder="أدخل رقم الهاتف"
-            value="{{ Auth::user()->phone }}" required>
-    </div>
-</div>
+
 
 </div>
-<div class="modal-footer">
-    <button type="reset" class="btn btn-secondary" data-dismiss="modal">إلغاء</button>
-    <button type="submit" class="btn btn-primary">تأكيد</button>
-</div>
-</form>
-</div>
-</div>
-
-
-</div> --}}
 
 
 @endsection

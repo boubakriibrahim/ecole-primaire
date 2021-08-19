@@ -534,7 +534,7 @@
 
     <!-- Preloader -->
     <div class="preloader flex-column justify-content-center align-items-center">
-        <img class="animation__shake img-circle" src="{{asset('images/logo.jpg')}}" alt="Logo" height="60" width="60">
+        <img class="animation__shake img-circle" src="{{asset('images/uploads/'.$ecoleCreds->ecole_photo_path)}}" alt="Logo" height="60" width="60">
     </div>
 
     <!-- Navbar -->

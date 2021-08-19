@@ -49,7 +49,7 @@ Route::prefix('profil')->group(function(){
 Route::prefix('ecole')->group(function(){
 
     Route::get('/',[App\Http\controllers\ecoleController::class, 'EcoleData'])->name('ecole');
-    Route::post('/miseajour/{id}', [App\Http\controllers\ecoleController::class, 'EcoleUpdate'])->name('ecole.miseajour');
+    Route::put('/miseajour', [App\Http\controllers\ecoleController::class, 'EcoleUpdate'])->name('ecole.miseajour');
 
 });
 

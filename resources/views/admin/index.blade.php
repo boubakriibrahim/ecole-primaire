@@ -99,10 +99,12 @@
 
             <div class="row">
                 <div class="col-md-6">
-                    <!-- AREA CHART -->
-                    <div class="card card-primary">
+
+
+                    <!-- PIE CHART -->
+                    <div class="card card-danger">
                         <div class="card-header">
-                            <h3 class="card-title">Area Chart</h3>
+                            <h3 class="card-title text-right">عدد الأقسام بالنسبة لكل مستوى</h3>
 
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -114,10 +116,8 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <div class="chart">
-                                <canvas id="areaChart"
-                                    style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-                            </div>
+                            <canvas id="pieChart"
+                                style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
                         </div>
                         <!-- /.card-body -->
                     </div>
@@ -145,10 +145,10 @@
                     </div>
                     <!-- /.card -->
 
-                    <!-- PIE CHART -->
-                    <div class="card card-danger">
+                    <!-- AREA CHART -->
+                    <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title text-right">عدد الأقسام بالنسبة لكل مستوى</h3>
+                            <h3 class="card-title">Area Chart</h3>
 
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -160,16 +160,71 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <canvas id="pieChart"
-                                style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                            <div class="chart">
+                                <canvas id="areaChart"
+                                    style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                            </div>
                         </div>
                         <!-- /.card-body -->
                     </div>
                     <!-- /.card -->
 
+
+
+
                 </div>
                 <!-- /.col (LEFT) -->
                 <div class="col-md-6">
+
+                    <!-- STACKED BAR CHART -->
+                    <div class="card card-success">
+                        <div class="card-header">
+                            <h3 class="card-title">عدد التلاميذ بالنسبة للـأعمار</h3>
+
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart">
+                                <canvas id="stackedBarChart"
+                                    style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+
+                    <!-- BAR CHART -->
+                    <div class="card card-success">
+                        <div class="card-header">
+                            <h3 class="card-title">عدد التلاميذ بالنسبة للـأعمار</h3>
+
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart">
+                                <canvas id="barChart"
+                                    style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+
+
                     <!-- LINE CHART -->
                     <div class="card card-info">
                         <div class="card-header">
@@ -194,53 +249,8 @@
                     </div>
                     <!-- /.card -->
 
-                    <!-- BAR CHART -->
-                    <div class="card card-success">
-                        <div class="card-header">
-                            <h3 class="card-title">Bar Chart</h3>
 
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <button type="button" class="btn btn-tool" data-card-widget="remove">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="chart">
-                                <canvas id="barChart"
-                                    style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-                            </div>
-                        </div>
-                        <!-- /.card-body -->
-                    </div>
-                    <!-- /.card -->
 
-                    <!-- STACKED BAR CHART -->
-                    <div class="card card-success">
-                        <div class="card-header">
-                            <h3 class="card-title">Stacked Bar Chart</h3>
-
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <button type="button" class="btn btn-tool" data-card-widget="remove">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="chart">
-                                <canvas id="stackedBarChart"
-                                    style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-                            </div>
-                        </div>
-                        <!-- /.card-body -->
-                    </div>
-                    <!-- /.card -->
 
                 </div>
                 <!-- /.col (RIGHT) -->
@@ -355,12 +365,12 @@
         //-------------
         // Get context with jQuery - using jQuery's .get() method.
 
-        var classesNiveaus = [0 , 0 , 0 , 0 , 0 , 0];
-        console.log(classes, classesNiveaus);
-        for (let i=0 ; i < classes.length ; i++){
-            console.log(i);
-            console.log(classes[i], classes[i]['niveau']);
-            classesNiveaus[classes[i]['niveau']-1]++;
+        var classesNiveaus = [0, 0, 0, 0, 0, 0];
+        /* console.log(classes, classesNiveaus); */
+        for (let i = 0; i < classes.length; i++) {
+            /* console.log(i);
+            console.log(classes[i], classes[i]['niveau']); */
+            classesNiveaus[classes[i]['niveau'] - 1]++;
         }
 
         var donutChartCanvas = $('#donutChart').get(0).getContext('2d')
@@ -413,6 +423,60 @@
         //- BAR CHART -
         //-------------
         var barChartCanvas = $('#barChart').get(0).getContext('2d')
+
+        var agesGarcons = [0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+        var agesFilles = [0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+        for (i = 0; i < eleves.length; i++) {
+
+
+            var anneescolaire = eleves[i]['date_naissance'];
+            var year = Number(anneescolaire.substr(0, 4));
+            var month = Number(anneescolaire.substr(5, 2)) - 1;
+            var day = Number(anneescolaire.substr(8, 2));
+            console.log(year, month, day)
+            var today = new Date();
+            let age = today.getFullYear() - year;
+            if (today.getMonth() < month || (today.getMonth() == month && today.getDate() < day)) {
+                age--;
+            }
+            console.log(eleves[i]['prenom'],age);
+            if (eleves[i]['sexe'] == 0){
+                agesGarcons[age]++;
+            } else {
+                agesFilles[age]++;
+            }
+
+        }
+        agesGarcons = agesGarcons.slice(4);
+        agesFilles = agesFilles.slice(4);
+
+        var areaChartData = {
+            labels: ['4 سنوات', '5 سنوات', '6 سنوات', '7 سنوات', '8 سنوات', '9 سنوات', '10 سنوات','11 سنة','12 سنة','13 سنة'],
+            datasets: [{
+                    label: 'إناث',
+                    backgroundColor: 'rgba(60,141,188,0.9)',
+                    borderColor: 'rgba(60,141,188,0.8)',
+                    pointRadius: false,
+                    pointColor: '#3b8bba',
+                    pointStrokeColor: 'rgba(60,141,188,1)',
+                    pointHighlightFill: '#fff',
+                    pointHighlightStroke: 'rgba(60,141,188,1)',
+                    data: agesGarcons
+                },
+                {
+                    label: 'ذكور',
+                    backgroundColor: 'rgba(210, 214, 222, 1)',
+                    borderColor: 'rgba(210, 214, 222, 1)',
+                    pointRadius: false,
+                    pointColor: 'rgba(210, 214, 222, 1)',
+                    pointStrokeColor: '#c1c7d1',
+                    pointHighlightFill: '#fff',
+                    pointHighlightStroke: 'rgba(220,220,220,1)',
+                    data: agesFilles
+                },
+            ]
+        }
+
         var barChartData = $.extend(true, {}, areaChartData)
         var temp0 = areaChartData.datasets[0]
         var temp1 = areaChartData.datasets[1]

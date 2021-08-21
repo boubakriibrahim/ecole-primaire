@@ -6,16 +6,16 @@ use App\Http\Controllers\ensController;
 use App\Http\Controllers\MatiereController;
 use App\Http\Controllers\SalleController;
 use App\Http\Controllers\AffEnsController;
-use App\Http\controllers\ProfilController;
-use App\Http\controllers\eleveController;
-use App\Http\controllers\listClassController;
-use App\Http\controllers\abscenceController;
-use App\Http\controllers\ecoleController;
-use App\Http\controllers\ensgController;
-use App\Http\controllers\ClasseController;
-use App\Http\controllers\EmploiController;
-use App\Http\controllers\SeanceController;
-use App\Http\controllers\HomeController;
+use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\eleveController;
+use App\Http\Controllers\listClassController;
+use App\Http\Controllers\abscenceController;
+use App\Http\Controllers\ecoleController;
+use App\Http\Controllers\ensgController;
+use App\Http\Controllers\ClasseController;
+use App\Http\Controllers\EmploiController;
+use App\Http\Controllers\SeanceController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\LoginController;
 
 /*

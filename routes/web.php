@@ -38,8 +38,6 @@ Route::get('/test', function () {
     return view('backend.partie_Ens.abscenceView');
 });
 
-
-
 /* Auth::routes(); */
 
 Route::get('/login',[LoginController::class, 'showLoginForm'])->name('login');

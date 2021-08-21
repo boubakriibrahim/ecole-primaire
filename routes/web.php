@@ -35,7 +35,7 @@ Route::get('/test', function () {
 
 /* Auth::routes(); */
 
-$this->get('/login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::get('/login',[App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

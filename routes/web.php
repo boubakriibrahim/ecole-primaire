@@ -10,6 +10,11 @@ use App\Http\controllers\ProfilController;
 use App\Http\controllers\eleveController;
 use App\Http\controllers\listClassController;
 use App\Http\controllers\abscenceController;
+use App\Http\controllers\ecoleController;
+use App\Http\controllers\ensgController;
+use App\Http\controllers\ClasseController;
+use App\Http\controllers\EmploiController;
+use App\Http\controllers\SeanceController;
 use App\Http\controllers\HomeController;
 use App\Http\Controllers\Auth\LoginController;
 

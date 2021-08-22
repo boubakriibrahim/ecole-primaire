@@ -9,7 +9,6 @@ class abscence extends Model
 {
     use HasFactory;
     protected $fillable = [
-
         'seance_id',
         'eleve_id',
         'date',

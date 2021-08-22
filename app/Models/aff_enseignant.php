@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Classe;
+use App\Models\Matiere;
+use App\Models\enseignant;
 
 class aff_enseignant extends Model
 {
@@ -18,12 +21,12 @@ class aff_enseignant extends Model
 
 
     public function classe(){
-        return $this->belongsTo(classe::class);
+        return $this->belongsTo(Classe::class, 'classe_id', 'id');
     }
     public function matiere(){
-        return $this->belongsTo(matiere::class);
+        return $this->belongsTo(Matiere::class, 'matiere_id', 'id');
     }
     public function enseignant(){
-        return $this->belongsTo(enseignant::class);
+        return $this->belongsTo(enseignant::class, 'enseignant_id', 'id');
     }
 }

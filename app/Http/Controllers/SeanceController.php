@@ -8,6 +8,7 @@ use App\Models\Classe;
 use App\Models\enseignant;
 use App\Models\Matiere;
 use App\Models\Salle;
+use App\Models\aff_enseignant;
 
 class SeanceController extends Controller
 {
@@ -17,6 +18,7 @@ class SeanceController extends Controller
         $data['enseignants'] = enseignant::all();
         $data['matieres'] = Matiere::all();
         $data['salles'] = Salle::all();
+        $data['aff_enseignants'] = aff_enseignant::all();
 
         return view('backend.view_seance', $data);
     }
@@ -26,11 +28,9 @@ class SeanceController extends Controller
          $request->validate([
             'selectemploijour'=>'required',
             'anneescolaire'=>'required',
-            'selectSeanceClasse'=>'required',
-            'selectSeanceEnseignant'=>'required',
             'heure_debut'=>'required',
             'heure_fin'=>'required',
-            'selectmatiere'=>'required',
+            'selectaffectation'=>'required',
             'selectsalle'=>'required',
         ]);
 

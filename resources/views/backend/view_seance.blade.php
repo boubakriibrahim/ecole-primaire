@@ -275,7 +275,7 @@
                         <div class="row">
                             <div class="form-group col-md-6 text-right">
                                 <label for="selectemploijour" dir="rtl"> اليوم<span class="text-danger">*</span></label>
-                                <select class="custom-select text-center" dir="rtl" name="selectemploijour[]" required>
+                                <select class="custom-select text-center" dir="rtl" name="selectemploijour" required>
                                     <option selected>إختر يوم</option>
                                     <option value="0">
                                         الإثنين
@@ -300,73 +300,45 @@
                             <div class="form-group col-md-6 text-right">
                                 <label for="anneescolaire" dir="rtl">السنة الدراسية
                                     <span class="text-danger">*</span></label>
-                                <input type="text" placeholder="السنة الدراسية" name="anneescolaire[]"
+                                <input type="text" placeholder="السنة الدراسية" name="anneescolaire"
                                     class="form-control" dir="rtl" required>
                             </div>
                         </div>
                         <div class="row" dir="rtl">
                             <div class="form-group col-md-6 text-right">
-                                <label for="selectSeanceClasse" dir="rtl">
-                                    القسم
-                                    <span class="text-danger">*</span></label>
-
-                                <select class="custom-select" name="selectSeanceClasse[]" required>
-                                    <option selected>إختر قسم</option>
-                                    @foreach ($classes as $key => $classe)
-                                    <option value="{{$classe->id}}">{{$classe->nom}}
-                                    </option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="form-group col-md-6 text-right">
-                                <label for="selectSeanceEnseignant" dir="rtl">
-                                    المدرس
-                                    <span class="text-danger">*</span></label>
-                                <select class="custom-select text-center" dir="rtl" name="selectSeanceEnseignant[]"
-                                    required>
-                                    <option selected>إختر مدرس</option>
-                                    @foreach ($enseignants as $key => $enseignant)
-                                    <option value="{{$enseignant->id}}">
-                                        {{$enseignant->nom}}
-                                        {{$enseignant->prenom}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-
-                        </div>
-                        <div class="row" dir="rtl">
-                            <div class="form-group col-md-6 text-right">
                                 <label for="heure_debut" dir="rtl">ساعة البداية <span
                                         class="text-danger">*</span></label>
-                                <input placeholder="ساعة البداية" type="text" name="heure_debut[]"
+                                <input placeholder="ساعة البداية" type="text" name="heure_debut"
                                     class="form-control timepicker" required>
                             </div>
                             <div class="form-group col-md-6 text-right">
                                 <label for="heure_fin" dir="rtl">ساعة النهاية <span class="text-danger">*</span></label>
-                                <input placeholder="ساعة النهاية" type="text" name="heure_fin[]"
+                                <input placeholder="ساعة النهاية" type="text" name="heure_fin"
                                     class="form-control timepicker" required>
                             </div>
                         </div>
                         <div class="row" dir="rtl">
-                            <div class="form-group col-md-6 text-right">
-                                <label for="selectmatiere" dir="rtl">
-                                    المادة
+                            <div class="form-group col-md-12 text-right">
+                                <label for="selectaffectation" dir="rtl">
+                                    التعيين
                                     <span class="text-danger">*</span></label>
-                                <select class="custom-select" name="selectmatiere[]" required>
-                                    <option selected>إختر مادة</option>
-                                    @foreach ($matieres as $key => $matiere)
-                                    <option value="{{$matiere->id}}">
-                                        {{$matiere->libelle}} |
-                                        مستوى
-                                        ({{$matiere->niveau}})</option>
+                                <select class="custom-select" name="selectaffectation" required>
+                                    <option selected>إختر تعيين</option>
+                                    @foreach ($aff_enseignants as $key => $aff_enseignant)
+                                    <option
+                                        value="{{ $aff_enseignant->id }}">
+                                        القسم ({{$aff_enseignant->classe->nom}}) | المدرس ({{$aff_enseignant->enseignant->nom}} {{$aff_enseignant->enseignant->prenom}}) | المادة ({{$aff_enseignant->matiere->libelle}}-مستوى {{$aff_enseignant->matiere->niveau}})
+                                    </option>
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="form-group col-md-6 text-right">
+                        </div>
+                        <div class="row" dir="rtl">
+                            <div class="form-group col-md-12 text-right">
                                 <label for="selectsalle" dir="rtl">
                                     القاعة
                                     <span class="text-danger">*</span></label>
-                                <select class="custom-select" name="selectsalle[]" required>
+                                <select class="custom-select" name="selectsalle" required>
                                     <option selected>إختر قاعة</option>
                                     @foreach ($salles as $key => $salle)
                                     <option value="{{$salle->id}}">{{$salle->libelle}}
@@ -375,9 +347,7 @@
                                 </select>
                             </div>
                         </div>
-
                     </div>
-
             </div>
             <div class="modal-footer">
                 <button type="reset" class="btn btn-secondary" data-dismiss="modal">إلغاء</button>
@@ -413,7 +383,9 @@
 
 @foreach ($allData as $key => $seance)
 <script type="text/javascript">
-    var seances = {!!json_encode($seance) !!};
+    var seances = {
+        !!json_encode($seance) !!
+    };
     var heure_debut = (seances['heure_debut']).substring(0, 2);
     var heure_fin = (seances['heure_fin']).substring(3, 5);
 

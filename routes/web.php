@@ -141,6 +141,8 @@ Route::prefix('Emplois')->group(function(){
 
 });
 
+Route::get('/monEmploi', [App\Http\controllers\EmploiController::class, 'monEmploi'])->name('mon.emploi');
+
 
 
 Route::prefix('eleve')->group(function(){
@@ -154,6 +156,7 @@ Route::prefix('eleve')->group(function(){
     Route::get('/effacer/{id}', [App\Http\controllers\eleveController::class, 'eleveDelete'])->name('eleve.delete');
 
 });
+
 
 Route::prefix('list')->group(function(){
     Route::get('/listClasses', [App\Http\controllers\listClassController::class, 'listClasses'])->name('classes.view');
@@ -175,6 +178,19 @@ Route::prefix('abscence')->group(function(){
     Route::get('/checkList/{id}', [App\Http\controllers\listClassController::class, 'listCheck'])->name('list.check');
 
     Route::post('/store/{id}', [App\Http\controllers\abscenceController::class, 'abscenceStore'])->name('abscence.store');
+
+    Route::get('/edit/{id}', [App\Http\controllers\listClassController::class, 'editList'])->name('list.edit');
+
+    Route::post('/modifier/{id}', [App\Http\controllers\listClassController::class, 'updateList'])->name('list.miseajour');
+
+});
+Route::prefix('note')->group(function(){
+    Route::get('/noteView/{id}', [App\Http\controllers\noteController::class, 'noteView'])->name('note.view');
+
+    Route::get('/creeClasse/{id}', [App\Http\controllers\listClassController::class, 'listView'])->name('list.view');
+    Route::get('/checkList/{id}', [App\Http\controllers\listClassController::class, 'listCheck'])->name('list.check');
+
+    Route::post('/store/{id}', [App\Http\controllers\noteController::class, 'noteStore'])->name('note.store');
 
     Route::get('/edit/{id}', [App\Http\controllers\listClassController::class, 'editList'])->name('list.edit');
 

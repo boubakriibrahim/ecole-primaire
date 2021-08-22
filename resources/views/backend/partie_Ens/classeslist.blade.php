@@ -55,8 +55,13 @@
                                                     
                                                 <a href="{{ route("list.check", $classe->id) }}"
                                                         class="btn btn-success rounded-pill offset-sm-3 mr-sm-1 col-sm-4">اضافة قائمة</a>
-                                                <a href="{{ route("abscence.view", $classe->id) }}"
+                                                
+                                                        <a href="{{ route("abscence.view", $classe->id) }}"
                                                         class="btn btn-primary rounded-pill col-md-4 ">تسجيل حضور  </a>
+                                                        <a href="{{ route("note.view", $classe->id) }}"
+                                                        class="btn btn-primary rounded-pill col-md-4 ">note   </a>
+
+                                                
                                                 </div>
                                             </td>
                                             <td>{{ $classe->anneescolaire }}</td>

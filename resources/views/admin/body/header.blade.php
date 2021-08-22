@@ -87,7 +87,7 @@
                 </li>
 
                 <li class="nav-item text-right">
-                    <a href="#" class="nav-link"><i class="fas fa-hourglass-end ml-1"></i> جدول أوقاتي</a>
+                    <a href="{{ route('mon.emploi') }}" class="nav-link"><i class="fas fa-hourglass-end ml-1"></i> جدول أوقاتي</a>
                 </li>
 
                 <li class="nav-item text-right">

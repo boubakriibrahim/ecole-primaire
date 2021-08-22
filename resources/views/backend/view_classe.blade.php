@@ -100,37 +100,39 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="p-3">
-                            <table id="example1" class="table table-bordered table-striped text-right p-3">
+                            <table id="example1" class="table table-bordered table-striped text-right p-3" dir="rtl">
                                 <thead>
-                                    <tr>
-                                        <th width="25%">العملية</th>
-                                        <th>السنة الدراسية</th>
-                                        <th>عدد التلاميذ</th>
-                                        <th>المستوى</th>
-                                        <th>الاسم</th>
+                                    <tr dir="rtl">
                                         <th width="5%">العدد</th>
+                                        <th>الاسم</th>
+                                        <th>المستوى</th>
+                                        <th>عدد التلاميذ</th>
+                                        <th>السنة الدراسية</th>
+                                        <th width="25%">العملية</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($allData as $key => $classe)
                                     <tr>
+                                        <td>{{ $key+1 }}</td>
+                                        <td>{{ $classe->nom }}</td>
+                                        <td>{{ $classe->niveau }}</td>
+                                        <td>{{ $classe->nb }}</td>
+                                        <td>{{ $classe->anneescolaire }}</td>
                                         <td>
                                             <div class="row">
-                                                <a href="{{ route("classe.delete", $classe->id) }}"
-                                                    class="btn btn-danger offset-sm-3 mr-sm-1 col-sm-4 order-3 order-sm-1"
-                                                    id="delete">حذف</a>
-                                                <button type="button" class="btn btn-info col-sm-4 order-2"
-                                                    data-toggle="modal" data-target="#model{{$classe->id}}">
-                                                    تحديث
-                                                </button>
-
+                                                <div class="col-md-6 px-1">
+                                                    <button type="button" class="btn btn-info btn-block"
+                                                        data-toggle="modal" data-target="#model{{ $classe->id }}">
+                                                        تحديث
+                                                    </button>
+                                                </div>
+                                                <div class="col-md-6 mt-1 mt-md-0 px-1">
+                                                    <a href="{{ route("classe.delete", $classe->id) }}"
+                                                        class="btn btn-danger btn-block" id="delete">حذف</a>
+                                                </div>
                                             </div>
                                         </td>
-                                        <td>{{ $classe->anneescolaire }}</td>
-                                        <td>{{ $classe->nb }}</td>
-                                        <td>{{ $classe->niveau }}</td>
-                                        <td>{{ $classe->nom }}</td>
-                                        <td>{{ $key+1 }}</td>
                                     </tr>
                                     @endforeach
                                     </tfoot>

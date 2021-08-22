@@ -40,44 +40,46 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="p-3">
-                                <table id="example1" class="table table-bordered table-striped text-right p-3">
+                                <table id="example1" class="table table-bordered table-striped text-right p-3" dir="rtl">
                                     <thead>
-                                        <tr>
-                                            <th width="25%">العملية</th>
-
-                                            <th>رمز التسجيل </th>
-                                            <th> الجنس </th>
-                                            <th>تاريخ الولادة</th>
-                                            <th>اللقب</th>
-                                            <th>الاسم</th>
+                                        <tr dir="rtl">
                                             <th width="5%">العدد</th>
+                                            <th>الاسم</th>
+                                            <th>اللقب</th>
+                                            <th>تاريخ الولادة</th>
+                                            <th> الجنس </th>
+                                            <th>رمز التسجيل </th>
+                                            <th width="25%">العملية</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($allData as $key => $eleve)
                                         <tr>
-                                            <td>
-                                                <div class="row">
-                                                    <a href="{{ route("eleve.delete", $eleve->id) }}"
-                                                        class="btn btn-danger offset-sm-3 mr-sm-1 col-sm-4 order-3 order-sm-1"
-                                                        id="delete">حذف</a>
-                                                    <button type="button" class="btn btn-info  col-sm-4 order-2"
-                                                        data-toggle="modal" data-target="#model{{$eleve->id}}">
-                                                        تحديث
-                                                    </button>
-                                                </div>
-                                            </td>
-                                            <td>{{ $eleve->num_inscri }}</td>
+                                            <td>{{ $key+1 }}</td>
+                                            <td>{{ $eleve->nom }}</td>
+                                            <td>{{ $eleve->prenom }}</td>
+                                            <td>{{ $eleve->date_naissance }}</td>
                                             <td>@if($eleve->sexe==1)
                                                 مؤنث
                                                 @else
                                                 مذكر
                                                 @endif
                                             </td>
-                                            <td>{{ $eleve->date_naissance }}</td>
-                                            <td>{{ $eleve->prenom }}</td>
-                                            <td>{{ $eleve->nom }}</td>
-                                            <td>{{ $key+1 }}</td>
+                                            <td>{{ $eleve->num_inscri }}</td>
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col-md-6 px-1">
+                                                        <button type="button" class="btn btn-info btn-block"
+                                                            data-toggle="modal" data-target="#model{{ $eleve->id }}">
+                                                            تحديث
+                                                        </button>
+                                                    </div>
+                                                    <div class="col-md-6 mt-1 mt-md-0 px-1">
+                                                        <a href="{{ route("eleve.delete", $eleve->id) }}"
+                                                            class="btn btn-danger btn-block" id="delete">حذف</a>
+                                                    </div>
+                                                </div>
+                                            </td>
                                         </tr>
                                         @endforeach
                                         </tfoot>
@@ -282,12 +284,12 @@
                     text: 'نسخ',
                     exportOptions: {
                         columns: [
-                            '1:visIdx',
-                            '2:visIdx',
-                            '3:visIdx',
-                            '4:visIdx',
                             '5:visIdx',
-                            '6:visIdx'
+                            '4:visIdx',
+                            '3:visIdx',
+                            '2:visIdx',
+                            '1:visIdx',
+                            '0:visIdx'
                         ]
                     }
                 },
@@ -296,12 +298,12 @@
                     text: 'Excel',
                     exportOptions: {
                         columns: [
-                            '1:visIdx',
-                            '2:visIdx',
-                            '3:visIdx',
-                            '4:visIdx',
                             '5:visIdx',
-                            '6:visIdx'
+                            '4:visIdx',
+                            '3:visIdx',
+                            '2:visIdx',
+                            '1:visIdx',
+                            '0:visIdx'
                         ]
                     }
                 }, "pdf",
@@ -310,12 +312,12 @@
                     text: 'طباعة',
                     exportOptions: {
                         columns: [
-                            '1:visIdx',
-                            '2:visIdx',
-                            '3:visIdx',
-                            '4:visIdx',
                             '5:visIdx',
-                            '6:visIdx'
+                            '4:visIdx',
+                            '3:visIdx',
+                            '2:visIdx',
+                            '1:visIdx',
+                            '0:visIdx'
                         ]
                     }
                 }, {

@@ -70,17 +70,17 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="p-3">
-                            <table id="example1" class="table table-bordered table-striped text-right p-3">
+                            <table id="example1" class="table table-bordered table-striped text-right p-3" dir="rtl">
                                 <thead>
-                                    <tr>
-                                        <th width="25%">العملية</th>
-                                        <th>السنة الدراسية</th>
+                                    <tr dir="rtl">
+                                        <th width="5%">العدد</th>
                                         @if ($type == "classes")
                                         <th>القسم</th>
                                         @else
                                         <th>المدرس</th>
                                         @endif
-                                        <th width="5%">العدد</th>
+                                        <th>السنة الدراسية</th>
+                                        <th width="25%">العملية</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -89,25 +89,25 @@
                                     @if (($emploi->id_classe != -1 && $type == 'classes') ||
                                     ($emploi->id_enseignant != -1 && $type == 'enseignants'))
                                     <tr>
-                                        <td>
-                                            <div class="row" dir="rtl">
-
-                                                <a href="{{ route('emploi.view.one',$emploi->id) }}"
-                                                    class="btn btn-success col-md-3 m-1">عرض</a>
-
-
-                                                <a href="{{ route('emploi.delete', $emploi->id) }}"
-                                                    class="btn btn-danger col-md-3 m-1"
-                                                    id="delete">حذف</a>
-                                            </div>
-                                        </td>
-                                        <td>{{ $emploi->anneescolaire }}</td>
+                                        <td>{{ $i++ }}</td>
                                         @if (str_contains(url()->current(), 'classes'))
                                         <td>{{ $emploi->classe->nom }}</td>
                                         @else
                                         <td>{{ $emploi->enseignant->nom }} {{ $emploi->enseignant->prenom }}</td>
                                         @endif
-                                        <td>{{ $i++ }}</td>
+                                        <td>{{ $emploi->anneescolaire }}</td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-md-6 px-1">
+                                                    <a href="{{ route('emploi.view.one',$emploi->id) }}"
+                                                        class="btn btn-success btn-block">عرض</a>
+                                                </div>
+                                                <div class="col-md-6 mt-1 mt-md-0 px-1">
+                                                    <a href="{{ route('emploi.delete', $emploi->id) }}"
+                                                        class="btn btn-danger btn-block" id="delete">حذف</a>
+                                                </div>
+                                            </div>
+                                        </td>
                                     </tr>
                                     @endif
                                     @endforeach
@@ -147,9 +147,9 @@
                     text: 'نسخ',
                     exportOptions: {
                         columns: [
-                            '1:visIdx',
                             '2:visIdx',
-                            '3:visIdx'
+                            '1:visIdx',
+                            '0:visIdx'
                         ]
                     }
                 },
@@ -158,9 +158,9 @@
                     text: 'Excel',
                     exportOptions: {
                         columns: [
-                            '1:visIdx',
                             '2:visIdx',
-                            '3:visIdx'
+                            '1:visIdx',
+                            '0:visIdx'
                         ]
                     }
                 }, "pdf",
@@ -169,9 +169,9 @@
                     text: 'طباعة',
                     exportOptions: {
                         columns: [
-                            '1:visIdx',
                             '2:visIdx',
-                            '3:visIdx'
+                            '1:visIdx',
+                            '0:visIdx'
                         ]
                     }
                 }, {

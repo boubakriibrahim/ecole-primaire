@@ -121,36 +121,39 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="p-3">
-                            <table id="example1" class="table table-bordered table-striped text-right p-3">
+                            <table id="example1" class="table table-bordered table-striped text-right p-3" dir="rtl">
                                 <thead>
-                                    <tr>
-                                        <th width="25%">العملية</th>
-                                        <th>السنة الدراسية</th>
-                                        <th> المادة</th>
-                                        <th>القسم</th>
-                                        <th>المعلم</th>
+                                    <tr dir="rtl">
                                         <th width="5%">العدد</th>
+                                        <th>المعلم</th>
+                                        <th>القسم</th>
+                                        <th> المادة</th>
+                                        <th>السنة الدراسية</th>
+                                        <th width="25%">العملية</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($affEns as $key => $aff)
                                     <tr>
+                                        <td>{{ $key+1 }}</td>
+                                        <td>{{ $aff->enseignant->nom }} {{ $aff->enseignant->prenom }}</td>
+                                        <td>{{ $aff->classe->nom }}</td>
+                                        <td>{{ $aff->matiere->libelle }}</td>
+                                        <td>{{ $aff->classe->anneescolaire }}</td>
                                         <td>
                                             <div class="row">
-                                                <a href="{{ route("AffEns.delete", $aff->id) }}"
-                                                    class="btn btn-danger offset-sm-3 mr-sm-1 col-sm-4 order-3 order-sm-1"
-                                                    id="delete">حذف</a>
-                                                <button type="button" class="btn btn-info  col-sm-4 order-2"
-                                                    data-toggle="modal" data-target="#model{{$aff->id}}">
-                                                    تحديث
-                                                </button>
+                                                <div class="col-md-6 px-1">
+                                                    <button type="button" class="btn btn-info btn-block"
+                                                        data-toggle="modal" data-target="#model{{$aff->id}}">
+                                                        تحديث
+                                                    </button>
+                                                </div>
+                                                <div class="col-md-6 mt-1 mt-md-0 px-1">
+                                                    <a href="{{ route("AffEns.delete", $aff->id) }}"
+                                                        class="btn btn-danger btn-block" id="delete">حذف</a>
+                                                </div>
                                             </div>
                                         </td>
-                                        <td>{{ $aff->classe->anneescolaire }}</td>
-                                        <td>{{ $aff->matiere->libelle }}</td>
-                                        <td>{{ $aff->classe->nom }}</td>
-                                        <td>{{ $aff->enseignant->nom }} {{ $aff->enseignant->prenom }}</td>
-                                        <td>{{ $key+1 }}</td>
 
                                     </tr>
                                     @endforeach
@@ -273,10 +276,11 @@
                     text: 'نسخ',
                     exportOptions: {
                         columns: [
-                            '0:visIdx',
-                            '1:visIdx',
+                            '4:visIdx',
+                            '3:visIdx',
                             '2:visIdx',
-                            '3:visIdx'
+                            '1:visIdx',
+                            '0:visIdx'
                         ]
                     }
                 },
@@ -285,10 +289,11 @@
                     text: 'Excel',
                     exportOptions: {
                         columns: [
-                            '0:visIdx',
-                            '1:visIdx',
+                            '4:visIdx',
+                            '3:visIdx',
                             '2:visIdx',
-                            '3:visIdx'
+                            '1:visIdx',
+                            '0:visIdx'
                         ]
                     }
                 }, "pdf",
@@ -297,10 +302,11 @@
                     text: 'طباعة',
                     exportOptions: {
                         columns: [
-                            '0:visIdx',
-                            '1:visIdx',
+                            '4:visIdx',
+                            '3:visIdx',
                             '2:visIdx',
-                            '3:visIdx'
+                            '1:visIdx',
+                            '0:visIdx'
                         ]
                     }
                 }, {

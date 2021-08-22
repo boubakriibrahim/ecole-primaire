@@ -22,7 +22,6 @@ class CreateNotesTable extends Migration
             $table->foreign("classe_id")->references('id')->on('classes')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign("eleve_id")->references('id')->on('eleves')->onUpdate('cascade')->onDelete('cascade')->constained();
             $table->foreign("matiere_id")->references('id')->on('matieres')->onUpdate('cascade')->onDelete('cascade');
-            //$table->timestamps();
         });
     }
 

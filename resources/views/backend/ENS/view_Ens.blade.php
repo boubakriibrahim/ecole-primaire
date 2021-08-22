@@ -36,58 +36,58 @@
                                     data-toggle="modal" data-target="#exampleModal">
                                     إضافة مدرس
                                 </button>
-
-
-
                             </div>
                         </div>
                         <!-- /.card-header -->
                         <div class="p-3">
-                            <table id="example1" class="table table-bordered table-striped text-right p-3">
+                            <table id="example1" class="table table-bordered table-striped text-right p-3" dir="rtl">
                                 <thead>
-                                    <tr>
-                                        <th width="25%">العملية</th>
-                                        <th>البريد الإلكتروني</th>
-                                        <th>رقم الهاتف</th>
-                                        <th>مكان الإقامة</th>
-                                        <th>تاريخ الولادة</th>
-                                        <th>الجنس</th>
-                                        <th>اللقب</th>
-                                        <th>الاسم</th>
-                                        <th>الصورة</th>
+                                    <tr dir="rtl">
                                         <th width="5%">العدد</th>
+                                        <th>الصورة</th>
+                                        <th>الاسم</th>
+                                        <th>اللقب</th>
+                                        <th>الجنس</th>
+                                        <th>تاريخ الولادة</th>
+                                        <th>مكان الإقامة</th>
+                                        <th>رقم الهاتف</th>
+                                        <th>البريد الإلكتروني</th>
+                                        <th width="25%">العملية</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($allData as $key => $ens)
                                     <tr>
-                                        <td>
-                                            <div class="row">
-                                                <a href="{{ route('Ens.delete', $ens->id) }}"
-                                                    class="btn btn-danger offset-sm-3 mr-sm-1 col-sm-4 order-3 order-sm-1"
-                                                    id="delete">حذف</a>
-
-                                                <button type="button" class="btn btn-info  col-sm-4 order-2"
-                                                    data-toggle="modal" data-target="#modelChange{{ $ens->id }}">
-                                                    تحديث
-                                                </button>
-                                            </div>
-                                        </td>
-                                        <td>{{ $ens->login }}</td>
-                                        <td>{{ $ens->phone }}</td>
-                                        <td>{{ $ens->adresse }}</td>
-                                        <td>{{ $ens->date_naissance }}</td>
-                                        <td>{{ $ens->sexe }}</td>
-                                        <td>{{ $ens->prenom }}</td>
-                                        <td>{{ $ens->nom }}</td>
+                                        <td>{{ $key+1 }}</td>
                                         <td><img src="
                                             @if($ens->profile_photo_path == NULL)
                                             https://i.postimg.cc/6qbpp0LV/profile-photo.jpg
                                             @else
                                             {{ $ens->profile_photo_path }}
                                             @endif
-                                            " alt="صورة المدرس" width="50" height="50"></td>
-                                        <td>{{ $key+1 }}</td>
+                                            " alt="صورة المدرس" width="50" height="50">
+                                        </td>
+                                        <td>{{ $ens->nom }}</td>
+                                        <td>{{ $ens->prenom }}</td>
+                                        <td>{{ $ens->sexe }}</td>
+                                        <td>{{ $ens->date_naissance }}</td>
+                                        <td>{{ $ens->adresse }}</td>
+                                        <td>{{ $ens->phone }}</td>
+                                        <td>{{ $ens->login }}</td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-md-6 px-1">
+                                                    <button type="button" class="btn btn-info btn-block"
+                                                        data-toggle="modal" data-target="#modelChange{{ $ens->id }}">
+                                                        تحديث
+                                                    </button>
+                                                </div>
+                                                <div class="col-md-6 mt-1 mt-md-0 px-1">
+                                                    <a href="{{ route('Ens.delete', $ens->id) }}"
+                                                        class="btn btn-danger btn-block" id="delete">حذف</a>
+                                                </div>
+                                            </div>
+                                        </td>
                                     </tr>
                                     @endforeach
                                     </tfoot>
@@ -156,9 +156,9 @@
                                                     <div class="form-group col-md-6 text-right">
                                                         <label for="phone"> رقم الهاتف<span
                                                                 class="text-danger">*</span></label>
-                                                        <input type="number" class="form-control" id="phone" name="phone"
-                                                            placeholder="أدخل رقم الهاتف" value="{{ $ens->phone }}"
-                                                            required>
+                                                        <input type="number" class="form-control" id="phone"
+                                                            name="phone" placeholder="أدخل رقم الهاتف"
+                                                            value="{{ $ens->phone }}" required>
                                                     </div>
                                                 </div>
                                                 <div class="form-group text-right" dir="rtl">
@@ -328,14 +328,14 @@
                     text: 'نسخ',
                     exportOptions: {
                         columns: [
-                            '1:visIdx',
-                            '2:visIdx',
-                            '3:visIdx',
-                            '4:visIdx',
-                            '5:visIdx',
-                            '6:visIdx',
+                            '8:visIdx',
                             '7:visIdx',
-                            '9:visIdx'
+                            '6:visIdx',
+                            '5:visIdx',
+                            '4:visIdx',
+                            '3:visIdx',
+                            '2:visIdx',
+                            '0:visIdx'
                         ]
                     }
                 },
@@ -344,14 +344,14 @@
                     text: 'Excel',
                     exportOptions: {
                         columns: [
-                            '1:visIdx',
-                            '2:visIdx',
-                            '3:visIdx',
-                            '4:visIdx',
-                            '5:visIdx',
-                            '6:visIdx',
+                            '8:visIdx',
                             '7:visIdx',
-                            '9:visIdx'
+                            '6:visIdx',
+                            '5:visIdx',
+                            '4:visIdx',
+                            '3:visIdx',
+                            '2:visIdx',
+                            '0:visIdx'
                         ]
                     }
                 }, "pdf",
@@ -360,14 +360,14 @@
                     text: 'طباعة',
                     exportOptions: {
                         columns: [
-                            '1:visIdx',
-                            '2:visIdx',
-                            '3:visIdx',
-                            '4:visIdx',
-                            '5:visIdx',
-                            '6:visIdx',
+                            '8:visIdx',
                             '7:visIdx',
-                            '9:visIdx'
+                            '6:visIdx',
+                            '5:visIdx',
+                            '4:visIdx',
+                            '3:visIdx',
+                            '2:visIdx',
+                            '0:visIdx'
                         ]
                     }
                 }, {

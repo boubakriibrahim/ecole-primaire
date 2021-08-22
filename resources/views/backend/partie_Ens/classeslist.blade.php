@@ -57,16 +57,20 @@
                                             <td>{{ $classe->anneescolaire }}</td>
                                             <td>
                                                 <div class="row" dir="rtl">
-                                                    <div class="col-md-6 order-3 order-md-1 mt-1 mt-md-0 px-1">
+                                                    <div class="col-md-4 mt-1 mt-md-0 px-1">
                                                         <a href="{{ route("list.check", $classe->id) }}"
                                                             class="btn btn-success btn-block"><i
                                                                 class="fa fa-plus-circle ml-1"></i>اضافة
                                                             قائمة</a>
                                                     </div>
-                                                    <div class="col-md-6 order-md-2 px-1">
+                                                    <div class="col-md-4 px-1">
                                                         <a href="{{ route("abscence.view", $classe->id) }}"
                                                             class="btn btn-primary btn-block"><i
                                                                 class="fas fa-user-check ml-1"></i> تسجيل الحضور </a>
+                                                    </div>
+                                                    <div class="col-md-4 px-1">
+                                                        <a href="{{ route("note.view", $classe->id) }}"
+                                                            class="btn btn-info btn-block"><i class="fas fa-sort-numeric-down ml-1"></i> إسناد الأعداد</a>
                                                     </div>
                                                 </div>
                                             </td>

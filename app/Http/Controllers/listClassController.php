@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\enseignant;
-use App\Models\classe;
+use App\Models\Classe;
 use App\Models\eleve;
 use App\Models\aff_enseignant;
 use App\Models\affc_eleve;
@@ -45,7 +45,7 @@ class listClassController extends Controller
         $eleves=eleve::all();
         $eleves_ids=DB::table("affc_eleves")->pluck('eleve_id');
         $data1 = $eleves->diff(eleve::whereIn('id', $eleves_ids)->get());
-        $classe=["classe"=>classe::where("id",$id)->first()];
+        $classe=["classe"=>Classe::where("id",$id)->first()];
 
         return view('backend.partie_Ens.view_list',$classe,compact('data1'));
     }
@@ -117,7 +117,7 @@ class listClassController extends Controller
     }
 
     public function editList($id){
-        $classe=["classe"=>classe::where("id",$id)->first()];
+        $classe=["classe"=>Classe::where("id",$id)->first()];
         $eleves=eleve::all();
         $eleves_ids=DB::table("affc_eleves")->pluck('eleve_id');
         $data1 = $eleves->diff(eleve::whereIn('id', $eleves_ids)->get());

@@ -198,11 +198,10 @@ Route::prefix('abscence')->group(function(){
     Route::post('/modifier/{id}', [listClassController::class, 'updateList'])->name('list.miseajour');
 
 });
+
 Route::prefix('note')->group(function(){
 
     Route::get('/noteView/{id}', [noteController::class, 'noteView'])->name('note.view');
-
-    Route::get('/creeClasse/{id}', [listClassController::class, 'listView'])->name('list.view');
 
     Route::get('/checkNote/{id}', [noteController::class, 'noteCheck'])->name('note.check');
 

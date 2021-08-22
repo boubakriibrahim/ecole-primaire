@@ -26,6 +26,7 @@ class noteController extends Controller
 
 
     public function noteStore(Request $request,$id){
+
             $id_eleves = DB::table("affc_eleves")->where("classe_id",$id)->pluck("eleve_id");
             $user_id = Auth::user()->id_enseignant;
             $matiere_ids = aff_enseignant::where('classe_id',$id)->where('enseignant_id',$user_id)->pluck('matiere_id');
@@ -37,20 +38,21 @@ class noteController extends Controller
             $countClass = count($id_eleves);
             for ($i=0; $i <$countClass ; $i++) {
                 foreach($matieres as $key => $matiere){
-                    if(isset($request->{$matiere->libelle}[$i])){
 
-                $data = new note();
-                $data->classe_id = $id;
-                $data->matiere_id=$matiere->id;
-                $data->eleve_id=$id_eleves[$i];
-                $data->note=$request->{$matiere->libelle}[$i];
+                    if($request[($i+1).'matiere'.($key+1)] != NULL){
 
+                        $data = new note();
+                        $data->classe_id = $id;
+                        $data->matiere_id=$matiere->id;
+                        $data->eleve_id=$id_eleves[$i];
+                        $data->note = $request[($i+1).'matiere'.($key+1)];
 
+                        $data->save();
 
-                $data->save();
+                    }
+                }
+            }
 
-            }}
-        }
         $notification = array(
             'message' => '  تم تسجيل الأعداد  بنجاح   ',
             'alert-type' => 'success'
@@ -61,8 +63,9 @@ class noteController extends Controller
 
 
     }
+
     public function editNote($id){
-        $classe = ["classe"=>classe::where("id",$id)->first()];
+        $classe = ["classe"=>Classe::where("id",$id)->first()];
 
         $eleves_aff = affc_eleve::where('classe_id',$id)->get();
         $notes = note::where('classe_id',$id)->get();
@@ -74,7 +77,9 @@ class noteController extends Controller
 
         return view('backend.partie_Ens.view_updateNote',compact('classe','notes','eleves_aff','matieres'));
     }
+
     public function noteUpdate(Request $request,$id){
+
             $id_eleves = DB::table("affc_eleves")->where("classe_id",$id)->pluck("eleve_id");
             $user_id = Auth::user()->id_enseignant;
             $matiere_ids = aff_enseignant::where('classe_id',$id)->where('enseignant_id',$user_id)->pluck('matiere_id');
@@ -84,39 +89,41 @@ class noteController extends Controller
             $countClass = count($id_eleves);
             for ($i=0; $i <$countClass ; $i++) {
                     foreach($matieres as $key => $matiere){
-                        if(isset($request->{$matiere->libelle}[$i])){
+                        if($request[($i+1).'matiere'.($key+1)] != NULL){
 
-                            if($data = note::where("eleve_id",$id_eleves[$i])->where("matiere_id",$matiere->id)->first()){
-                                $data->classe_id = $id;
-                                $data->matiere_id=$matiere->id;
-                                $data->eleve_id=$id_eleves[$i];
-                                $data->note=$request->{$matiere->libelle}[$i];
+                            $data = note::where("eleve_id",$id_eleves[$i])->where("matiere_id",$matiere->id)->get();
 
-                                $data->save();
+                            if($data->count() == 0){
+
+                                $newData = new note();
+                                $newData->classe_id = $id;
+                                $newData->matiere_id = $matiere->id;
+                                $newData->eleve_id = $id_eleves[$i];
+                                $newData->note = $request[($i+1).'matiere'.($key+1)];
+
+                                $newData->save();
                             } else {
-                                $data = new note();
-                                $data->classe_id = $id;
-                                $data->matiere_id=$matiere->id;
-                                $data->eleve_id=$id_eleves[$i];
-                                $data->note=$request->{$matiere->libelle}[$i];
 
-                                $data->save();
+                                $idNote = $data[0]->id;
+
+                                $updateData = note::find($idNote);
+                                $updateData->note = $request[($i+1).'matiere'.($key+1)];
+
+                                $updateData->save();
                             }
                         }
-                }
+                    }
             }
         $notification = array(
             'message' => '  تم تسجيل الأعداد  بنجاح   ',
             'alert-type' => 'success'
         );
 
-
         return redirect()->route('classes.view')->with($notification);
-
 
     }
     public function noteCheck($id){
-        $id_c=$id;
+
         $nb = note::where('classe_id',$id)->count();
 
         if( $nb == 0 ){
@@ -124,10 +131,6 @@ class noteController extends Controller
         }
         else{
             return redirect()->route('note.edit', ['id' => $id]);
-
         }
-
-
-
     }
 }

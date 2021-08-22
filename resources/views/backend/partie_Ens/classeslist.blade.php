@@ -69,7 +69,7 @@
                                                                 class="fas fa-user-check ml-1"></i> تسجيل الحضور </a>
                                                     </div>
                                                     <div class="col-md-4 px-1">
-                                                        <a href="{{ route("note.view", $classe->id) }}"
+                                                        <a href="{{ route("note.check", $classe->id) }}"
                                                             class="btn btn-info btn-block"><i class="fas fa-sort-numeric-down ml-1"></i> إسناد الأعداد</a>
                                                     </div>
                                                 </div>

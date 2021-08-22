@@ -11,7 +11,7 @@
                 <div class="col-sm-6 order-sm-1">
                     <ol class="breadcrumb float-right float-sm-left">
                         <li class="breadcrumb-item active order-sm"> إسناد أعداد </li>
-                        <li class="breadcrumb-item"><a href="#">الصفحة الرئيسية</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">الصفحة الرئيسية</a></li>
                     </ol>
                 </div>
                 <!-- /.col -->
@@ -36,7 +36,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- Modal -->
+
                         </div>
                         <!-- /.card-header -->
                         <form method="post" action='{{route('note.store',$classe["classe"]["id"])}}'>
@@ -66,7 +66,7 @@
                                                     <div class="form-group col-12 text-right">
 
                                                         <input type="number" class="form-control" id="niveau"
-                                                            name="{{$matiere->libelle}}[]" placeholder="العدد " min="0"
+                                                            name="{{ $data+1 }}matiere{{ $key+1 }}" placeholder="العدد " min="0"
                                                             max="20">
                                                     </div>
                                                 </div>
@@ -79,7 +79,7 @@
                                 </table>
                             </div>
 
-                            <div class="row mb-3">
+                            <div class="row mb-3 mx-3">
                                 <div class="offset-md-3 col-md-6">
                                     <div class="row">
                                         <div class="col-md-6 order-md-2 px-1">

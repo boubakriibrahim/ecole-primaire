@@ -184,7 +184,7 @@
                                                                     $ens->sexe ==
                                                                 'مؤنث') checked @endif>
                                                                 <label class="custom-control-label"
-                                                                    for="inlineCheckbox2">مؤنث</lab
+                                                                    for="inlineCheckbox2">مؤنث</label>
                                                             </div>
                                                         </div>
                                                     </div>

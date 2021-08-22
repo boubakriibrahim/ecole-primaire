@@ -5,10 +5,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
-    <link rel="stylesheet" href="mapbox://styles/mahmoudghorbel1/cksbq97os67k717p4pegruc71" />
-    <link href="mapbox://styles/mahmoudghorbel1/cksbq97os67k717p4pegruc71" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    {{-- <link rel="stylesheet" href="mapbox://styles/mahmoudghorbel1/cksbq97os67k717p4pegruc71" />
+    <link href="mapbox://styles/mahmoudghorbel1/cksbq97os67k717p4pegruc71" rel="stylesheet" /> --}}
     <style>
         body::before {
             display: block;
@@ -41,8 +41,8 @@
                 <span class="brand-text font-weight-light m-2">
                     <b>{{ $ecoleCreds->nom }}</b>
                 </span>
-                <img src="{{asset('images/uploads/'.$ecoleCreds->ecole_photo_path)}}" alt="Logo" class="brand-image rounded-circle elevation-3"
-                    style="opacity: .8" width="35">
+                <img src="{{asset('images/uploads/'.$ecoleCreds->ecole_photo_path)}}" alt="Logo"
+                    class="brand-image rounded-circle elevation-3" style="opacity: .8" width="35">
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
@@ -54,10 +54,10 @@
 
 
                     <li class="nav-item">
-                        <a href="#contacte" class="nav-link">الإتصال</a>
+                        <a href="#contact" class="nav-link">الإتصال</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#instructors" class="nav-link"> قريق العمل</a>
+                        <a href="#instructors" class="nav-link"> فريق العمل</a>
                     </li>
                     <li class="nav-item">
                         <a href="#learn" class="nav-link">المزيد</a>
@@ -72,7 +72,7 @@
         <div class="container">
             <div class="d-sm-flex align-items-center justify-content-between">
 
-                <img class="img-fluid d-none d-sm-block" src="{{ asset('images/ecole.svg') }}" alt="" />
+                <img class="img-fluid d-none d-sm-block w-50" src="{{ asset('images/ecole.svg') }}" alt="" />
 
                 <div class="text-end">
                     <h1>المدرسة الإبتدائية <span class="text-warning">{{ $ecoleCreds->nom }}</span></h1>
@@ -88,14 +88,16 @@
     <!-- Learn Sections -->
     <section id="learn" class="p-5">
         <div class="container">
+            <div class="row text-center mb-3">
+                <h2>قراءة المزيد من العلومات</h2>
+            </div>
             <div class="row align-items-center justify-content-between">
-                <div class="col-md">
+                <div class="col-md-6 d-none d-md-block">
                     <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
                         src="{{ asset('images/uploads/'.$ecoleCreds->ecole_photo_path) }}" width="300" height="300">
                 </div>
-                <div class="col-md p-5">
-                    <h2>قراءة المزيد من العلومات</h2>
-                    <p class="text-end">
+                <div class="col-md-6 p-3">
+                    <p class="text-end" style="font-size: 30px;">
                         {{ $ecoleCreds->description2 }}
                     </p>
                 </div>
@@ -105,11 +107,11 @@
 
     <section id="instructors" class="p-5 bg-primary">
         <div class="container">
-            <h2 class="text-center text-white">البيانات</h2>
-            <p class="lead text-center text-white mb-5">
-            </p>
+            <div class="row mb-3">
+                <h2 class="text-center text-white">فريق العمل</h2>
+            </div>
             <div class="row">
-                <div class="col-lg-4">
+                <div class="col-md-4 my-2">
                     <div class="card bg-light">
                         <div class="card-body text-center">
                             <img src="{{ asset('images/ati.png') }}" alt="ati"
@@ -128,7 +130,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-4">
+                <div class="col-md-4 my-2">
                     <div class="card bg-light">
                         <div class="card-body text-center">
                             <img src="{{ asset('images/ibrahim.jpg') }}" alt="ibrahim"
@@ -144,7 +146,7 @@
                     </div>
                 </div>
 
-                <div class=" col-lg-4">
+                <div class=" col-md-4 my-2">
                     <div class="card bg-light">
                         <div class="card-body text-center">
                             <img src="{{ asset('images/mahmoud.jpg') }}" alt="mahmoud"
@@ -167,31 +169,31 @@
     </section>
 
     <!-- Contact & Map -->
-    <section id="contacte" class="p-5" dir="rtl">
+    <section id="contact" class="p-5" dir="rtl">
         <div class="container">
-            <div class="row g-4">
-                <div class="col-md">
+            <div class="row g-4 text-center">
+               {{--  <div class="col-md-6"> --}}
                     <h2 class="text-center mb-4">الإتصال</h2>
                     <ul class="list-group list-group-flush lead">
                         <li class="list-group-item">
-                            <span class="fw-bold">الموقع:</span>
+                            <span class="fw-bold">الموقع :</span>
                             {{ $ecoleCreds->adresse }}
                         </li>
                         <li class="list-group-item">
-                            <span class="fw-bold">الهاتف:</span>
+                            <span class="fw-bold">الهاتف :</span>
                             {{ $ecoleCreds->phone }} 216+
                         </li>
 
                         <li class="list-group-item">
-                            <span class="fw-bold">البريد الإلكتروني:</span>
+                            <span class="fw-bold">البريد الإلكتروني :</span>
                             {{ $ecoleCreds->email }}
                         </li>
 
                     </ul>
-                </div>
-                <div class="col-md">
+                {{-- </div> --}}
+                {{-- <div class="col-md-6">
                     <div id="map"></div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </section>
@@ -208,11 +210,14 @@
     </footer>
 
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
     <script
         src="https://api.mapbox.com/styles/v1/mahmoudghorbel1/cksbq97os67k717p4pegruc71.html?fresh=true&title=copy&access_token=pk.eyJ1IjoibWFobW91ZGdob3JiZWwxIiwiYSI6ImNrc2Jwamx6YzA5MDgydW9kbGQ0MnVmdnoifQ.34JYxGpmxVOSCpEqasXY4Q"
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
     </script>
-    <script src="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js"></script>
+    {{-- <script src="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js"></script>
 
     <script>
         mapboxgl.accessToken =
@@ -224,7 +229,7 @@
             zoom: 14,
         })
 
-    </script>
+    </script> --}}
 </body>
 
 </html>

@@ -172,6 +172,7 @@ Route::prefix('eleve')->group(function(){
 
 
 Route::prefix('list')->group(function(){
+
     Route::get('/listClasses', [listClassController::class, 'listClasses'])->name('classes.view');
 
     Route::get('/creeClasse/{id}', [listClassController::class, 'listView'])->name('list.view');
@@ -198,15 +199,17 @@ Route::prefix('abscence')->group(function(){
 
 });
 Route::prefix('note')->group(function(){
+
     Route::get('/noteView/{id}', [noteController::class, 'noteView'])->name('note.view');
 
     Route::get('/creeClasse/{id}', [listClassController::class, 'listView'])->name('list.view');
-    Route::get('/checkList/{id}', [listClassController::class, 'listCheck'])->name('list.check');
+
+    Route::get('/checkNote/{id}', [noteController::class, 'noteCheck'])->name('note.check');
 
     Route::post('/store/{id}', [noteController::class, 'noteStore'])->name('note.store');
 
-    /* Route::get('/edit/{id}', [listClassController::class, 'editList'])->name('list.edit');
+    Route::get('/edit/{id}', [noteController::class, 'editNote'])->name('note.edit');
 
-    Route::post('/modifier/{id}', [listClassController::class, 'updateList'])->name('list.miseajour'); */
+    Route::post('/modifier/{id}', [noteController::class, 'noteUpdate'])->name('note.miseajour');
 
 });

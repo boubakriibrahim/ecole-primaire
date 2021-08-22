@@ -20,6 +20,7 @@
       </div>
       <!-- /.container-fluid -->
    </section>
+   
    <section class="content">
       <div class="container-fluid">
          <div class="row">
@@ -33,7 +34,7 @@
                      <!-- Modal -->
                   </div>
                   <!-- /.card-header -->
-                  <form method="post" action='{{route('note.store',$classe["classe"]["id"])}}' >
+                  <form method="post" action='{{route('note.miseajour',$classe["classe"]["id"])}}' >
                      @csrf
                     
                      <div >
@@ -51,18 +52,28 @@
                            <tbody>
                               @foreach($eleves_aff as $data => $aff)
                               <tr>
+                              
                                      @foreach($matieres as $key =>$matiere)
                                      <td >
+                                         @php $val="false" ; @endphp
+                                         
+                                     @foreach($notes as $key =>$note)
+                                       @if($note->matiere==$matiere && $note->eleve==$aff->eleve) 
+                                       @php $val=$note->note; @endphp
+                                       @endif
+                                        @endforeach
+                                         
                                      <div class="d-flex justify-content-center  ">
                                      <div class="row" dir="rtl">
                                                         <div class="form-group align-center text-right">
                                                             
                                                             <input type="number" class="form-control" id="niveau"
-                                                                name="{{$matiere->libelle}}[]" placeholder="العدد " min="0" max="20"
+                                                                name="{{$matiere->libelle}}[]" value="{{$val}}" placeholder="العدد " min="0" max="20"
                                                         >
                                                         </div>
                                     </div>
                                     </div>
+                                    
                                     </td>
                                     @endforeach
                                     

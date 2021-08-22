@@ -188,12 +188,12 @@ Route::prefix('note')->group(function(){
     Route::get('/noteView/{id}', [App\Http\controllers\noteController::class, 'noteView'])->name('note.view');
 
     Route::get('/creeClasse/{id}', [App\Http\controllers\listClassController::class, 'listView'])->name('list.view');
-    Route::get('/checkList/{id}', [App\Http\controllers\listClassController::class, 'listCheck'])->name('list.check');
+    Route::get('/checkNote/{id}', [App\Http\controllers\noteController::class, 'noteCheck'])->name('note.check');
 
     Route::post('/store/{id}', [App\Http\controllers\noteController::class, 'noteStore'])->name('note.store');
 
-    Route::get('/edit/{id}', [App\Http\controllers\listClassController::class, 'editList'])->name('list.edit');
+    Route::get('/edit/{id}', [App\Http\controllers\noteController::class, 'editNote'])->name('note.edit');
 
-    Route::post('/modifier/{id}', [App\Http\controllers\listClassController::class, 'updateList'])->name('list.miseajour');
+    Route::post('/modifier/{id}', [App\Http\controllers\noteController::class, 'noteUpdate'])->name('note.miseajour');
 
 });

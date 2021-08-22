@@ -58,7 +58,7 @@
                                                 
                                                         <a href="{{ route("abscence.view", $classe->id) }}"
                                                         class="btn btn-primary rounded-pill col-md-4 ">تسجيل حضور  </a>
-                                                        <a href="{{ route("note.view", $classe->id) }}"
+                                                        <a href="{{ route("note.check", $classe->id) }}"
                                                         class="btn btn-primary rounded-pill col-md-4 ">note   </a>
 
                                                 

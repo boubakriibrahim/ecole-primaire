@@ -148,37 +148,6 @@
                                                 </div>
                                                 <div class="row" dir="rtl">
                                                     <div class="form-group col-md-6 text-right">
-                                                        <label for="selectSeanceClasse" dir="rtl">
-                                                            القسم
-                                                            <span class="text-danger">*</span></label>
-
-                                                        <select class="custom-select" name="selectSeanceClasse"
-                                                            required>
-                                                            @foreach ($classes as $key => $classe)
-                                                            <option value="{{$classe->id}}" @if($classe->id ==
-                                                                $seance->id_classe) selected @endif>{{$classe->nom}}
-                                                            </option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group col-md-6 text-right">
-                                                        <label for="selectSeanceEnseignant" dir="rtl">
-                                                            المدرس
-                                                            <span class="text-danger">*</span></label>
-                                                        <select class="custom-select text-center" dir="rtl"
-                                                            name="selectSeanceEnseignant" required>
-                                                            @foreach ($enseignants as $key => $enseignant)
-                                                            <option value="{{$enseignant->id}}" @if($enseignant->id ==
-                                                                $seance->id_enseignant) selected
-                                                                @endif>{{$enseignant->nom}}
-                                                                {{$enseignant->prenom}}</option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div>
-
-                                                </div>
-                                                <div class="row" dir="rtl">
-                                                    <div class="form-group col-md-6 text-right">
                                                         <label for="heure_debut" dir="rtl">ساعة البداية <span
                                                                 class="text-danger">*</span></label>
                                                         <input placeholder="ساعة البداية" type="text" name="heure_debut"
@@ -194,23 +163,27 @@
                                                             required>
                                                     </div>
                                                 </div>
-
                                                 <div class="row" dir="rtl">
-                                                    <div class="form-group col-md-6 text-right">
-                                                        <label for="selectmatiere" dir="rtl">
-                                                            المادة
+                                                    <div class="form-group col-md-12 text-right">
+                                                        <label for="selectaffectation" dir="rtl">
+                                                            التعيين
                                                             <span class="text-danger">*</span></label>
-                                                        <select class="custom-select" name="selectmatiere" required>
-                                                            @foreach ($matieres as $key => $matiere)
-                                                            <option value="{{$matiere->id}}" @if($matiere->id ==
-                                                                $seance->id_matiere) selected
-                                                                @endif>{{$matiere->libelle}} |
-                                                                مستوى
-                                                                ({{$matiere->niveau}})</option>
+                                                        <select class="custom-select" name="selectaffectation" required>
+                                                            @foreach ($aff_enseignants as $key => $aff_enseignant)
+                                                            <option
+                                                                value="{{ $aff_enseignant->id }}" @if(($aff_enseignant->classe_id ==
+                                                                $seance->id_classe) && ($aff_enseignant->matiere_id ==
+                                                                $seance->id_matiere) && ($aff_enseignant->enseignant_id ==
+                                                                $seance->id_enseignant) ) selected @endif>
+                                                                القسم ({{$aff_enseignant->classe->nom}}) | المدرس ({{$aff_enseignant->enseignant->nom}} {{$aff_enseignant->enseignant->prenom}}) | المادة ({{$aff_enseignant->matiere->libelle}}-مستوى {{$aff_enseignant->matiere->niveau}})
+                                                            </option>
                                                             @endforeach
                                                         </select>
                                                     </div>
-                                                    <div class="form-group col-md-6 text-right">
+                                                </div>
+
+                                                <div class="row" dir="rtl">
+                                                    <div class="form-group col-md-12 text-right">
                                                         <label for="selectsalle" dir="rtl">
                                                             القاعة
                                                             <span class="text-danger">*</span></label>

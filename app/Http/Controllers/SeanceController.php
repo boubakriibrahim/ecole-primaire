@@ -69,13 +69,17 @@ class SeanceController extends Controller
 
         $data = Seance::find($id);
         $data->jour = $request->selectemploijour;
-            $data->heure_debut = $request->heure_debut;
-            $data->heure_fin = $request->heure_fin;
-            $data->id_enseignant = $request->selectSeanceEnseignant;
-            $data->id_classe = $request->selectSeanceClasse;
-            $data->id_matiere = $request->selectmatiere;
-            $data->id_salle = $request->selectsalle;
-            $data->anneescolaire = $request->anneescolaire;
+        $data->anneescolaire = $request->anneescolaire;
+        $data->heure_debut = $request->heure_debut;
+        $data->heure_fin = $request->heure_fin;
+
+        $affectation = DB::table('aff_enseignants')->where('id', $request->selectaffectation)->first();
+
+        $data->id_enseignant = $affectation->enseignant_id;
+        $data->id_classe = $affectation->classe_id;
+        $data->id_matiere = $affectation->matiere_id;
+
+        $data->id_salle = $request->selectsalle;
 
         $data->save();
 

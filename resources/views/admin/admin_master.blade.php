@@ -126,11 +126,11 @@
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+        href="{{ asset('css/google-font.css') }}">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('backend/plugins/fontawesome-free/css/all.min.css') }}">
     <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="{{ asset('css/ionicons.min.css') }}">
     <!-- Tempusdominus Bootstrap 4 -->
     <link rel="stylesheet"
         href="{{ asset('backend/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
@@ -153,15 +153,15 @@
         href="{{ asset('backend/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+    <link rel="stylesheet" href="{{ asset('css/toaster.css') }}">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+{{--     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> --}}
 
     {{-- time picker --}}
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+    <link rel="stylesheet" href="{{ asset('css/timepicker-min.css')}}">
 
 
     <script>
@@ -527,7 +527,7 @@
         }
 
     </style>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+    <script src="{{ asset('js/timepicker.min.js') }}"></script>
 
 
 </head>
@@ -537,7 +537,7 @@
 
     <!-- Preloader -->
     <div class="preloader flex-column justify-content-center align-items-center">
-        <img class="animation__shake img-circle" src="{{asset('images/logo.jpg')}}" alt="Logo" height="60" width="60">
+        <img class="animation__shake img-circle" src="{{asset('images/uploads/'.$ecoleCreds->ecole_photo_path)}}" alt="Logo" height="60" width="60">
     </div>
 
     <!-- Navbar -->
@@ -608,7 +608,7 @@
     <script src="{{ asset('backend/dist/js/pages/dashboard.js') }}"></script>
     @endif
 
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{  asset('js/sweetalert.js') }}"></script>
     <script type="text/javascript">
         $(function () {
             $(document).on('click', '#delete', function (e) {
@@ -641,12 +641,12 @@
 
     </script>
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script type="text/javascript" src="{{  asset('js/toastr.min.js') }}"></script>
 
 
 
     {{-- time picker --}}
-    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+    <script src="{{ asset('js/timepicker.min.js')}}"></script>
 
     <script>
         $('.timepicker').timepicker({
@@ -686,7 +686,7 @@
 
     </script>
 
-    <script>
+    {{-- <script>
         $(function () {
             $("#example1").DataTable({
                 "responsive": true,
@@ -925,7 +925,9 @@
 
         });
 
-    </script>
+    </script> --}}
+
+    @yield('datatable')
 
 
 </body>

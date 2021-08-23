@@ -35,7 +35,6 @@
                                     <h2 class="card-text text-center">قائمة أسماء تم تعميرها مسبقاً ! هل تريد تغييرها؟
                                     </h2>
                                     <div class="row d-flex align-items-center">
-                                        @php$id=$id;@endphp
                                         <div class="offset-md-4 col-md-4">
                                             <div class="row">
                                                 <a href="{{ route("list.edit", $id) }}"

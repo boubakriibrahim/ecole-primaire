@@ -4,18 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\eleve;
 
 class abscence extends Model
 {
     use HasFactory;
     protected $fillable = [
-        
-        'jour',
-        'heure_debut',
-        'heure_fin',
+        'seance_id',
         'eleve_id',
-        'anneescolaire',
         'date',
+        'etat',
     ];
     public function eleve(){
         return $this->belongsTo(eleve::class);

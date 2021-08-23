@@ -16,7 +16,7 @@ class CreateSeancesTable extends Migration
         Schema::create('seances', function (Blueprint $table) {
 
             $table->id();
-            $table->string('jour');
+            $table->integer('jour');
             $table->time('heure_debut');
             $table->time('heure_fin');
             $table->unsignedBigInteger('id_enseignant');

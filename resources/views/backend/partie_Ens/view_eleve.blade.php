@@ -68,15 +68,19 @@
                                             <td>{{ $eleve->num_inscri }}</td>
                                             <td>
                                                 <div class="row">
-                                                    <div class="col-md-6 px-1">
+                                                    <div class="col-md-4 px-1">
                                                         <button type="button" class="btn btn-info btn-block"
                                                             data-toggle="modal" data-target="#model{{ $eleve->id }}">
                                                             تحديث
                                                         </button>
                                                     </div>
-                                                    <div class="col-md-6 mt-1 mt-md-0 px-1">
+                                                    <div class="col-md-4 mt-1 mt-md-0 px-1">
                                                         <a href="{{ route("eleve.delete", $eleve->id) }}"
                                                             class="btn btn-danger btn-block" id="delete">حذف</a>
+                                                    </div>
+                                                    <div class="col-md-4 mt-1 mt-md-0 px-1">
+                                                        <a href="{{ route("eleve.notes", $eleve->id) }}"
+                                                            class="btn btn-success btn-block">الأعداد</a>
                                                     </div>
                                                 </div>
                                             </td>

@@ -356,9 +356,7 @@
 
 @foreach ($allData as $key => $seance)
 <script type="text/javascript">
-    var seances = {
-        !!json_encode($seance) !!
-    };
+    var seances = {!!json_encode($seance) !!};
     var heure_debut = (seances['heure_debut']).substring(0, 2);
     var heure_fin = (seances['heure_fin']).substring(3, 5);
 

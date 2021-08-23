@@ -162,6 +162,8 @@ Route::prefix('eleve')->group(function(){
 
     Route::get('/effacer/{id}', [eleveController::class, 'eleveDelete'])->name('eleve.delete');
 
+    Route::get('/notes/{id}', [eleveController::class, 'eleveNotes'])->name('eleve.notes');
+
 });
 
 

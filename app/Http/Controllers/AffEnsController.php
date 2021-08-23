@@ -12,7 +12,7 @@ use App\Models\Matiere;
 class AffEnsController extends Controller
 {
     public function AffEnsView () {
-        $affEns = aff_enseignant::all();
+        $affEns = aff_enseignant::orderBy('classe_id')->get();
         $enseignants = enseignant::orderBy('nom')->get();
         $classes = Classe::all();
         $matieres = Matiere::orderBy('libelle')->get();

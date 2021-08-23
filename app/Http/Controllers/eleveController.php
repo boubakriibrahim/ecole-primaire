@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\eleve;
+use App\Models\Classe;
+use Illuminate\Support\Facades\DB;
 
 class eleveController extends Controller
 {
@@ -51,7 +53,7 @@ class eleveController extends Controller
         $data->date_naissance = $request->date_naissance;
         $data->num_inscri = $request->num_inscri;
         $data->sexe = $request->sexe;
-        
+
 
 
         $data->save();
@@ -77,5 +79,52 @@ class eleveController extends Controller
         );
 
         return redirect()->route('eleve.view')->with($notification);
+    }
+
+
+    public function eleveNotes($id){
+
+        $eleve = eleve::find($id);
+        $classeid = DB::table('affc_eleves')->where('eleve_id', $eleve->id)->value('classe_id');
+
+        if ($classeid == NULL){
+            $notification = array(
+                'message' => 'يجب التعيين أولا',
+                'alert-type' => 'error'
+            );
+
+            return back()->with($notification);
+        }
+
+        $classe = Classe::find($classeid);
+        $niveau = $classe->niveau;
+        $matieres = DB::table('matieres')->where('niveau', $niveau)->get();
+
+        $notes = DB::table('notes')->where('eleve_id', $eleve->id)->get();
+
+        $table = array();
+        $somme = 0;
+        $nb = 0;
+        foreach($matieres as $key => $matiere){
+
+            $existe = DB::table('notes')->where('eleve_id', $eleve->id)->where('matiere_id', $matiere->id)->count();
+
+            if($existe == 0){
+                array_push($table, [$matiere->libelle, NULL]);
+            } else {
+                $note = DB::table('notes')->where('eleve_id', $eleve->id)->where('matiere_id', $matiere->id)->value('note');
+                array_push($table, [$matiere->libelle, $note]);
+                $somme += $note;
+                $nb++;
+            }
+        }
+
+        if ($nb != 0){
+            $moyenne = $somme / $nb;
+        } else {
+            $moyenne = 0;
+        }
+
+        return view('backend.eleve-notes', compact('eleve', 'classe', 'table', 'moyenne', 'somme', 'nb'));
     }
 }

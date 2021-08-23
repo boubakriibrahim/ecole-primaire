@@ -41,7 +41,6 @@
 
                             <form method="post" action='{{ route('list.miseajour',$id) }}' width=60%>
                                 @csrf
-
                                 @foreach($eleves_aff as $data => $aff)
                                 <div class=" flex-row-reverse">
                                     <div class="list-group-item list-group-item-action rounded-pill " tabindex="-1"

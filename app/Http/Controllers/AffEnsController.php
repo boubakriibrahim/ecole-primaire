@@ -20,7 +20,7 @@ class AffEnsController extends Controller
     }
 
     public function AffEnsStore(Request $request) {
-        $data= new aff_enseignant(); 
+        $data= new aff_enseignant();
         $data->classe_id = $request->classe_id;
         $data->matiere_id = $request->matiere_id;
         $data->enseignant_id = $request->enseignant_id;
@@ -50,7 +50,6 @@ class AffEnsController extends Controller
         return back()->with($notification);
     }
 
-    
 
     public function AffEnsDelete($id) {
 

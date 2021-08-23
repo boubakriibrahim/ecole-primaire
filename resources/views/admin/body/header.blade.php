@@ -119,11 +119,11 @@
         <ul class="order-1 order-md-3 navbar-nav navbar-no-expand d-flex align-items-center ml-1" dir="ltr">
 
             <li class="nav-item">
-                <button onclick="$('body').toggleClass('dark-mode');" style="border: none;
+                <button style="border: none;
                         background: none;
                         cursor: pointer;
                         margin: 0;
-                        padding: 0;">
+                        padding: 0;" id="dark-mode-toggle">
                     <i class="far fa-moon" style="color: white;"></i>
                 </button>
             </li>
@@ -203,6 +203,4 @@
 
         </ul>
     </div>
-
-
 </nav>

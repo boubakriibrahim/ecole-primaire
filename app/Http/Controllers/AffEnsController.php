@@ -4,33 +4,27 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\aff_enseignant;
-use App\Models\classe;
+use App\Models\Classe;
 use App\Models\enseignant;
 use Illuminate\Support\Facades\DB;
-use App\Models\matiere;
+use App\Models\Matiere;
 
 class AffEnsController extends Controller
 {
     public function AffEnsView () {
         $affEns = aff_enseignant::all();
         $enseignants = enseignant::orderBy('nom')->get();
-        $classes = classe::all();
-        $matieres = matiere::orderBy('libelle')->get();
+        $classes = Classe::all();
+        $matieres = Matiere::orderBy('libelle')->get();
         return view('backend.view_affectationEns',compact('affEns','enseignants','classes','matieres'));
     }
 
-    /* public function ClasseAdd() {
-
-        return view('backend.ENS.add_Ens');
-    } */
     public function AffEnsStore(Request $request) {
         $data= new aff_enseignant(); 
         $data->classe_id = $request->classe_id;
         $data->matiere_id = $request->matiere_id;
         $data->enseignant_id = $request->enseignant_id;
 
-
-        /* enseignant::create($request->all()); */
 
         if((DB::table('aff_enseignants')->where('classe_id',$request->classe_id)->where('matiere_id',$request->matiere_id)->doesntExist())){
             $data->save();
@@ -55,9 +49,6 @@ class AffEnsController extends Controller
 
         return back()->with($notification);
     }
-
-
-
 
     
 

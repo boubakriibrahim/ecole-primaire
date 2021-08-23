@@ -41,7 +41,7 @@
 
                             <form method="post" action='{{ route('list.miseajour',$id) }}' width=60%>
                                 @csrf
-
+                                @php $n=$nb-count($eleves_aff); @endphp
                                 @foreach($eleves_aff as $data => $aff)
                                 <div class=" flex-row-reverse">
                                     <div class="list-group-item list-group-item-action rounded-pill " tabindex="-1"
@@ -60,6 +60,25 @@
                                 </div>
 
                                 @endforeach
+                                @for($i=0;$i<$n;$i++)
+                                <div class=" flex-row-reverse">
+                                    <div class="list-group-item list-group-item-action rounded-pill " tabindex="-1"
+                                        aria-disabled="false">
+                                        <select class="form-select form-select-sm rounded-pill bg-body w-100"
+                                            aria-label=".form-select-sm example" name="n_noms[]" dir="rtl" required>
+                                            <option value=0>
+                                            تلميذ {{$i+count($eleves_aff)+1}}
+                                        </option>
+
+                                            @foreach($data1 as $key => $ele)
+                                            <option value="{{$ele->id}}" required>{{$ele->nom}} {{$ele->prenom}}
+                                            </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
+                                @endfor
                                 <center><button type="reset" class="btn btn-secondary"
                                         data-dismiss="modal">إلغاء</button>
                                     <button type="submit" class="btn btn-primary">تأكيد</button></center>

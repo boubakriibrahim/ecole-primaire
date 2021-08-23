@@ -136,8 +136,11 @@ class listClassController extends Controller
         $id_aff=DB::table("affc_eleves")->where('classe_id',$id)->pluck('id');
         $nb=DB::table('classes')->where('id',$id)->value('nb');
         $noms=$request->noms;
+        $n_noms=$request->n_noms;
+        $n=$nb-count($id_aff);
+        //dd($max,$n);
 
-        for($i=0;$i<$nb;$i++){
+        for($i=0;$i<count($id_aff);$i++){
 
             if($noms[$i]==0){
 
@@ -152,7 +155,7 @@ class listClassController extends Controller
 
             }
 
-            for($j=$i+1;$j<$nb;$j++){
+            for($j=$i+1;$j<count($id_aff);$j++){
 
                 if($noms[$i]==$noms[$j]){
 
@@ -167,20 +170,55 @@ class listClassController extends Controller
                 }
             }
         }
-        for ($i=0; $i <$nb ; $i++){
+        for ($i=0; $i <count($id_aff) ; $i++){
             $request->validate([
                 'noms'=>'required',
             ]);
 
 
 
-        $affec = affc_eleve::find($id_aff[$i]);
+       $affec = affc_eleve::find($id_aff[$i]);
         $affec->classe_id = $id;
         $affec->eleve_id =$request->noms[$i];
 
-        $affec->save();
+        $affec->save();}
+
+
+        for($i=0;$i<$n;$i++){
+
+
+
+            for($j=$i+1;$j<$n;$j++){
+
+                if($n_noms[$i]==$n_noms[$j]){
+
+                    $notification = array(
+                        'message' => 'هناك إسم متكرر',
+                        'alert-type' => 'error'
+                    );
+
+
+                    return back()->with($notification);
+
+                }
+            }
+        }
+
+
+
+
+        //
+        for($i=0;$i<$n;$i++){
+            if($n_noms[$i]!=0){
+        $affec = new affc_eleve();
+        $affec->classe_id = $id;
+        $affec->eleve_id =$request->n_noms[$i];
+
+        $affec->save();}
 
         }
+
+
 
         $notification = array(
             'message' => 'تم إضافة قائمة القسم بنجاح',

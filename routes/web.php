@@ -35,12 +35,6 @@ Route::get('/', function () {
 });
 
 
-Route::get('/test', function () {
-    return view('backend.partie_Ens.abscenceView');
-});
-
-/* Auth::routes(); */
-
 Route::get('/login',[LoginController::class, 'showLoginForm'])->name('login');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');

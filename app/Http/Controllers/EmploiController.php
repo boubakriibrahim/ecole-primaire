@@ -10,6 +10,7 @@ use App\Models\enseignant;
 use App\Models\Matiere;
 use App\Models\Salle;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class EmploiController extends Controller
 {
@@ -170,12 +171,17 @@ class EmploiController extends Controller
 
     public function EmploiViewOne ($id) {
 
+
         $emploi = Emploi::find($id);
         $anneescolaire = $emploi->anneescolaire;
+        $matieres = Matiere::all();
+        $salles = Salle::all();
+        $enseignants = enseignant::all();
+        $classes = Classe::all();
 
         if ($emploi->id_classe == -1) {
             $type = "المدرس";
-            $data = DB::table('seances')->where('id_enseignant', $emploi->id_enseignant)->get();
+            $data = DB::table('seances')->where('id_enseignant', $emploi->id_enseignant)->orderBy('jour')->orderBy('heure_debut')->get();
             $nom = enseignant::find($emploi->id_enseignant)->nom;
             $prenom = enseignant::find($emploi->id_enseignant)->prenom;
         } else {
@@ -185,26 +191,20 @@ class EmploiController extends Controller
             $prenom = '';
         }
 
-        return view('backend.view_one_emploi',compact('data', 'nom', 'prenom' , 'type', 'anneescolaire'));
+        return view('backend.view_one_emploi',compact('data', 'nom', 'prenom' , 'type', 'anneescolaire', 'matieres', 'salles', 'enseignants', 'classes'));
     }
 
-    /* public function AffEnsUpdate(Request $request, $id) {
 
-        $data = aff_enseignant::find($id);
-        $data->classe_id = $request->classe_id;
-        $data->matiere_id = $request->matiere_id;
-        $data->enseignant_id = $request->enseignant_id;
+    public function monEmploi() {
 
+        $matieres = Matiere::all();
+        $salles = Salle::all();
+        $enseignants = enseignant::all();
+        $classes = Classe::all();
 
-        $data->save();
+        $data = DB::table('seances')->where('id_enseignant', Auth::user()->id_enseignant)->orderBy('jour')->orderBy('heure_debut')->get();
 
-        $notification = array(
-            'message' => 'تم تحديث التعيين بنجاح',
-            'alert-type' => 'info'
-        );
-
-        return back()->with($notification);
+        return view('backend.view_monEmploi',compact('data', 'matieres', 'salles', 'enseignants', 'classes'));
     }
 
-    } */
 }

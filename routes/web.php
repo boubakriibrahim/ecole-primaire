@@ -2,14 +2,22 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\backend\UserController;
 use App\Http\Controllers\ensController;
 use App\Http\Controllers\MatiereController;
 use App\Http\Controllers\SalleController;
 use App\Http\Controllers\AffEnsController;
-use App\Http\controllers\ProfilController;
-use App\Http\controllers\eleveController;
-use App\Http\controllers\listClassController;
+use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\eleveController;
+use App\Http\Controllers\listClassController;
+use App\Http\Controllers\abscenceController;
+use App\Http\Controllers\ecoleController;
+use App\Http\Controllers\ensgController;
+use App\Http\Controllers\ClasseController;
+use App\Http\Controllers\EmploiController;
+use App\Http\Controllers\SeanceController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\noteController;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,130 +34,98 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/enseignant', function () {
-    return view('enseignant/index');
-});
+
 Route::get('/test', function () {
-    return view('test');
+    return view('backend.partie_Ens.abscenceView');
 });
 
+/* Auth::routes(); */
 
-/* Route::get('/emploi', function () {
-    return view('backend.view_emploi');
-}); */
+Route::get('/login',[LoginController::class, 'showLoginForm'])->name('login');
 
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::get('/profil',[App\Http\controllers\ProfilController::class, 'AdminData'])->name('profil');
-
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/admin/logout', [AdminController::class, 'Logout'])->name('admin.logout');
 
-// user managment
+Route::prefix('profil')->group(function(){
 
-Route::prefix('admin')->group(function(){
-
-    Route::get('/view', [UserController::class, 'UserView'])->name('admin.view');
-    Route::get('/add', [UserController::class, 'UserAdd'])->name('admins.add');
-    Route::post('/store', [UserController::class, 'AdminStore'])->name('admins.store');
-    Route::get('/edit/{id}', [UserController::class, 'UserEdit'])->name('admin.edit');
-    Route::post('/miseajour/{id}', [UserController::class, 'AdminUpdate'])->name('admin.miseajour');
-    Route::get('/effacer/{id}', [UserController::class, 'AdminDelete'])->name('admin.delete');
-
+    Route::get('/',[ProfilController::class, 'AdminData'])->name('profil');
+    Route::post('/miseajour/{id}', [ProfilController::class, 'ProfileUpdate'])->name('profil.miseajour');
+    Route::post('/password/{id}', [ProfilController::class, 'ProfileUpdatePassword'])->name('profil.password');
 });
 
-Route::prefix('maitre')->group(function(){
+Route::prefix('ecole')->group(function(){
 
-    Route::get('/view', [UserController::class, 'UserView'])->name('maitre.view');
-    Route::get('/add', [UserController::class, 'UserAdd'])->name('maitres.add');
-    Route::post('/store', [UserController::class, 'MaitreStore'])->name('maitres.store');
-    Route::get('/edit/{id}', [UserController::class, 'UserEdit'])->name('maitre.edit');
-    Route::post('/miseajour/{id}', [UserController::class, 'MaitreUpdate'])->name('maitre.miseajour');
-    Route::get('/effacer/{id}', [UserController::class, 'MaitreDelete'])->name('maitre.delete');
+    Route::get('/',[ecoleController::class, 'EcoleData'])->name('ecole');
+    Route::put('/miseajour', [ecoleController::class, 'EcoleUpdate'])->name('ecole.miseajour');
 
 });
-
-Route::prefix('eleve')->group(function(){
-
-    Route::get('/view', [UserController::class, 'UserView'])->name('eleve.view');
-    Route::get('/add', [UserController::class, 'UserAdd'])->name('eleves.add');
-    Route::post('/store', [UserController::class, 'EleveStore'])->name('eleves.store');
-    Route::get('/edit/{id}', [UserController::class, 'UserEdit'])->name('eleve.edit');
-    Route::post('/miseajour/{id}', [UserController::class, 'EleveUpdate'])->name('eleve.miseajour');
-    Route::get('/effacer/{id}', [UserController::class, 'EleveDelete'])->name('eleve.delete');
-
-});
-
 
 
 Route::prefix('Enseignant')->group(function(){
 
-    Route::get('/view', [App\Http\controllers\ensgController::class, 'EnsView'])->name('Ens.view');
-    Route::get('/add', [App\Http\controllers\ensgController::class, 'EnsAdd'])->name('Ens.add');
-    Route::post('/store', [App\Http\controllers\ensgController::class, 'EnsStore'])->name('Ens.store');
-    Route::post('/miseajour/{id}', [App\Http\controllers\ensgController::class, 'EnsUpdate'])->name('Ens.miseajour');
+    Route::get('/view', [ensgController::class, 'EnsView'])->name('Ens.view');
+    Route::post('/store', [ensgController::class, 'EnsStore'])->name('Ens.store');
+    Route::post('/miseajour/{id}', [ensgController::class, 'EnsUpdate'])->name('Ens.miseajour');
 
-    Route::get('/effacer/{id}', [App\Http\controllers\ensgController::class, 'EnsDelete'])->name('Ens.delete');
+    Route::get('/effacer/{id}', [ensgController::class, 'EnsDelete'])->name('Ens.delete');
 
 });
 
 
 Route::prefix('Classe')->group(function(){
 
-    Route::get('/view', [App\Http\controllers\ClasseController::class, 'ClasseView'])->name('classe.view');
+    Route::get('/view', [ClasseController::class, 'ClasseView'])->name('classe.view');
 
-    Route::post('/store', [App\Http\controllers\ClasseController::class, 'ClasseStore'])->name('classe.store');
-    Route::post('/miseajour/{id}', [App\Http\controllers\ClasseController::class, 'ClasseUpdate'])->name('classe.miseajour');
+    Route::post('/store', [ClasseController::class, 'ClasseStore'])->name('classe.store');
+    Route::post('/miseajour/{id}', [ClasseController::class, 'ClasseUpdate'])->name('classe.miseajour');
 
-    Route::get('/effacer/{id}', [App\Http\controllers\ClasseController::class, 'ClasseDelete'])->name('classe.delete');
+    Route::get('/effacer/{id}', [ClasseController::class, 'ClasseDelete'])->name('classe.delete');
 
 });
 
 Route::prefix('Matiere')->group(function(){
 
-    Route::get('/view', [App\Http\controllers\MatiereController::class, 'MatiereView'])->name('matiere.view');
+    Route::get('/view', [MatiereController::class, 'MatiereView'])->name('matiere.view');
 
-    Route::post('/store', [App\Http\controllers\MatiereController::class, 'MatiereStore'])->name('matiere.store');
-    Route::post('/miseajour/{id}', [App\Http\controllers\MatiereController::class, 'MatiereUpdate'])->name('matiere.miseajour');
+    Route::post('/store', [MatiereController::class, 'MatiereStore'])->name('matiere.store');
+    Route::post('/miseajour/{id}', [MatiereController::class, 'MatiereUpdate'])->name('matiere.miseajour');
 
-    Route::get('/effacer/{id}', [App\Http\controllers\MatiereController::class, 'MatiereDelete'])->name('matiere.delete');
+    Route::get('/effacer/{id}', [MatiereController::class, 'MatiereDelete'])->name('matiere.delete');
 
 });
 
 Route::prefix('Salle')->group(function(){
 
-    Route::get('/view', [App\Http\controllers\SalleController::class, 'SalleView'])->name('salle.view');
+    Route::get('/view', [SalleController::class, 'SalleView'])->name('salle.view');
 
-    Route::post('/store', [App\Http\controllers\SalleController::class, 'SalleStore'])->name('salle.store');
-    Route::post('/miseajour/{id}', [App\Http\controllers\SalleController::class, 'SalleUpdate'])->name('salle.miseajour');
+    Route::post('/store', [SalleController::class, 'SalleStore'])->name('salle.store');
+    Route::post('/miseajour/{id}', [SalleController::class, 'SalleUpdate'])->name('salle.miseajour');
 
-    Route::get('/effacer/{id}', [App\Http\controllers\SalleController::class, 'SalleDelete'])->name('salle.delete');
+    Route::get('/effacer/{id}', [SalleController::class, 'SalleDelete'])->name('salle.delete');
 
 });
 
 
 Route::prefix('Seance')->group(function(){
 
-    Route::get('/view', [App\Http\controllers\SeanceController::class, 'SeanceView'])->name('seance.view');
+    Route::get('/view', [SeanceController::class, 'SeanceView'])->name('seance.view');
 
-    Route::post('/store', [App\Http\controllers\SeanceController::class, 'SeanceStore'])->name('seance.store');
-    Route::post('/miseajour/{id}', [App\Http\controllers\SeanceController::class, 'SeanceUpdate'])->name('seance.miseajour');
+    Route::post('/store', [SeanceController::class, 'SeanceStore'])->name('seance.store');
+    Route::post('/miseajour/{id}', [SeanceController::class, 'SeanceUpdate'])->name('seance.miseajour');
 
-    Route::get('/effacer/{id}', [App\Http\controllers\SeanceController::class, 'SeanceDelete'])->name('seance.delete');
+    Route::get('/effacer/{id}', [SeanceController::class, 'SeanceDelete'])->name('seance.delete');
 
 });
 
 Route::prefix('affectationEnseignant')->group(function(){
 
-    Route::get('/view', [App\Http\controllers\AffEnsController::class, 'AffEnsView'])->name('affEns.view');
-    Route::get('/add', [App\Http\controllers\AffEnsController::class, 'AffEnsAdd'])->name('AffEns.add');
-    Route::post('/store', [App\Http\controllers\AffEnsController::class, 'AffEnsStore'])->name('AffEns.store');
-    Route::get('/edit/{id}', [App\Http\controllers\AffEnsController::class, 'AffEnsEdit'])->name('AffEns.edit');
-    Route::post('/miseajour/{id}', [App\Http\controllers\AffEnsController::class, 'AffEnsUpdate'])->name('AffEns.miseajour');
-    Route::get('/effacer/{id}', [App\Http\controllers\AffEnsController::class, 'AffEnsDelete'])->name('AffEns.delete');
+    Route::get('/view', [AffEnsController::class, 'AffEnsView'])->name('affEns.view');
+    Route::get('/add', [AffEnsController::class, 'AffEnsAdd'])->name('AffEns.add');
+    Route::post('/store', [AffEnsController::class, 'AffEnsStore'])->name('AffEns.store');
+    Route::get('/edit/{id}', [AffEnsController::class, 'AffEnsEdit'])->name('AffEns.edit');
+    Route::post('/miseajour/{id}', [AffEnsController::class, 'AffEnsUpdate'])->name('AffEns.miseajour');
+    Route::get('/effacer/{id}', [AffEnsController::class, 'AffEnsDelete'])->name('AffEns.delete');
 
 });
 
@@ -157,53 +133,82 @@ Route::prefix('affectationEnseignant')->group(function(){
 
 Route::prefix('Emplois')->group(function(){
 
-    Route::get('/view/classes', [App\Http\controllers\EmploiController::class, 'EmploiClassesView'])->name('emploi.view.classes');
+    Route::get('/view/classes', [EmploiController::class, 'EmploiClassesView'])->name('emploi.view.classes');
 
-    Route::get('/view/enseignants', [App\Http\controllers\EmploiController::class, 'EmploiEnseignantsView'])->name('emploi.view.enseignants');
+    Route::get('/view/enseignants', [EmploiController::class, 'EmploiEnseignantsView'])->name('emploi.view.enseignants');
 
-    Route::post('/select', [App\Http\controllers\EmploiController::class, 'EmploiSelect'])->name('emploi.select');
+    Route::post('/select', [EmploiController::class, 'EmploiSelect'])->name('emploi.select');
 
-    Route::get('/add/classes', [App\Http\controllers\EmploiController::class, 'EmploiClassesAdd'])->name('emploi.add.classes');
+    Route::get('/add/classes', [EmploiController::class, 'EmploiClassesAdd'])->name('emploi.add.classes');
 
-    Route::get('/add/enseignants', [App\Http\controllers\EmploiController::class, 'EmploiEnseignantsAdd'])->name('emploi.add.enseignants');
+    Route::get('/add/enseignants', [EmploiController::class, 'EmploiEnseignantsAdd'])->name('emploi.add.enseignants');
 
+    Route::post('/store/enseignant', [EmploiController::class, 'EmploiEnseignantStore'])->name('emploi.store.enseignant');
 
-    Route::post('/store/enseignant', [App\Http\controllers\EmploiController::class, 'EmploiEnseignantStore'])->name('emploi.store.enseignant');
+    Route::post('/store/classe', [EmploiController::class, 'EmploiClasseStore'])->name('emploi.store.classe');
 
-    Route::post('/store/classe', [App\Http\controllers\EmploiController::class, 'EmploiClasseStore'])->name('emploi.store.classe');
+    Route::get('/effacer/{id}', [EmploiController::class, 'EmploiDelete'])->name('emploi.delete');
 
-    Route::get('/effacer/{id}', [App\Http\controllers\EmploiController::class, 'EmploiDelete'])->name('emploi.delete');
+    Route::get('/view/one/{id}', [EmploiController::class, 'EmploiViewOne'])->name('emploi.view.one');
 
-    Route::get('/view/one/{id}', [App\Http\controllers\EmploiController::class, 'EmploiViewOne'])->name('emploi.view.one');
-
-    /*Route::post('/miseajour/{id}', [App\Http\controllers\EmploiController::class, 'EmploiUpdate'])->name('emploi.miseajour');
-
-     */
 
 });
- Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('admin/index');
-})->name('dashboard');
-/*___________routes partie */
+
+Route::get('/monEmploi', [EmploiController::class, 'monEmploi'])->name('mon.emploi');
+
+
+
 Route::prefix('eleve')->group(function(){
 
-    Route::get('/view', [App\Http\controllers\eleveController::class, 'eleveView'])->name('eleve.view');
+    Route::get('/view', [eleveController::class, 'eleveView'])->name('eleve.view');
 
-    Route::post('/store', [App\Http\controllers\eleveController::class, 'eleveStore'])->name('eleve.store');
-    Route::post('/miseajour/{id}', [App\Http\controllers\eleveController::class, 'eleveUpdate'])->name('eleve.miseajour');
+    Route::post('/store', [eleveController::class, 'eleveStore'])->name('eleve.store');
 
-    Route::get('/effacer/{id}', [App\Http\controllers\eleveController::class, 'eleveDelete'])->name('eleve.delete');
+    Route::post('/miseajour/{id}', [eleveController::class, 'eleveUpdate'])->name('eleve.miseajour');
+
+    Route::get('/effacer/{id}', [eleveController::class, 'eleveDelete'])->name('eleve.delete');
 
 });
 
+
 Route::prefix('list')->group(function(){
-    Route::get('/listClasses', [App\Http\controllers\listClassController::class, 'listClasses'])->name('classes.view');
 
-    Route::get('/creeClasse/{id}', [App\Http\controllers\listClassController::class, 'listView'])->name('list.view');
+    Route::get('/listClasses', [listClassController::class, 'listClasses'])->name('classes.view');
 
-    Route::post('/store', [App\Http\controllers\listClassController::class, 'listStore'])->name('list.store');
-    Route::post('/miseajour/{id}', [App\Http\controllers\eleveController::class, 'eleveUpdate'])->name('eleve.miseajour');
+    Route::get('/creeClasse/{id}', [listClassController::class, 'listView'])->name('list.view');
+    Route::get('/checkList/{id}', [listClassController::class, 'listCheck'])->name('list.check');
 
-    Route::get('/effacer/{id}', [App\Http\controllers\eleveController::class, 'eleveDelete'])->name('eleve.delete');
+    Route::post('/store/{id}', [listClassController::class, 'listStore'])->name('list.store');
+
+    Route::get('/edit/{id}', [listClassController::class, 'editList'])->name('list.edit');
+
+    Route::post('/modifier/{id}', [listClassController::class, 'updateList'])->name('list.miseajour');
+
+});
+Route::prefix('abscence')->group(function(){
+    Route::get('/abscence/{id}', [abscenceController::class, 'abscenceView'])->name('abscence.view');
+
+    Route::get('/creeClasse/{id}', [listClassController::class, 'listView'])->name('list.view');
+    Route::get('/checkList/{id}', [listClassController::class, 'listCheck'])->name('list.check');
+
+    Route::post('/store/{id}', [abscenceController::class, 'abscenceStore'])->name('abscence.store');
+
+    Route::get('/edit/{id}', [listClassController::class, 'editList'])->name('list.edit');
+
+    Route::post('/modifier/{id}', [listClassController::class, 'updateList'])->name('list.miseajour');
+
+});
+
+Route::prefix('note')->group(function(){
+
+    Route::get('/noteView/{id}', [noteController::class, 'noteView'])->name('note.view');
+
+    Route::get('/checkNote/{id}', [noteController::class, 'noteCheck'])->name('note.check');
+
+    Route::post('/store/{id}', [noteController::class, 'noteStore'])->name('note.store');
+
+    Route::get('/edit/{id}', [noteController::class, 'editNote'])->name('note.edit');
+
+    Route::post('/modifier/{id}', [noteController::class, 'noteUpdate'])->name('note.miseajour');
 
 });

@@ -14,22 +14,22 @@ class CreateSeancesTable extends Migration
     public function up()
     {
         Schema::create('seances', function (Blueprint $table) {
+
             $table->id();
-            $table->string('jour');
+            $table->integer('jour');
             $table->time('heure_debut');
             $table->time('heure_fin');
             $table->unsignedBigInteger('id_enseignant');
             $table->unsignedBigInteger('id_classe');
             $table->unsignedBigInteger('id_matiere');
             $table->unsignedBigInteger('id_salle');
-            $table->unsignedBigInteger('anneescolaire');
+            $table->string('anneescolaire');
 
             $table->foreign("id_enseignant")->references('id')->on('enseignants')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign("id_classe")->references('id')->on('classes')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign("id_matiere")->references('id')->on('matieres')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign("id_salle")->references('id')->on('salles')->onUpdate('cascade')->onDelete('cascade');
 
-            //$table->foreign("anneescolaire")->references('anneescolaire')->on('classes')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

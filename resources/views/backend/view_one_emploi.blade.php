@@ -83,7 +83,20 @@
 
 
 
-<script>
+<script type="text/javascript">
+
+    var seances = {!! json_encode($data) !!};
+
+    var matieres = {!! json_encode($matieres) !!};
+    var salles = {!! json_encode($salles) !!};
+    var enseignants = {!! json_encode($enseignants) !!};
+    var classes = {!! json_encode($classes) !!};
+
+
+    var times = {'08:00:00' : 0 , '08:30:00' : 1, '09:00:00' : 2, '09:30:00' : 3, '10:00:00' : 4, '10:30:00' : 5, '11:00:00' : 6, '11:30:00' : 7 , '12:00:00' : 8, '12:30:00' : 9, '13:00:00' : 10, '13:30:00' : 11, '14:00:00' : 12, '14:30:00' : 13, '15:00:00' : 14, '15:30:00' : 15, '16:00:00' : 16, '16:30:00' : 17, '17:00:00' : 18,'17:30:00' : 19, '18:00:00' : 20};
+
+
+
     var courseList = [
         ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
         ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
@@ -92,6 +105,50 @@
         ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
         ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
     ];
+
+
+    for (let i = 0 ; i < seances.length; i++){
+
+        let debut = times[seances[i]['heure_debut']];
+        let duree = times[seances[i]['heure_fin']] - debut;
+
+        for (let t = 0; t < matieres.length; t++){
+            if (matieres[t]['id'] == seances[i]['id_matiere'])
+            {
+                var matiere = matieres[t]['libelle'];
+                var niveau = matieres[t]['niveau'];
+            }
+        }
+
+        for (let t = 0; t < salles.length; t++){
+            if (salles[t]['id'] == seances[i]['id_salle'])
+            {
+                var salle = salles[t]['libelle'];
+            }
+        }
+
+        for (let t = 0; t < enseignants.length; t++){
+            if (enseignants[t]['id'] == seances[i]['id_enseignant'])
+            {
+                var enseignant = enseignants[t]['nom']+' '+enseignants[t]['prenom'];
+            }
+        }
+
+        for (let t = 0; t < classes.length; t++){
+            if (classes[t]['id'] == seances[i]['id_classe'])
+            {
+                var classe = classes[t]['nom'];
+            }
+        }
+
+        console.log(matiere, salle, enseignant, classe , debut, duree);
+
+        for (let j = debut; j<debut+duree; j++) {
+            courseList[seances[i]['jour']][j] = matiere + "\n" + enseignant + "\n" + salle + "\n" + classe;
+        }
+
+    }
+
     var week = window.innerWidth > 360 ? ['الإثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'] : ['واحد',
         'إثنان', 'ثلاثة', 'أربعة', 'خمسة', 'ستة'
     ];
@@ -130,10 +187,6 @@
             name: '12:00'
         }, 1],
         [{
-            index: '11:30',
-            name: '12:00'
-        }, 1],
-        [{
             index: '12:00',
             name: '12:30'
         }, 1],
@@ -166,6 +219,10 @@
             name: '16:00'
         }, 1],
         [{
+            index: '16:00',
+            name: '16:30'
+        }, 1],
+        [{
             index: '16:30',
             name: '17:00'
         }, 1],
@@ -189,6 +246,17 @@
             alert(e.name + '  ' + e.week + ', NS' + e.index + 'درس, رئيس القسم' + e.length + 'مهرجان');
             console.log(e);
         }, */
+        gridOnClick: function (e) {
+            /* alert(e.name + '  ' + e.week + ', NS' + e.index + 'درس, رئيس القسم' + e.length + 'مهرجان');
+            console.log(e); */
+
+            /* e.popover({
+              trigger: 'focus'
+            }); */
+
+            alert(e.name + '  ' + e.week + ', NS' + e.index + 'درس, رئيس القسم' + e.length + 'مهرجان');
+            console.log(e); 
+        },
         styles: {
             Gheight: 50
         }

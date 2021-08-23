@@ -15,15 +15,11 @@
         "laravel/fortify": "^1.8",
         "laravel/framework": "^8.40",
         "laravel/jetstream": "^2.3",
-
-        "laravel/sanctum": "^2.6",
-
-
-        "laravel/sanctum": "^2.6",
-
+        "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.3",
-        "livewire/livewire": "^2.5"
+        "livewire/livewire": "^2.5",
+        "nesbot/carbon": "^2.52"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

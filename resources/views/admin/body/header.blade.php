@@ -18,13 +18,25 @@
             <!-- Left navbar links -->
             @if (Auth::user()->role == "superadmin")
             <ul class="navbar-nav">
-                <li class="nav-item text-right">
-                    <a href="{{ route('home') }}" class="nav-link"><i class="fas fa-toolbox ml-1"></i> صندوق
-                        الأدوات</a>
+                <li class="nav-item dropdown text-right">
+                    <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                        class="nav-link dropdown-toggle"><i class="fas fa-toolbox ml-1"></i> صندوق
+                        الأدوات </a>
+                    <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow"
+                        style="left: 0px; right: inherit;">
+                        <li><a href="{{ route('home') }}" class="dropdown-item text-right">
+                                <i class="nav-icon fas fa-chart-pie pl-2"></i>
+                                الإحصائيات
+                            </a></li>
+                        <li><a href="#" class="dropdown-item text-right">
+                                <i class="fas fa-school pl-2"></i>
+                                الوثائق الإدارية
+                            </a></li>
+                    </ul>
                 </li>
                 <li class="nav-item dropdown text-right">
                     <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                        class="nav-link dropdown-toggle"><i class="fas fa-hourglass-end ml-2"></i></i>جداول الأوقات </a>
+                        class="nav-link dropdown-toggle"><i class="fas fa-hourglass-end ml-2"></i>جداول الأوقات </a>
                     <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow"
                         style="left: 0px; right: inherit;">
                         <li><a href="{{ route('emploi.view.enseignants') }}" class="dropdown-item text-right">
@@ -87,7 +99,7 @@
             @if (Auth::user()->role == "enseignant")
             <ul class="navbar-nav">
                 <li class="nav-item text-right">
-                    <a href="{{ route('home') }}" class="nav-link"><i class="fas fa-toolbox ml-1"></i> إحصائيّات</a>
+                    <a href="{{ route('home') }}" class="nav-link"><i class="fas fa-chart-pie ml-1"></i> إحصائيّات</a>
                 </li>
 
                 <li class="nav-item text-right">

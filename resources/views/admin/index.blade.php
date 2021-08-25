@@ -1,19 +1,19 @@
 @extends('admin.admin_master')
 
 @section('admin')
-<div {{-- class="content-wrapper" --}} class="container">
+<div class="container">
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6 order-sm-2">
-                    <h1 class="m-0 float-right">صندوق الأدوات</h1>
+                    <h1 class="m-0 float-right">الإحصائيات</h1>
                 </div><!-- /.col -->
 
 
                 <div class="col-sm-6 order-sm-1">
                     <ol class="breadcrumb float-right float-sm-left">
-                        <li class="breadcrumb-item active order-sm">صندوق الأدوات</li>
+                        <li class="breadcrumb-item active order-sm">الإحصائيات</li>
                         <li class="breadcrumb-item"><a href="#">الصفحة الرئيسية</a></li>
                     </ol>
                 </div><!-- /.col -->
@@ -28,28 +28,6 @@
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
-
-            <div class="row">
-                <div class="card card-info col-md-12">
-                    <div class="card-header">
-                        <h3 class="card-title">Line Chart</h3>
-
-                        <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                <i class="fas fa-minus"></i>
-                            </button>
-                            <button type="button" class="btn btn-tool" data-card-widget="remove">
-                                <i class="fas fa-times"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div id="chartdiv"></div>
-                    </div>
-                    <!-- /.card-body -->
-                </div>
-                <!-- /.card -->
-            </div>
 
             <div class="row">
                 <div class="col-lg-3 col-6">
@@ -544,137 +522,6 @@
             options: stackedBarChartOptions
         })
     })
-
-</script>
-
-
-{{-- test new chart --}}
-<style>
-    #chartdiv {
-        width: 100%;
-        height: 500px;
-    }
-
-</style>
-
-{{--
-<script>
-    var profs = {!!json_encode($profs) !!};
-        var eleves = {!!json_encode($eleves) !!};
-        var salles = {!!json_encode($salles) !!};
-        var classes = {!!json_encode($classes) !!};
-
-
-        var classesNiveaus = [0, 0, 0, 0, 0, 0];
-
-        for (let i = 0; i < classes.length; i++) {
-
-            classesNiveaus[classes[i]['niveau'] - 1]++;
-        }
-
-        var labels = ['السنة الأولى','السنة الثانية','السنة الثالثة','السنة الرابعة','السنة الخامسة','السنة السادسة'];
-
-        console.log(labels, classesNiveaus);
-        var classesData = [];
-        for(let i = 0 ; i<6 ; i++){
-            let pair = [labels[i], classesNiveaus[i]];
-            classesData.push(pair);
-        }
-        console.log(classesData);
-</script> --}}
-
-<!-- Resources -->
-<script src="https://cdn.amcharts.com/lib/4/core.js"></script>
-<script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
-<script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
-
-<!-- Chart code -->
-<script>
-
-
-
-    am4core.ready(function () {
-
-
-        var profs = {!!json_encode($profs) !!};
-        var eleves = {!!json_encode($eleves) !!};
-        var salles = {!!json_encode($salles) !!};
-        var classes = {!!json_encode($classes) !!};
-
-
-        var classesNiveaus = [0, 0, 0, 0, 0, 0];
-
-        for (let i = 0; i < classes.length; i++) {
-
-            classesNiveaus[classes[i]['niveau'] - 1]++;
-        }
-
-        var labels = ['السنة الأولى','السنة الثانية','السنة الثالثة','السنة الرابعة','السنة الخامسة','السنة السادسة'];
-
-        console.log(labels, classesNiveaus);
-        var classesData = [];
-        for(let i = 0 ; i<6 ; i++){
-            let pair = {};
-
-            pair['country'] = labels[i];
-            pair['litres'] = classesNiveaus[i];
-            classesData.push(pair);
-        }
-        console.log(classesData);
-
-        // Themes begin
-        am4core.useTheme(am4themes_animated);
-        // Themes end
-
-        var chart = am4core.create("chartdiv", am4charts.PieChart3D);
-        chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
-
-        chart.legend = new am4charts.Legend();
-
-        /* chart.data = [{
-                country: "Lithuania",
-                litres: 501.9
-            },
-            {
-                country: "Czech Republic",
-                litres: 301.9
-            },
-            {
-                country: "Ireland",
-                litres: 201.1
-            },
-            {
-                country: "Germany",
-                litres: 165.8
-            },
-            {
-                country: "Australia",
-                litres: 139.9
-            },
-            {
-                country: "Austria",
-                litres: 128.3
-            },
-            {
-                country: "UK",
-                litres: 99
-            },
-            {
-                country: "Belgium",
-                litres: 60
-            },
-            {
-                country: "The Netherlands",
-                litres: 50
-            }
-        ]; */
-
-        chart.data = classesData;
-        var series = chart.series.push(new am4charts.PieSeries3D());
-        series.dataFields.value = "litres";
-        series.dataFields.category = "country";
-
-    }); // end am4core.ready()
 
 </script>
 

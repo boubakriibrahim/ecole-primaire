@@ -51,15 +51,6 @@ class ProfilController extends Controller
 
     public function ProfileUpdate(Request $request, $id) {
 
-        $request->validate([
-            'nom'=>'required',
-            'prenom'=>'required',
-            'sexe'=>'required',
-            'login'=>'required',
-            'date_naissance'=>'required',
-            'adresse'=>'required',
-            'phone'=>'required',
-        ]);
 
         $user = User::find($id);
 
@@ -69,6 +60,17 @@ class ProfilController extends Controller
         $user->date_naissance = $request->date_naissance;
         $user->adresse = $request->adresse;
         $user->phone = $request->phone;
+
+        if($request->hasFile('image')){
+
+            $destination = 'images/uploads/'.$user->profile_photo_path;
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time().'-profile.'.$extension;
+            $file->move('images/uploads/', $filename);
+            $user->profile_photo_path = $filename;
+        }
+
 
         $user->save();
 

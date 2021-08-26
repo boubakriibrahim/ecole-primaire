@@ -35,7 +35,7 @@ class ecoleController extends Controller
             $destination = 'images/uploads/'.$ecole->ecole_photo_path;
             $file = $request->file('image');
             $extension = $file->getClientOriginalExtension();
-            $filename = time().'.'.$extension;
+            $filename = time().'-ecole.'.$extension;
             $file->move('images/uploads/', $filename);
             $ecole->ecole_photo_path = $filename;
         }

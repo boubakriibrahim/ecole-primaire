@@ -177,7 +177,8 @@
                         <div class="form-group col-md-6 text-right">
                             <label for="image"> الصورة <span class="text-danger">*</span></label>
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="image" name="image" accept=".jpg, .jpeg, .png">
+                                <input type="file" class="custom-file-input" id="image" name="image"
+                                    accept=".jpg, .jpeg, .png">
                                 <label class="custom-file-label text-left" for="image">إختر صورة</label>
                             </div>
                         </div>
@@ -191,7 +192,7 @@
                                     @else
                                     {{ asset('images/uploads/'.$ecole->ecole_photo_path) }}
                                     @endif
-                                    " alt="User profile picture" width="50" height="100">
+                                    " alt="ecole picture" id="preview" width="50" height="100">
                         </div>
                     </div>
 
@@ -208,4 +209,12 @@
 </div>
 
 
+<script>
+    image.onchange = evt => {
+        const [file] = image.files
+        if (file) {
+            preview.src = URL.createObjectURL(file)
+        }
+    }
+</script>
 @endsection

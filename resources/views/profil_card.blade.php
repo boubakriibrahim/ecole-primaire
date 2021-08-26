@@ -35,11 +35,10 @@
                                     @if(Auth::user()->profile_photo_path == NULL)
                                     https://i.postimg.cc/6qbpp0LV/profile-photo.jpg
                                     @else
-                                    {{ Auth::user()->profile_photo_path }}
+                                    {{ asset('images/uploads/'.Auth::user()->profile_photo_path) }}
                                     @endif
                                     " alt="User profile picture" width="50" height="100">
                             </div>
-
                             <h3 class="profile-username text-center">{{ Auth::user()->nom }} {{ Auth::user()->prenom }}
                             </h3>
 
@@ -94,24 +93,16 @@
                                 <strong> المواد<i class="fas fa-book-open ml-2"></i></strong>
 
                                 <p class="text-muted">
-                                    {{-- @foreach ($affEnsMatieres as $key => $affectation)
-                                    <span class="tag tag-success">{{ $affectation }}</span>
-                                    @endforeach --}}
                                     @php($n = count($affEnsMatieres))
                                     @for ($i = 0; $i < $n; $i++) <span class="tag tag-success">{{ $affEnsMatieres[$i] }}
                                         ({{ $affEnsNiveau[$i] }})</span>
                                         @endfor
                                 </p>
-
                                 <hr>
-
                                 @endif
-
                             </div>
-
                             <div class="row">
                                 <div class="offset-md-3">
-
                                 </div>
                                 <div class="col-md-3 p-2 order-md-2">
                                     <a href="#" class="btn btn-primary btn-block" data-toggle="modal"
@@ -151,9 +142,9 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <form method="post" action='{{ route('profil.miseajour', Auth::user()->id) }}' width=60%>
-                    @csrf
+            <form method="post" action='{{ route('profil.miseajour', Auth::user()->id) }}' width=60%>
+                @csrf
+                <div class="modal-body">
 
                     <div class="row" dir="rtl">
                         <div class="form-group col-md-6 text-right">
@@ -191,12 +182,33 @@
                                 placeholder="أدخل رقم الهاتف" value="{{ Auth::user()->phone }}" required>
                         </div>
                     </div>
+                    <div class="row" dir="rtl">
+                        <div class="form-group col-md-12 text-right">
+                            <label for="image"> الصورة <span class="text-danger">*</span></label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="image" name="image"
+                                    accept=".jpg, .jpeg, .png">
+                                <label class="custom-file-label text-center" for="image">إختر صورة</label>
+                            </div>
+                        </div>
+                    </div>
 
-            </div>
-            <div class="modal-footer">
-                <button type="reset" class="btn btn-secondary" data-dismiss="modal">إلغاء</button>
-                <button type="submit" class="btn btn-primary">تأكيد</button>
-            </div>
+                    <div class="row d-flex align-items-center" dir="rtl">
+                        <div class="form-group col-md-12">
+                            <img class="profile-user-img rounded-circle d-flex align-items-center" src="
+                                    @if(Auth::user()->profile_photo_path == NULL)
+                                    https://i.postimg.cc/6qbpp0LV/profile-photo.jpg
+                                    @else
+                                    {{ asset('images/uploads/'.Auth::user()->profile_photo_path) }}
+                                    @endif
+                                    " alt="User profile picture" id="preview" width="50" height="100">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="reset" class="btn btn-secondary" data-dismiss="modal">إلغاء</button>
+                    <button type="submit" class="btn btn-primary">تأكيد</button>
+                </div>
             </form>
         </div>
     </div>
@@ -221,20 +233,21 @@
                     <div class="row" dir="rtl">
                         <div class="form-group col-md-12 text-right">
                             <label for="oldpassword"> كلمة العبور الحالية <span class="text-danger">*</span></label>
-                            <input type="password" class="form-control" id="oldpassword" name="oldpassword" placeholder="أدخل كلمة العبور الحالية"
-                            required>
+                            <input type="password" class="form-control" id="oldpassword" name="oldpassword"
+                                placeholder="أدخل كلمة العبور الحالية" required>
                         </div>
                     </div>
                     <div class="row" dir="rtl">
                         <div class="form-group col-md-6 text-right">
                             <label for="newpassword"> كلمة العبور الجديدة <span class="text-danger">*</span></label>
-                            <input type="password" class="form-control" id="newpassword" name="newpassword" placeholder="أدخل كلمة العبور الجديدة"
-                            required>
+                            <input type="password" class="form-control" id="newpassword" name="newpassword"
+                                placeholder="أدخل كلمة العبور الجديدة" required>
                         </div>
                         <div class="form-group col-md-6 text-right">
-                            <label for="newpassword2">إعادة كلمة العبور الجديدة <span class="text-danger">*</span></label>
-                            <input type="password" class="form-control" id="newpassword2" name="newpassword2" placeholder="أعد إدخال كلمة العبور الجديدة"
-                            required>
+                            <label for="newpassword2">إعادة كلمة العبور الجديدة <span
+                                    class="text-danger">*</span></label>
+                            <input type="password" class="form-control" id="newpassword2" name="newpassword2"
+                                placeholder="أعد إدخال كلمة العبور الجديدة" required>
                         </div>
                     </div>
 
@@ -250,4 +263,14 @@
 
 </div>
 
+
+<script>
+    image.onchange = evt => {
+        const [file] = image.files
+        if (file) {
+            preview.src = URL.createObjectURL(file)
+        }
+    }
+
+</script>
 @endsection

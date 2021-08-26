@@ -107,9 +107,9 @@
                                         <td>
                                             <div class="row">
                                                 <div class="col-md-6 px-1">
-                                                    <button type="button" class="btn btn-info btn-block">
-                                                        تحديث
-                                                    </button>
+                                                    <a href="#" class="btn btn-success btn-block">
+                                                        عرض
+                                                    </a>
                                                 </div>
                                                 <div class="col-md-6 mt-1 mt-md-0 px-1">
                                                     <a href="{{ route("paper.delete", $paper->id) }}"

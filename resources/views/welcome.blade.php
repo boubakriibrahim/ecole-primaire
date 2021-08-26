@@ -117,7 +117,7 @@
                             <img src="{{ asset('images/ati.png') }}" alt="ati"
                                 class="bd-placeholder-img rounded-circle mb-4" width="140" height="140">
 
-                            <h3 class="card-title mb-3">عماد الدين عاطي</h3>
+                            <h3 class="card-title mb-3">عماد الدين عاتي</h3>
                             <p class="card-text">
                                 مهندس علوم الإعلامية
 

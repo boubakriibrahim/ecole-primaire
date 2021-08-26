@@ -28,8 +28,8 @@
                                 <i class="nav-icon fas fa-chart-pie pl-2"></i>
                                 الإحصائيات
                             </a></li>
-                        <li><a href="#" class="dropdown-item text-right">
-                                <i class="fas fa-school pl-2"></i>
+                        <li><a href="{{ route('paper.view') }}" class="dropdown-item text-right">
+                                <i class="fas fa-folder-open pl-2"></i>
                                 الوثائق الإدارية
                             </a></li>
                     </ul>

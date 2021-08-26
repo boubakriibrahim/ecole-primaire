@@ -16,6 +16,7 @@ use App\Http\Controllers\ClasseController;
 use App\Http\Controllers\EmploiController;
 use App\Http\Controllers\SeanceController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PaperController;
 use App\Http\Controllers\noteController;
 use App\Http\Controllers\Auth\LoginController;
 
@@ -206,5 +207,14 @@ Route::prefix('note')->group(function(){
     Route::get('/edit/{id}', [noteController::class, 'editNote'])->name('note.edit');
 
     Route::post('/modifier/{id}', [noteController::class, 'noteUpdate'])->name('note.miseajour');
+
+});
+
+
+Route::prefix('paper')->group(function(){
+
+    Route::get('/view', [PaperController::class, 'PaperView'])->name('paper.view');
+    Route::put('/store', [PaperController::class, 'PaperStore'])->name('paper.store');
+    Route::get('/effacer/{id}', [PaperController::class, 'PaperDelete'])->name('paper.delete');
 
 });

@@ -10,7 +10,6 @@ class Ecole extends Model
     use HasFactory;
 
     protected $fillable = [
-        'id',
         'nom',
         'genre',
         'ecole_photo_path',

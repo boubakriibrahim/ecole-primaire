@@ -14,7 +14,7 @@ class CreateEcolesTable extends Migration
     public function up()
     {
         Schema::create('ecoles', function (Blueprint $table) {
-            $table->integer('id');
+            $table->id();
             $table->string('nom');
             $table->string('genre');
             $table->string('ecole_photo_path', 2048)->nullable();

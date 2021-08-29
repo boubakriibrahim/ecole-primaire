@@ -1,5 +1,9 @@
 @extends('admin.admin_master')
 
+@section('title')
+<title>{{ $ecoleCreds->nom }} | التصرف في جداول الأوقات</title>
+@endsection
+
 @section('admin')
 
 <div class="content-wrapper">
@@ -255,7 +259,7 @@
             }); */
 
             alert(e.name + '  ' + e.week + ', NS' + e.index + 'درس, رئيس القسم' + e.length + 'مهرجان');
-            console.log(e); 
+            console.log(e);
         },
         styles: {
             Gheight: 50

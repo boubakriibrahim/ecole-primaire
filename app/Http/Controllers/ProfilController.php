@@ -61,16 +61,15 @@ class ProfilController extends Controller
         $user->adresse = $request->adresse;
         $user->phone = $request->phone;
 
-        if($request->hasFile('image')){
+        if($request->hasFile('photo')){
 
             $destination = 'images/uploads/'.$user->profile_photo_path;
-            $file = $request->file('image');
+            $file = $request->file('photo');
             $extension = $file->getClientOriginalExtension();
             $filename = time().'-profile.'.$extension;
             $file->move('images/uploads/', $filename);
             $user->profile_photo_path = $filename;
         }
-
 
         $user->save();
 

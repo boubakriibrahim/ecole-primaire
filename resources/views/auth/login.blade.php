@@ -3,8 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>المدرسة الإبتدائية | تسجيل الدخول</title>
-
+    <title>{{ $ecoleCreds->nom }} | تسجيل الدخول</title>
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -75,10 +74,6 @@
           <!-- /.col -->
         </div>
       </form>
-
-      <p class="mb-1 pt-3 float-right">
-        <a href="@if (Route::has('password.request')) {{ route('password.request') }} @else # @endif">هل نسيت كلمة العبور؟</a>
-      </p>
     </div>
     <!-- /.card-body -->
   </div>

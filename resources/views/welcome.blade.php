@@ -7,8 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    {{-- <link rel="stylesheet" href="mapbox://styles/mahmoudghorbel1/cksbq97os67k717p4pegruc71" />
-    <link href="mapbox://styles/mahmoudghorbel1/cksbq97os67k717p4pegruc71" rel="stylesheet" /> --}}
     <style>
         body::before {
             display: block;
@@ -29,7 +27,7 @@
         }
 
     </style>
-    <title>المدرسة الإبتدائية | الصفحة الرئيسية</title>
+    <title>{{ $ecoleCreds->nom }} | الصفحة الرئيسية</title>
 </head>
 
 <body>
@@ -94,7 +92,7 @@
             <div class="row align-items-center justify-content-between">
                 <div class="col-md-6 d-none d-md-block">
                     <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
-                        src="{{ asset('images/uploads/'.$ecoleCreds->ecole_photo_path) }}" width="300" height="300">
+                        src="{{-- {{ asset('images/uploads/'.$ecoleCreds->ecole_photo_path) }} --}}{{ asset('images/book.svg') }}" width="300" height="300">
                 </div>
                 <div class="col-md-6 p-3">
                     <p class="text-end" style="font-size: 30px;">
@@ -217,19 +215,6 @@
         src="https://api.mapbox.com/styles/v1/mahmoudghorbel1/cksbq97os67k717p4pegruc71.html?fresh=true&title=copy&access_token=pk.eyJ1IjoibWFobW91ZGdob3JiZWwxIiwiYSI6ImNrc2Jwamx6YzA5MDgydW9kbGQ0MnVmdnoifQ.34JYxGpmxVOSCpEqasXY4Q"
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
     </script>
-    {{-- <script src="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js"></script>
-
-    <script>
-        mapboxgl.accessToken =
-            'pk.eyJ1IjoibWFobW91ZGdob3JiZWwxIiwiYSI6ImNrc2Jwamx6YzA5MDgydW9kbGQ0MnVmdnoifQ.34JYxGpmxVOSCpEqasXY4Q'
-        var map = new mapboxgl.Map({
-            container: 'map',
-            style: 'mapbox://styles/mahmoudghorbel1/cksbq97os67k717p4pegruc71',
-            center: [10.761498, 34.800580],
-            zoom: 14,
-        })
-
-    </script> --}}
 </body>
 
 </html>

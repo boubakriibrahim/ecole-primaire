@@ -1,4 +1,8 @@
 @extends('admin.admin_master')
+
+@section('title')
+<title>{{ $ecoleCreds->nom }} | إسناد الأعداد</title>
+@endsection
 @section('admin')
 <div class="content-wrapper">
     <section class="content-header">

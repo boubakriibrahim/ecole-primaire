@@ -1,5 +1,9 @@
 @extends('admin.admin_master')
 
+@section('title')
+<title>{{ $ecoleCreds->nom }} | الإحصائيات</title>
+@endsection
+
 @section('admin')
 <div class="container">
     <!-- Content Header (Page header) -->

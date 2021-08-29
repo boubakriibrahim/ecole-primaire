@@ -1,5 +1,9 @@
 @extends('admin.admin_master')
 
+@section('title')
+<title>{{ $ecoleCreds->nom }} | إضافة جدول أوقات</title>
+@endsection
+
 @section('admin')
 <div class="content-wrapper">
 

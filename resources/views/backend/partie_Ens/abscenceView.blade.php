@@ -1,4 +1,9 @@
 @extends('admin.admin_master')
+
+@section('title')
+<title>{{ $ecoleCreds->nom }} | تسجيل الحضور</title>
+@endsection
+
 @section('admin')
 <div class="content-wrapper">
     <section class="content-header">

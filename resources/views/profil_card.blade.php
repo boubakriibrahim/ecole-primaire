@@ -1,5 +1,9 @@
 @extends('admin.admin_master')
 
+@section('title')
+<title>{{ $ecoleCreds->nom }} | المعلومات الشخصية</title>
+@endsection
+
 @section('admin')
 <div class="content-wrapper">
     <section class="content-header">
@@ -142,8 +146,9 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form method="post" action='{{ route('profil.miseajour', Auth::user()->id) }}' width=60%>
+            <form method="post" action='{{ route('profil.miseajour', Auth::user()->id) }}' width="60%" enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
                 <div class="modal-body">
 
                     <div class="row" dir="rtl">
@@ -184,11 +189,11 @@
                     </div>
                     <div class="row" dir="rtl">
                         <div class="form-group col-md-12 text-right">
-                            <label for="image"> الصورة <span class="text-danger">*</span></label>
+                            <label for="photo"> الصورة <span class="text-danger">*</span></label>
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="image" name="image"
+                                <input type="file" class="custom-file-input" id="photo" name="photo"
                                     accept=".jpg, .jpeg, .png">
-                                <label class="custom-file-label text-center" for="image">إختر صورة</label>
+                                <label class="custom-file-label text-center" for="photo">إختر صورة</label>
                             </div>
                         </div>
                     </div>
@@ -265,8 +270,8 @@
 
 
 <script>
-    image.onchange = evt => {
-        const [file] = image.files
+    photo.onchange = evt => {
+        const [file] = photo.files
         if (file) {
             preview.src = URL.createObjectURL(file)
         }

@@ -139,28 +139,7 @@
                     <i class="far fa-moon" style="color: white;"></i>
                 </button>
             </li>
-            <!-- Notifications Dropdown Menu -->
-            <li class="nav-item dropdown">
-                <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
-                    <i class="far fa-bell"></i>
-                    <span class="badge badge-warning navbar-badge">20</span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-lg" style="left: inherit; right: 0px;">
-                    <span class="dropdown-header">إشعارات (50)</span>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <i class="fas fa-envelope mr-2"></i> (4) رسائل جديدة
-                        <span class="float-right text-muted text-sm">3 دقائق</span>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <i class="fas fa-file mr-2"></i> (3) تقارير جديدة
-                        <span class="float-right text-muted text-sm">2 أيام</span>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item dropdown-footer">اطلع على جميع الإشعارات</a>
-                </div>
-            </li>
+
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -168,7 +147,7 @@
                     @if(Auth::user()->profile_photo_path == NULL)
                     https://i.postimg.cc/6qbpp0LV/profile-photo.jpg
                     @else
-                    {{ Auth::user()->profile_photo_path }}
+                    {{ asset('images/uploads/'.Auth::user()->profile_photo_path) }}
                     @endif
                     " width="35" height="35" class="rounded-circle">
                 </a>
@@ -186,11 +165,11 @@
                             </div>
                             <div class="col-4">
                                 <img src="
-                        @if(Auth::user()->profile_photo_path == NULL)
-                        https://i.postimg.cc/6qbpp0LV/profile-photo.jpg
-                        @else
-                        {{ Auth::user()->profile_photo_path }}
-                        @endif
+                                @if(Auth::user()->profile_photo_path == NULL)
+                                https://i.postimg.cc/6qbpp0LV/profile-photo.jpg
+                                @else
+                                {{ asset('images/uploads/'.Auth::user()->profile_photo_path) }}
+                                @endif
                         " alt="" class="rounded-circle" width="50" height="50">
                             </div>
                         </div>

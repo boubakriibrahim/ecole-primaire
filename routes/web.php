@@ -44,83 +44,83 @@ Route::get('/admin/logout', [AdminController::class, 'Logout'])->name('admin.log
 
 Route::prefix('profil')->group(function(){
 
-    Route::get('/',[ProfilController::class, 'AdminData'])->name('profil');
-    Route::post('/miseajour/{id}', [ProfilController::class, 'ProfileUpdate'])->name('profil.miseajour');
-    Route::post('/password/{id}', [ProfilController::class, 'ProfileUpdatePassword'])->name('profil.password');
+    Route::get('/',[ProfilController::class, 'AdminData'])->name('profil')->middleware('auth');
+    Route::put('/miseajour/{id}', [ProfilController::class, 'ProfileUpdate'])->name('profil.miseajour')->middleware('auth');
+    Route::post('/password/{id}', [ProfilController::class, 'ProfileUpdatePassword'])->name('profil.password')->middleware('auth');
 });
 
 Route::prefix('ecole')->group(function(){
 
-    Route::get('/',[ecoleController::class, 'EcoleData'])->name('ecole');
-    Route::put('/miseajour', [ecoleController::class, 'EcoleUpdate'])->name('ecole.miseajour');
+    Route::get('/',[ecoleController::class, 'EcoleData'])->name('ecole')->middleware('auth');
+    Route::put('/miseajour', [ecoleController::class, 'EcoleUpdate'])->name('ecole.miseajour')->middleware('auth');
 
 });
 
 
 Route::prefix('Enseignant')->group(function(){
 
-    Route::get('/view', [ensgController::class, 'EnsView'])->name('Ens.view');
-    Route::post('/store', [ensgController::class, 'EnsStore'])->name('Ens.store');
-    Route::post('/miseajour/{id}', [ensgController::class, 'EnsUpdate'])->name('Ens.miseajour');
+    Route::get('/view', [ensgController::class, 'EnsView'])->name('Ens.view')->middleware('auth');
+    Route::post('/store', [ensgController::class, 'EnsStore'])->name('Ens.store')->middleware('auth');
+    Route::post('/miseajour/{id}', [ensgController::class, 'EnsUpdate'])->name('Ens.miseajour')->middleware('auth');
 
-    Route::get('/effacer/{id}', [ensgController::class, 'EnsDelete'])->name('Ens.delete');
+    Route::get('/effacer/{id}', [ensgController::class, 'EnsDelete'])->name('Ens.delete')->middleware('auth');
 
 });
 
 
 Route::prefix('Classe')->group(function(){
 
-    Route::get('/view', [ClasseController::class, 'ClasseView'])->name('classe.view');
+    Route::get('/view', [ClasseController::class, 'ClasseView'])->name('classe.view')->middleware('auth');
 
-    Route::post('/store', [ClasseController::class, 'ClasseStore'])->name('classe.store');
-    Route::post('/miseajour/{id}', [ClasseController::class, 'ClasseUpdate'])->name('classe.miseajour');
+    Route::post('/store', [ClasseController::class, 'ClasseStore'])->name('classe.store')->middleware('auth');
+    Route::post('/miseajour/{id}', [ClasseController::class, 'ClasseUpdate'])->name('classe.miseajour')->middleware('auth');
 
-    Route::get('/effacer/{id}', [ClasseController::class, 'ClasseDelete'])->name('classe.delete');
+    Route::get('/effacer/{id}', [ClasseController::class, 'ClasseDelete'])->name('classe.delete')->middleware('auth');
 
 });
 
 Route::prefix('Matiere')->group(function(){
 
-    Route::get('/view', [MatiereController::class, 'MatiereView'])->name('matiere.view');
+    Route::get('/view', [MatiereController::class, 'MatiereView'])->name('matiere.view')->middleware('auth');
 
-    Route::post('/store', [MatiereController::class, 'MatiereStore'])->name('matiere.store');
-    Route::post('/miseajour/{id}', [MatiereController::class, 'MatiereUpdate'])->name('matiere.miseajour');
+    Route::post('/store', [MatiereController::class, 'MatiereStore'])->name('matiere.store')->middleware('auth');
+    Route::post('/miseajour/{id}', [MatiereController::class, 'MatiereUpdate'])->name('matiere.miseajour')->middleware('auth');
 
-    Route::get('/effacer/{id}', [MatiereController::class, 'MatiereDelete'])->name('matiere.delete');
+    Route::get('/effacer/{id}', [MatiereController::class, 'MatiereDelete'])->name('matiere.delete')->middleware('auth');
 
 });
 
 Route::prefix('Salle')->group(function(){
 
-    Route::get('/view', [SalleController::class, 'SalleView'])->name('salle.view');
+    Route::get('/view', [SalleController::class, 'SalleView'])->name('salle.view')->middleware('auth');
 
-    Route::post('/store', [SalleController::class, 'SalleStore'])->name('salle.store');
-    Route::post('/miseajour/{id}', [SalleController::class, 'SalleUpdate'])->name('salle.miseajour');
+    Route::post('/store', [SalleController::class, 'SalleStore'])->name('salle.store')->middleware('auth');
+    Route::post('/miseajour/{id}', [SalleController::class, 'SalleUpdate'])->name('salle.miseajour')->middleware('auth');
 
-    Route::get('/effacer/{id}', [SalleController::class, 'SalleDelete'])->name('salle.delete');
+    Route::get('/effacer/{id}', [SalleController::class, 'SalleDelete'])->name('salle.delete')->middleware('auth');
 
 });
 
 
 Route::prefix('Seance')->group(function(){
 
-    Route::get('/view', [SeanceController::class, 'SeanceView'])->name('seance.view');
+    Route::get('/view', [SeanceController::class, 'SeanceView'])->name('seance.view')->middleware('auth');
 
-    Route::post('/store', [SeanceController::class, 'SeanceStore'])->name('seance.store');
-    Route::post('/miseajour/{id}', [SeanceController::class, 'SeanceUpdate'])->name('seance.miseajour');
+    Route::post('/store', [SeanceController::class, 'SeanceStore'])->name('seance.store')->middleware('auth');
+    Route::post('/miseajour/{id}', [SeanceController::class, 'SeanceUpdate'])->name('seance.miseajour')->middleware('auth');
 
-    Route::get('/effacer/{id}', [SeanceController::class, 'SeanceDelete'])->name('seance.delete');
+    Route::get('/effacer/{id}', [SeanceController::class, 'SeanceDelete'])->name('seance.delete')->middleware('auth');
 
 });
 
 Route::prefix('affectationEnseignant')->group(function(){
 
-    Route::get('/view', [AffEnsController::class, 'AffEnsView'])->name('affEns.view');
-    Route::get('/add', [AffEnsController::class, 'AffEnsAdd'])->name('AffEns.add');
-    Route::post('/store', [AffEnsController::class, 'AffEnsStore'])->name('AffEns.store');
-    Route::get('/edit/{id}', [AffEnsController::class, 'AffEnsEdit'])->name('AffEns.edit');
-    Route::post('/miseajour/{id}', [AffEnsController::class, 'AffEnsUpdate'])->name('AffEns.miseajour');
-    Route::get('/effacer/{id}', [AffEnsController::class, 'AffEnsDelete'])->name('AffEns.delete');
+    Route::get('/view', [AffEnsController::class, 'AffEnsView'])->name('affEns.view')->middleware('auth');
+    Route::get('/add', [AffEnsController::class, 'AffEnsAdd'])->name('AffEns.add')->middleware('auth');
+    Route::post('/store', [AffEnsController::class, 'AffEnsStore'])->name('AffEns.store')->middleware('auth');
+    Route::get('/edit/{id}', [AffEnsController::class, 'AffEnsEdit'])->name('AffEns.edit')->middleware('auth');
+    Route::post('/miseajour/{id}', [AffEnsController::class, 'AffEnsUpdate'])->name('AffEns.miseajour')->middleware('auth');
+    Route::get('/effacer/{id}', [AffEnsController::class, 'AffEnsDelete'])->name('AffEns.delete')->middleware('auth');
 
 });
 
@@ -128,93 +128,93 @@ Route::prefix('affectationEnseignant')->group(function(){
 
 Route::prefix('Emplois')->group(function(){
 
-    Route::get('/view/classes', [EmploiController::class, 'EmploiClassesView'])->name('emploi.view.classes');
+    Route::get('/view/classes', [EmploiController::class, 'EmploiClassesView'])->name('emploi.view.classes')->middleware('auth');
 
-    Route::get('/view/enseignants', [EmploiController::class, 'EmploiEnseignantsView'])->name('emploi.view.enseignants');
+    Route::get('/view/enseignants', [EmploiController::class, 'EmploiEnseignantsView'])->name('emploi.view.enseignants')->middleware('auth');
 
-    Route::post('/select', [EmploiController::class, 'EmploiSelect'])->name('emploi.select');
+    Route::post('/select', [EmploiController::class, 'EmploiSelect'])->name('emploi.select')->middleware('auth');
 
-    Route::get('/add/classes', [EmploiController::class, 'EmploiClassesAdd'])->name('emploi.add.classes');
+    Route::get('/add/classes', [EmploiController::class, 'EmploiClassesAdd'])->name('emploi.add.classes')->middleware('auth');
 
-    Route::get('/add/enseignants', [EmploiController::class, 'EmploiEnseignantsAdd'])->name('emploi.add.enseignants');
+    Route::get('/add/enseignants', [EmploiController::class, 'EmploiEnseignantsAdd'])->name('emploi.add.enseignants')->middleware('auth');
 
-    Route::post('/store/enseignant', [EmploiController::class, 'EmploiEnseignantStore'])->name('emploi.store.enseignant');
+    Route::post('/store/enseignant', [EmploiController::class, 'EmploiEnseignantStore'])->name('emploi.store.enseignant')->middleware('auth');
 
-    Route::post('/store/classe', [EmploiController::class, 'EmploiClasseStore'])->name('emploi.store.classe');
+    Route::post('/store/classe', [EmploiController::class, 'EmploiClasseStore'])->name('emploi.store.classe')->middleware('auth');
 
-    Route::get('/effacer/{id}', [EmploiController::class, 'EmploiDelete'])->name('emploi.delete');
+    Route::get('/effacer/{id}', [EmploiController::class, 'EmploiDelete'])->name('emploi.delete')->middleware('auth');
 
-    Route::get('/view/one/{id}', [EmploiController::class, 'EmploiViewOne'])->name('emploi.view.one');
+    Route::get('/view/one/{id}', [EmploiController::class, 'EmploiViewOne'])->name('emploi.view.one')->middleware('auth');
 
 
 });
 
-Route::get('/monEmploi', [EmploiController::class, 'monEmploi'])->name('mon.emploi');
+Route::get('/monEmploi', [EmploiController::class, 'monEmploi'])->name('mon.emploi')->middleware('auth');
 
 
 
 Route::prefix('eleve')->group(function(){
 
-    Route::get('/view', [eleveController::class, 'eleveView'])->name('eleve.view');
+    Route::get('/view', [eleveController::class, 'eleveView'])->name('eleve.view')->middleware('auth');
 
-    Route::post('/store', [eleveController::class, 'eleveStore'])->name('eleve.store');
+    Route::post('/store', [eleveController::class, 'eleveStore'])->name('eleve.store')->middleware('auth');
 
-    Route::post('/miseajour/{id}', [eleveController::class, 'eleveUpdate'])->name('eleve.miseajour');
+    Route::post('/miseajour/{id}', [eleveController::class, 'eleveUpdate'])->name('eleve.miseajour')->middleware('auth');
 
-    Route::get('/effacer/{id}', [eleveController::class, 'eleveDelete'])->name('eleve.delete');
+    Route::get('/effacer/{id}', [eleveController::class, 'eleveDelete'])->name('eleve.delete')->middleware('auth');
 
-    Route::get('/notes/{id}', [eleveController::class, 'eleveNotes'])->name('eleve.notes');
+    Route::get('/notes/{id}', [eleveController::class, 'eleveNotes'])->name('eleve.notes')->middleware('auth');
 
 });
 
 
 Route::prefix('list')->group(function(){
 
-    Route::get('/listClasses', [listClassController::class, 'listClasses'])->name('classes.view');
+    Route::get('/listClasses', [listClassController::class, 'listClasses'])->name('classes.view')->middleware('auth');
 
-    Route::get('/creeClasse/{id}', [listClassController::class, 'listView'])->name('list.view');
-    Route::get('/checkList/{id}', [listClassController::class, 'listCheck'])->name('list.check');
+    Route::get('/creeClasse/{id}', [listClassController::class, 'listView'])->name('list.view')->middleware('auth');
+    Route::get('/checkList/{id}', [listClassController::class, 'listCheck'])->name('list.check')->middleware('auth');
 
-    Route::post('/store/{id}', [listClassController::class, 'listStore'])->name('list.store');
+    Route::post('/store/{id}', [listClassController::class, 'listStore'])->name('list.store')->middleware('auth');
 
-    Route::get('/edit/{id}', [listClassController::class, 'editList'])->name('list.edit');
+    Route::get('/edit/{id}', [listClassController::class, 'editList'])->name('list.edit')->middleware('auth');
 
-    Route::post('/modifier/{id}', [listClassController::class, 'updateList'])->name('list.miseajour');
+    Route::post('/modifier/{id}', [listClassController::class, 'updateList'])->name('list.miseajour')->middleware('auth');
 
 });
 Route::prefix('abscence')->group(function(){
-    Route::get('/abscence/{id}', [abscenceController::class, 'abscenceView'])->name('abscence.view');
+    Route::get('/abscence/{id}', [abscenceController::class, 'abscenceView'])->name('abscence.view')->middleware('auth');
 
-    Route::get('/creeClasse/{id}', [listClassController::class, 'listView'])->name('list.view');
-    Route::get('/checkList/{id}', [listClassController::class, 'listCheck'])->name('list.check');
+    Route::get('/creeClasse/{id}', [listClassController::class, 'listView'])->name('list.view')->middleware('auth');
+    Route::get('/checkList/{id}', [listClassController::class, 'listCheck'])->name('list.check')->middleware('auth');
 
-    Route::post('/store/{id}', [abscenceController::class, 'abscenceStore'])->name('abscence.store');
+    Route::post('/store/{id}', [abscenceController::class, 'abscenceStore'])->name('abscence.store')->middleware('auth');
 
-    Route::get('/edit/{id}', [listClassController::class, 'editList'])->name('list.edit');
+    Route::get('/edit/{id}', [listClassController::class, 'editList'])->name('list.edit')->middleware('auth');
 
-    Route::post('/modifier/{id}', [listClassController::class, 'updateList'])->name('list.miseajour');
+    Route::post('/modifier/{id}', [listClassController::class, 'updateList'])->name('list.miseajour')->middleware('auth');
 
 });
 
 Route::prefix('note')->group(function(){
 
-    Route::get('/noteView/{id}', [noteController::class, 'noteView'])->name('note.view');
+    Route::get('/noteView/{id}', [noteController::class, 'noteView'])->name('note.view')->middleware('auth');
 
-    Route::get('/checkNote/{id}', [noteController::class, 'noteCheck'])->name('note.check');
+    Route::get('/checkNote/{id}', [noteController::class, 'noteCheck'])->name('note.check')->middleware('auth');
 
-    Route::post('/store/{id}', [noteController::class, 'noteStore'])->name('note.store');
+    Route::post('/store/{id}', [noteController::class, 'noteStore'])->name('note.store')->middleware('auth');
 
-    Route::get('/edit/{id}', [noteController::class, 'editNote'])->name('note.edit');
+    Route::get('/edit/{id}', [noteController::class, 'editNote'])->name('note.edit')->middleware('auth');
 
-    Route::post('/modifier/{id}', [noteController::class, 'noteUpdate'])->name('note.miseajour');
+    Route::post('/modifier/{id}', [noteController::class, 'noteUpdate'])->name('note.miseajour')->middleware('auth');
 
 });
 
 
 Route::prefix('paper')->group(function(){
 
-    Route::get('/view', [PaperController::class, 'PaperView'])->name('paper.view');
-    Route::put('/store', [PaperController::class, 'PaperStore'])->name('paper.store');
-    Route::get('/effacer/{id}', [PaperController::class, 'PaperDelete'])->name('paper.delete');
+    Route::get('/view', [PaperController::class, 'PaperView'])->name('paper.view')->middleware('auth');
+    Route::put('/store', [PaperController::class, 'PaperStore'])->name('paper.store')->middleware('auth');
+    Route::get('/effacer/{id}', [PaperController::class, 'PaperDelete'])->name('paper.delete')->middleware('auth');
 
 });

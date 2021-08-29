@@ -1,5 +1,9 @@
 @extends('admin.admin_master')
 
+@section('title')
+<title>{{ $ecoleCreds->nom }} | التصرف في القاعات</title>
+@endsection
+
 @section('admin')
 <div class="content-wrapper">
     <section class="content-header">

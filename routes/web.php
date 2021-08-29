@@ -214,6 +214,10 @@ Route::prefix('note')->group(function(){
 Route::prefix('paper')->group(function(){
 
     Route::get('/view', [PaperController::class, 'PaperView'])->name('paper.view')->middleware('auth');
+
+    Route::get('/download/{file}', [PaperController::class, 'PaperDownload'])->name('paper.download')->middleware('auth');
+    Route::get('/view/{file}', [PaperController::class, 'PaperViewOne'])->name('paper.viewone')->middleware('auth');
+
     Route::put('/store', [PaperController::class, 'PaperStore'])->name('paper.store')->middleware('auth');
     Route::get('/effacer/{id}', [PaperController::class, 'PaperDelete'])->name('paper.delete')->middleware('auth');
 

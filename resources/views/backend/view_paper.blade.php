@@ -110,12 +110,17 @@
                                         <td>{{ $paper->nom }}</td>
                                         <td>
                                             <div class="row">
-                                                <div class="col-md-6 px-1">
-                                                    <a href="#" class="btn btn-success btn-block">
+                                                <div class="col-md-4 px-1">
+                                                    <a href="{{ route('paper.viewone',$paper->id) }}" class="btn btn-success btn-block">
                                                         عرض
                                                     </a>
                                                 </div>
-                                                <div class="col-md-6 mt-1 mt-md-0 px-1">
+                                                <div class="col-md-4 mt-1 mt-md-0 px-1">
+                                                    <a href="{{ route('paper.download',$paper->file) }}" class="btn btn-info btn-block">
+                                                        تحميل
+                                                    </a>
+                                                </div>
+                                                <div class="col-md-4 mt-1 mt-md-0 px-1">
                                                     <a href="{{ route("paper.delete", $paper->id) }}"
                                                         class="btn btn-danger btn-block" id="delete">حذف</a>
                                                 </div>

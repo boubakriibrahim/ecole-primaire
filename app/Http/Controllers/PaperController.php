@@ -12,6 +12,7 @@ class PaperController extends Controller
         return view('backend.view_paper', $data);
     }
 
+
     public function PaperStore(Request $request) {
 
          $request->validate([
@@ -53,5 +54,18 @@ class PaperController extends Controller
         );
 
         return redirect()->route('paper.view')->with($notification);
+    }
+
+    public function PaperDownload(Request $request, $file) {
+
+        return response()->download(public_path('files/'.$file));
+    }
+
+    public function PaperViewOne($id){
+
+        $data['paper'] = Paper::find($id);
+
+        return view('backend.view_onepaper', $data);
+
     }
 }

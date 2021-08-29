@@ -68,7 +68,7 @@
                                                                 class="fa fa-plus-circle ml-1"></i>اضافة
                                                             قائمة</a>
                                                     </div>
-                                                    <div class="col-md-4 px-1">
+                                                    <div class="col-md-4 mt-1 mt-md-0 px-1">
                                                         <a href="{{ route("abscence.view", $classe->id) }}"
                                                             class="btn btn-primary btn-block"><i
                                                                 class="fas fa-user-check ml-1"></i> تسجيل الحضور </a>

@@ -128,7 +128,7 @@
                     <!-- /.card -->
 
                     <!-- DONUT CHART -->
-                    <div class="card card-danger">
+                    {{-- <div class="card card-danger">
                         <div class="card-header">
                             <h3 class="card-title">Donut Chart</h3>
 
@@ -146,11 +146,11 @@
                                 style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
                         </div>
                         <!-- /.card-body -->
-                    </div>
+                    </div> --}}
                     <!-- /.card -->
 
                     <!-- AREA CHART -->
-                    <div class="card card-primary">
+                    {{-- <div class="card card-primary">
                         <div class="card-header">
                             <h3 class="card-title">Area Chart</h3>
 
@@ -170,7 +170,7 @@
                             </div>
                         </div>
                         <!-- /.card-body -->
-                    </div>
+                    </div> --}}
                     <!-- /.card -->
 
 
@@ -205,7 +205,7 @@
                     <!-- /.card -->
 
                     <!-- BAR CHART -->
-                    <div class="card card-success">
+                    {{-- <div class="card card-success">
                         <div class="card-header">
                             <h3 class="card-title">عدد التلاميذ بالنسبة للـأعمار</h3>
 
@@ -225,12 +225,12 @@
                             </div>
                         </div>
                         <!-- /.card-body -->
-                    </div>
+                    </div> --}}
                     <!-- /.card -->
 
 
                     <!-- LINE CHART -->
-                    <div class="card card-info">
+                    {{-- <div class="card card-info">
                         <div class="card-header">
                             <h3 class="card-title">Line Chart</h3>
 
@@ -250,7 +250,7 @@
                             </div>
                         </div>
                         <!-- /.card-body -->
-                    </div>
+                    </div> --}}
                     <!-- /.card -->
 
 
@@ -281,103 +281,15 @@
         var salles = {!!json_encode($salles) !!};
         var classes = {!!json_encode($classes) !!};
 
-
-        /* ChartJS
-         * -------
-         * Here we will create a few charts using ChartJS
-         */
-
-        //--------------
-        //- AREA CHART -
-        //--------------
-
-        // Get context with jQuery - using jQuery's .get() method.
-        var areaChartCanvas = $('#areaChart').get(0).getContext('2d')
-
-        var areaChartData = {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-            datasets: [{
-                    label: 'Digital Goods',
-                    backgroundColor: 'rgba(60,141,188,0.9)',
-                    borderColor: 'rgba(60,141,188,0.8)',
-                    pointRadius: false,
-                    pointColor: '#3b8bba',
-                    pointStrokeColor: 'rgba(60,141,188,1)',
-                    pointHighlightFill: '#fff',
-                    pointHighlightStroke: 'rgba(60,141,188,1)',
-                    data: [28, 48, 40, 19, 86, 27, 90]
-                },
-                {
-                    label: 'Electronics',
-                    backgroundColor: 'rgba(210, 214, 222, 1)',
-                    borderColor: 'rgba(210, 214, 222, 1)',
-                    pointRadius: false,
-                    pointColor: 'rgba(210, 214, 222, 1)',
-                    pointStrokeColor: '#c1c7d1',
-                    pointHighlightFill: '#fff',
-                    pointHighlightStroke: 'rgba(220,220,220,1)',
-                    data: [65, 59, 80, 81, 56, 55, 40]
-                },
-            ]
-        }
-
-        var areaChartOptions = {
-            maintainAspectRatio: false,
-            responsive: true,
-            legend: {
-                display: false
-            },
-            scales: {
-                xAxes: [{
-                    gridLines: {
-                        display: false,
-                    }
-                }],
-                yAxes: [{
-                    gridLines: {
-                        display: false,
-                    }
-                }]
-            }
-        }
-
-        // This will get the first returned node in the jQuery collection.
-        new Chart(areaChartCanvas, {
-            type: 'line',
-            data: areaChartData,
-            options: areaChartOptions
-        })
-
-        //-------------
-        //- LINE CHART -
-        //--------------
-        var lineChartCanvas = $('#lineChart').get(0).getContext('2d')
-        var lineChartOptions = $.extend(true, {}, areaChartOptions)
-        var lineChartData = $.extend(true, {}, areaChartData)
-        lineChartData.datasets[0].fill = false;
-        lineChartData.datasets[1].fill = false;
-        lineChartOptions.datasetFill = false
-
-        var lineChart = new Chart(lineChartCanvas, {
-            type: 'line',
-            data: lineChartData,
-            options: lineChartOptions
-        })
-
         //-------------
         //- DONUT CHART -
         //-------------
         // Get context with jQuery - using jQuery's .get() method.
 
         var classesNiveaus = [0, 0, 0, 0, 0, 0];
-        /* console.log(classes, classesNiveaus); */
         for (let i = 0; i < classes.length; i++) {
-            /* console.log(i);
-            console.log(classes[i], classes[i]['niveau']); */
             classesNiveaus[classes[i]['niveau'] - 1]++;
         }
-
-        var donutChartCanvas = $('#donutChart').get(0).getContext('2d')
         var donutData = {
             labels: [
                 'السنة الأولى',
@@ -389,21 +301,9 @@
             ],
             datasets: [{
                 data: classesNiveaus,
-                /* backgroundColor: ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'], */
                 backgroundColor: ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'],
             }]
         }
-        var donutOptions = {
-            maintainAspectRatio: false,
-            responsive: true,
-        }
-        //Create pie or douhnut chart
-        // You can switch between pie and douhnut using the method below.
-        new Chart(donutChartCanvas, {
-            type: 'doughnut',
-            data: donutData,
-            options: donutOptions
-        })
 
         //-------------
         //- PIE CHART -
@@ -426,7 +326,7 @@
         //-------------
         //- BAR CHART -
         //-------------
-        var barChartCanvas = $('#barChart').get(0).getContext('2d')
+        /* var barChartCanvas = $('#barChart').get(0).getContext('2d') */
 
         var agesGarcons = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         var agesFilles = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -488,18 +388,6 @@
         var temp1 = areaChartData.datasets[1]
         barChartData.datasets[0] = temp1
         barChartData.datasets[1] = temp0
-
-        var barChartOptions = {
-            responsive: true,
-            maintainAspectRatio: false,
-            datasetFill: false
-        }
-
-        new Chart(barChartCanvas, {
-            type: 'bar',
-            data: barChartData,
-            options: barChartOptions
-        })
 
         //---------------------
         //- STACKED BAR CHART -

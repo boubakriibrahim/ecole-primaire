@@ -118,11 +118,6 @@
                             class="fas fa-chalkboard-teacher ml-1"></i> التصرّف في الأقسام</a>
                 </li>
 
-
-                <li class="nav-item text-right">
-                    <a href="#" class="nav-link"><i class="fas fa-user-check ml-1"></i> الحضور</a>
-                </li>
-
             </ul>
             @endif
         </div>

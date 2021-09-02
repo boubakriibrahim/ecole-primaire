@@ -280,6 +280,9 @@
         var eleves = {!!json_encode($eleves) !!};
         var salles = {!!json_encode($salles) !!};
         var classes = {!!json_encode($classes) !!};
+        var notesMatieres = {!!json_encode($notesMatieres) !!};
+        var notesClasses = {!!json_encode($notesClasses) !!};
+        var notesEleves = {!!json_encode($notesEleves) !!};
 
         //-------------
         //- DONUT CHART -

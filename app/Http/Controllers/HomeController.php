@@ -44,6 +44,8 @@ class HomeController extends Controller
 
         $notesEleves = DB::table('notes')->join('eleves', 'eleves.id', '=', 'notes.eleve_id')->select('notes.note', 'eleves.nom', 'eleves.prenom', 'eleves.sexe', 'eleves.date_naissance')->get();
 
+        $abscences = DB::table('abscences')->join('eleves', 'eleves.id', '=', 'abscences.eleve_id')->select('abscences.seance_id','abscences.etat' , 'eleves.nom', 'eleves.prenom', 'eleves.sexe', 'eleves.date_naissance')->get();
+
         /* $matieres = array();
         $niveaus = array();
 
@@ -54,6 +56,6 @@ class HomeController extends Controller
             }
         } */
         /* dd($notesMatieres, $notesClasses, $notesEleves); */
-        return view('admin.index', compact('profs', 'eleves', 'classes', 'salles', 'notesMatieres', 'notesClasses', 'notesEleves'));
+        return view('admin.index', compact('profs', 'eleves', 'classes', 'salles', 'notesMatieres', 'notesClasses', 'notesEleves', 'abscences'));
     }
 }

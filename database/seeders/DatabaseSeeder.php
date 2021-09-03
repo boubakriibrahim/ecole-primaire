@@ -29,5 +29,7 @@ class DatabaseSeeder extends Seeder
         /* $this->call(seanceSeeder::class); */
 
         $this->call(EcoleSeeder::class);
+
+        $this->call(UserSeeder::class);
     }
 }

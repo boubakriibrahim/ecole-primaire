@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Models\Team;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
@@ -25,11 +24,16 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name(),
-            'email' => $this->faker->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'remember_token' => Str::random(10),
+            'nom' => 'إبراهيم',
+            'prenom' => 'بوبكري',
+            'email' => 'admin@gmail.com',
+            'role' => 'superadmin',
+            'password' => '$2y$10$B.57vztLRHAwIZ9jGa7MYOHmE1IAi6qBulQviP1nyg/B3nTTAIbW6', // password
+            'remember_token' => 'XUJRpi9RcjUx8BdMXpLiecDZHwWXTpJCeU4mMxUhNYFku8SuwNBJfsMJBSN2',
+            'date_naissance' => '1999-01-16',
+            'adresse' => 'Compus Manouba, 2010',
+            'phone' => '77441122',
+            'profile_photo_path' => '1630274944-profile.jpeg',
         ];
     }
 

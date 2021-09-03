@@ -95,4 +95,17 @@ php artisan serve
 
 Vous pouvez le visiter sur le lien locale : http://localhost:8000
 
+### Test du projet deployé
 
+Visiter le lien https://ecole-primaire-ensi.herokuapp.com/
+
+Accéder en temps que Administrateur :
+```
+Email: admin@gmail.com
+Password: 12345678
+```
+Accéder en temps que Ensseignant :
+```
+Email: prof1@gmail.com
+Password: 87654321
+```

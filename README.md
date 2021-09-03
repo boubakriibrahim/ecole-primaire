@@ -61,13 +61,6 @@ git clone https://github.com/boubakriibrahim/ecole-primaire.git
 
 Création d'un tableau dans la base de données puis copier le fichier .env.example en .env et modifier les paramétres de votre base de données
 
-### Ajout des examples pour les tableaux des bases de données
-
-Vous pouvez modifier le fichier ecole-primaire\database\seeders\DatabaseSeeder.php dans la fonction run en supprimant les commentaires des modeles.
-
-```
-php artisan db:seed
-```
 
 ### Installation des dépendances
 
@@ -84,6 +77,14 @@ npm install
 php artisan key:generate  
 php artisan cache:clear
 php artisan migrate
+```
+
+### Ajout des examples pour les tableaux des bases de données
+
+Vous pouvez modifier le fichier ecole-primaire\database\seeders\DatabaseSeeder.php dans la fonction run en supprimant les commentaires des modeles.
+
+```
+php artisan db:seed
 ```
 
 ### Modification du fichier du service

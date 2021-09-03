@@ -57,6 +57,18 @@ Le projet admet deux tableaux de bord différents un pour l’administrateur et 
 git clone https://github.com/boubakriibrahim/ecole-primaire.git
 ```
 
+### Copie du fichier de l'environnement
+
+Création d'un tableau dans la base de données puis copier le fichier .env.example en .env et modifier les paramétres de votre base de données
+
+### Ajout des examples pour les tableaux des bases de données
+
+Vous pouvez modifier le fichier ecole-primaire\database\seeders\DatabaseSeeder.php dans la fonction run en supprimant les commentaires des modeles.
+
+```
+php artisan db:seed
+```
+
 ### Installation des dépendances
 
 ```
@@ -64,9 +76,6 @@ composer update
 composer install
 npm install
 ```
-### Copie du fichier de l'environnement
-
-Création d'un tableau dans la base de données puis copier le fichier .env.example en .env et modifier les paramétres de votre base de données
 
 
 ### Génération du clé et migration du base de données
@@ -77,15 +86,9 @@ php artisan cache:clear
 php artisan migrate
 ```
 
+### Modification du fichier du service
 
-### Ajout des examples pour les tableaux des bases de données (optionnel)
-
-Il faut modifier le fichier ecole-primaire\database\seeders\DatabaseSeeder.php dans la fonction run en supprimant les commentaires des modeles.
-et puis appel du commande suivante
-
-```
-php artisan db:seed
-```
+Accéder au fichier ecole-primaire\app\Providers\AppServiceProvider.php et rendre non commentaire la variable $ecoleCreds dans les lignes 30 et 31
 
 ### Execution du projet
 
@@ -104,7 +107,7 @@ Accéder en temps que Administrateur :
 Email: admin@gmail.com
 Password: 12345678
 ```
-Accéder en temps que Ensseignant :
+Accéder en temps que Enseignant :
 ```
 Email: prof1@gmail.com
 Password: 87654321

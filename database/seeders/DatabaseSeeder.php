@@ -24,8 +24,10 @@ class DatabaseSeeder extends Seeder
 
        /*  $this->call(salleSeeder::class); */
 
-       $this->call(affEnsSeeder::class);
+       /* $this->call(affEnsSeeder::class); */
 
         /* $this->call(seanceSeeder::class); */
+
+        $this->call(EcoleSeeder::class);
     }
 }

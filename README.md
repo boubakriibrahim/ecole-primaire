@@ -1,62 +1,99 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+<p align="center"><a href="http://www.ensi-uma.tn/" target="_blank"><img src="https://i.postimg.cc/vZDn07KQ/ensi2.png" width="200"></a></p>
 
 <p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+ECOLE NATIONALE DES SCIENCES DE L’INFORMATIQUE
 </p>
+<h1 align="center">
+    Gestion administrative d'une école primaire
+</h1>
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Présentation générale du sujet
+Il s'agit de mettre en place une solution web qui offre aux administrateurs et enseignants d’une école primaire, un système de gestion. 
+   
+L'application devra permettre également de faciliter l'accès aux documents administratives et la gestion des principaux axes d’une école.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Présentation des fonctionnalités demandées de l'application
+Il s’agit d’une solution web (site web) constituée d’une page d’accueil pour la définition de l’école puis une page de connexion qui rédige vers le tableau de bord de la gestion.
 
-## Learning Laravel
+Le projet admet deux tableaux de bord différents un pour l’administrateur et un autre pour l’enseignant. Toutes les importantes gestions sont désignées par la méthode CRUD qui permet l’affichage, la création, la mise à jour et l’effacement des différentes modèles (enseignants, élèves, classes …). 
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Espace Administrateur
+-	La mise à jour des données personnelles.
+-	La mise à jour des données de l’école.
+-	Les plus importantes statistiques de l’école.
+-	La gestion des documents administratives.
+-	La gestion des enseignants.
+-	La gestion des élèves.
+-	La gestion des classes.
+-	La gestion des matières.
+-	La gestion des salles.
+-	La gestion des séances.
+-	L’affectation des enseignants.
+-	La gestion des emplois de temps.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Espace Enseignant
 
-## Laravel Sponsors
+-	La mise à jour des données personnelles.
+-	Les plus importantes statistiques de l’école.
+-	Voir son emploi de temps.
+-	La gestion des élèves.
+-	La gestion des classes (l’ajout des listes, la présence et l’affectation des notes).
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
-### Premium Partners
+## Installation du projet
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
+### Les logiciels pour l'installation
 
-## Contributing
+- NodeJs
+- Composer
+- npm
+- Wampserver ou xampp
+- php 7.4+
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Cloner le projet
+```
+git clone https://github.com/boubakriibrahim/ecole-primaire.git
+```
 
-## Code of Conduct
+### Installation des dépendances
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```
+composer update
+composer install
+npm install
+```
+### Copie du fichier de l'environnement
 
-## Security Vulnerabilities
+Création d'un tableau dans la base de données
+Copier le fichier .env.example en .env et modifier les paramétres de votre base de données
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
+### Génération du clé et migration du base de données
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```
+php artisan key:generate  
+php artisan cache:clear
+php artisan migrate
+```
+
+
+### Ajout des examples pour les tableaux des bases de données (optionnel)
+
+Il faut modifier le fichier ecole-primaire\database\seeders\DatabaseSeeder.php dans la fonction run en supprimant les commentaires des modeles.
+et puis appel du commande suivante
+
+```
+php artisan db:seed
+```
+
+### Execution du projet
+
+```
+php artisan serve
+```
+
+Vous pouvez le visiter sur le lien locale : http://localhost:8000
+
+

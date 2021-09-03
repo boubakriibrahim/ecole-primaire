@@ -66,8 +66,7 @@ npm install
 ```
 ### Copie du fichier de l'environnement
 
-Création d'un tableau dans la base de données
-Copier le fichier .env.example en .env et modifier les paramétres de votre base de données
+Création d'un tableau dans la base de données puis copier le fichier .env.example en .env et modifier les paramétres de votre base de données
 
 
 ### Génération du clé et migration du base de données
